@@ -1,0 +1,33 @@
+name: Dispatch Repository Event
+description: Dispatches a repository_dispatch event to a target repository
+
+inputs:
+  token:
+    description: GitHub token with access to target repositories
+    required: true
+  owner:
+    description: Repository owner or organization
+    required: true
+  repo:
+    description: Target repository name
+    required: true
+  event_type:
+    description: repository_dispatch event type
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Dispatch repository event
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+        GH_OWNER: ${{ inputs.owner }}
+        GH_REPO: ${{ inputs.repo }}
+        GH_EVENT_TYPE: ${{ inputs.event_type }}
+      run: |
+        curl -sS -X POST \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${GH_TOKEN}" \
+          "https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/dispatches" \
+          -d "{\"event_type\":\"${GH_EVENT_TYPE}\"}"

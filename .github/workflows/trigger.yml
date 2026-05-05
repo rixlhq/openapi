@@ -1,0 +1,34 @@
+name: Trigger SDK regeneration on OpenAPI change
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - openapi.yaml
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        repo:
+          - rixl-js
+          - rixl-go
+          - rixl-java
+          - rixl-csharp
+          - rixl-php
+          - rixl-python
+          - rixl-ruby
+    steps:
+      - name: Dispatch regenerate-sdk
+        uses: ./.github/actions/dispatch-repository-event
+        with:
+          token: ${{ secrets.BUILD_GITHUB_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          repo: ${{ matrix.repo }}
+          event_type: regenerate-sdk
