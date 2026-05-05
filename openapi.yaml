@@ -76,6 +76,7 @@ components:
           type: integer
         status:
           $ref: '#/components/schemas/FileStatus'
+          example: ready
         updated_at:
           example: "2025-01-01T00:00:00Z"
           type: string
@@ -91,7 +92,6 @@ components:
       - preparing
       - ready
       - error
-      example: ready
       type: string
       x-enum-comments:
         FileStatusError: error happened, file is corrupt
@@ -147,8 +147,10 @@ components:
           $ref: '#/components/schemas/Image'
         plan_type:
           $ref: '#/components/schemas/github_com_rixlhq_api_db_sqlc.PlanType'
+          example: free
         type:
           $ref: '#/components/schemas/PostType'
+          example: video
         updated_at:
           example: "2025-01-01T00:00:00Z"
           type: string
@@ -159,9 +161,6 @@ components:
       enum:
       - image
       - video
-      - video
-      - image
-      example: video
       type: string
       x-enum-varnames:
       - PostTypeImage
@@ -246,6 +245,7 @@ components:
           type: string
         plan_type:
           $ref: '#/components/schemas/github_com_rixlhq_api_db_sqlc.PlanType'
+          example: free
         poster:
           $ref: '#/components/schemas/Image'
         width:
@@ -261,6 +261,7 @@ components:
           type: string
         video_quality:
           $ref: '#/components/schemas/github_com_rixlhq_api_db_sqlc.VideoQuality'
+          example: shorts
       required:
       - file_name
       type: object
@@ -270,7 +271,6 @@ components:
       - pro
       - custom
       - pay_as_you_go
-      example: free
       type: string
       x-enum-varnames:
       - PlanTypeFree
@@ -282,10 +282,6 @@ components:
       - basic
       - shorts
       - pro
-      - basic
-      - shorts
-      - pro
-      example: shorts
       type: string
       x-enum-varnames:
       - VideoQualityBasic
@@ -332,6 +328,7 @@ components:
           type: string
         plan_type:
           $ref: '#/components/schemas/github_com_rixlhq_api_db_sqlc.PlanType'
+          example: free
         poster:
           $ref: '#/components/schemas/Image'
         width:
@@ -415,6 +412,7 @@ components:
           uniqueItems: false
         pagination:
           $ref: '#/components/schemas/pagination.Pagination'
+          description: Pagination data for the request.
       type: object
     pagination.PaginatedResponse-Post:
       properties:
@@ -426,6 +424,7 @@ components:
           uniqueItems: false
         pagination:
           $ref: '#/components/schemas/pagination.Pagination'
+          description: Pagination data for the request.
       type: object
     pagination.PaginatedResponse-Video:
       properties:
@@ -437,9 +436,9 @@ components:
           uniqueItems: false
         pagination:
           $ref: '#/components/schemas/pagination.Pagination'
+          description: Pagination data for the request.
       type: object
     pagination.Pagination:
-      description: Pagination data for the request.
       properties:
         limit:
           default: 25
@@ -826,11 +825,9 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-              - type: object
-              - $ref: '#/components/schemas/internal_images_handler.completeRequest'
-                description: Upload completion request
-                summary: request
+              $ref: '#/components/schemas/internal_images_handler.completeRequest'
+              description: Upload completion request
+              summary: request
         description: Upload completion request
         required: true
       responses:
@@ -884,11 +881,9 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-              - type: object
-              - $ref: '#/components/schemas/internal_images_handler.uploadInitRequest'
-                description: Upload initialization request
-                summary: request
+              $ref: '#/components/schemas/internal_images_handler.uploadInitRequest'
+              description: Upload initialization request
+              summary: request
         description: Upload initialization request
         required: true
       responses:
@@ -1320,11 +1315,9 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-              - type: object
-              - $ref: '#/components/schemas/UpdateChaptersRequest'
-                description: Chapters array
-                summary: request
+              $ref: '#/components/schemas/UpdateChaptersRequest'
+              description: Chapters array
+              summary: request
         description: Chapters array
         required: true
       responses:
@@ -1709,11 +1702,9 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-              - type: object
-              - $ref: '#/components/schemas/github_com_rixlhq_api_internal_videos_handler_upload.CompleteRequest'
-                description: Video upload completion request
-                summary: request
+              $ref: '#/components/schemas/github_com_rixlhq_api_internal_videos_handler_upload.CompleteRequest'
+              description: Video upload completion request
+              summary: request
         description: Video upload completion request
         required: true
       responses:
@@ -1767,11 +1758,9 @@ paths:
         content:
           application/json:
             schema:
-              oneOf:
-              - type: object
-              - $ref: '#/components/schemas/VideoUploadInitRequest'
-                description: Video upload initialization request
-                summary: request
+              $ref: '#/components/schemas/VideoUploadInitRequest'
+              description: Video upload initialization request
+              summary: request
         description: Video upload initialization request
         required: true
       responses:
@@ -1814,18 +1803,6 @@ paths:
 servers:
 - url: /
 tags:
-- description: '**User authentication and session management**'
-  name: Authentication
-- description: '**User account management**'
-  name: Users
-- description: '**Organization management**'
-  name: Organizations
-- description: '**Project management within organizations**'
-  name: Projects
-- description: '**API key management for organizations**'
-  name: API Keys
-- description: '**Billing and subscription management**'
-  name: Billing
 - description: '**Build dynamic social experiences.**<br><br>Feeds are ordered collections
     of Posts, designed for creating vertical video carousels, stories, or social timelines.
     Each Post contains your media (video or image) and its associated metadata.'
@@ -1839,14 +1816,3 @@ tags:
     handles image optimization, format conversion, and ThumbHash generation. All images
     are served via our global CDN for an ideal user experience.'
   name: Images
-- description: '**File upload and management**'
-  name: Files
-- description: '**Track and analyze content performance.**<br><br>Collect analytics
-    events and retrieve detailed statistics for videos, posts, and feeds. Monitor
-    views, engagement, and user behavior. features include funnel analysis, retention
-    cohorts, user properties, and real-time stats.'
-  name: Analytics
-- description: '**Internal API endpoints**'
-  name: Internal
-- description: '**System management endpoints**'
-  name: Management
