@@ -26,7 +26,7 @@ jobs:
           - rixl-ruby
     steps:
       - name: Dispatch regenerate-sdk
-        uses: ./.github/actions/dispatch-repository-event
+        uses: rixlhq/openapi/.github/actions/dispatch-repository-event@main
         with:
           token: ${{ secrets.BUILD_GITHUB_TOKEN }}
           owner: ${{ github.repository_owner }}
