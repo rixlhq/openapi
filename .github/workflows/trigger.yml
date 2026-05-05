@@ -1,4 +1,4 @@
-name: Trigger SDK regeneration on OpenAPI change
+name: SDK Trigger
 
 on:
   push:
