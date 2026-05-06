@@ -1086,22 +1086,31 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              oneOf:
-              - format: binary
-                items:
-                  type: string
-                title: files
-                type: array
-              - example: en-US,es-ES
-                title: language_codes
-                type: string
-              - example: English,Spanish
-                title: labels
-                type: string
           multipart/form-data:
+            encoding:
+              files:
+                explode: true
+                style: form
             schema:
+              properties:
+                files:
+                  description: files
+                  format: binary
+                  items:
+                    type: string
+                  type: array
+                labels:
+                  description: Comma-separated labels
+                  example: English,Spanish
+                  type: string
+                language_codes:
+                  description: Comma-separated language codes
+                  example: en-US,es-ES
+                  type: string
+              required:
+              - files
+              - language_codes
+              - labels
               type: object
         description: files | Comma-separated language codes | Comma-separated labels
         required: true
@@ -1226,19 +1235,22 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              oneOf:
-              - format: binary
-                title: file
-                type: string
-              - example: English
-                title: label
-                type: string
           multipart/form-data:
             schema:
+              properties:
+                file:
+                  description: file
+                  format: binary
+                  type: string
+                label:
+                  description: Label (e.g. English)
+                  example: English
+                  type: string
+              required:
+              - file
               type: object
         description: file | Label (e.g. English)
+        required: true
       responses:
         "200":
           content:
@@ -1449,22 +1461,31 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              oneOf:
-              - format: binary
-                items:
-                  type: string
-                title: files
-                type: array
-              - example: en-US,es-ES
-                title: language_codes
-                type: string
-              - example: English,Spanish
-                title: labels
-                type: string
           multipart/form-data:
+            encoding:
+              files:
+                explode: true
+                style: form
             schema:
+              properties:
+                files:
+                  description: files
+                  format: binary
+                  items:
+                    type: string
+                  type: array
+                labels:
+                  description: Comma-separated labels
+                  example: English,Spanish
+                  type: string
+                language_codes:
+                  description: Comma-separated language codes
+                  example: en-US,es-ES
+                  type: string
+              required:
+              - files
+              - language_codes
+              - labels
               type: object
         description: files | Comma-separated language codes | Comma-separated labels
         required: true
@@ -1589,19 +1610,22 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              oneOf:
-              - format: binary
-                title: file
-                type: string
-              - example: English
-                title: label
-                type: string
           multipart/form-data:
             schema:
+              properties:
+                file:
+                  description: file
+                  format: binary
+                  type: string
+                label:
+                  description: Label (e.g. English)
+                  example: English
+                  type: string
+              required:
+              - file
               type: object
         description: file | Label (e.g. English)
+        required: true
       responses:
         "200":
           content:
@@ -1629,13 +1653,15 @@ paths:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              format: binary
-              title: thumbnail
-              type: string
           multipart/form-data:
             schema:
+              properties:
+                thumbnail:
+                  description: file
+                  format: binary
+                  type: string
+              required:
+              - thumbnail
               type: object
         description: file
         required: true
