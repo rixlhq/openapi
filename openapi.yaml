@@ -708,12 +708,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Internal server error
-        x-order: 2
       security:
       - ApiKeyAuth: []
       summary: List images for a project
       tags:
       - Images
+      x-order: 2
   /images/{imageId}:
     delete:
       description: delete an image by marking it as deleted
@@ -758,12 +758,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to delete image
-        x-order: 5
       security:
       - ApiKeyAuth: []
       summary: Delete image
       tags:
       - Images
+      x-order: 5
     get:
       description: Retrieve an image by its ID for a specific project.
       parameters:
@@ -811,12 +811,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Internal server error
-        x-order: 1
       security:
       - ApiKeyAuth: []
       summary: Get image
       tags:
       - Images
+      x-order: 1
   /images/upload/complete:
     post:
       description: Complete the upload process and create the image record using API
@@ -867,12 +867,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to complete upload or create image
-        x-order: 4
       security:
       - ApiKeyAuth: []
       summary: 'Upload: Mark as complete'
       tags:
       - Images
+      x-order: 4
   /images/upload/init:
     post:
       description: Initialize a presigned URL upload for an image file using API key
@@ -917,12 +917,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to initialize upload
-        x-order: 3
       security:
       - ApiKeyAuth: []
       summary: 'Upload: Init'
       tags:
       - Images
+      x-order: 3
   /videos:
     get:
       description: Retrieve all videos for a specific project, with pagination and
@@ -990,12 +990,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Internal server error
-        x-order: 2
       security:
       - ApiKeyAuth: []
       summary: List videos for a project
       tags:
       - Videos
+      x-order: 2
   /videos/{videoId}:
     get:
       description: Retrieve a video by its ID for a specific project.
@@ -1044,12 +1044,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Internal server error
-        x-order: 1
       security:
       - ApiKeyAuth: []
       summary: Get a video
       tags:
       - Videos
+      x-order: 1
   /videos/{videoId}/audio-tracks:
     delete:
       description: Remove all additional audio tracks from a video using API key authentication
@@ -1068,12 +1068,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AudioTrackDelete'
           description: OK
-        x-order: 10.3
       security:
       - ApiKeyAuth: []
       summary: Delete all audio tracks
       tags:
       - Videos
+      x-order: 10.3
     post:
       description: Replace all audio tracks with the provided ones using API key authentication
       parameters:
@@ -1123,12 +1123,12 @@ paths:
                   $ref: '#/components/schemas/AudioTrack'
                 type: array
           description: OK
-        x-order: 10
       security:
       - ApiKeyAuth: []
       summary: Bulk upsert video audio tracks
       tags:
       - Videos
+      x-order: 10
   /videos/{videoId}/audio-tracks/{trackId}:
     delete:
       description: Remove an additional audio track from a video using API key authentication
@@ -1178,12 +1178,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Internal Server Error
-        x-order: 11
       security:
       - ApiKeyAuth: []
       summary: Delete audio track
       tags:
       - Videos
+      x-order: 11
   /videos/{videoId}/audio-tracks/language/{lang_code}:
     delete:
       description: Remove an audio track for a specific language using API key authentication
@@ -1209,12 +1209,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AudioTrackDelete'
           description: OK
-        x-order: 10.2
       security:
       - ApiKeyAuth: []
       summary: Delete audio track by language
       tags:
       - Videos
+      x-order: 10.2
     put:
       description: Add or replace an audio track for a specific language using API
         key authentication
@@ -1258,12 +1258,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/AudioTrack'
           description: OK
-        x-order: 10.1
       security:
       - ApiKeyAuth: []
       summary: Upsert video audio track
       tags:
       - Videos
+      x-order: 10.1
   /videos/{videoId}/chapters:
     delete:
       description: Remove all chapters from a video using API key authentication
@@ -1306,12 +1306,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to delete chapters
-        x-order: 13
       security:
       - ApiKeyAuth: []
       summary: Delete video chapters
       tags:
       - Videos
+      x-order: 13
     put:
       description: Replace all chapters for a video (atomic PUT operation) using API
         key authentication
@@ -1369,12 +1369,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to update chapters
-        x-order: 12
       security:
       - ApiKeyAuth: []
       summary: Update video chapters
       tags:
       - Videos
+      x-order: 12
   /videos/{videoId}/delete:
     delete:
       description: Delete a video by its ID within a project
@@ -1419,12 +1419,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to delete video
-        x-order: 5
       security:
       - ApiKeyAuth: []
       summary: Delete video
       tags:
       - Videos
+      x-order: 5
   /videos/{videoId}/subtitles:
     delete:
       description: Remove all subtitles from a video using API key authentication
@@ -1443,12 +1443,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubtitleDelete'
           description: OK
-        x-order: 8.3
       security:
       - ApiKeyAuth: []
       summary: Delete all subtitles
       tags:
       - Videos
+      x-order: 8.3
     post:
       description: Replace all subtitles with the provided ones using API key authentication
       parameters:
@@ -1498,12 +1498,12 @@ paths:
                   $ref: '#/components/schemas/Subtitle'
                 type: array
           description: OK
-        x-order: 8
       security:
       - ApiKeyAuth: []
       summary: Bulk upsert video subtitles
       tags:
       - Videos
+      x-order: 8
   /videos/{videoId}/subtitles/{subtitleId}:
     delete:
       description: Remove a subtitle from a video using API key authentication
@@ -1553,12 +1553,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Internal Server Error
-        x-order: 9
       security:
       - ApiKeyAuth: []
       summary: Delete subtitle
       tags:
       - Videos
+      x-order: 9
   /videos/{videoId}/subtitles/language/{lang_code}:
     delete:
       description: Remove a subtitle for a specific language using API key authentication
@@ -1584,12 +1584,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubtitleDelete'
           description: OK
-        x-order: 8.2
       security:
       - ApiKeyAuth: []
       summary: Delete subtitle by language
       tags:
       - Videos
+      x-order: 8.2
     put:
       description: Add or replace a subtitle for a specific language using API key
         authentication
@@ -1633,12 +1633,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Subtitle'
           description: OK
-        x-order: 8.1
       security:
       - ApiKeyAuth: []
       summary: Upsert video subtitle
       tags:
       - Videos
+      x-order: 8.1
   /videos/{videoId}/thumbnail:
     put:
       description: Update the thumbnail image for an existing video using API key
@@ -1702,12 +1702,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Upload or update failed
-        x-order: 6
       security:
       - ApiKeyAuth: []
       summary: Update video thumbnail
       tags:
       - Videos
+      x-order: 6
   /videos/languages:
     get:
       description: Get list of supported languages for subtitles
@@ -1773,12 +1773,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to complete upload
-        x-order: 4
       security:
       - ApiKeyAuth: []
       summary: 'Upload: Mark as complete'
       tags:
       - Videos
+      x-order: 4
   /videos/upload/init:
     post:
       description: Initialize a video upload and get presigned URLs for video and
@@ -1823,12 +1823,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Failed to initialize upload
-        x-order: 3
       security:
       - ApiKeyAuth: []
       summary: 'Upload: Init'
       tags:
       - Videos
+      x-order: 3
 servers:
 - url: /
 tags:
