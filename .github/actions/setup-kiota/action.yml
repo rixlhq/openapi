@@ -1,0 +1,20 @@
+name: Setup Kiota OpenAPI generator
+description: This actions sets up kiota so it can be used in your workflow. Kiota is a modern OpenAPI based client generator that supports multiple languages.
+
+inputs:
+  version:
+    description: Version of Kiota to install (latest by default)
+    default: latest
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Kiota ${{ inputs.version }}
+      shell: bash
+      run: |
+          curl -fsSL "https://github.com/microsoft/kiota/releases/latest/download/linux-x64.zip" -o /tmp/kiota.zip
+          sudo unzip -o /tmp/kiota.zip -d /usr/local/lib/kiota
+          sudo ln -sf /usr/local/lib/kiota/kiota /usr/local/bin/kiota
+          sudo chmod +x /usr/local/bin/kiota
+          kiota --version
