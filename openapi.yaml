@@ -1120,7 +1120,62 @@ paths:
       summary: Bulk upsert video audio tracks
       tags:
       - Videos
-  /videos/{videoId}/audio-tracks/{lang_code}:
+  /videos/{videoId}/audio-tracks/{trackId}:
+    delete:
+      description: Remove an additional audio track from a video using API key authentication
+      parameters:
+      - description: Video ID
+        example: V3idRI23XL
+        in: path
+        name: videoId
+        required: true
+        schema:
+          type: string
+      - description: Audio Track ID
+        example: A7trRI23XL
+        in: path
+        name: trackId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioTrackDelete'
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Internal Server Error
+        x-order: 11
+      security:
+      - ApiKeyAuth: []
+      summary: Delete audio track
+      tags:
+      - Videos
+  /videos/{videoId}/audio-tracks/language/{lang_code}:
     delete:
       description: Remove an audio track for a specific language using API key authentication
       parameters:
@@ -1195,61 +1250,6 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Upsert video audio track
-      tags:
-      - Videos
-  /videos/{videoId}/audio-tracks/{trackId}:
-    delete:
-      description: Remove an additional audio track from a video using API key authentication
-      parameters:
-      - description: Video ID
-        example: V3idRI23XL
-        in: path
-        name: videoId
-        required: true
-        schema:
-          type: string
-      - description: Audio Track ID
-        example: A7trRI23XL
-        in: path
-        name: trackId
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AudioTrackDelete'
-          description: OK
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Internal Server Error
-        x-order: 11
-      security:
-      - ApiKeyAuth: []
-      summary: Delete audio track
       tags:
       - Videos
   /videos/{videoId}/chapters:
@@ -1483,7 +1483,62 @@ paths:
       summary: Bulk upsert video subtitles
       tags:
       - Videos
-  /videos/{videoId}/subtitles/{lang_code}:
+  /videos/{videoId}/subtitles/{subtitleId}:
+    delete:
+      description: Remove a subtitle from a video using API key authentication
+      parameters:
+      - description: Video ID
+        example: V3idRI23XL
+        in: path
+        name: videoId
+        required: true
+        schema:
+          type: string
+      - description: Subtitle ID
+        example: S4ubRI23XL
+        in: path
+        name: subtitleId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubtitleDelete'
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
+          description: Internal Server Error
+        x-order: 9
+      security:
+      - ApiKeyAuth: []
+      summary: Delete subtitle
+      tags:
+      - Videos
+  /videos/{videoId}/subtitles/language/{lang_code}:
     delete:
       description: Remove a subtitle for a specific language using API key authentication
       parameters:
@@ -1560,66 +1615,13 @@ paths:
       summary: Upsert video subtitle
       tags:
       - Videos
-  /videos/{videoId}/subtitles/{subtitleId}:
-    delete:
-      description: Remove a subtitle from a video using API key authentication
+  /videos/{videoId}/thumbnail:
+    put:
+      description: Update the thumbnail image for an existing video using API key
+        authentication
       parameters:
       - description: Video ID
         example: V3idRI23XL
-        in: path
-        name: videoId
-        required: true
-        schema:
-          type: string
-      - description: Subtitle ID
-        example: S4ubRI23XL
-        in: path
-        name: subtitleId
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubtitleDelete'
-          description: OK
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Internal Server Error
-        x-order: 9
-      security:
-      - ApiKeyAuth: []
-      summary: Delete subtitle
-      tags:
-      - Videos
-  /videos/{videoId}/thumbnail:
-    put:
-      description: Update the thumbnail image for an existing video
-      parameters:
-      - description: Video ID
         in: path
         name: videoId
         required: true
@@ -1655,7 +1657,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
-          description: Unauthorized
+          description: Unauthorized - Invalid API key
         "403":
           content:
             application/json:
@@ -1674,8 +1676,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/github_com_rixlhq_api_internal_errors.ErrorResponse'
           description: Upload or update failed
+        x-order: 6
       security:
-      - Bearer: []
+      - ApiKeyAuth: []
       summary: Update video thumbnail
       tags:
       - Videos
