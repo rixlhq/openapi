@@ -1830,7 +1830,7 @@ paths:
       - Videos
       x-order: 3
 servers:
-- url: /
+- url: https://api.rixl.com/
 tags:
 - description: '**Build dynamic social experiences.**<br><br>Feeds are ordered collections
     of Posts, designed for creating vertical video carousels, stories, or social timelines.
@@ -1845,4 +1845,3 @@ tags:
     handles image optimization, format conversion, and ThumbHash generation. All images
     are served via our global CDN for an ideal user experience.'
   name: Images
-
