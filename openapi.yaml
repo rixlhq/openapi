@@ -1094,9 +1094,10 @@ paths:
             schema:
               properties:
                 files:
-                  description: files
-                  format: binary
+                  description: Audio files (.mp3, .opus, .flac, .wav, .ac3, .m4a,
+                    .aac)
                   items:
+                    format: binary
                     type: string
                   type: array
                 labels:
@@ -1112,7 +1113,8 @@ paths:
               - language_codes
               - labels
               type: object
-        description: files | Comma-separated language codes | Comma-separated labels
+        description: Audio files (.mp3, .opus, .flac, .wav, .ac3, .m4a, .aac) | Comma-separated
+          language codes | Comma-separated labels
         required: true
       responses:
         "200":
@@ -1239,7 +1241,7 @@ paths:
             schema:
               properties:
                 file:
-                  description: file
+                  description: Audio file (.mp3, .opus, .flac, .wav, .ac3, .m4a, .aac)
                   format: binary
                   type: string
                 label:
@@ -1249,7 +1251,8 @@ paths:
               required:
               - file
               type: object
-        description: file | Label (e.g. English)
+        description: Audio file (.mp3, .opus, .flac, .wav, .ac3, .m4a, .aac) | Label
+          (e.g. English)
         required: true
       responses:
         "200":
@@ -1469,9 +1472,9 @@ paths:
             schema:
               properties:
                 files:
-                  description: files
-                  format: binary
+                  description: Subtitle files (.srt or .vtt)
                   items:
+                    format: binary
                     type: string
                   type: array
                 labels:
@@ -1487,7 +1490,8 @@ paths:
               - language_codes
               - labels
               type: object
-        description: files | Comma-separated language codes | Comma-separated labels
+        description: Subtitle files (.srt or .vtt) | Comma-separated language codes
+          | Comma-separated labels
         required: true
       responses:
         "200":
@@ -1614,7 +1618,7 @@ paths:
             schema:
               properties:
                 file:
-                  description: file
+                  description: Subtitle file (.srt or .vtt)
                   format: binary
                   type: string
                 label:
@@ -1624,7 +1628,7 @@ paths:
               required:
               - file
               type: object
-        description: file | Label (e.g. English)
+        description: Subtitle file (.srt or .vtt) | Label (e.g. English)
         required: true
       responses:
         "200":
@@ -1657,13 +1661,13 @@ paths:
             schema:
               properties:
                 thumbnail:
-                  description: file
+                  description: Thumbnail image file (max 5MB, image/*)
                   format: binary
                   type: string
               required:
               - thumbnail
               type: object
-        description: file
+        description: Thumbnail image file (max 5MB, image/*)
         required: true
       responses:
         "200":
