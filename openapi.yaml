@@ -493,6 +493,7 @@ paths:
   /feeds/{feedId}:
     get:
       description: Retrieve posts in a feed, with pagination.
+      operationId: list
       parameters:
       - description: Feed ID
         example: F4edRI23XL
@@ -545,6 +546,7 @@ paths:
   /feeds/{feedId}/{postId}:
     get:
       description: Retrieve a post from feed by its ID
+      operationId: get
       parameters:
       - description: Feed ID
         example: F4edRI23XL
@@ -585,6 +587,7 @@ paths:
   /feeds/{feedId}/creators/{creatorId}:
     get:
       description: Retrieve posts in a feed by a specific creator, with pagination.
+      operationId: listByCreator
       parameters:
       - description: Feed ID
         example: F4edRI23XL
@@ -645,6 +648,7 @@ paths:
     get:
       description: Retrieve all images for a specific project, with pagination and
         sorting.
+      operationId: list
       parameters:
       - description: Maximum number of items to return in a single request. <br> **Default:**
           `25`
@@ -717,6 +721,7 @@ paths:
   /images/{imageId}:
     delete:
       description: delete an image by marking it as deleted
+      operationId: delete
       parameters:
       - description: Image ID
         example: M1uxRI23XL
@@ -766,6 +771,7 @@ paths:
       x-order: 5
     get:
       description: Retrieve an image by its ID for a specific project.
+      operationId: get
       parameters:
       - description: Image ID
         example: M1uxRI23XL
@@ -821,6 +827,7 @@ paths:
     post:
       description: Complete the upload process and create the image record using API
         key authentication
+      operationId: uploadComplete
       requestBody:
         content:
           application/json:
@@ -877,6 +884,7 @@ paths:
     post:
       description: Initialize a presigned URL upload for an image file using API key
         authentication
+      operationId: uploadInit
       requestBody:
         content:
           application/json:
@@ -927,6 +935,7 @@ paths:
     get:
       description: Retrieve all videos for a specific project, with pagination and
         sorting.
+      operationId: list
       parameters:
       - description: Maximum number of items to return in a single request. <br> **Default:**
           `25`
@@ -999,6 +1008,7 @@ paths:
   /videos/{videoId}:
     get:
       description: Retrieve a video by its ID for a specific project.
+      operationId: get
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1053,6 +1063,7 @@ paths:
   /videos/{videoId}/audio-tracks:
     delete:
       description: Remove all additional audio tracks from a video using API key authentication
+      operationId: deleteAudioTracks
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1076,6 +1087,7 @@ paths:
       x-order: 10.3
     post:
       description: Replace all audio tracks with the provided ones using API key authentication
+      operationId: replaceAudioTracks
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1134,6 +1146,7 @@ paths:
   /videos/{videoId}/audio-tracks/{trackId}:
     delete:
       description: Remove an additional audio track from a video using API key authentication
+      operationId: deleteAudioTrack
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1189,6 +1202,7 @@ paths:
   /videos/{videoId}/audio-tracks/language/{lang_code}:
     delete:
       description: Remove an audio track for a specific language using API key authentication
+      operationId: deleteAudioTrackByLanguage
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1220,6 +1234,7 @@ paths:
     put:
       description: Add or replace an audio track for a specific language using API
         key authentication
+      operationId: updateAudioTrackByLanguage
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1270,6 +1285,7 @@ paths:
   /videos/{videoId}/chapters:
     delete:
       description: Remove all chapters from a video using API key authentication
+      operationId: deleteChapters
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1318,6 +1334,7 @@ paths:
     put:
       description: Replace all chapters for a video (atomic PUT operation) using API
         key authentication
+      operationId: updateChapters
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1381,6 +1398,7 @@ paths:
   /videos/{videoId}/delete:
     delete:
       description: Delete a video by its ID within a project
+      operationId: delete
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1431,6 +1449,7 @@ paths:
   /videos/{videoId}/subtitles:
     delete:
       description: Remove all subtitles from a video using API key authentication
+      operationId: deleteSubtitles
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1454,6 +1473,7 @@ paths:
       x-order: 8.3
     post:
       description: Replace all subtitles with the provided ones using API key authentication
+      operationId: replaceSubtitles
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1511,6 +1531,7 @@ paths:
   /videos/{videoId}/subtitles/{subtitleId}:
     delete:
       description: Remove a subtitle from a video using API key authentication
+      operationId: deleteSubtitle
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1566,6 +1587,7 @@ paths:
   /videos/{videoId}/subtitles/language/{lang_code}:
     delete:
       description: Remove a subtitle for a specific language using API key authentication
+      operationId: deleteSubtitleByLanguage
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1597,6 +1619,7 @@ paths:
     put:
       description: Add or replace a subtitle for a specific language using API key
         authentication
+      operationId: updateSubtitleByLanguage
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1647,6 +1670,7 @@ paths:
     put:
       description: Update the thumbnail image for an existing video using API key
         authentication
+      operationId: updateThumbnail
       parameters:
       - description: Video ID
         example: V3idRI23XL
@@ -1715,6 +1739,7 @@ paths:
   /videos/languages:
     get:
       description: Get list of supported languages for subtitles
+      operationId: listLanguages
       responses:
         "200":
           content:
@@ -1731,6 +1756,7 @@ paths:
     post:
       description: Mark a video upload as complete after successful upload to storage
         using API key authentication
+      operationId: uploadComplete
       requestBody:
         content:
           application/json:
@@ -1787,6 +1813,7 @@ paths:
     post:
       description: Initialize a video upload and get presigned URLs for video and
         poster using API key authentication
+      operationId: uploadInit
       requestBody:
         content:
           application/json:
