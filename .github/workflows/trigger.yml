@@ -24,6 +24,7 @@ jobs:
           - rixl-php
           - rixl-python
           - rixl-ruby
+          - rixl-rust
     steps:
       - name: Dispatch regenerate-sdk
         uses: rixlhq/openapi/.github/actions/dispatch-repository-event@main
