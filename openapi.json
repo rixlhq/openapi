@@ -523,6 +523,19 @@
                 },
                 "type": "object"
             },
+            "authv1.AuthMethod": {
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "type": "integer",
+                "x-enum-varnames": [
+                    "AuthMethod_AUTH_METHOD_UNSPECIFIED",
+                    "AuthMethod_AUTH_METHOD_PASSKEY",
+                    "AuthMethod_AUTH_METHOD_TOTP"
+                ]
+            },
             "authv1.AutoJoinSetting": {
                 "properties": {
                     "enabled": {
@@ -684,11 +697,27 @@
                     "access_token": {
                         "type": "string"
                     },
+                    "authentication": {
+                        "description": "authentication lists the 2FA methods the user has configured when\nstatus is \"2fa_required\". The public API renders these as lowercase\nstrings: \"passkey\", \"totp\".",
+                        "items": {
+                            "$ref": "#/components/schemas/authv1.AuthMethod"
+                        },
+                        "type": "array",
+                        "uniqueItems": false
+                    },
                     "email": {
                         "type": "string"
                     },
                     "expires_in": {
                         "type": "integer"
+                    },
+                    "passkey_options": {
+                        "description": "passkey_options is the WebAuthn PublicKeyCredentialRequestOptions as JSON,\npresent only when \"passkey\" is one of the authentication methods.",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": "array",
+                        "uniqueItems": false
                     },
                     "refresh_token": {
                         "type": "string"
@@ -700,7 +729,7 @@
                         "type": "string"
                     },
                     "status": {
-                        "description": "\"ok\" | \"otp_required\" | \"email_not_verified\"",
+                        "description": "\"ok\" | \"2fa_required\" | \"email_not_verified\"",
                         "type": "string"
                     },
                     "token_type": {
@@ -2358,6 +2387,24 @@
                     "name": {
                         "maxLength": 64,
                         "type": "string"
+                    },
+                    "session_id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "session_id"
+                ],
+                "type": "object"
+            },
+            "gateway.passkeyVerifyBody": {
+                "properties": {
+                    "credential": {
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": "array",
+                        "uniqueItems": false
                     },
                     "session_id": {
                         "type": "string"
@@ -6690,6 +6737,40 @@
                 "summary": "Update the current user's username",
                 "tags": [
                     "Auth / User"
+                ]
+            }
+        },
+        "/auth/v1/verify-passkey": {
+            "post": {
+                "description": "Completes the passkey step of a password login's 2FA challenge. Verifies the signed WebAuthn assertion against the challenge stored in the login session (from POST /auth/v1/login with status \"2fa_required\") and returns authentication tokens.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/gateway.passkeyVerifyBody",
+                                "summary": "request",
+                                "description": "session_id and WebAuthn credential"
+                            }
+                        }
+                    },
+                    "description": "session_id and WebAuthn credential",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/authv1.TokenResponse"
+                                }
+                            }
+                        },
+                        "description": "OK"
+                    }
+                },
+                "summary": "Verify passkey as 2FA after password login",
+                "tags": [
+                    "Auth / Passkeys"
                 ]
             }
         },
