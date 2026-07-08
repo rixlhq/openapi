@@ -1050,20 +1050,6 @@
                 },
                 "type": "object"
             },
-            "authv1.SendBlogBroadcastResponse": {
-                "properties": {
-                    "broadcast_id": {
-                        "type": "string"
-                    },
-                    "scheduled_at": {
-                        "type": "string"
-                    },
-                    "sent_at": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
             "authv1.SetupOTPResponse": {
                 "properties": {
                     "qr_code_url": {
@@ -2509,37 +2495,6 @@
                 "required": [
                     "new_password",
                     "token"
-                ],
-                "type": "object"
-            },
-            "gateway.sendBlogBroadcastBody": {
-                "properties": {
-                    "category": {
-                        "type": "string"
-                    },
-                    "commit_sha": {
-                        "type": "string"
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "published_at": {
-                        "type": "string"
-                    },
-                    "read_more_url": {
-                        "type": "string"
-                    },
-                    "slug": {
-                        "type": "string"
-                    },
-                    "title": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "description",
-                    "read_more_url",
-                    "title"
                 ],
                 "type": "object"
             },
@@ -4321,52 +4276,6 @@
                 "summary": "Get video statistics",
                 "tags": [
                     "Analytics"
-                ]
-            }
-        },
-        "/auth/v1/blog/broadcast": {
-            "post": {
-                "description": "Triggers a blog newsletter broadcast to all subscribers. Internal endpoint guarded by the service API key (X-Api-Key); called by the blog-publishing pipeline.",
-                "operationId": "sendBlogBroadcast",
-                "parameters": [
-                    {
-                        "description": "Internal service key",
-                        "in": "header",
-                        "name": "X-Api-Key",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/gateway.sendBlogBroadcastBody",
-                                "summary": "request",
-                                "description": "Broadcast payload"
-                            }
-                        }
-                    },
-                    "description": "Broadcast payload",
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/authv1.SendBlogBroadcastResponse"
-                                }
-                            }
-                        },
-                        "description": "OK"
-                    }
-                },
-                "summary": "Send a blog newsletter broadcast",
-                "tags": [
-                    "Auth / Blog"
                 ]
             }
         },
