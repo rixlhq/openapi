@@ -5507,7 +5507,7 @@ components:
           examples:
             - MEDIA_TYPE_VIDEO
           title: content_type
-          $ref: '#/components/schemas/common.v1.MediaType'
+          $ref: '#/components/schemas/analyticscommon.v1.MediaType'
         feedId:
           type: string
           examples:
@@ -6223,7 +6223,7 @@ components:
           title: feed_id
         contentType:
           title: content_type
-          $ref: '#/components/schemas/common.v1.MediaType'
+          $ref: '#/components/schemas/analyticscommon.v1.MediaType'
         totalViews:
           type:
             - integer
@@ -6642,6 +6642,13 @@ components:
           format: double
       title: VideoStats
       additionalProperties: false
+    analyticscommon.v1.MediaType:
+      type: string
+      title: MediaType
+      enum:
+        - MEDIA_TYPE_UNSPECIFIED
+        - MEDIA_TYPE_IMAGE
+        - MEDIA_TYPE_VIDEO
     apikeys.v1.ApiKey:
       type: object
       properties:
