@@ -10873,6 +10873,35 @@ components:
           $ref: '#/components/schemas/common.v1.Visibility'
       title: UpdateImageVisibilityRequest
       additionalProperties: false
+    images.v1.UpdateProcessedImageDataRequest:
+      type: object
+      properties:
+        fileId:
+          type: string
+          title: file_id
+          minLength: 1
+        thumbhash:
+          type: string
+          title: thumbhash
+        width:
+          type: integer
+          title: width
+          format: int32
+        height:
+          type: integer
+          title: height
+          format: int32
+        size:
+          type:
+            - integer
+            - string
+          title: size
+          format: int64
+        format:
+          type: string
+          title: format
+      title: UpdateProcessedImageDataRequest
+      additionalProperties: false
     platformauth.v1.ExchangeAPIKeyRequest:
       type: object
       properties:
@@ -11695,6 +11724,25 @@ components:
           title: video_id
       title: CompleteVideoUploadRequest
       additionalProperties: false
+    videos.v1.ConversionGetVideoRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+      title: ConversionGetVideoRequest
+      additionalProperties: false
+    videos.v1.CreateRenditionsRequest:
+      type: object
+      properties:
+        renditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/videos.v1.RenditionInput'
+          title: renditions
+      title: CreateRenditionsRequest
+      additionalProperties: false
     videos.v1.CreateVideoUploadRequest:
       type: object
       properties:
@@ -11823,6 +11871,44 @@ components:
             - FpzVPNx1cG
           title: video_id
       title: DeleteVideoRequest
+      additionalProperties: false
+    videos.v1.File:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        projectId:
+          type: string
+          title: project_id
+        format:
+          type: string
+          title: format
+        s3Path:
+          type: string
+          title: s3_path
+        name:
+          type: string
+          title: name
+        size:
+          type:
+            - integer
+            - string
+          title: size
+          format: int64
+        status:
+          type: string
+          title: status
+      title: File
+      additionalProperties: false
+    videos.v1.FileIdRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+      title: FileIdRequest
       additionalProperties: false
     videos.v1.GetVideoChaptersRequest:
       type: object
@@ -12051,6 +12137,121 @@ components:
           format: int64
       title: MarkVideoProcessedRequest
       additionalProperties: false
+    videos.v1.Rendition:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        videoId:
+          type: string
+          title: video_id
+        resolution:
+          type: string
+          title: resolution
+        resolutionValue:
+          type: string
+          title: resolution_value
+        fps:
+          type: number
+          title: fps
+          format: double
+        hdr:
+          type: boolean
+          title: hdr
+        status:
+          type: string
+          title: status
+        bitrate:
+          type:
+            - string
+            - "null"
+          title: bitrate
+        codec:
+          type:
+            - string
+            - "null"
+          title: codec
+        s3Path:
+          type:
+            - string
+            - "null"
+          title: s3_path
+        m3u8Url:
+          type:
+            - string
+            - "null"
+          title: m3u8_url
+        dashUrl:
+          type:
+            - string
+            - "null"
+          title: dash_url
+        errorMessage:
+          type:
+            - string
+            - "null"
+          title: error_message
+        isLowestResolution:
+          type: boolean
+          title: is_lowest_resolution
+        retryCount:
+          type:
+            - integer
+            - "null"
+          title: retry_count
+          format: int32
+      title: Rendition
+      additionalProperties: false
+    videos.v1.RenditionInput:
+      type: object
+      properties:
+        videoId:
+          type: string
+          title: video_id
+          minLength: 1
+        resolution:
+          type: string
+          title: resolution
+        resolutionValue:
+          type: string
+          title: resolution_value
+        fps:
+          type: number
+          title: fps
+          format: double
+        hdr:
+          type: boolean
+          title: hdr
+        status:
+          type: string
+          title: status
+        bitrate:
+          type:
+            - string
+            - "null"
+          title: bitrate
+        codec:
+          type:
+            - string
+            - "null"
+          title: codec
+        isLowestResolution:
+          type: boolean
+          title: is_lowest_resolution
+      title: RenditionInput
+      additionalProperties: false
+      description: A single rendition to create; CreateRenditionsRequest carries a batch.
+    videos.v1.RenditionList:
+      type: object
+      properties:
+        renditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/videos.v1.Rendition'
+          title: renditions
+      title: RenditionList
+      additionalProperties: false
     videos.v1.Subtitle:
       type: object
       properties:
@@ -12081,6 +12282,42 @@ components:
           type: string
           title: vtt_path
       title: Subtitle
+      additionalProperties: false
+    videos.v1.SubtitleRow:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        videoId:
+          type: string
+          title: video_id
+        languageCode:
+          type: string
+          title: language_code
+        label:
+          type: string
+          title: label
+        s3Path:
+          type: string
+          title: s3_path
+        vttPath:
+          type:
+            - string
+            - "null"
+          title: vtt_path
+      title: SubtitleRow
+      additionalProperties: false
+      description: We mirrored sqlc GetVideoSubtitlesRow fields consumed by the packager.
+    videos.v1.SubtitleRowList:
+      type: object
+      properties:
+        subtitles:
+          type: array
+          items:
+            $ref: '#/components/schemas/videos.v1.SubtitleRow'
+          title: subtitles
+      title: SubtitleRowList
       additionalProperties: false
     videos.v1.TrackUploadInit:
       type: object
@@ -12147,6 +12384,83 @@ components:
           title: upload_url
       title: TrackUploadTarget
       additionalProperties: false
+    videos.v1.UpdateFileForHLSRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+        s3Path:
+          type: string
+          title: s3_path
+          minLength: 1
+      title: UpdateFileForHLSRequest
+      additionalProperties: false
+    videos.v1.UpdateFileStatusRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+        status:
+          type: string
+          title: status
+          minLength: 1
+      title: UpdateFileStatusRequest
+      additionalProperties: false
+    videos.v1.UpdateRenditionErrorRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+        errorMessage:
+          type:
+            - string
+            - "null"
+          title: error_message
+      title: UpdateRenditionErrorRequest
+      additionalProperties: false
+    videos.v1.UpdateRenditionPathsRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+        s3Path:
+          type:
+            - string
+            - "null"
+          title: s3_path
+        m3u8Url:
+          type:
+            - string
+            - "null"
+          title: m3u8_url
+        dashUrl:
+          type:
+            - string
+            - "null"
+          title: dash_url
+      title: UpdateRenditionPathsRequest
+      additionalProperties: false
+    videos.v1.UpdateRenditionStatusRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+        status:
+          type: string
+          title: status
+          minLength: 1
+      title: UpdateRenditionStatusRequest
+      additionalProperties: false
     videos.v1.UpdateVideoChaptersRequest:
       type: object
       properties:
@@ -12166,6 +12480,40 @@ components:
             $ref: '#/components/schemas/videos.v1.Chapter'
           title: chapters
       title: UpdateVideoChaptersRequest
+      additionalProperties: false
+    videos.v1.UpdateVideoDataRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          minLength: 1
+        duration:
+          type: number
+          title: duration
+          format: double
+        width:
+          type: integer
+          title: width
+          format: int32
+        height:
+          type: integer
+          title: height
+          format: int32
+        codec:
+          type: string
+          title: codec
+        bitrate:
+          type: integer
+          title: bitrate
+          format: int32
+        framerate:
+          type: string
+          title: framerate
+        hdr:
+          type: boolean
+          title: hdr
+      title: UpdateVideoDataRequest
       additionalProperties: false
     videos.v1.UpdateVideoVisibilityRequest:
       type: object
@@ -12225,6 +12573,48 @@ components:
           title: thumbnail_url
       title: UploadVideoThumbnailResponse
       additionalProperties: false
+    videos.v1.Video:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        posterId:
+          type: string
+          title: poster_id
+        duration:
+          type: number
+          title: duration
+          format: double
+        width:
+          type: integer
+          title: width
+          format: int32
+        height:
+          type: integer
+          title: height
+          format: int32
+        codec:
+          type: string
+          title: codec
+        bitrate:
+          type: integer
+          title: bitrate
+          format: int32
+        framerate:
+          type: string
+          title: framerate
+        hdr:
+          type: boolean
+          title: hdr
+        videoQuality:
+          type: string
+          title: video_quality
+        inFeed:
+          type: boolean
+          title: in_feed
+      title: Video
+      additionalProperties: false
     videos.v1.VideoChapters:
       type: object
       properties:
@@ -12239,6 +12629,25 @@ components:
             $ref: '#/components/schemas/videos.v1.Chapter'
           title: chapters
       title: VideoChapters
+      additionalProperties: false
+    videos.v1.VideoIdList:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+          title: ids
+      title: VideoIdList
+      additionalProperties: false
+    videos.v1.VideoIdRequest:
+      type: object
+      properties:
+        videoId:
+          type: string
+          title: video_id
+          minLength: 1
+      title: VideoIdRequest
       additionalProperties: false
     videos.v1.VideoScopeRequest:
       type: object
@@ -12338,6 +12747,17 @@ components:
           title: expires_at
           $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: VideoUploadInit
+      additionalProperties: false
+    videos.v1.VideoView:
+      type: object
+      properties:
+        video:
+          title: video
+          $ref: '#/components/schemas/videos.v1.Video'
+        file:
+          title: file
+          $ref: '#/components/schemas/videos.v1.File'
+      title: VideoView
       additionalProperties: false
   securitySchemes:
     Bearer:
