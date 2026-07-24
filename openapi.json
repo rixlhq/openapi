@@ -15,7 +15,7 @@
         "operationId": "analytics.v1.DashboardService.GetDashboardStats",
         "parameters": [
           {
-            "name": "timeStart",
+            "name": "time_start",
             "in": "query",
             "required": true,
             "schema": {
@@ -27,7 +27,7 @@
             }
           },
           {
-            "name": "timeEnd",
+            "name": "time_end",
             "in": "query",
             "required": true,
             "schema": {
@@ -501,7 +501,7 @@
             }
           },
           {
-            "name": "feedId",
+            "name": "feed_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -752,6 +752,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "org_id": {
+                    "type": "string",
+                    "examples": [
+                      "OR98234j23"
+                    ],
+                    "title": "org_id"
+                  },
                   "name": {
                     "type": "string",
                     "examples": [
@@ -760,14 +767,14 @@
                     "title": "name",
                     "maxLength": 64
                   },
-                  "projectId": {
+                  "project_id": {
                     "type": "string",
                     "examples": [
                       "Bq4y3QB38S"
                     ],
                     "title": "project_id"
                   },
-                  "expiringAt": {
+                  "expiring_at": {
                     "examples": [
                       "2026-01-15T10:30:00Z"
                     ],
@@ -932,7 +939,7 @@
         "operationId": "auth.v1.BlogService.SubscribeBlog",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -963,7 +970,7 @@
         "operationId": "auth.v1.BlogService.GetBlogSubscription",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -994,7 +1001,7 @@
         "operationId": "auth.v1.BlogService.UnsubscribeBlog",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1065,7 +1072,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1103,7 +1110,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1143,7 +1150,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1183,7 +1190,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1386,7 +1393,7 @@
         "operationId": "auth.v1.MembershipService.ListMemberships",
         "parameters": [
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1483,7 +1490,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1523,7 +1530,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1563,7 +1570,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1671,7 +1678,7 @@
                     "title": "user",
                     "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
                   },
-                  "userId": {
+                  "user_id": {
                     "type": "string",
                     "title": "user_id"
                   }
@@ -1715,7 +1722,7 @@
             }
           },
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1782,7 +1789,7 @@
             }
           },
           {
-            "name": "user.actorId",
+            "name": "user.actor_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -1841,6 +1848,10 @@
                     "title": "user",
                     "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
                   },
+                  "user_id": {
+                    "type": "string",
+                    "title": "user_id"
+                  },
                   "role": {
                     "title": "role",
                     "$ref": "#/components/schemas/auth.v1.MembershipRole"
@@ -1895,7 +1906,7 @@
                     "title": "user",
                     "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
                   },
-                  "fullName": {
+                  "full_name": {
                     "type": "string",
                     "title": "full_name"
                   }
@@ -2038,7 +2049,7 @@
         "operationId": "auth.v1.OTPService.DeleteOTP",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2069,7 +2080,7 @@
         "operationId": "auth.v1.OTPService.SetupOTP",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2100,7 +2111,7 @@
         "operationId": "auth.v1.OTPService.GetOTPStatus",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2255,7 +2266,7 @@
         "operationId": "auth.v1.PasskeyService.ListPasskeys",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2357,7 +2368,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2401,7 +2412,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "userId": {
+                  "user_id": {
                     "type": "string",
                     "title": "user_id"
                   },
@@ -2480,7 +2491,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2529,7 +2540,7 @@
             }
           },
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2643,7 +2654,7 @@
             }
           },
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2692,7 +2703,7 @@
             }
           },
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2748,6 +2759,10 @@
                   "user": {
                     "title": "user",
                     "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
+                  },
+                  "policy_id": {
+                    "type": "string",
+                    "title": "policy_id"
                   },
                   "name": {
                     "type": "string",
@@ -2811,7 +2826,7 @@
             }
           },
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2860,7 +2875,7 @@
             }
           },
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -2917,11 +2932,15 @@
                     "title": "user",
                     "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
                   },
-                  "identityType": {
+                  "policy_id": {
+                    "type": "string",
+                    "title": "policy_id"
+                  },
+                  "identity_type": {
                     "title": "identity_type",
                     "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
                   },
-                  "identityId": {
+                  "identity_id": {
                     "type": "string",
                     "title": "identity_id"
                   }
@@ -2977,7 +2996,7 @@
         "operationId": "auth.v1.ProvidersService.ListProviders",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3048,7 +3067,7 @@
             }
           },
           {
-            "name": "user.userId",
+            "name": "user.user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3389,7 +3408,7 @@
         "operationId": "auth.v1.EmailService.GetUserEmailStatus",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3420,7 +3439,7 @@
         "operationId": "auth.v1.UserService.GetUserInfo",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3451,7 +3470,7 @@
         "operationId": "auth.v1.UserService.GetUser",
         "parameters": [
           {
-            "name": "userId",
+            "name": "user_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3544,7 +3563,7 @@
         "operationId": "billing.v1.InvoiceService.ListInvoices",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3627,6 +3646,14 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "invoice_id": {
+                    "type": "string",
+                    "examples": [
+                      "Z9Y8X7W6V5"
+                    ],
+                    "title": "invoice_id",
+                    "pattern": "^[0-9A-Za-z]+$"
+                  },
                   "status": {
                     "examples": [
                       "INVOICE_STATUS_PAID"
@@ -3636,6 +3663,9 @@
                   }
                 },
                 "title": "UpdateInvoiceStatusRequest",
+                "required": [
+                  "invoice_id"
+                ],
                 "additionalProperties": false
               }
             }
@@ -3665,7 +3695,7 @@
         "operationId": "billing.v1.PaymentService.GetBillingAddress",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3759,7 +3789,7 @@
         "operationId": "billing.v1.PaymentService.ListPaymentMethods",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3830,7 +3860,7 @@
         "operationId": "billing.v1.PaymentService.GetPaymentMethodFromPaymentIntent",
         "parameters": [
           {
-            "name": "paymentIntentId",
+            "name": "payment_intent_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3864,7 +3894,7 @@
         "operationId": "billing.v1.PaymentService.GetPaymentMethodFromSetupIntent",
         "parameters": [
           {
-            "name": "setupIntentId",
+            "name": "setup_intent_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -3910,7 +3940,7 @@
             }
           },
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4186,7 +4216,7 @@
         "operationId": "billing.v1.SubscriptionService.GetSubscription",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4249,7 +4279,7 @@
         "operationId": "billing.v1.SubscriptionService.CancelSubscription",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4283,7 +4313,7 @@
         "operationId": "billing.v1.SubscriptionService.GetSubscriptionHistory",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4347,7 +4377,7 @@
         "operationId": "billing.v1.SubscriptionService.ReactivateSubscription",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4381,7 +4411,7 @@
         "operationId": "billing.v1.UsageService.GetBandwidthUsage",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4415,7 +4445,7 @@
         "operationId": "billing.v1.UsageService.GetBandwidthUsageHistory",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4461,7 +4491,7 @@
         "operationId": "billing.v1.UsageService.RefreshBandwidthUsage",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4495,7 +4525,7 @@
         "operationId": "billing.v1.UsageService.GetStorageUsage",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4529,7 +4559,7 @@
         "operationId": "billing.v1.UsageService.GetStorageUsageHistory",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4577,7 +4607,7 @@
         "operationId": "billing.v1.UsageService.RefreshStorageUsage",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4611,7 +4641,7 @@
         "operationId": "clientauth.v1.ClientCredentialService.ListClientCredentials",
         "parameters": [
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4716,7 +4746,7 @@
             }
           },
           {
-            "name": "orgId",
+            "name": "org_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4862,6 +4892,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
                   "name": {
                     "type": "string",
                     "examples": [
@@ -4876,21 +4913,21 @@
                     ],
                     "title": "description"
                   },
-                  "allowImages": {
+                  "allow_images": {
                     "type": "boolean",
                     "examples": [
                       "true"
                     ],
                     "title": "allow_images"
                   },
-                  "allowVideos": {
+                  "allow_videos": {
                     "type": "boolean",
                     "examples": [
                       "true"
                     ],
                     "title": "allow_videos"
                   },
-                  "hasLikes": {
+                  "has_likes": {
                     "type": [
                       "boolean",
                       "null"
@@ -4900,7 +4937,7 @@
                     ],
                     "title": "has_likes"
                   },
-                  "hasShares": {
+                  "has_shares": {
                     "type": [
                       "boolean",
                       "null"
@@ -4910,7 +4947,7 @@
                     ],
                     "title": "has_shares"
                   },
-                  "hasComments": {
+                  "has_comments": {
                     "type": [
                       "boolean",
                       "null"
@@ -5026,6 +5063,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "feed_id": {
+                    "type": "string",
+                    "examples": [
+                      "F4edRI23XL"
+                    ],
+                    "title": "feed_id"
+                  },
                   "name": {
                     "type": "string",
                     "examples": [
@@ -5040,35 +5091,35 @@
                     ],
                     "title": "description"
                   },
-                  "allowImages": {
+                  "allow_images": {
                     "type": "boolean",
                     "examples": [
                       "true"
                     ],
                     "title": "allow_images"
                   },
-                  "allowVideos": {
+                  "allow_videos": {
                     "type": "boolean",
                     "examples": [
                       "true"
                     ],
                     "title": "allow_videos"
                   },
-                  "hasLikes": {
+                  "has_likes": {
                     "type": "boolean",
                     "examples": [
                       "true"
                     ],
                     "title": "has_likes"
                   },
-                  "hasShares": {
+                  "has_shares": {
                     "type": "boolean",
                     "examples": [
                       "true"
                     ],
                     "title": "has_shares"
                   },
-                  "hasComments": {
+                  "has_comments": {
                     "type": "boolean",
                     "examples": [
                       "true"
@@ -5311,7 +5362,7 @@
             }
           },
           {
-            "name": "sortField",
+            "name": "sort_field",
             "in": "query",
             "schema": {
               "type": "string",
@@ -5319,7 +5370,7 @@
             }
           },
           {
-            "name": "sortDirection",
+            "name": "sort_direction",
             "in": "query",
             "schema": {
               "type": "string",
@@ -5368,7 +5419,14 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
@@ -5498,14 +5556,28 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
                     ],
                     "title": "org_id"
                   },
-                  "attachedToVideo": {
+                  "image_id": {
+                    "type": "string",
+                    "examples": [
+                      "LmNoPqR678"
+                    ],
+                    "title": "image_id"
+                  },
+                  "attached_to_video": {
                     "type": "boolean",
                     "examples": [
                       "true"
@@ -5573,6 +5645,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "image_id": {
+                    "type": "string",
+                    "examples": [
+                      "LmNoPqR678"
+                    ],
+                    "title": "image_id"
+                  },
                   "visibility": {
                     "examples": [
                       "VISIBILITY_PUBLIC"
@@ -5685,7 +5771,7 @@
             }
           },
           {
-            "name": "projectId",
+            "name": "project_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -5726,7 +5812,7 @@
             }
           },
           {
-            "name": "creatorId",
+            "name": "creator_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -5784,7 +5870,7 @@
             }
           },
           {
-            "name": "projectId",
+            "name": "project_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -5873,7 +5959,7 @@
             }
           },
           {
-            "name": "projectId",
+            "name": "project_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -5961,7 +6047,7 @@
             }
           },
           {
-            "name": "creatorId",
+            "name": "creator_id",
             "in": "query",
             "schema": {
               "type": "string",
@@ -6025,14 +6111,28 @@
                 "allOf": [
                   {
                     "properties": {
-                      "orgId": {
+                      "project_id": {
+                        "type": "string",
+                        "examples": [
+                          "Bq4y3QB38S"
+                        ],
+                        "title": "project_id"
+                      },
+                      "org_id": {
                         "type": "string",
                         "examples": [
                           "OR98234j23"
                         ],
                         "title": "org_id"
                       },
-                      "creatorId": {
+                      "feed_id": {
+                        "type": "string",
+                        "examples": [
+                          "F4edRI23XL"
+                        ],
+                        "title": "feed_id"
+                      },
+                      "creator_id": {
                         "type": "string",
                         "examples": [
                           "Tg6Rf4e2W1"
@@ -6061,7 +6161,7 @@
                       {
                         "type": "object",
                         "properties": {
-                          "imageId": {
+                          "image_id": {
                             "type": "string",
                             "examples": [
                               "LmNoPqR678"
@@ -6071,13 +6171,13 @@
                         },
                         "title": "image_id",
                         "required": [
-                          "imageId"
+                          "image_id"
                         ]
                       },
                       {
                         "type": "object",
                         "properties": {
-                          "videoId": {
+                          "video_id": {
                             "type": "string",
                             "examples": [
                               "FpzVPNx1cG"
@@ -6087,7 +6187,7 @@
                         },
                         "title": "video_id",
                         "required": [
-                          "videoId"
+                          "video_id"
                         ]
                       }
                     ]
@@ -6242,14 +6342,28 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
                     ],
                     "title": "org_id"
                   },
-                  "postId": {
+                  "feed_id": {
+                    "type": "string",
+                    "examples": [
+                      "F4edRI23XL"
+                    ],
+                    "title": "feed_id"
+                  },
+                  "post_id": {
                     "type": "string",
                     "examples": [
                       "Mn0bVc9xZ8"
@@ -6317,14 +6431,28 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
                     ],
                     "title": "org_id"
                   },
-                  "creatorId": {
+                  "feed_id": {
+                    "type": "string",
+                    "examples": [
+                      "F4edRI23XL"
+                    ],
+                    "title": "feed_id"
+                  },
+                  "creator_id": {
                     "type": "string",
                     "examples": [
                       "Tg6Rf4e2W1"
@@ -6339,14 +6467,14 @@
                     "title": "description",
                     "maxLength": 280
                   },
-                  "contentType": {
+                  "content_type": {
                     "examples": [
                       "MEDIA_TYPE_VIDEO"
                     ],
                     "title": "content_type",
                     "$ref": "#/components/schemas/common.v1.MediaType"
                   },
-                  "fileName": {
+                  "file_name": {
                     "type": "string",
                     "examples": [
                       "clip.mp4"
@@ -6360,14 +6488,14 @@
                     ],
                     "title": "format"
                   },
-                  "videoQuality": {
+                  "video_quality": {
                     "examples": [
                       "VIDEO_QUALITY_PRO"
                     ],
                     "title": "video_quality",
                     "$ref": "#/components/schemas/common.v1.VideoQuality"
                   },
-                  "imageFormat": {
+                  "image_format": {
                     "examples": [
                       "IMAGE_FORMAT_JPG"
                     ],
@@ -6547,7 +6675,7 @@
             }
           },
           {
-            "name": "feedId",
+            "name": "feed_id",
             "in": "query",
             "description": "Populated from feed-scoped routes; the handler resolves by post_id, so this\n is used only for path binding / optional validation.",
             "schema": {
@@ -6604,7 +6732,7 @@
             }
           },
           {
-            "name": "feedId",
+            "name": "feed_id",
             "in": "query",
             "description": "feed_id is accepted from the feed-scoped delete path but not used by the\n backend (deletion is keyed by post_id).",
             "schema": {
@@ -6690,6 +6818,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "org_id": {
+                    "type": "string",
+                    "examples": [
+                      "OR98234j23"
+                    ],
+                    "title": "org_id"
+                  },
                   "name": {
                     "type": "string",
                     "examples": [
@@ -6717,7 +6852,7 @@
                     },
                     "title": "regions"
                   },
-                  "videoQuality": {
+                  "video_quality": {
                     "examples": [
                       "basic"
                     ],
@@ -6877,7 +7012,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "customDomain": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "examples": [
+                      "OR98234j23"
+                    ],
+                    "title": "org_id"
+                  },
+                  "custom_domain": {
                     "type": "string",
                     "examples": [
                       "docs.example.com"
@@ -6990,7 +7139,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "targetOrganizationId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "examples": [
+                      "OR98234j23"
+                    ],
+                    "title": "org_id"
+                  },
+                  "target_organization_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
@@ -7058,6 +7221,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "examples": [
+                      "OR98234j23"
+                    ],
+                    "title": "org_id"
+                  },
                   "name": {
                     "type": "string",
                     "examples": [
@@ -7127,7 +7304,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "videoQuality": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
+                    "type": "string",
+                    "examples": [
+                      "OR98234j23"
+                    ],
+                    "title": "org_id"
+                  },
+                  "video_quality": {
                     "examples": [
                       "shorts"
                     ],
@@ -7137,7 +7328,7 @@
                 },
                 "title": "UpdateVideoQualityRequest",
                 "required": [
-                  "videoQuality"
+                  "video_quality"
                 ],
                 "additionalProperties": false
               }
@@ -7304,12 +7495,26 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
                     ],
                     "title": "org_id"
+                  },
+                  "video_id": {
+                    "type": "string",
+                    "examples": [
+                      "FpzVPNx1cG"
+                    ],
+                    "title": "video_id"
                   },
                   "items": {
                     "type": "array",
@@ -7380,6 +7585,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "video_id": {
+                    "type": "string",
+                    "examples": [
+                      "FpzVPNx1cG"
+                    ],
+                    "title": "video_id"
+                  },
                   "items": {
                     "type": "array",
                     "items": {
@@ -7593,7 +7812,7 @@
             }
           },
           {
-            "name": "chapters.startTimeSec",
+            "name": "chapters.start_time_sec",
             "in": "query",
             "schema": {
               "type": "number",
@@ -7910,12 +8129,26 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
                     ],
                     "title": "org_id"
+                  },
+                  "video_id": {
+                    "type": "string",
+                    "examples": [
+                      "FpzVPNx1cG"
+                    ],
+                    "title": "video_id"
                   },
                   "items": {
                     "type": "array",
@@ -7986,6 +8219,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "video_id": {
+                    "type": "string",
+                    "examples": [
+                      "FpzVPNx1cG"
+                    ],
+                    "title": "video_id"
+                  },
                   "items": {
                     "type": "array",
                     "items": {
@@ -8160,7 +8407,7 @@
             }
           },
           {
-            "name": "sortField",
+            "name": "sort_field",
             "in": "query",
             "schema": {
               "type": "string",
@@ -8168,7 +8415,7 @@
             }
           },
           {
-            "name": "sortDirection",
+            "name": "sort_direction",
             "in": "query",
             "schema": {
               "type": "string",
@@ -8217,7 +8464,14 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
@@ -8232,14 +8486,14 @@
                     "title": "name",
                     "maxLength": 64
                   },
-                  "imageFormat": {
+                  "image_format": {
                     "examples": [
                       "IMAGE_FORMAT_JPG"
                     ],
                     "title": "image_format",
                     "$ref": "#/components/schemas/common.v1.ImageFormat"
                   },
-                  "videoQuality": {
+                  "video_quality": {
                     "examples": [
                       "VIDEO_QUALITY_PRO"
                     ],
@@ -8354,12 +8608,26 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "orgId": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "org_id": {
                     "type": "string",
                     "examples": [
                       "OR98234j23"
                     ],
                     "title": "org_id"
+                  },
+                  "video_id": {
+                    "type": "string",
+                    "examples": [
+                      "FpzVPNx1cG"
+                    ],
+                    "title": "video_id"
                   }
                 },
                 "title": "CompleteVideoUploadRequest",
@@ -8422,6 +8690,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "examples": [
+                      "Bq4y3QB38S"
+                    ],
+                    "title": "project_id"
+                  },
+                  "video_id": {
+                    "type": "string",
+                    "examples": [
+                      "FpzVPNx1cG"
+                    ],
+                    "title": "video_id"
+                  },
                   "visibility": {
                     "examples": [
                       "VISIBILITY_PUBLIC"
@@ -8508,14 +8790,14 @@
               {
                 "type": "object",
                 "properties": {
-                  "contentView": {
+                  "content_view": {
                     "title": "content_view",
                     "$ref": "#/components/schemas/analytics.v1.ContentViewEvent"
                   }
                 },
                 "title": "content_view",
                 "required": [
-                  "contentView"
+                  "content_view"
                 ]
               },
               {
@@ -8560,14 +8842,14 @@
               {
                 "type": "object",
                 "properties": {
-                  "sessionStart": {
+                  "session_start": {
                     "title": "session_start",
                     "$ref": "#/components/schemas/analytics.v1.SessionStartEvent"
                   }
                 },
                 "title": "session_start",
                 "required": [
-                  "sessionStart"
+                  "session_start"
                 ]
               }
             ]
@@ -8579,35 +8861,35 @@
       "analytics.v1.ContentViewEvent": {
         "type": "object",
         "properties": {
-          "contentId": {
+          "content_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "content_id"
           },
-          "contentType": {
+          "content_type": {
             "examples": [
               "MEDIA_TYPE_VIDEO"
             ],
             "title": "content_type",
             "$ref": "#/components/schemas/analyticscommon.v1.MediaType"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
             ],
             "title": "feed_id"
           },
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "post_id"
           },
-          "viewType": {
+          "view_type": {
             "type": "string",
             "examples": [
               "post_view"
@@ -8619,7 +8901,7 @@
               "end"
             ]
           },
-          "watchDurationMs": {
+          "watch_duration_ms": {
             "title": "watch_duration_ms",
             "$ref": "#/components/schemas/google.protobuf.Duration"
           },
@@ -8635,11 +8917,11 @@
               "standalone"
             ]
           },
-          "videoPositionMs": {
+          "video_position_ms": {
             "title": "video_position_ms",
             "$ref": "#/components/schemas/google.protobuf.Duration"
           },
-          "videoTotalDurationMs": {
+          "video_total_duration_ms": {
             "title": "video_total_duration_ms",
             "$ref": "#/components/schemas/google.protobuf.Duration"
           },
@@ -8650,7 +8932,7 @@
             },
             "title": "segments"
           },
-          "deviceId": {
+          "device_id": {
             "type": "string",
             "examples": [
               "QwErTy1234"
@@ -8714,7 +8996,7 @@
             "title": "views",
             "format": "int64"
           },
-          "uniqueUsers": {
+          "unique_users": {
             "type": [
               "integer",
               "string"
@@ -8732,14 +9014,14 @@
       "analytics.v1.DashboardStatsRequest": {
         "type": "object",
         "properties": {
-          "timeStart": {
+          "time_start": {
             "type": "string",
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "time_start"
           },
-          "timeEnd": {
+          "time_end": {
             "type": "string",
             "examples": [
               "2026-01-15T10:30:00Z"
@@ -8756,8 +9038,8 @@
         },
         "title": "DashboardStatsRequest",
         "required": [
-          "timeStart",
-          "timeEnd"
+          "time_start",
+          "time_end"
         ],
         "additionalProperties": false
       },
@@ -8799,21 +9081,21 @@
       "analytics.v1.EngagementEvent": {
         "type": "object",
         "properties": {
-          "engagementType": {
+          "engagement_type": {
             "type": "string",
             "examples": [
               "like"
             ],
             "title": "engagement_type"
           },
-          "resourceType": {
+          "resource_type": {
             "type": "string",
             "examples": [
               "post"
             ],
             "title": "resource_type"
           },
-          "resourceId": {
+          "resource_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
@@ -8827,14 +9109,14 @@
             ],
             "title": "page"
           },
-          "commentText": {
+          "comment_text": {
             "type": "string",
             "examples": [
               "Great post!"
             ],
             "title": "comment_text"
           },
-          "sharePlatform": {
+          "share_platform": {
             "type": "string",
             "examples": [
               "telegram"
@@ -8848,7 +9130,7 @@
             ],
             "title": "country"
           },
-          "deviceType": {
+          "device_type": {
             "type": "string",
             "examples": [
               "mobile"
@@ -8862,42 +9144,42 @@
       "analytics.v1.ErrorEvent": {
         "type": "object",
         "properties": {
-          "errorType": {
+          "error_type": {
             "type": "string",
             "examples": [
               "network_error"
             ],
             "title": "error_type"
           },
-          "errorCode": {
+          "error_code": {
             "type": "string",
             "examples": [
               "ERR_TIMEOUT"
             ],
             "title": "error_code"
           },
-          "errorMessage": {
+          "error_message": {
             "type": "string",
             "examples": [
               "Request timed out"
             ],
             "title": "error_message"
           },
-          "stackTrace": {
+          "stack_trace": {
             "type": "string",
             "examples": [
               "at fetchData (app.js:42)"
             ],
             "title": "stack_trace"
           },
-          "resourceType": {
+          "resource_type": {
             "type": "string",
             "examples": [
               "post"
             ],
             "title": "resource_type"
           },
-          "resourceId": {
+          "resource_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
@@ -8911,14 +9193,14 @@
             ],
             "title": "endpoint"
           },
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "session_id"
           },
-          "deviceType": {
+          "device_type": {
             "type": "string",
             "examples": [
               "mobile"
@@ -8946,7 +9228,7 @@
       "analytics.v1.EventCount": {
         "type": "object",
         "properties": {
-          "eventType": {
+          "event_type": {
             "type": "string",
             "title": "event_type"
           },
@@ -8968,14 +9250,14 @@
       "analytics.v1.FeedStats": {
         "type": "object",
         "properties": {
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
             ],
             "title": "feed_id"
           },
-          "totalViews": {
+          "total_views": {
             "type": [
               "integer",
               "string"
@@ -8986,7 +9268,7 @@
             "title": "total_views",
             "format": "int64"
           },
-          "uniqueViewers": {
+          "unique_viewers": {
             "type": [
               "integer",
               "string"
@@ -8997,7 +9279,7 @@
             "title": "unique_viewers",
             "format": "int64"
           },
-          "totalPosts": {
+          "total_posts": {
             "type": [
               "integer",
               "string"
@@ -9008,7 +9290,7 @@
             "title": "total_posts",
             "format": "int64"
           },
-          "avgTimePerVisitMs": {
+          "avg_time_per_visit_ms": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9016,7 +9298,7 @@
             "title": "avg_time_per_visit_ms",
             "format": "double"
           },
-          "totalWatchTimeMs": {
+          "total_watch_time_ms": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9031,7 +9313,7 @@
       "analytics.v1.FunnelAnalytics": {
         "type": "object",
         "properties": {
-          "totalUsers": {
+          "total_users": {
             "type": "integer",
             "examples": [
               "1250"
@@ -9039,7 +9321,7 @@
             "title": "total_users",
             "format": "int32"
           },
-          "completedUsers": {
+          "completed_users": {
             "type": "integer",
             "examples": [
               "1250"
@@ -9047,7 +9329,7 @@
             "title": "completed_users",
             "format": "int32"
           },
-          "completionRate": {
+          "completion_rate": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9062,7 +9344,7 @@
             },
             "title": "steps"
           },
-          "averageTimeHours": {
+          "average_time_hours": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9084,7 +9366,7 @@
             },
             "title": "steps"
           },
-          "timeWindow": {
+          "time_window": {
             "type": "integer",
             "examples": [
               "1250"
@@ -9107,11 +9389,11 @@
             "type": "string",
             "title": "name"
           },
-          "eventType": {
+          "event_type": {
             "type": "string",
             "title": "event_type"
           },
-          "pageType": {
+          "page_type": {
             "type": "string",
             "title": "page_type"
           },
@@ -9145,11 +9427,11 @@
       "analytics.v1.FunnelStepResult": {
         "type": "object",
         "properties": {
-          "stepName": {
+          "step_name": {
             "type": "string",
             "title": "step_name"
           },
-          "userCount": {
+          "user_count": {
             "type": "integer",
             "examples": [
               "1250"
@@ -9157,7 +9439,7 @@
             "title": "user_count",
             "format": "int32"
           },
-          "conversionRate": {
+          "conversion_rate": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9165,7 +9447,7 @@
             "title": "conversion_rate",
             "format": "double"
           },
-          "dropoffRate": {
+          "dropoff_rate": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9180,7 +9462,7 @@
       "analytics.v1.GetFeedStatsRequest": {
         "type": "object",
         "properties": {
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -9195,14 +9477,14 @@
         },
         "title": "GetFeedStatsRequest",
         "required": [
-          "feedId"
+          "feed_id"
         ],
         "additionalProperties": false
       },
       "analytics.v1.GetHotSegmentsRequest": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -9217,14 +9499,14 @@
         },
         "title": "GetHotSegmentsRequest",
         "required": [
-          "videoId"
+          "video_id"
         ],
         "additionalProperties": false
       },
       "analytics.v1.GetPostStatsRequest": {
         "type": "object",
         "properties": {
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
@@ -9239,21 +9521,21 @@
         },
         "title": "GetPostStatsRequest",
         "required": [
-          "postId"
+          "post_id"
         ],
         "additionalProperties": false
       },
       "analytics.v1.GetPostStatsResponse": {
         "type": "object",
         "properties": {
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "post_id"
           },
-          "totalViews": {
+          "total_views": {
             "type": [
               "integer",
               "string"
@@ -9264,7 +9546,7 @@
             "title": "total_views",
             "format": "int64"
           },
-          "uniqueViewers": {
+          "unique_viewers": {
             "type": [
               "integer",
               "string"
@@ -9336,7 +9618,7 @@
             "title": "range",
             "$ref": "#/components/schemas/analytics.v1.DateRange"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -9369,7 +9651,7 @@
       "analytics.v1.GetVideoHeatmapRequest": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -9392,14 +9674,14 @@
         },
         "title": "GetVideoHeatmapRequest",
         "required": [
-          "videoId"
+          "video_id"
         ],
         "additionalProperties": false
       },
       "analytics.v1.GetVideoStatsRequest": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -9414,14 +9696,14 @@
         },
         "title": "GetVideoStatsRequest",
         "required": [
-          "videoId"
+          "video_id"
         ],
         "additionalProperties": false
       },
       "analytics.v1.HotSegment": {
         "type": "object",
         "properties": {
-          "startSecond": {
+          "start_second": {
             "type": "integer",
             "examples": [
               "42"
@@ -9429,7 +9711,7 @@
             "title": "start_second",
             "format": "int32"
           },
-          "endSecond": {
+          "end_second": {
             "type": "integer",
             "examples": [
               "42"
@@ -9466,28 +9748,28 @@
       "analytics.v1.InteractionEvent": {
         "type": "object",
         "properties": {
-          "interactionType": {
+          "interaction_type": {
             "type": "string",
             "examples": [
               "click"
             ],
             "title": "interaction_type"
           },
-          "elementType": {
+          "element_type": {
             "type": "string",
             "examples": [
               "button"
             ],
             "title": "element_type"
           },
-          "elementId": {
+          "element_id": {
             "type": "string",
             "examples": [
               "play_button"
             ],
             "title": "element_id"
           },
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -9501,14 +9783,14 @@
             ],
             "title": "page"
           },
-          "pageUrl": {
+          "page_url": {
             "type": "string",
             "examples": [
               "https://example.com"
             ],
             "title": "page_url"
           },
-          "scrollDepth": {
+          "scroll_depth": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9516,14 +9798,14 @@
             "title": "scroll_depth",
             "format": "double"
           },
-          "searchQuery": {
+          "search_query": {
             "type": "string",
             "examples": [
               "funny videos"
             ],
             "title": "search_query"
           },
-          "clickX": {
+          "click_x": {
             "type": "integer",
             "examples": [
               "1250"
@@ -9531,7 +9813,7 @@
             "title": "click_x",
             "format": "int32"
           },
-          "clickY": {
+          "click_y": {
             "type": "integer",
             "examples": [
               "1250"
@@ -9539,7 +9821,7 @@
             "title": "click_y",
             "format": "int32"
           },
-          "deviceType": {
+          "device_type": {
             "type": "string",
             "examples": [
               "mobile"
@@ -9560,25 +9842,25 @@
       "analytics.v1.PostStats": {
         "type": "object",
         "properties": {
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "post_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
             ],
             "title": "feed_id"
           },
-          "contentType": {
+          "content_type": {
             "title": "content_type",
             "$ref": "#/components/schemas/analyticscommon.v1.MediaType"
           },
-          "totalViews": {
+          "total_views": {
             "type": [
               "integer",
               "string"
@@ -9589,7 +9871,7 @@
             "title": "total_views",
             "format": "int64"
           },
-          "uniqueViewers": {
+          "unique_viewers": {
             "type": [
               "integer",
               "string"
@@ -9600,7 +9882,7 @@
             "title": "unique_viewers",
             "format": "int64"
           },
-          "avgWatchTimeMs": {
+          "avg_watch_time_ms": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9608,7 +9890,7 @@
             "title": "avg_watch_time_ms",
             "format": "double"
           },
-          "totalWatchTimeMs": {
+          "total_watch_time_ms": {
             "type": [
               "integer",
               "string"
@@ -9641,7 +9923,7 @@
             "title": "completions",
             "format": "int64"
           },
-          "completionRate": {
+          "completion_rate": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9649,7 +9931,7 @@
             "title": "completion_rate",
             "format": "double"
           },
-          "viewsByPage": {
+          "views_by_page": {
             "type": "object",
             "title": "views_by_page",
             "additionalProperties": {
@@ -9694,7 +9976,7 @@
             ],
             "title": "timestamp"
           },
-          "activeUsers": {
+          "active_users": {
             "type": [
               "integer",
               "string"
@@ -9705,7 +9987,7 @@
             "title": "active_users",
             "format": "int64"
           },
-          "eventsPerMinute": {
+          "events_per_minute": {
             "type": [
               "integer",
               "string"
@@ -9716,21 +9998,21 @@
             "title": "events_per_minute",
             "format": "int64"
           },
-          "topEvents": {
+          "top_events": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/analytics.v1.EventCount"
             },
             "title": "top_events"
           },
-          "topCountries": {
+          "top_countries": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/analytics.v1.CountryCount"
             },
             "title": "top_countries"
           },
-          "recentEvents": {
+          "recent_events": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/analytics.v1.RecentEvent"
@@ -9744,18 +10026,18 @@
       "analytics.v1.RecentEvent": {
         "type": "object",
         "properties": {
-          "eventType": {
+          "event_type": {
             "type": "string",
             "title": "event_type"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "examples": [
               "QwErTy1234"
             ],
             "title": "user_id"
           },
-          "contentId": {
+          "content_id": {
             "type": "string",
             "title": "content_id"
           },
@@ -9794,11 +10076,11 @@
       "analytics.v1.RetentionCohort": {
         "type": "object",
         "properties": {
-          "cohortDate": {
+          "cohort_date": {
             "type": "string",
             "title": "cohort_date"
           },
-          "cohortSize": {
+          "cohort_size": {
             "type": "integer",
             "examples": [
               "1250"
@@ -9806,7 +10088,7 @@
             "title": "cohort_size",
             "format": "int32"
           },
-          "retentionData": {
+          "retention_data": {
             "type": "array",
             "examples": [
               "0.85"
@@ -9827,11 +10109,11 @@
       "analytics.v1.Segment": {
         "type": "object",
         "properties": {
-          "startMs": {
+          "start_ms": {
             "title": "start_ms",
             "$ref": "#/components/schemas/google.protobuf.Duration"
           },
-          "endMs": {
+          "end_ms": {
             "title": "end_ms",
             "$ref": "#/components/schemas/google.protobuf.Duration"
           },
@@ -9850,14 +10132,14 @@
       "analytics.v1.SessionStartEvent": {
         "type": "object",
         "properties": {
-          "utmSource": {
+          "utm_source": {
             "type": "string",
             "examples": [
               "newsletter"
             ],
             "title": "utm_source"
           },
-          "utmCampaign": {
+          "utm_campaign": {
             "type": "string",
             "examples": [
               "summer_launch"
@@ -9878,7 +10160,7 @@
             ],
             "title": "language"
           },
-          "screenResolution": {
+          "screen_resolution": {
             "type": "string",
             "examples": [
               "1920x1080"
@@ -9892,14 +10174,14 @@
             ],
             "title": "platform"
           },
-          "tgPlatform": {
+          "tg_platform": {
             "type": "string",
             "examples": [
               "tdesktop"
             ],
             "title": "tg_platform"
           },
-          "tgVersion": {
+          "tg_version": {
             "type": "string",
             "examples": [
               "7.2.0"
@@ -9913,7 +10195,7 @@
             ],
             "title": "timezone"
           },
-          "timezoneOffset": {
+          "timezone_offset": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9921,7 +10203,7 @@
             "title": "timezone_offset",
             "format": "double"
           },
-          "colorDepth": {
+          "color_depth": {
             "type": "number",
             "examples": [
               "0.85"
@@ -9929,7 +10211,7 @@
             "title": "color_depth",
             "format": "double"
           },
-          "touchSupport": {
+          "touch_support": {
             "type": "boolean",
             "examples": [
               "true"
@@ -9943,7 +10225,7 @@
             ],
             "title": "country"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "examples": [
               "QwErTy1234"
@@ -9999,7 +10281,7 @@
       "analytics.v1.TrackEventsRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "examples": [
               "QwErTy1234"
@@ -10027,14 +10309,14 @@
       "analytics.v1.VideoHeatmap": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "totalDurationMs": {
+          "total_duration_ms": {
             "type": [
               "integer",
               "string"
@@ -10066,14 +10348,14 @@
       "analytics.v1.VideoStats": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "totalViews": {
+          "total_views": {
             "type": [
               "integer",
               "string"
@@ -10084,7 +10366,7 @@
             "title": "total_views",
             "format": "int64"
           },
-          "uniqueViewers": {
+          "unique_viewers": {
             "type": [
               "integer",
               "string"
@@ -10095,7 +10377,7 @@
             "title": "unique_viewers",
             "format": "int64"
           },
-          "avgWatchTimeMs": {
+          "avg_watch_time_ms": {
             "type": "number",
             "examples": [
               "0.85"
@@ -10103,7 +10385,7 @@
             "title": "avg_watch_time_ms",
             "format": "double"
           },
-          "totalWatchTimeMs": {
+          "total_watch_time_ms": {
             "type": "number",
             "examples": [
               "0.85"
@@ -10144,7 +10426,7 @@
             "title": "completions",
             "format": "int64"
           },
-          "completionRate": {
+          "completion_rate": {
             "type": "number",
             "examples": [
               "0.85"
@@ -10175,7 +10457,7 @@
             ],
             "title": "id"
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -10190,32 +10472,32 @@
             "title": "name",
             "maxLength": 64
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "projectName": {
+          "project_name": {
             "type": "string",
             "title": "project_name"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "created_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "expiringAt": {
+          "expiring_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "expiring_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "lastUsed": {
+          "last_used": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -10236,7 +10518,7 @@
       "apikeys.v1.CreateApiKeyRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -10251,14 +10533,14 @@
             "title": "name",
             "maxLength": 64
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "expiringAt": {
+          "expiring_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -10272,7 +10554,7 @@
       "apikeys.v1.CreateApiKeyResponse": {
         "type": "object",
         "properties": {
-          "apiKey": {
+          "api_key": {
             "title": "api_key",
             "$ref": "#/components/schemas/apikeys.v1.ApiKey"
           }
@@ -10283,14 +10565,14 @@
       "apikeys.v1.DeleteApiKeyRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "keyId": {
+          "key_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -10301,14 +10583,14 @@
         },
         "title": "DeleteApiKeyRequest",
         "required": [
-          "keyId"
+          "key_id"
         ],
         "additionalProperties": false
       },
       "apikeys.v1.ListApiKeysRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -10326,7 +10608,7 @@
       "apikeys.v1.ListApiKeysResponse": {
         "type": "object",
         "properties": {
-          "apiKeys": {
+          "api_keys": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/apikeys.v1.ApiKey"
@@ -10351,7 +10633,7 @@
       "apikeys.v1.MarkApiKeyUsedRequest": {
         "type": "object",
         "properties": {
-          "keyId": {
+          "key_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -10362,21 +10644,21 @@
         },
         "title": "MarkApiKeyUsedRequest",
         "required": [
-          "keyId"
+          "key_id"
         ],
         "additionalProperties": false
       },
       "apikeys.v1.RotateApiKeyRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "keyId": {
+          "key_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -10387,14 +10669,14 @@
         },
         "title": "RotateApiKeyRequest",
         "required": [
-          "keyId"
+          "key_id"
         ],
         "additionalProperties": false
       },
       "apikeys.v1.RotateApiKeyResponse": {
         "type": "object",
         "properties": {
-          "apiKey": {
+          "api_key": {
             "title": "api_key",
             "$ref": "#/components/schemas/apikeys.v1.ApiKey"
           }
@@ -10405,7 +10687,7 @@
       "apikeys.v1.ValidateApiKeyRequest": {
         "type": "object",
         "properties": {
-          "keyId": {
+          "key_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -10424,7 +10706,7 @@
         },
         "title": "ValidateApiKeyRequest",
         "required": [
-          "keyId",
+          "key_id",
           "secret"
         ],
         "additionalProperties": false
@@ -10439,14 +10721,14 @@
             ],
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -10479,11 +10761,11 @@
       "auth.v1.AcceptInvitationResponse": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           },
-          "orgName": {
+          "org_name": {
             "type": "string",
             "title": "org_name"
           },
@@ -10498,11 +10780,11 @@
       "auth.v1.ActorOrgRequest": {
         "type": "object",
         "properties": {
-          "actorId": {
+          "actor_id": {
             "type": "string",
             "title": "actor_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           }
@@ -10513,7 +10795,7 @@
       "auth.v1.AddEmailRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
@@ -10532,15 +10814,15 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
           },
-          "policyId": {
+          "policy_id": {
             "type": "string",
             "title": "policy_id"
           },
-          "identityType": {
+          "identity_type": {
             "title": "identity_type",
             "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
           },
-          "identityId": {
+          "identity_id": {
             "type": "string",
             "title": "identity_id"
           }
@@ -10579,7 +10861,7 @@
             "type": "boolean",
             "title": "subscribed"
           },
-          "subscribedAt": {
+          "subscribed_at": {
             "title": "subscribed_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -10590,11 +10872,11 @@
       "auth.v1.CheckIsAdminResponse": {
         "type": "object",
         "properties": {
-          "isAdmin": {
+          "is_admin": {
             "type": "boolean",
             "title": "is_admin"
           },
-          "organizationEmail": {
+          "organization_email": {
             "type": "string",
             "title": "organization_email"
           }
@@ -10605,7 +10887,7 @@
       "auth.v1.CheckMembershipResponse": {
         "type": "object",
         "properties": {
-          "isMember": {
+          "is_member": {
             "type": "boolean",
             "title": "is_member"
           }
@@ -10628,7 +10910,7 @@
             "type": "string",
             "title": "token"
           },
-          "countryCode": {
+          "country_code": {
             "type": "string",
             "title": "country_code"
           },
@@ -10651,19 +10933,19 @@
             "type": "string",
             "title": "username"
           },
-          "firstName": {
+          "first_name": {
             "type": "string",
             "title": "first_name"
           },
-          "lastName": {
+          "last_name": {
             "type": "string",
             "title": "last_name"
           },
-          "emailAddress": {
+          "email_address": {
             "type": "string",
             "title": "email_address"
           },
-          "imageUrl": {
+          "image_url": {
             "type": "string",
             "title": "image_url"
           }
@@ -10726,7 +11008,7 @@
       "auth.v1.DeletePasskeyRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
@@ -10745,7 +11027,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
           },
-          "attachmentId": {
+          "attachment_id": {
             "type": "string",
             "title": "attachment_id"
           }
@@ -10796,7 +11078,7 @@
         "allOf": [
           {
             "properties": {
-              "autoJoin": {
+              "auto_join": {
                 "type": "boolean",
                 "title": "auto_join"
               }
@@ -10839,7 +11121,7 @@
       "auth.v1.EmailStatusResponse": {
         "type": "object",
         "properties": {
-          "hasEmail": {
+          "has_email": {
             "type": "boolean",
             "title": "has_email"
           },
@@ -10881,7 +11163,7 @@
       "auth.v1.GetUserEmailStatusRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           }
@@ -10892,7 +11174,7 @@
       "auth.v1.GetUserResponse": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
@@ -10900,7 +11182,7 @@
             "type": "string",
             "title": "email"
           },
-          "emailVerified": {
+          "email_verified": {
             "type": "boolean",
             "title": "email_verified"
           }
@@ -10911,11 +11193,11 @@
       "auth.v1.InitiateEmailChangeRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "newEmail": {
+          "new_email": {
             "type": "string",
             "title": "new_email"
           }
@@ -11033,7 +11315,7 @@
       "auth.v1.ListPasskeysRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           }
@@ -11095,7 +11377,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
           },
-          "memberId": {
+          "member_id": {
             "type": "string",
             "title": "member_id"
           }
@@ -11126,7 +11408,7 @@
             "title": "status",
             "description": "\"ok\" | \"2fa_required\" | \"email_not_verified\""
           },
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "title": "session_id"
           },
@@ -11134,15 +11416,15 @@
             "type": "string",
             "title": "email"
           },
-          "accessToken": {
+          "access_token": {
             "type": "string",
             "title": "access_token"
           },
-          "refreshToken": {
+          "refresh_token": {
             "type": "string",
             "title": "refresh_token"
           },
-          "expiresIn": {
+          "expires_in": {
             "type": [
               "integer",
               "string"
@@ -11150,11 +11432,11 @@
             "title": "expires_in",
             "format": "int64"
           },
-          "tokenType": {
+          "token_type": {
             "type": "string",
             "title": "token_type"
           },
-          "requiresAction": {
+          "requires_action": {
             "type": "string",
             "title": "requires_action"
           },
@@ -11166,7 +11448,7 @@
             "title": "authentication",
             "description": "authentication lists the 2FA methods the user has configured when\n status is \"2fa_required\". The public API renders these as lowercase\n strings: \"passkey\", \"totp\"."
           },
-          "passkeyOptions": {
+          "passkey_options": {
             "type": "string",
             "title": "passkey_options",
             "format": "byte",
@@ -11215,11 +11497,11 @@
             "type": "string",
             "title": "id"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           },
@@ -11231,19 +11513,19 @@
             "title": "state",
             "$ref": "#/components/schemas/auth.v1.MembershipState"
           },
-          "organizationUsername": {
+          "organization_username": {
             "type": "string",
             "title": "organization_username"
           },
-          "organizationFirstName": {
+          "organization_first_name": {
             "type": "string",
             "title": "organization_first_name"
           },
-          "organizationLastName": {
+          "organization_last_name": {
             "type": "string",
             "title": "organization_last_name"
           },
-          "joinedAt": {
+          "joined_at": {
             "title": "joined_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11254,11 +11536,11 @@
       "auth.v1.MembershipMutation": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           },
@@ -11270,11 +11552,11 @@
             "title": "state",
             "$ref": "#/components/schemas/auth.v1.MembershipState"
           },
-          "orgName": {
+          "org_name": {
             "type": "string",
             "title": "org_name"
           },
-          "joinedAt": {
+          "joined_at": {
             "title": "joined_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11305,11 +11587,11 @@
       "auth.v1.OTPStatusResponse": {
         "type": "object",
         "properties": {
-          "isSetup": {
+          "is_setup": {
             "type": "boolean",
             "title": "is_setup"
           },
-          "createdAt": {
+          "created_at": {
             "title": "created_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11324,11 +11606,11 @@
             "type": "string",
             "title": "id"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           },
@@ -11344,19 +11626,19 @@
             "type": "string",
             "title": "username"
           },
-          "firstName": {
+          "first_name": {
             "type": "string",
             "title": "first_name"
           },
-          "lastName": {
+          "last_name": {
             "type": "string",
             "title": "last_name"
           },
-          "invitationExpiresAt": {
+          "invitation_expires_at": {
             "title": "invitation_expires_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "joinedAt": {
+          "joined_at": {
             "title": "joined_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11375,7 +11657,7 @@
             "type": "string",
             "title": "name"
           },
-          "credentialId": {
+          "credential_id": {
             "type": "string",
             "title": "credential_id"
           },
@@ -11390,15 +11672,15 @@
             },
             "title": "transports"
           },
-          "backupState": {
+          "backup_state": {
             "type": "boolean",
             "title": "backup_state"
           },
-          "createdAt": {
+          "created_at": {
             "type": "string",
             "title": "created_at"
           },
-          "lastUsedAt": {
+          "last_used_at": {
             "type": "string",
             "title": "last_used_at"
           }
@@ -11409,7 +11691,7 @@
       "auth.v1.PasskeyBeginResponse": {
         "type": "object",
         "properties": {
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "title": "session_id"
           },
@@ -11431,7 +11713,7 @@
       "auth.v1.PasskeyLoginFinishRequest": {
         "type": "object",
         "properties": {
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "title": "session_id"
           },
@@ -11447,7 +11729,7 @@
       "auth.v1.PasskeyRegisterBeginRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           }
@@ -11458,11 +11740,11 @@
       "auth.v1.PasskeyRegisterFinishRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "title": "session_id"
           },
@@ -11482,7 +11764,7 @@
       "auth.v1.PasskeyRegisterFinishResponse": {
         "type": "object",
         "properties": {
-          "passkeyId": {
+          "passkey_id": {
             "type": "string",
             "title": "passkey_id"
           },
@@ -11497,11 +11779,11 @@
       "auth.v1.PendingDomain": {
         "type": "object",
         "properties": {
-          "verificationToken": {
+          "verification_token": {
             "type": "string",
             "title": "verification_token"
           },
-          "expiresAt": {
+          "expires_at": {
             "title": "expires_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11546,7 +11828,7 @@
             "type": "string",
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           },
@@ -11565,15 +11847,15 @@
             },
             "title": "permissions"
           },
-          "createdBy": {
+          "created_by": {
             "type": "string",
             "title": "created_by"
           },
-          "createdAt": {
+          "created_at": {
             "title": "created_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "updatedAt": {
+          "updated_at": {
             "title": "updated_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11588,19 +11870,19 @@
             "type": "string",
             "title": "id"
           },
-          "policyId": {
+          "policy_id": {
             "type": "string",
             "title": "policy_id"
           },
-          "identityType": {
+          "identity_type": {
             "title": "identity_type",
             "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
           },
-          "identityId": {
+          "identity_id": {
             "type": "string",
             "title": "identity_id"
           },
-          "createdAt": {
+          "created_at": {
             "title": "created_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11625,7 +11907,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
           },
-          "policyId": {
+          "policy_id": {
             "type": "string",
             "title": "policy_id"
           }
@@ -11636,15 +11918,15 @@
       "auth.v1.RefreshTokenRequest": {
         "type": "object",
         "properties": {
-          "tokenType": {
+          "token_type": {
             "type": "string",
             "title": "token_type"
           },
-          "refreshToken": {
+          "refresh_token": {
             "type": "string",
             "title": "refresh_token"
           },
-          "countryCode": {
+          "country_code": {
             "type": "string",
             "title": "country_code"
           },
@@ -11681,11 +11963,11 @@
             "type": "string",
             "title": "password"
           },
-          "countryCode": {
+          "country_code": {
             "type": "string",
             "title": "country_code"
           },
-          "subscribeToBlog": {
+          "subscribe_to_blog": {
             "type": "boolean",
             "title": "subscribe_to_blog"
           }
@@ -11700,15 +11982,15 @@
             "type": "string",
             "title": "message"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "emailVerificationSent": {
+          "email_verification_sent": {
             "type": "boolean",
             "title": "email_verification_sent"
           },
-          "verificationId": {
+          "verification_id": {
             "type": "string",
             "title": "verification_id"
           }
@@ -11723,7 +12005,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           }
@@ -11734,7 +12016,7 @@
       "auth.v1.RenamePasskeyRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
@@ -11757,7 +12039,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           }
@@ -11783,11 +12065,11 @@
             "type": "string",
             "title": "message"
           },
-          "codeSent": {
+          "code_sent": {
             "type": "boolean",
             "title": "code_sent"
           },
-          "verificationId": {
+          "verification_id": {
             "type": "string",
             "title": "verification_id"
           }
@@ -11802,7 +12084,7 @@
             "type": "string",
             "title": "token"
           },
-          "newPassword": {
+          "new_password": {
             "type": "string",
             "title": "new_password"
           }
@@ -11813,15 +12095,15 @@
       "auth.v1.ResolveIdentityPermissionsRequest": {
         "type": "object",
         "properties": {
-          "identityType": {
+          "identity_type": {
             "title": "identity_type",
             "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
           },
-          "identityId": {
+          "identity_id": {
             "type": "string",
             "title": "identity_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           }
@@ -11866,11 +12148,11 @@
             "type": "string",
             "title": "url"
           },
-          "publishedAt": {
+          "published_at": {
             "title": "published_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "commitSha": {
+          "commit_sha": {
             "type": "string",
             "title": "commit_sha"
           }
@@ -11881,15 +12163,15 @@
       "auth.v1.SendBlogBroadcastResponse": {
         "type": "object",
         "properties": {
-          "broadcastId": {
+          "broadcast_id": {
             "type": "string",
             "title": "broadcast_id"
           },
-          "scheduledAt": {
+          "scheduled_at": {
             "title": "scheduled_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "sentAt": {
+          "sent_at": {
             "title": "sent_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -11930,7 +12212,7 @@
             "type": "string",
             "title": "secret"
           },
-          "qrCodeUrl": {
+          "qr_code_url": {
             "type": "string",
             "title": "qr_code_url"
           }
@@ -11941,15 +12223,15 @@
       "auth.v1.TokenResponse": {
         "type": "object",
         "properties": {
-          "accessToken": {
+          "access_token": {
             "type": "string",
             "title": "access_token"
           },
-          "refreshToken": {
+          "refresh_token": {
             "type": "string",
             "title": "refresh_token"
           },
-          "expiresIn": {
+          "expires_in": {
             "type": [
               "integer",
               "string"
@@ -11957,11 +12239,11 @@
             "title": "expires_in",
             "format": "int64"
           },
-          "tokenType": {
+          "token_type": {
             "type": "string",
             "title": "token_type"
           },
-          "requiresAction": {
+          "requires_action": {
             "type": "string",
             "title": "requires_action"
           }
@@ -11991,7 +12273,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
           },
-          "membershipId": {
+          "membership_id": {
             "type": "string",
             "title": "membership_id"
           }
@@ -12006,7 +12288,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
@@ -12036,11 +12318,11 @@
       "auth.v1.UpdateNameRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "fullName": {
+          "full_name": {
             "type": "string",
             "title": "full_name"
           }
@@ -12051,11 +12333,11 @@
       "auth.v1.UpdateNameResponse": {
         "type": "object",
         "properties": {
-          "firstName": {
+          "first_name": {
             "type": "string",
             "title": "first_name"
           },
-          "lastName": {
+          "last_name": {
             "type": "string",
             "title": "last_name"
           }
@@ -12070,7 +12352,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
           },
-          "fullName": {
+          "full_name": {
             "type": "string",
             "title": "full_name"
           }
@@ -12081,11 +12363,11 @@
       "auth.v1.UpdateOrgNameResponse": {
         "type": "object",
         "properties": {
-          "firstName": {
+          "first_name": {
             "type": "string",
             "title": "first_name"
           },
-          "lastName": {
+          "last_name": {
             "type": "string",
             "title": "last_name"
           }
@@ -12126,7 +12408,7 @@
             "title": "user",
             "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
           },
-          "policyId": {
+          "policy_id": {
             "type": "string",
             "title": "policy_id"
           },
@@ -12152,7 +12434,7 @@
       "auth.v1.UpdateUsernameRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
@@ -12190,31 +12472,31 @@
             "type": "string",
             "title": "email"
           },
-          "emailVerified": {
+          "email_verified": {
             "type": "boolean",
             "title": "email_verified"
           },
-          "firstName": {
+          "first_name": {
             "type": "string",
             "title": "first_name"
           },
-          "lastName": {
+          "last_name": {
             "type": "string",
             "title": "last_name"
           },
-          "imageUrl": {
+          "image_url": {
             "type": "string",
             "title": "image_url"
           },
-          "languageCode": {
+          "language_code": {
             "type": "string",
             "title": "language_code"
           },
-          "countryCode": {
+          "country_code": {
             "type": "string",
             "title": "country_code"
           },
-          "activeOrgId": {
+          "active_org_id": {
             "type": "string",
             "title": "active_org_id"
           }
@@ -12225,11 +12507,11 @@
       "auth.v1.UserOrgRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "title": "org_id"
           }
@@ -12240,7 +12522,7 @@
       "auth.v1.UserRequest": {
         "type": "object",
         "properties": {
-          "userId": {
+          "user_id": {
             "type": "string",
             "title": "user_id"
           }
@@ -12255,15 +12537,15 @@
             "type": "string",
             "title": "message"
           },
-          "codeSent": {
+          "code_sent": {
             "type": "boolean",
             "title": "code_sent"
           },
-          "canResendAt": {
+          "can_resend_at": {
             "type": "string",
             "title": "can_resend_at"
           },
-          "verificationId": {
+          "verification_id": {
             "type": "string",
             "title": "verification_id"
           }
@@ -12274,7 +12556,7 @@
       "auth.v1.VerifiedDomain": {
         "type": "object",
         "properties": {
-          "verifiedAt": {
+          "verified_at": {
             "title": "verified_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
@@ -12285,7 +12567,7 @@
       "auth.v1.VerifyEmailRequest": {
         "type": "object",
         "properties": {
-          "verificationId": {
+          "verification_id": {
             "type": "string",
             "title": "verification_id"
           },
@@ -12338,7 +12620,7 @@
       "auth.v1.VerifyPasskeyForLoginRequest": {
         "type": "object",
         "properties": {
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "title": "session_id"
           },
@@ -12354,7 +12636,7 @@
       "auth.v1.VerifyTOTPForLoginRequest": {
         "type": "object",
         "properties": {
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "title": "session_id"
           },
@@ -12369,21 +12651,21 @@
       "billing.v1.BandwidthUsage": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "snapshotDate": {
+          "snapshot_date": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "snapshot_date",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "totalBandwidthBytes": {
+          "total_bandwidth_bytes": {
             "type": [
               "integer",
               "string"
@@ -12394,7 +12676,7 @@
             "title": "total_bandwidth_bytes",
             "format": "int64"
           },
-          "videoBandwidthBytes": {
+          "video_bandwidth_bytes": {
             "type": [
               "integer",
               "string"
@@ -12405,7 +12687,7 @@
             "title": "video_bandwidth_bytes",
             "format": "int64"
           },
-          "imageBandwidthBytes": {
+          "image_bandwidth_bytes": {
             "type": [
               "integer",
               "string"
@@ -12416,7 +12698,7 @@
             "title": "image_bandwidth_bytes",
             "format": "int64"
           },
-          "totalRequests": {
+          "total_requests": {
             "type": [
               "integer",
               "string"
@@ -12427,7 +12709,7 @@
             "title": "total_requests",
             "format": "int64"
           },
-          "uniqueVisitors": {
+          "unique_visitors": {
             "type": [
               "integer",
               "string"
@@ -12438,11 +12720,11 @@
             "title": "unique_visitors",
             "format": "int64"
           },
-          "snapshotType": {
+          "snapshot_type": {
             "type": "string",
             "title": "snapshot_type"
           },
-          "videoRequests": {
+          "video_requests": {
             "type": [
               "integer",
               "string"
@@ -12453,7 +12735,7 @@
             "title": "video_requests",
             "format": "int64"
           },
-          "imageRequests": {
+          "image_requests": {
             "type": [
               "integer",
               "string"
@@ -12464,11 +12746,11 @@
             "title": "image_requests",
             "format": "int64"
           },
-          "dataSource": {
+          "data_source": {
             "type": "string",
             "title": "data_source"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -12521,7 +12803,7 @@
             "title": "state",
             "minLength": 1
           },
-          "postalCode": {
+          "postal_code": {
             "type": "string",
             "examples": [
               "94105"
@@ -12559,7 +12841,7 @@
           "line1",
           "city",
           "state",
-          "postalCode",
+          "postal_code",
           "country"
         ],
         "additionalProperties": false
@@ -12576,7 +12858,7 @@
       "billing.v1.CalculateGenericTaxRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -12603,11 +12885,11 @@
             "title": "currency",
             "minLength": 1
           },
-          "billingAddress": {
+          "billing_address": {
             "title": "billing_address",
             "$ref": "#/components/schemas/billing.v1.BillingAddress"
           },
-          "lineItems": {
+          "line_items": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/billing.v1.TaxLineItem"
@@ -12624,14 +12906,14 @@
       "billing.v1.CalculateTaxRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "planId": {
+          "plan_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
@@ -12639,7 +12921,7 @@
             "title": "plan_id",
             "minLength": 1
           },
-          "planName": {
+          "plan_name": {
             "type": "string",
             "examples": [
               "Pro"
@@ -12665,14 +12947,14 @@
             "title": "currency",
             "minLength": 1
           },
-          "billingCycle": {
+          "billing_cycle": {
             "examples": [
               "BILLING_CYCLE_MONTHLY"
             ],
             "title": "billing_cycle",
             "$ref": "#/components/schemas/billing.v1.BillingCycle"
           },
-          "intervalCount": {
+          "interval_count": {
             "type": [
               "integer",
               "string"
@@ -12683,11 +12965,11 @@
             "title": "interval_count",
             "format": "int64"
           },
-          "billingAddress": {
+          "billing_address": {
             "title": "billing_address",
             "$ref": "#/components/schemas/billing.v1.BillingAddress"
           },
-          "lineItems": {
+          "line_items": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/billing.v1.TaxLineItem"
@@ -12705,8 +12987,8 @@
         },
         "title": "CalculateTaxRequest",
         "required": [
-          "planId",
-          "planName",
+          "plan_id",
+          "plan_name",
           "currency"
         ],
         "additionalProperties": false
@@ -12729,7 +13011,7 @@
       "billing.v1.CancelSubscriptionRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -12743,7 +13025,7 @@
       "billing.v1.CheckPlanRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -12757,25 +13039,25 @@
       "billing.v1.CheckPlanResponse": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "hasEnterprisePlan": {
+          "has_enterprise_plan": {
             "type": "boolean",
             "title": "has_enterprise_plan"
           },
-          "planType": {
+          "plan_type": {
             "examples": [
               "PLAN_TYPE_PRO"
             ],
             "title": "plan_type",
             "$ref": "#/components/schemas/billing.v1.PlanType"
           },
-          "planName": {
+          "plan_name": {
             "type": "string",
             "examples": [
               "Pro"
@@ -12790,14 +13072,14 @@
       "billing.v1.ContactSalesRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "firstName": {
+          "first_name": {
             "type": "string",
             "examples": [
               "Jane"
@@ -12805,7 +13087,7 @@
             "title": "first_name",
             "maxLength": 30
           },
-          "lastName": {
+          "last_name": {
             "type": "string",
             "examples": [
               "Doe"
@@ -12828,7 +13110,7 @@
             "title": "company",
             "maxLength": 64
           },
-          "jobTitle": {
+          "job_title": {
             "type": "string",
             "title": "job_title"
           },
@@ -12861,19 +13143,19 @@
       "billing.v1.CreateCheckoutSessionRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "stripePriceId": {
+          "stripe_price_id": {
             "type": "string",
             "title": "stripe_price_id",
             "minLength": 1
           },
-          "successUrl": {
+          "success_url": {
             "type": "string",
             "examples": [
               "https://billing.example.com/portal"
@@ -12882,7 +13164,7 @@
             "minLength": 1,
             "format": "uri"
           },
-          "cancelUrl": {
+          "cancel_url": {
             "type": "string",
             "examples": [
               "https://billing.example.com/portal"
@@ -12894,16 +13176,16 @@
         },
         "title": "CreateCheckoutSessionRequest",
         "required": [
-          "stripePriceId",
-          "successUrl",
-          "cancelUrl"
+          "stripe_price_id",
+          "success_url",
+          "cancel_url"
         ],
         "additionalProperties": false
       },
       "billing.v1.CreateSetupIntentRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -12917,33 +13199,33 @@
       "billing.v1.CreateSubscriptionRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "stripePriceId": {
+          "stripe_price_id": {
             "type": "string",
             "title": "stripe_price_id",
             "minLength": 1
           },
-          "paymentMethodId": {
+          "payment_method_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
             ],
             "title": "payment_method_id"
           },
-          "billingAddress": {
+          "billing_address": {
             "title": "billing_address",
             "$ref": "#/components/schemas/billing.v1.BillingAddress"
           }
         },
         "title": "CreateSubscriptionRequest",
         "required": [
-          "stripePriceId"
+          "stripe_price_id"
         ],
         "additionalProperties": false
       },
@@ -12957,14 +13239,14 @@
             ],
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "planId": {
+          "plan_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
@@ -12978,22 +13260,22 @@
             "title": "status",
             "$ref": "#/components/schemas/billing.v1.SubscriptionStatus"
           },
-          "currentPeriodEnd": {
+          "current_period_end": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "current_period_end",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "cancelAtPeriodEnd": {
+          "cancel_at_period_end": {
             "type": "boolean",
             "title": "cancel_at_period_end"
           },
-          "stripeSubscriptionId": {
+          "stripe_subscription_id": {
             "type": "string",
             "title": "stripe_subscription_id"
           },
-          "stripeCustomerId": {
+          "stripe_customer_id": {
             "type": "string",
             "title": "stripe_customer_id"
           }
@@ -13004,14 +13286,14 @@
       "billing.v1.DeletePaymentMethodRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "paymentMethodId": {
+          "payment_method_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -13025,7 +13307,7 @@
       "billing.v1.GetBandwidthUsageHistoryRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13072,7 +13354,7 @@
       "billing.v1.GetBandwidthUsageRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13086,7 +13368,7 @@
       "billing.v1.GetBillingAddressRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13100,7 +13382,7 @@
       "billing.v1.GetPaymentMethodFromPaymentIntentRequest": {
         "type": "object",
         "properties": {
-          "paymentIntentId": {
+          "payment_intent_id": {
             "type": "string",
             "examples": [
               "Tg6Rf4e2W1"
@@ -13114,7 +13396,7 @@
       "billing.v1.GetPaymentMethodFromSetupIntentRequest": {
         "type": "object",
         "properties": {
-          "setupIntentId": {
+          "setup_intent_id": {
             "type": "string",
             "examples": [
               "Tg6Rf4e2W1"
@@ -13128,7 +13410,7 @@
       "billing.v1.GetPlanRequest": {
         "type": "object",
         "properties": {
-          "planId": {
+          "plan_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
@@ -13140,7 +13422,7 @@
         },
         "title": "GetPlanRequest",
         "required": [
-          "planId"
+          "plan_id"
         ],
         "additionalProperties": false
       },
@@ -13191,7 +13473,7 @@
       "billing.v1.GetStorageUsageHistoryRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13240,7 +13522,7 @@
       "billing.v1.GetStorageUsageRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13254,7 +13536,7 @@
       "billing.v1.GetSubscriptionHistoryRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13286,7 +13568,7 @@
       "billing.v1.GetSubscriptionRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13300,14 +13582,14 @@
       "billing.v1.HostedCheckoutSessionResponse": {
         "type": "object",
         "properties": {
-          "sessionId": {
+          "session_id": {
             "type": "string",
             "examples": [
               "Tg6Rf4e2W1"
             ],
             "title": "session_id"
           },
-          "sessionUrl": {
+          "session_url": {
             "type": "string",
             "examples": [
               "https://billing.example.com/portal"
@@ -13343,14 +13625,14 @@
             ],
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "subscriptionId": {
+          "subscription_id": {
             "type": "string",
             "examples": [
               "AbCdE12345"
@@ -13378,21 +13660,21 @@
             "title": "status",
             "$ref": "#/components/schemas/billing.v1.InvoiceStatus"
           },
-          "dueDate": {
+          "due_date": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "due_date",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "paidAt": {
+          "paid_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "paid_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -13422,7 +13704,7 @@
       "billing.v1.ListInvoicesRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13454,7 +13736,7 @@
       "billing.v1.ListPaymentMethodsRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13472,7 +13754,7 @@
       "billing.v1.ListPaymentMethodsResponse": {
         "type": "object",
         "properties": {
-          "paymentMethods": {
+          "payment_methods": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/billing.v1.PaymentMethod"
@@ -13529,7 +13811,7 @@
             ],
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13548,11 +13830,11 @@
             "type": "string",
             "title": "details"
           },
-          "isDefault": {
+          "is_default": {
             "type": "boolean",
             "title": "is_default"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -13585,7 +13867,7 @@
             "type": "string",
             "title": "last4"
           },
-          "expMonth": {
+          "exp_month": {
             "type": [
               "integer",
               "string"
@@ -13593,7 +13875,7 @@
             "title": "exp_month",
             "format": "int64"
           },
-          "expYear": {
+          "exp_year": {
             "type": [
               "integer",
               "string"
@@ -13601,7 +13883,7 @@
             "title": "exp_year",
             "format": "int64"
           },
-          "isDefault": {
+          "is_default": {
             "type": "boolean",
             "title": "is_default"
           }
@@ -13612,7 +13894,7 @@
       "billing.v1.PaymentMethodIdResponse": {
         "type": "object",
         "properties": {
-          "paymentMethodId": {
+          "payment_method_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -13663,14 +13945,14 @@
             "type": "string",
             "title": "interval"
           },
-          "planType": {
+          "plan_type": {
             "examples": [
               "PLAN_TYPE_PRO"
             ],
             "title": "plan_type",
             "$ref": "#/components/schemas/billing.v1.PlanType"
           },
-          "intervalCount": {
+          "interval_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -13678,7 +13960,7 @@
             "title": "interval_count",
             "format": "int32"
           },
-          "sortOrder": {
+          "sort_order": {
             "type": "integer",
             "examples": [
               "5"
@@ -13693,18 +13975,18 @@
       "billing.v1.PlanTaxCalculationResponse": {
         "type": "object",
         "properties": {
-          "calculationId": {
+          "calculation_id": {
             "type": "string",
             "title": "calculation_id"
           },
-          "planId": {
+          "plan_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "plan_id"
           },
-          "planName": {
+          "plan_name": {
             "type": "string",
             "examples": [
               "Pro"
@@ -13712,14 +13994,14 @@
             "title": "plan_name",
             "maxLength": 64
           },
-          "billingCycle": {
+          "billing_cycle": {
             "examples": [
               "BILLING_CYCLE_MONTHLY"
             ],
             "title": "billing_cycle",
             "$ref": "#/components/schemas/billing.v1.BillingCycle"
           },
-          "baseAmount": {
+          "base_amount": {
             "type": [
               "integer",
               "string"
@@ -13730,7 +14012,7 @@
             "title": "base_amount",
             "format": "int64"
           },
-          "amountTotal": {
+          "amount_total": {
             "type": [
               "integer",
               "string"
@@ -13741,7 +14023,7 @@
             "title": "amount_total",
             "format": "int64"
           },
-          "taxAmountExclusive": {
+          "tax_amount_exclusive": {
             "type": [
               "integer",
               "string"
@@ -13752,7 +14034,7 @@
             "title": "tax_amount_exclusive",
             "format": "int64"
           },
-          "taxAmountInclusive": {
+          "tax_amount_inclusive": {
             "type": [
               "integer",
               "string"
@@ -13770,16 +14052,16 @@
             ],
             "title": "currency"
           },
-          "taxPercentage": {
+          "tax_percentage": {
             "type": "number",
             "title": "tax_percentage",
             "format": "double"
           },
-          "billingAddress": {
+          "billing_address": {
             "title": "billing_address",
             "$ref": "#/components/schemas/billing.v1.BillingAddress"
           },
-          "calculatedAt": {
+          "calculated_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -13820,7 +14102,7 @@
       "billing.v1.ReactivateSubscriptionRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13834,7 +14116,7 @@
       "billing.v1.RefreshBandwidthUsageRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13848,7 +14130,7 @@
       "billing.v1.RefreshStorageUsageRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -13871,21 +14153,21 @@
             "type": "string",
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "userId": {
+          "user_id": {
             "type": "string",
             "examples": [
               "QwErTy1234"
             ],
             "title": "user_id"
           },
-          "firstName": {
+          "first_name": {
             "type": "string",
             "examples": [
               "Jane"
@@ -13893,7 +14175,7 @@
             "title": "first_name",
             "maxLength": 30
           },
-          "lastName": {
+          "last_name": {
             "type": "string",
             "examples": [
               "Doe"
@@ -13916,7 +14198,7 @@
             "title": "company",
             "maxLength": 64
           },
-          "jobTitle": {
+          "job_title": {
             "type": "string",
             "title": "job_title"
           },
@@ -13949,7 +14231,7 @@
             "title": "status",
             "$ref": "#/components/schemas/billing.v1.SalesLeadStatus"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -13974,14 +14256,14 @@
       "billing.v1.SetupIntentResponse": {
         "type": "object",
         "properties": {
-          "setupIntentId": {
+          "setup_intent_id": {
             "type": "string",
             "examples": [
               "Tg6Rf4e2W1"
             ],
             "title": "setup_intent_id"
           },
-          "clientSecret": {
+          "client_secret": {
             "type": "string",
             "title": "client_secret"
           }
@@ -13992,21 +14274,21 @@
       "billing.v1.StorageUsage": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "snapshotDate": {
+          "snapshot_date": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "snapshot_date",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "totalStorageBytes": {
+          "total_storage_bytes": {
             "type": [
               "integer",
               "string"
@@ -14017,7 +14299,7 @@
             "title": "total_storage_bytes",
             "format": "int64"
           },
-          "videoStorageBytes": {
+          "video_storage_bytes": {
             "type": [
               "integer",
               "string"
@@ -14028,7 +14310,7 @@
             "title": "video_storage_bytes",
             "format": "int64"
           },
-          "imageStorageBytes": {
+          "image_storage_bytes": {
             "type": [
               "integer",
               "string"
@@ -14039,14 +14321,14 @@
             "title": "image_storage_bytes",
             "format": "int64"
           },
-          "totalVideoMinutes": {
+          "total_video_minutes": {
             "type": "string",
             "examples": [
               "5"
             ],
             "title": "total_video_minutes"
           },
-          "totalFileCount": {
+          "total_file_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -14054,7 +14336,7 @@
             "title": "total_file_count",
             "format": "int32"
           },
-          "videoFileCount": {
+          "video_file_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -14062,7 +14344,7 @@
             "title": "video_file_count",
             "format": "int32"
           },
-          "imageFileCount": {
+          "image_file_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -14070,7 +14352,7 @@
             "title": "image_file_count",
             "format": "int32"
           },
-          "projectCount": {
+          "project_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -14078,7 +14360,7 @@
             "title": "project_count",
             "format": "int32"
           },
-          "maxVideoCount": {
+          "max_video_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -14086,7 +14368,7 @@
             "title": "max_video_count",
             "format": "int32"
           },
-          "maxImageCount": {
+          "max_image_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -14094,7 +14376,7 @@
             "title": "max_image_count",
             "format": "int32"
           },
-          "maxProjectCount": {
+          "max_project_count": {
             "type": "integer",
             "examples": [
               "5"
@@ -14102,7 +14384,7 @@
             "title": "max_project_count",
             "format": "int32"
           },
-          "lastUpdated": {
+          "last_updated": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -14123,21 +14405,21 @@
             ],
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "planId": {
+          "plan_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "plan_id"
           },
-          "planName": {
+          "plan_name": {
             "type": "string",
             "examples": [
               "Pro"
@@ -14145,7 +14427,7 @@
             "title": "plan_name",
             "maxLength": 64
           },
-          "planType": {
+          "plan_type": {
             "examples": [
               "PLAN_TYPE_PRO"
             ],
@@ -14159,14 +14441,14 @@
             "title": "status",
             "$ref": "#/components/schemas/billing.v1.SubscriptionStatus"
           },
-          "currentPeriodEnd": {
+          "current_period_end": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "current_period_end",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "cancelAtPeriodEnd": {
+          "cancel_at_period_end": {
             "type": "boolean",
             "title": "cancel_at_period_end"
           },
@@ -14184,11 +14466,11 @@
             ],
             "title": "currency"
           },
-          "expiringSoon": {
+          "expiring_soon": {
             "type": "boolean",
             "title": "expiring_soon"
           },
-          "trialsEndingSoon": {
+          "trials_ending_soon": {
             "type": "boolean",
             "title": "trials_ending_soon"
           }
@@ -14206,21 +14488,21 @@
             ],
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "planId": {
+          "plan_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "plan_id"
           },
-          "planName": {
+          "plan_name": {
             "type": "string",
             "examples": [
               "Pro"
@@ -14249,32 +14531,32 @@
             ],
             "title": "currency"
           },
-          "startDate": {
+          "start_date": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "start_date",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "currentPeriodEnd": {
+          "current_period_end": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "current_period_end",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "endDate": {
+          "end_date": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "end_date",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "cancelAtPeriodEnd": {
+          "cancel_at_period_end": {
             "type": "boolean",
             "title": "cancel_at_period_end"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -14307,11 +14589,11 @@
       "billing.v1.TaxCalculationResponse": {
         "type": "object",
         "properties": {
-          "calculationId": {
+          "calculation_id": {
             "type": "string",
             "title": "calculation_id"
           },
-          "amountTotal": {
+          "amount_total": {
             "type": [
               "integer",
               "string"
@@ -14322,7 +14604,7 @@
             "title": "amount_total",
             "format": "int64"
           },
-          "taxAmountExclusive": {
+          "tax_amount_exclusive": {
             "type": [
               "integer",
               "string"
@@ -14333,7 +14615,7 @@
             "title": "tax_amount_exclusive",
             "format": "int64"
           },
-          "taxAmountInclusive": {
+          "tax_amount_inclusive": {
             "type": [
               "integer",
               "string"
@@ -14373,7 +14655,7 @@
             "type": "string",
             "title": "reference"
           },
-          "taxCode": {
+          "tax_code": {
             "type": "string",
             "title": "tax_code"
           }
@@ -14384,7 +14666,7 @@
       "billing.v1.UpdateInvoiceStatusRequest": {
         "type": "object",
         "properties": {
-          "invoiceId": {
+          "invoice_id": {
             "type": "string",
             "examples": [
               "Z9Y8X7W6V5"
@@ -14402,21 +14684,21 @@
         },
         "title": "UpdateInvoiceStatusRequest",
         "required": [
-          "invoiceId"
+          "invoice_id"
         ],
         "additionalProperties": false
       },
       "billing.v1.UpgradeSubscriptionRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "stripePriceId": {
+          "stripe_price_id": {
             "type": "string",
             "title": "stripe_price_id",
             "minLength": 1
@@ -14424,14 +14706,14 @@
         },
         "title": "UpgradeSubscriptionRequest",
         "required": [
-          "stripePriceId"
+          "stripe_price_id"
         ],
         "additionalProperties": false
       },
       "billing.v1.UpgradeSubscriptionResponse": {
         "type": "object",
         "properties": {
-          "clientSecret": {
+          "client_secret": {
             "type": "string",
             "title": "client_secret"
           }
@@ -14442,7 +14724,7 @@
       "billing.v1.UpsertBillingAddressRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -14460,21 +14742,21 @@
       "billing.v1.UpsertPaymentMethodRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "paymentMethodId": {
+          "payment_method_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
             ],
             "title": "payment_method_id"
           },
-          "setAsDefault": {
+          "set_as_default": {
             "type": "boolean",
             "title": "set_as_default"
           }
@@ -14500,7 +14782,7 @@
             "title": "name",
             "maxLength": 64
           },
-          "clientId": {
+          "client_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -14525,14 +14807,14 @@
             "title": "status",
             "$ref": "#/components/schemas/clientauth.v1.ClientCredentialStatus"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "created_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "lastUsedAt": {
+          "last_used_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -14555,7 +14837,7 @@
       "clientauth.v1.CreateClientCredentialRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -14596,7 +14878,7 @@
             "title": "credential",
             "$ref": "#/components/schemas/clientauth.v1.ClientCredential"
           },
-          "clientSecret": {
+          "client_secret": {
             "type": "string",
             "examples": [
               "rxl_sk_Bq4y3QB38SFpzVPNx1cG"
@@ -14610,7 +14892,7 @@
       "clientauth.v1.ListClientCredentialsRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -14683,7 +14965,7 @@
       "clientauth.v1.MintClientTokenRequest": {
         "type": "object",
         "properties": {
-          "clientId": {
+          "client_id": {
             "type": "string",
             "examples": [
               "XyZ9aB8cD1"
@@ -14691,7 +14973,7 @@
             "title": "client_id",
             "minLength": 1
           },
-          "clientSecret": {
+          "client_secret": {
             "type": "string",
             "examples": [
               "rxl_sk_Bq4y3QB38SFpzVPNx1cG"
@@ -14707,14 +14989,14 @@
             "title": "subject",
             "minLength": 1
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "ttlMinutes": {
+          "ttl_minutes": {
             "type": [
               "integer",
               "null"
@@ -14730,8 +15012,8 @@
         },
         "title": "MintClientTokenRequest",
         "required": [
-          "clientId",
-          "clientSecret",
+          "client_id",
+          "client_secret",
           "subject"
         ],
         "additionalProperties": false
@@ -14739,21 +15021,21 @@
       "clientauth.v1.MintClientTokenResponse": {
         "type": "object",
         "properties": {
-          "accessToken": {
+          "access_token": {
             "type": "string",
             "examples": [
               "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJRd0VyVHkxMjM0In0.sig"
             ],
             "title": "access_token"
           },
-          "tokenType": {
+          "token_type": {
             "type": "string",
             "examples": [
               "Bearer"
             ],
             "title": "token_type"
           },
-          "expiresIn": {
+          "expires_in": {
             "type": [
               "integer",
               "string"
@@ -14764,7 +15046,7 @@
             "title": "expires_in",
             "format": "int64"
           },
-          "expiresAt": {
+          "expires_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -14778,14 +15060,14 @@
       "clientauth.v1.RevokeClientCredentialRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "credentialId": {
+          "credential_id": {
             "type": "string",
             "examples": [
               "Z9Y8X7W6V5"
@@ -14890,7 +15172,7 @@
       "feeds.v1.CreateFeedRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -14911,21 +15193,21 @@
             ],
             "title": "description"
           },
-          "allowImages": {
+          "allow_images": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "allow_images"
           },
-          "allowVideos": {
+          "allow_videos": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "allow_videos"
           },
-          "hasLikes": {
+          "has_likes": {
             "type": [
               "boolean",
               "null"
@@ -14935,7 +15217,7 @@
             ],
             "title": "has_likes"
           },
-          "hasShares": {
+          "has_shares": {
             "type": [
               "boolean",
               "null"
@@ -14945,7 +15227,7 @@
             ],
             "title": "has_shares"
           },
-          "hasComments": {
+          "has_comments": {
             "type": [
               "boolean",
               "null"
@@ -14962,14 +15244,14 @@
       "feeds.v1.DeleteFeedRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -14990,7 +15272,7 @@
             ],
             "title": "id"
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -15011,49 +15293,49 @@
             ],
             "title": "description"
           },
-          "allowImages": {
+          "allow_images": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "allow_images"
           },
-          "allowVideos": {
+          "allow_videos": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "allow_videos"
           },
-          "hasLikes": {
+          "has_likes": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "has_likes"
           },
-          "hasShares": {
+          "has_shares": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "has_shares"
           },
-          "hasComments": {
+          "has_comments": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "has_comments"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "created_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "updatedAt": {
+          "updated_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -15067,14 +15349,14 @@
       "feeds.v1.GetFeedRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -15088,7 +15370,7 @@
       "feeds.v1.ListFeedsRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -15131,14 +15413,14 @@
       "feeds.v1.UpdateFeedRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -15159,35 +15441,35 @@
             ],
             "title": "description"
           },
-          "allowImages": {
+          "allow_images": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "allow_images"
           },
-          "allowVideos": {
+          "allow_videos": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "allow_videos"
           },
-          "hasLikes": {
+          "has_likes": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "has_likes"
           },
-          "hasShares": {
+          "has_shares": {
             "type": "boolean",
             "examples": [
               "true"
             ],
             "title": "has_shares"
           },
-          "hasComments": {
+          "has_comments": {
             "type": "boolean",
             "examples": [
               "true"
@@ -15219,28 +15501,28 @@
       "images.v1.CompleteImageUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "imageId": {
+          "image_id": {
             "type": "string",
             "examples": [
               "LmNoPqR678"
             ],
             "title": "image_id"
           },
-          "attachedToVideo": {
+          "attached_to_video": {
             "type": "boolean",
             "examples": [
               "true"
@@ -15254,14 +15536,14 @@
       "images.v1.CreateImageUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -15290,14 +15572,14 @@
       "images.v1.DeleteImageRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "imageId": {
+          "image_id": {
             "type": "string",
             "examples": [
               "LmNoPqR678"
@@ -15311,7 +15593,7 @@
       "images.v1.GetImageRequest": {
         "type": "object",
         "properties": {
-          "imageId": {
+          "image_id": {
             "type": "string",
             "examples": [
               "LmNoPqR678"
@@ -15355,7 +15637,7 @@
             ],
             "title": "thumbhash"
           },
-          "attachedToVideo": {
+          "attached_to_video": {
             "type": "boolean",
             "examples": [
               "true"
@@ -15387,7 +15669,7 @@
             ],
             "title": "id"
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -15497,7 +15779,7 @@
             "title": "size",
             "format": "int64"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -15525,21 +15807,21 @@
       "images.v1.ImageUploadInit": {
         "type": "object",
         "properties": {
-          "imageId": {
+          "image_id": {
             "type": "string",
             "examples": [
               "LmNoPqR678"
             ],
             "title": "image_id"
           },
-          "uploadUrl": {
+          "upload_url": {
             "type": "string",
             "examples": [
               "https://cdn.example.com/image.jpg"
             ],
             "title": "upload_url"
           },
-          "expiresAt": {
+          "expires_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -15553,7 +15835,7 @@
       "images.v1.ListImagesRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -15564,11 +15846,11 @@
             "title": "pagination",
             "$ref": "#/components/schemas/common.v1.Pagination"
           },
-          "sortField": {
+          "sort_field": {
             "type": "string",
             "title": "sort_field"
           },
-          "sortDirection": {
+          "sort_direction": {
             "type": "string",
             "title": "sort_direction"
           }
@@ -15593,7 +15875,7 @@
       "images.v1.MarkImageFailedRequest": {
         "type": "object",
         "properties": {
-          "fileId": {
+          "file_id": {
             "type": "string",
             "title": "file_id",
             "minLength": 1
@@ -15605,7 +15887,7 @@
       "images.v1.MarkImageProcessedRequest": {
         "type": "object",
         "properties": {
-          "fileId": {
+          "file_id": {
             "type": "string",
             "title": "file_id",
             "minLength": 1
@@ -15640,7 +15922,7 @@
             ],
             "title": "id"
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -15654,7 +15936,7 @@
             ],
             "title": "format"
           },
-          "s3Path": {
+          "s3_path": {
             "type": "string",
             "title": "s3_path"
           },
@@ -15691,14 +15973,14 @@
       "images.v1.UpdateImageVisibilityRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "imageId": {
+          "image_id": {
             "type": "string",
             "examples": [
               "LmNoPqR678"
@@ -15719,7 +16001,7 @@
       "images.v1.UpdateProcessedImageDataRequest": {
         "type": "object",
         "properties": {
-          "fileId": {
+          "file_id": {
             "type": "string",
             "title": "file_id",
             "minLength": 1
@@ -15757,7 +16039,7 @@
       "platformauth.v1.ExchangeAPIKeyRequest": {
         "type": "object",
         "properties": {
-          "apiKey": {
+          "api_key": {
             "type": "string",
             "examples": [
               "rxl_Bq4y3QB38SFpzVPNx1cG"
@@ -15768,14 +16050,14 @@
         },
         "title": "ExchangeAPIKeyRequest",
         "required": [
-          "apiKey"
+          "api_key"
         ],
         "additionalProperties": false
       },
       "platformauth.v1.RefreshPlatformTokenRequest": {
         "type": "object",
         "properties": {
-          "refreshToken": {
+          "refresh_token": {
             "type": "string",
             "examples": [
               "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJRd0VyVHkxMjM0In0.sig"
@@ -15786,35 +16068,35 @@
         },
         "title": "RefreshPlatformTokenRequest",
         "required": [
-          "refreshToken"
+          "refresh_token"
         ],
         "additionalProperties": false
       },
       "platformauth.v1.TokenResponse": {
         "type": "object",
         "properties": {
-          "accessToken": {
+          "access_token": {
             "type": "string",
             "examples": [
               "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJRd0VyVHkxMjM0In0.sig"
             ],
             "title": "access_token"
           },
-          "refreshToken": {
+          "refresh_token": {
             "type": "string",
             "examples": [
               "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJRd0VyVHkxMjM0In0.sig"
             ],
             "title": "refresh_token"
           },
-          "tokenType": {
+          "token_type": {
             "type": "string",
             "examples": [
               "Bearer"
             ],
             "title": "token_type"
           },
-          "expiresIn": {
+          "expires_in": {
             "type": [
               "integer",
               "string"
@@ -15825,7 +16107,7 @@
             "title": "expires_in",
             "format": "int64"
           },
-          "expiresAt": {
+          "expires_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -15839,28 +16121,28 @@
       "posts.v1.CompletePostUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
             ],
             "title": "feed_id"
           },
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
@@ -15876,28 +16158,28 @@
         "allOf": [
           {
             "properties": {
-              "projectId": {
+              "project_id": {
                 "type": "string",
                 "examples": [
                   "Bq4y3QB38S"
                 ],
                 "title": "project_id"
               },
-              "orgId": {
+              "org_id": {
                 "type": "string",
                 "examples": [
                   "OR98234j23"
                 ],
                 "title": "org_id"
               },
-              "feedId": {
+              "feed_id": {
                 "type": "string",
                 "examples": [
                   "F4edRI23XL"
                 ],
                 "title": "feed_id"
               },
-              "creatorId": {
+              "creator_id": {
                 "type": "string",
                 "examples": [
                   "Tg6Rf4e2W1"
@@ -15926,7 +16208,7 @@
               {
                 "type": "object",
                 "properties": {
-                  "imageId": {
+                  "image_id": {
                     "type": "string",
                     "examples": [
                       "LmNoPqR678"
@@ -15936,13 +16218,13 @@
                 },
                 "title": "image_id",
                 "required": [
-                  "imageId"
+                  "image_id"
                 ]
               },
               {
                 "type": "object",
                 "properties": {
-                  "videoId": {
+                  "video_id": {
                     "type": "string",
                     "examples": [
                       "FpzVPNx1cG"
@@ -15952,7 +16234,7 @@
                 },
                 "title": "video_id",
                 "required": [
-                  "videoId"
+                  "video_id"
                 ]
               }
             ]
@@ -15964,21 +16246,21 @@
       "posts.v1.DeletePostRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "post_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -15993,21 +16275,21 @@
       "posts.v1.GetPostRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "post_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -16022,28 +16304,28 @@
       "posts.v1.InitPostUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
             ],
             "title": "feed_id"
           },
-          "creatorId": {
+          "creator_id": {
             "type": "string",
             "examples": [
               "Tg6Rf4e2W1"
@@ -16058,14 +16340,14 @@
             "title": "description",
             "maxLength": 280
           },
-          "contentType": {
+          "content_type": {
             "examples": [
               "MEDIA_TYPE_VIDEO"
             ],
             "title": "content_type",
             "$ref": "#/components/schemas/common.v1.MediaType"
           },
-          "fileName": {
+          "file_name": {
             "type": "string",
             "examples": [
               "clip.mp4"
@@ -16079,14 +16361,14 @@
             ],
             "title": "format"
           },
-          "videoQuality": {
+          "video_quality": {
             "examples": [
               "VIDEO_QUALITY_PRO"
             ],
             "title": "video_quality",
             "$ref": "#/components/schemas/common.v1.VideoQuality"
           },
-          "imageFormat": {
+          "image_format": {
             "examples": [
               "IMAGE_FORMAT_JPG"
             ],
@@ -16100,14 +16382,14 @@
       "posts.v1.ListPostsRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "feedId": {
+          "feed_id": {
             "type": "string",
             "examples": [
               "F4edRI23XL"
@@ -16118,7 +16400,7 @@
             "title": "pagination",
             "$ref": "#/components/schemas/common.v1.Pagination"
           },
-          "creatorId": {
+          "creator_id": {
             "type": "string",
             "examples": [
               "Tg6Rf4e2W1"
@@ -16166,14 +16448,14 @@
                 ],
                 "title": "id"
               },
-              "feedId": {
+              "feed_id": {
                 "type": "string",
                 "examples": [
                   "F4edRI23XL"
                 ],
                 "title": "feed_id"
               },
-              "creatorId": {
+              "creator_id": {
                 "type": "string",
                 "examples": [
                   "Tg6Rf4e2W1"
@@ -16195,7 +16477,7 @@
                 "title": "description",
                 "maxLength": 280
               },
-              "createdAt": {
+              "created_at": {
                 "examples": [
                   "2026-01-15T10:30:00Z"
                 ],
@@ -16245,7 +16527,7 @@
             "type": "string",
             "title": "id"
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -16323,7 +16605,7 @@
             "title": "height",
             "format": "int32"
           },
-          "attachedToVideo": {
+          "attached_to_video": {
             "type": "boolean",
             "examples": [
               "true"
@@ -16341,42 +16623,42 @@
       "posts.v1.PostUploadInit": {
         "type": "object",
         "properties": {
-          "postId": {
+          "post_id": {
             "type": "string",
             "examples": [
               "Mn0bVc9xZ8"
             ],
             "title": "post_id"
           },
-          "contentId": {
+          "content_id": {
             "type": "string",
             "examples": [
               "LmNoPqR678"
             ],
             "title": "content_id"
           },
-          "posterId": {
+          "poster_id": {
             "type": "string",
             "examples": [
               "Z9Y8X7W6V5"
             ],
             "title": "poster_id"
           },
-          "contentUploadUrl": {
+          "content_upload_url": {
             "type": "string",
             "examples": [
               "https://cdn.example.com/upload"
             ],
             "title": "content_upload_url"
           },
-          "posterUploadUrl": {
+          "poster_upload_url": {
             "type": "string",
             "examples": [
               "https://cdn.example.com/upload"
             ],
             "title": "poster_upload_url"
           },
-          "uploadExpires": {
+          "upload_expires": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -16449,7 +16731,7 @@
       "project.v1.CreateProjectRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16483,7 +16765,7 @@
             },
             "title": "regions"
           },
-          "videoQuality": {
+          "video_quality": {
             "examples": [
               "basic"
             ],
@@ -16497,14 +16779,14 @@
       "project.v1.DeleteProjectRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16518,14 +16800,14 @@
       "project.v1.GetProjectRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16539,7 +16821,7 @@
       "project.v1.ListProjectsRequest": {
         "type": "object",
         "properties": {
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16567,21 +16849,21 @@
       "project.v1.MoveProjectRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "targetOrganizationId": {
+          "target_organization_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16602,7 +16884,7 @@
             ],
             "title": "id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16623,28 +16905,28 @@
             },
             "title": "regions"
           },
-          "videoQuality": {
+          "video_quality": {
             "examples": [
               "basic"
             ],
             "title": "video_quality",
             "$ref": "#/components/schemas/common.v1.VideoQuality"
           },
-          "customDomain": {
+          "custom_domain": {
             "type": "string",
             "examples": [
               "docs.example.com"
             ],
             "title": "custom_domain"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
             "title": "created_at",
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           },
-          "updatedAt": {
+          "updated_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -16658,14 +16940,14 @@
       "project.v1.RemoveCustomDomainRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16679,21 +16961,21 @@
       "project.v1.SetCustomDomainRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "customDomain": {
+          "custom_domain": {
             "type": "string",
             "examples": [
               "docs.example.com"
@@ -16707,14 +16989,14 @@
       "project.v1.UpdateProjectNameRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16736,21 +17018,21 @@
       "project.v1.UpdateVideoQualityRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "videoQuality": {
+          "video_quality": {
             "examples": [
               "shorts"
             ],
@@ -16760,7 +17042,7 @@
         },
         "title": "UpdateVideoQualityRequest",
         "required": [
-          "videoQuality"
+          "video_quality"
         ],
         "additionalProperties": false
       },
@@ -16774,14 +17056,14 @@
             ],
             "title": "id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "languageCode": {
+          "language_code": {
             "type": "string",
             "examples": [
               "en"
@@ -16814,7 +17096,7 @@
             "title": "title",
             "maxLength": 64
           },
-          "startTimeSec": {
+          "start_time_sec": {
             "type": "number",
             "examples": [
               "12.5"
@@ -16836,7 +17118,7 @@
             ],
             "title": "id"
           },
-          "objectKey": {
+          "object_key": {
             "type": "string",
             "title": "object_key"
           },
@@ -16858,14 +17140,14 @@
       "videos.v1.CompleteTrackUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -16886,21 +17168,21 @@
       "videos.v1.CompleteVideoUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -16940,14 +17222,14 @@
       "videos.v1.CreateVideoUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
@@ -16962,14 +17244,14 @@
             "title": "name",
             "maxLength": 64
           },
-          "imageFormat": {
+          "image_format": {
             "examples": [
               "IMAGE_FORMAT_JPG"
             ],
             "title": "image_format",
             "$ref": "#/components/schemas/common.v1.ImageFormat"
           },
-          "videoQuality": {
+          "video_quality": {
             "examples": [
               "VIDEO_QUALITY_PRO"
             ],
@@ -16983,21 +17265,21 @@
       "videos.v1.DeleteAudioTrackRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "trackId": {
+          "track_id": {
             "type": "string",
             "examples": [
               "Tg6Rf4e2W1"
@@ -17011,21 +17293,21 @@
       "videos.v1.DeleteByLanguageRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "languageCode": {
+          "language_code": {
             "type": "string",
             "examples": [
               "en"
@@ -17039,21 +17321,21 @@
       "videos.v1.DeleteSubtitleRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "subtitleId": {
+          "subtitle_id": {
             "type": "string",
             "examples": [
               "Z9Y8X7W6V5"
@@ -17067,21 +17349,21 @@
       "videos.v1.DeleteVideoChapterRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "startTimeSec": {
+          "start_time_sec": {
             "type": [
               "integer",
               "string"
@@ -17099,14 +17381,14 @@
       "videos.v1.DeleteVideoRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -17124,7 +17406,7 @@
             "type": "string",
             "title": "id"
           },
-          "projectId": {
+          "project_id": {
             "type": "string",
             "title": "project_id"
           },
@@ -17132,7 +17414,7 @@
             "type": "string",
             "title": "format"
           },
-          "s3Path": {
+          "s3_path": {
             "type": "string",
             "title": "s3_path"
           },
@@ -17171,14 +17453,14 @@
       "videos.v1.GetVideoChaptersRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -17192,7 +17474,7 @@
       "videos.v1.GetVideoRequest": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -17276,21 +17558,21 @@
       "videos.v1.InitTrackUploadRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "orgId": {
+          "org_id": {
             "type": "string",
             "examples": [
               "OR98234j23"
             ],
             "title": "org_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -17334,7 +17616,7 @@
       "videos.v1.ListAudioTracksRequest": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -17348,7 +17630,7 @@
       "videos.v1.ListAudioTracksResponse": {
         "type": "object",
         "properties": {
-          "audioTracks": {
+          "audio_tracks": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/videos.v1.AudioTrack"
@@ -17381,7 +17663,7 @@
       "videos.v1.ListSubtitlesRequest": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -17409,7 +17691,7 @@
       "videos.v1.ListVideosRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
@@ -17420,11 +17702,11 @@
             "title": "pagination",
             "$ref": "#/components/schemas/common.v1.Pagination"
           },
-          "sortField": {
+          "sort_field": {
             "type": "string",
             "title": "sort_field"
           },
-          "sortDirection": {
+          "sort_direction": {
             "type": "string",
             "title": "sort_direction"
           }
@@ -17449,7 +17731,7 @@
       "videos.v1.MarkVideoFailedRequest": {
         "type": "object",
         "properties": {
-          "fileId": {
+          "file_id": {
             "type": "string",
             "title": "file_id",
             "minLength": 1
@@ -17461,7 +17743,7 @@
       "videos.v1.MarkVideoProcessedRequest": {
         "type": "object",
         "properties": {
-          "fileId": {
+          "file_id": {
             "type": "string",
             "title": "file_id",
             "minLength": 1
@@ -17488,7 +17770,7 @@
             "type": "string",
             "title": "id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "title": "video_id"
           },
@@ -17496,7 +17778,7 @@
             "type": "string",
             "title": "resolution"
           },
-          "resolutionValue": {
+          "resolution_value": {
             "type": "string",
             "title": "resolution_value"
           },
@@ -17527,39 +17809,39 @@
             ],
             "title": "codec"
           },
-          "s3Path": {
+          "s3_path": {
             "type": [
               "string",
               "null"
             ],
             "title": "s3_path"
           },
-          "m3u8Url": {
+          "m3u8_url": {
             "type": [
               "string",
               "null"
             ],
             "title": "m3u8_url"
           },
-          "dashUrl": {
+          "dash_url": {
             "type": [
               "string",
               "null"
             ],
             "title": "dash_url"
           },
-          "errorMessage": {
+          "error_message": {
             "type": [
               "string",
               "null"
             ],
             "title": "error_message"
           },
-          "isLowestResolution": {
+          "is_lowest_resolution": {
             "type": "boolean",
             "title": "is_lowest_resolution"
           },
-          "retryCount": {
+          "retry_count": {
             "type": [
               "integer",
               "null"
@@ -17574,7 +17856,7 @@
       "videos.v1.RenditionInput": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "title": "video_id",
             "minLength": 1
@@ -17583,7 +17865,7 @@
             "type": "string",
             "title": "resolution"
           },
-          "resolutionValue": {
+          "resolution_value": {
             "type": "string",
             "title": "resolution_value"
           },
@@ -17614,7 +17896,7 @@
             ],
             "title": "codec"
           },
-          "isLowestResolution": {
+          "is_lowest_resolution": {
             "type": "boolean",
             "title": "is_lowest_resolution"
           }
@@ -17647,14 +17929,14 @@
             ],
             "title": "id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "languageCode": {
+          "language_code": {
             "type": "string",
             "examples": [
               "en"
@@ -17672,7 +17954,7 @@
             "type": "string",
             "title": "label"
           },
-          "vttPath": {
+          "vtt_path": {
             "type": "string",
             "title": "vtt_path"
           }
@@ -17687,11 +17969,11 @@
             "type": "string",
             "title": "id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "title": "video_id"
           },
-          "languageCode": {
+          "language_code": {
             "type": "string",
             "title": "language_code"
           },
@@ -17699,11 +17981,11 @@
             "type": "string",
             "title": "label"
           },
-          "s3Path": {
+          "s3_path": {
             "type": "string",
             "title": "s3_path"
           },
-          "vttPath": {
+          "vtt_path": {
             "type": [
               "string",
               "null"
@@ -17739,7 +18021,7 @@
             },
             "title": "targets"
           },
-          "expiresAt": {
+          "expires_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -17753,7 +18035,7 @@
       "videos.v1.TrackUploadItem": {
         "type": "object",
         "properties": {
-          "languageCode": {
+          "language_code": {
             "type": "string",
             "examples": [
               "en"
@@ -17764,7 +18046,7 @@
             "type": "string",
             "title": "label"
           },
-          "fileName": {
+          "file_name": {
             "type": "string",
             "title": "file_name"
           },
@@ -17797,18 +18079,18 @@
             ],
             "title": "id"
           },
-          "languageCode": {
+          "language_code": {
             "type": "string",
             "examples": [
               "en"
             ],
             "title": "language_code"
           },
-          "objectKey": {
+          "object_key": {
             "type": "string",
             "title": "object_key"
           },
-          "uploadUrl": {
+          "upload_url": {
             "type": "string",
             "examples": [
               "https://cdn.example.com/video.mp4"
@@ -17827,7 +18109,7 @@
             "title": "id",
             "minLength": 1
           },
-          "s3Path": {
+          "s3_path": {
             "type": "string",
             "title": "s3_path",
             "minLength": 1
@@ -17861,7 +18143,7 @@
             "title": "id",
             "minLength": 1
           },
-          "errorMessage": {
+          "error_message": {
             "type": [
               "string",
               "null"
@@ -17880,21 +18162,21 @@
             "title": "id",
             "minLength": 1
           },
-          "s3Path": {
+          "s3_path": {
             "type": [
               "string",
               "null"
             ],
             "title": "s3_path"
           },
-          "m3u8Url": {
+          "m3u8_url": {
             "type": [
               "string",
               "null"
             ],
             "title": "m3u8_url"
           },
-          "dashUrl": {
+          "dash_url": {
             "type": [
               "string",
               "null"
@@ -17925,14 +18207,14 @@
       "videos.v1.UpdateVideoChaptersRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -17997,14 +18279,14 @@
       "videos.v1.UpdateVideoVisibilityRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -18025,14 +18307,14 @@
       "videos.v1.UploadVideoThumbnailRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -18046,7 +18328,7 @@
             "minLength": 1,
             "format": "byte"
           },
-          "contentType": {
+          "content_type": {
             "type": "string",
             "examples": [
               "image/jpeg"
@@ -18061,7 +18343,7 @@
       "videos.v1.UploadVideoThumbnailResponse": {
         "type": "object",
         "properties": {
-          "thumbnailUrl": {
+          "thumbnail_url": {
             "type": "string",
             "examples": [
               "https://cdn.example.com/poster.jpg"
@@ -18079,7 +18361,7 @@
             "type": "string",
             "title": "id"
           },
-          "posterId": {
+          "poster_id": {
             "type": "string",
             "title": "poster_id"
           },
@@ -18115,11 +18397,11 @@
             "type": "boolean",
             "title": "hdr"
           },
-          "videoQuality": {
+          "video_quality": {
             "type": "string",
             "title": "video_quality"
           },
-          "inFeed": {
+          "in_feed": {
             "type": "boolean",
             "title": "in_feed"
           }
@@ -18130,7 +18412,7 @@
       "videos.v1.VideoChapters": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -18165,7 +18447,7 @@
       "videos.v1.VideoIdRequest": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "title": "video_id",
             "minLength": 1
@@ -18177,14 +18459,14 @@
       "videos.v1.VideoScopeRequest": {
         "type": "object",
         "properties": {
-          "projectId": {
+          "project_id": {
             "type": "string",
             "examples": [
               "Bq4y3QB38S"
             ],
             "title": "project_id"
           },
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
@@ -18251,7 +18533,7 @@
             "title": "size",
             "format": "int64"
           },
-          "createdAt": {
+          "created_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
@@ -18272,35 +18554,35 @@
       "videos.v1.VideoUploadInit": {
         "type": "object",
         "properties": {
-          "videoId": {
+          "video_id": {
             "type": "string",
             "examples": [
               "FpzVPNx1cG"
             ],
             "title": "video_id"
           },
-          "posterId": {
+          "poster_id": {
             "type": "string",
             "examples": [
               "LmNoPqR678"
             ],
             "title": "poster_id"
           },
-          "videoUploadUrl": {
+          "video_upload_url": {
             "type": "string",
             "examples": [
               "https://cdn.example.com/video.mp4"
             ],
             "title": "video_upload_url"
           },
-          "posterUploadUrl": {
+          "poster_upload_url": {
             "type": "string",
             "examples": [
               "https://cdn.example.com/poster.jpg"
             ],
             "title": "poster_upload_url"
           },
-          "expiresAt": {
+          "expires_at": {
             "examples": [
               "2026-01-15T10:30:00Z"
             ],
