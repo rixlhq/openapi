@@ -880,6 +880,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+  /auth/v1/membership-applications:
+    get:
+      tags:
+        - Memberships
+      summary: ListMembershipApplications
+      operationId: auth.v1.MembershipService.ListMembershipApplications
+      parameters:
+        - name: user.user_id
+          in: query
+          schema:
+            type: string
+            title: user_id
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            title: limit
+            format: int32
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            title: offset
+            format: int32
+        - name: state
+          in: query
+          schema:
+            title: state
+            $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.ListMembershipApplicationsResponse'
   /auth/v1/memberships:
     get:
       tags:
@@ -1047,7 +1083,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/auth.v1.MembershipMutation'
+                $ref: '#/components/schemas/auth.v1.MembershipApplication'
   /auth/v1/memberships/{user.org_id}/invite/resend:
     post:
       tags:
@@ -1076,6 +1112,37 @@ paths:
               title: ResendInvitationRequest
               additionalProperties: false
         required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.protobuf.Empty'
+  /auth/v1/memberships/{user.org_id}/invite/{user_id}:
+    delete:
+      tags:
+        - Memberships
+      summary: CancelInvitation
+      operationId: auth.v1.MembershipService.CancelInvitation
+      parameters:
+        - name: user.org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: user_id
+        - name: user.actor_id
+          in: query
+          schema:
+            type: string
+            title: actor_id
       responses:
         "200":
           description: Success
@@ -1151,6 +1218,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+  /auth/v1/memberships/{user.org_id}/members/{user_id}/reactivate:
+    patch:
+      tags:
+        - Memberships
+      summary: ReactivateMember
+      operationId: auth.v1.MembershipService.ReactivateMember
+      parameters:
+        - name: user.org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: user_id
+        - name: user.actor_id
+          in: query
+          schema:
+            type: string
+            title: actor_id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.MembershipMutation'
   /auth/v1/memberships/{user.org_id}/members/{user_id}/role:
     patch:
       tags:
@@ -1188,6 +1286,37 @@ paths:
               title: UpdateMemberRoleRequest
               additionalProperties: false
         required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.MembershipMutation'
+  /auth/v1/memberships/{user.org_id}/members/{user_id}/suspend:
+    patch:
+      tags:
+        - Memberships
+      summary: SuspendMember
+      operationId: auth.v1.MembershipService.SuspendMember
+      parameters:
+        - name: user.org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: user_id
+        - name: user.actor_id
+          in: query
+          schema:
+            type: string
+            title: actor_id
       responses:
         "200":
           description: Success
@@ -1254,7 +1383,7 @@ paths:
                   $ref: '#/components/schemas/auth.v1.UserOrgRequest'
                 state:
                   title: state
-                  $ref: '#/components/schemas/auth.v1.MembershipState'
+                  $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
               title: UpdateMembershipStateRequest
               additionalProperties: false
         required: true
@@ -7158,6 +7287,17 @@ components:
           $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: BlogSubscriptionResponse
       additionalProperties: false
+    auth.v1.CancelInvitationRequest:
+      type: object
+      properties:
+        user:
+          title: user
+          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
+        user_id:
+          type: string
+          title: user_id
+      title: CancelInvitationRequest
+      additionalProperties: false
     auth.v1.CheckIsAdminResponse:
       type: object
       properties:
@@ -7423,6 +7563,35 @@ components:
           title: attachments
       title: ListAttachmentsResponse
       additionalProperties: false
+    auth.v1.ListMembershipApplicationsRequest:
+      type: object
+      properties:
+        user:
+          title: user
+          $ref: '#/components/schemas/auth.v1.UserRequest'
+        limit:
+          type: integer
+          title: limit
+          format: int32
+        offset:
+          type: integer
+          title: offset
+          format: int32
+        state:
+          title: state
+          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
+      title: ListMembershipApplicationsRequest
+      additionalProperties: false
+    auth.v1.ListMembershipApplicationsResponse:
+      type: object
+      properties:
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/auth.v1.MembershipApplication'
+          title: applications
+      title: ListMembershipApplicationsResponse
+      additionalProperties: false
     auth.v1.ListMembershipsRequest:
       type: object
       properties:
@@ -7646,6 +7815,53 @@ components:
           $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: Membership
       additionalProperties: false
+    auth.v1.MembershipApplication:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        user_id:
+          type: string
+          title: user_id
+        org_id:
+          type: string
+          title: org_id
+        role:
+          title: role
+          $ref: '#/components/schemas/auth.v1.MembershipRole'
+        state:
+          title: state
+          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
+        organization_username:
+          type: string
+          title: organization_username
+        organization_first_name:
+          type: string
+          title: organization_first_name
+        organization_last_name:
+          type: string
+          title: organization_last_name
+        created_at:
+          title: created_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        decided_at:
+          title: decided_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        invitation_expires_at:
+          title: invitation_expires_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+      title: MembershipApplication
+      additionalProperties: false
+    auth.v1.MembershipApplicationState:
+      type: string
+      title: MembershipApplicationState
+      enum:
+        - MEMBERSHIP_APPLICATION_STATE_UNSPECIFIED
+        - MEMBERSHIP_APPLICATION_STATE_PENDING
+        - MEMBERSHIP_APPLICATION_STATE_APPROVED
+        - MEMBERSHIP_APPLICATION_STATE_DECLINED
+        - MEMBERSHIP_APPLICATION_STATE_CANCELLED
     auth.v1.MembershipMutation:
       type: object
       properties:
@@ -7682,9 +7898,10 @@ components:
       title: MembershipState
       enum:
         - MEMBERSHIP_STATE_UNSPECIFIED
-        - MEMBERSHIP_STATE_PENDING
-        - MEMBERSHIP_STATE_ACCEPTED
-        - MEMBERSHIP_STATE_DECLINED
+        - MEMBERSHIP_STATE_ACTIVE
+        - MEMBERSHIP_STATE_SUSPENDED
+        - MEMBERSHIP_STATE_LEFT
+        - MEMBERSHIP_STATE_REMOVED
     auth.v1.OTPStatusResponse:
       type: object
       properties:
@@ -7933,6 +8150,17 @@ components:
           title: policy_id
       title: PolicyRequest
       additionalProperties: false
+    auth.v1.ReactivateMemberRequest:
+      type: object
+      properties:
+        user:
+          title: user
+          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
+        user_id:
+          type: string
+          title: user_id
+      title: ReactivateMemberRequest
+      additionalProperties: false
     auth.v1.RefreshTokenRequest:
       type: object
       properties:
@@ -8157,6 +8385,17 @@ components:
           title: qr_code_url
       title: SetupOTPResponse
       additionalProperties: false
+    auth.v1.SuspendMemberRequest:
+      type: object
+      properties:
+        user:
+          title: user
+          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
+        user_id:
+          type: string
+          title: user_id
+      title: SuspendMemberRequest
+      additionalProperties: false
     auth.v1.TokenResponse:
       type: object
       properties:
@@ -8224,7 +8463,7 @@ components:
           $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         state:
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipState'
+          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
       title: UpdateMembershipStateRequest
       additionalProperties: false
     auth.v1.UpdateNameRequest:
