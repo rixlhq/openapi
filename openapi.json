@@ -5666,7 +5666,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/images.v1.ImageUploadInit"
+                  "$ref": "#/components/schemas/images.v1.ImageUpload"
                 }
               }
             }
@@ -5714,95 +5714,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/google.protobuf.Empty"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/media/v1/projects/{project_id}/images/{image_id}/upload/complete": {
-      "post": {
-        "tags": [
-          "Images"
-        ],
-        "summary": "CompleteImageUpload",
-        "operationId": "images.v1.ImageService.CompleteImageUpload",
-        "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "Bq4y3QB38S"
-              ],
-              "title": "project_id"
-            }
-          },
-          {
-            "name": "image_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "LmNoPqR678"
-              ],
-              "title": "image_id"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "examples": [
-                      "Bq4y3QB38S"
-                    ],
-                    "title": "project_id"
-                  },
-                  "org_id": {
-                    "type": "string",
-                    "examples": [
-                      "OR98234j23"
-                    ],
-                    "title": "org_id"
-                  },
-                  "image_id": {
-                    "type": "string",
-                    "examples": [
-                      "LmNoPqR678"
-                    ],
-                    "title": "image_id"
-                  },
-                  "attached_to_video": {
-                    "type": "boolean",
-                    "examples": [
-                      "true"
-                    ],
-                    "title": "attached_to_video"
-                  }
-                },
-                "title": "CompleteImageUploadRequest",
-                "additionalProperties": false
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/images.v1.GetImageResponse"
                 }
               }
             }
@@ -6507,102 +6418,13 @@
         }
       }
     },
-    "/posts/v1/projects/{project_id}/feeds/{feed_id}/posts/upload/complete": {
+    "/posts/v1/projects/{project_id}/feeds/{feed_id}/posts/upload": {
       "post": {
         "tags": [
           "Posts"
         ],
-        "summary": "CompletePostUpload",
-        "operationId": "posts.v1.PostService.CompletePostUpload",
-        "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "Bq4y3QB38S"
-              ],
-              "title": "project_id"
-            }
-          },
-          {
-            "name": "feed_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "F4edRI23XL"
-              ],
-              "title": "feed_id"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "examples": [
-                      "Bq4y3QB38S"
-                    ],
-                    "title": "project_id"
-                  },
-                  "org_id": {
-                    "type": "string",
-                    "examples": [
-                      "OR98234j23"
-                    ],
-                    "title": "org_id"
-                  },
-                  "feed_id": {
-                    "type": "string",
-                    "examples": [
-                      "F4edRI23XL"
-                    ],
-                    "title": "feed_id"
-                  },
-                  "post_id": {
-                    "type": "string",
-                    "examples": [
-                      "Mn0bVc9xZ8"
-                    ],
-                    "title": "post_id"
-                  }
-                },
-                "title": "CompletePostUploadRequest",
-                "additionalProperties": false
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/posts.v1.Post"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/posts/v1/projects/{project_id}/feeds/{feed_id}/posts/upload/init": {
-      "post": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "InitPostUpload",
-        "operationId": "posts.v1.PostService.InitPostUpload",
+        "summary": "CreatePostUpload",
+        "operationId": "posts.v1.PostService.CreatePostUpload",
         "parameters": [
           {
             "name": "project_id",
@@ -6707,7 +6529,7 @@
                     "$ref": "#/components/schemas/common.v1.ImageFormat"
                   }
                 },
-                "title": "InitPostUploadRequest",
+                "title": "CreatePostUploadRequest",
                 "additionalProperties": false
               }
             }
@@ -6720,7 +6542,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/posts.v1.PostUploadInit"
+                  "$ref": "#/components/schemas/posts.v1.PostUpload"
                 }
               }
             }
@@ -7665,8 +7487,8 @@
         "tags": [
           "Audio Tracks"
         ],
-        "summary": "InitAudioTrackUpload",
-        "operationId": "videos.v1.AudioTrackService.InitAudioTrackUpload",
+        "summary": "CreateAudioTrackUpload",
+        "operationId": "videos.v1.AudioTrackService.CreateAudioTrackUpload",
         "parameters": [
           {
             "name": "project_id",
@@ -7729,7 +7551,7 @@
                     "minItems": 1
                   }
                 },
-                "title": "InitTrackUploadRequest",
+                "title": "CreateTrackUploadRequest",
                 "additionalProperties": false
               }
             }
@@ -7742,89 +7564,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/videos.v1.TrackUploadInit"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/media/v1/projects/{project_id}/videos/{video_id}/audio-tracks/upload/complete": {
-      "post": {
-        "tags": [
-          "Audio Tracks"
-        ],
-        "summary": "CompleteAudioTrackUpload",
-        "operationId": "videos.v1.AudioTrackService.CompleteAudioTrackUpload",
-        "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "Bq4y3QB38S"
-              ],
-              "title": "project_id"
-            }
-          },
-          {
-            "name": "video_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "FpzVPNx1cG"
-              ],
-              "title": "video_id"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "examples": [
-                      "Bq4y3QB38S"
-                    ],
-                    "title": "project_id"
-                  },
-                  "video_id": {
-                    "type": "string",
-                    "examples": [
-                      "FpzVPNx1cG"
-                    ],
-                    "title": "video_id"
-                  },
-                  "items": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/videos.v1.CompleteTrackUploadItem"
-                    },
-                    "title": "items"
-                  }
-                },
-                "title": "CompleteTrackUploadRequest",
-                "additionalProperties": false
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/google.protobuf.Empty"
+                  "$ref": "#/components/schemas/videos.v1.TrackUpload"
                 }
               }
             }
@@ -8299,8 +8039,8 @@
         "tags": [
           "Subtitles"
         ],
-        "summary": "InitSubtitleUpload",
-        "operationId": "videos.v1.SubtitleService.InitSubtitleUpload",
+        "summary": "CreateSubtitleUpload",
+        "operationId": "videos.v1.SubtitleService.CreateSubtitleUpload",
         "parameters": [
           {
             "name": "project_id",
@@ -8363,7 +8103,7 @@
                     "minItems": 1
                   }
                 },
-                "title": "InitTrackUploadRequest",
+                "title": "CreateTrackUploadRequest",
                 "additionalProperties": false
               }
             }
@@ -8376,89 +8116,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/videos.v1.TrackUploadInit"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/media/v1/projects/{project_id}/videos/{video_id}/subtitles/upload/complete": {
-      "post": {
-        "tags": [
-          "Subtitles"
-        ],
-        "summary": "CompleteSubtitleUpload",
-        "operationId": "videos.v1.SubtitleService.CompleteSubtitleUpload",
-        "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "Bq4y3QB38S"
-              ],
-              "title": "project_id"
-            }
-          },
-          {
-            "name": "video_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "FpzVPNx1cG"
-              ],
-              "title": "video_id"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "examples": [
-                      "Bq4y3QB38S"
-                    ],
-                    "title": "project_id"
-                  },
-                  "video_id": {
-                    "type": "string",
-                    "examples": [
-                      "FpzVPNx1cG"
-                    ],
-                    "title": "video_id"
-                  },
-                  "items": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/videos.v1.CompleteTrackUploadItem"
-                    },
-                    "title": "items"
-                  }
-                },
-                "title": "CompleteTrackUploadRequest",
-                "additionalProperties": false
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/google.protobuf.Empty"
+                  "$ref": "#/components/schemas/videos.v1.TrackUpload"
                 }
               }
             }
@@ -8718,7 +8376,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/videos.v1.VideoUploadInit"
+                  "$ref": "#/components/schemas/videos.v1.VideoUpload"
                 }
               }
             }
@@ -8766,88 +8424,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/google.protobuf.Empty"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/media/v1/projects/{project_id}/videos/{video_id}/upload/complete": {
-      "post": {
-        "tags": [
-          "Videos"
-        ],
-        "summary": "CompleteVideoUpload",
-        "operationId": "videos.v1.VideoService.CompleteVideoUpload",
-        "parameters": [
-          {
-            "name": "project_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "Bq4y3QB38S"
-              ],
-              "title": "project_id"
-            }
-          },
-          {
-            "name": "video_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "examples": [
-                "FpzVPNx1cG"
-              ],
-              "title": "video_id"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "examples": [
-                      "Bq4y3QB38S"
-                    ],
-                    "title": "project_id"
-                  },
-                  "org_id": {
-                    "type": "string",
-                    "examples": [
-                      "OR98234j23"
-                    ],
-                    "title": "org_id"
-                  },
-                  "video_id": {
-                    "type": "string",
-                    "examples": [
-                      "FpzVPNx1cG"
-                    ],
-                    "title": "video_id"
-                  }
-                },
-                "title": "CompleteVideoUploadRequest",
-                "additionalProperties": false
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/videos.v1.GetVideoResponse"
                 }
               }
             }
@@ -15849,41 +15425,6 @@
         "format": "date-time",
         "description": "A Timestamp represents a point in time independent of any time zone or local\n calendar, encoded as a count of seconds and fractions of seconds at\n nanosecond resolution. The count is relative to an epoch at UTC midnight on\n January 1, 1970, in the proleptic Gregorian calendar which extends the\n Gregorian calendar backwards to year one.\n\n All minutes are 60 seconds long. Leap seconds are \"smeared\" so that no leap\n second table is needed for interpretation, using a [24-hour linear\n smear](https://developers.google.com/time/smear).\n\n The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By\n restricting to that range, we ensure that we can convert to and from [RFC\n 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.\n\n # Examples\n\n Example 1: Compute Timestamp from POSIX `time()`.\n\n     Timestamp timestamp;\n     timestamp.set_seconds(time(NULL));\n     timestamp.set_nanos(0);\n\n Example 2: Compute Timestamp from POSIX `gettimeofday()`.\n\n     struct timeval tv;\n     gettimeofday(&tv, NULL);\n\n     Timestamp timestamp;\n     timestamp.set_seconds(tv.tv_sec);\n     timestamp.set_nanos(tv.tv_usec * 1000);\n\n Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.\n\n     FILETIME ft;\n     GetSystemTimeAsFileTime(&ft);\n     UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;\n\n     // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z\n     // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.\n     Timestamp timestamp;\n     timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));\n     timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));\n\n Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.\n\n     long millis = System.currentTimeMillis();\n\n     Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000)\n         .setNanos((int) ((millis % 1000) * 1000000)).build();\n\n Example 5: Compute Timestamp from Java `Instant.now()`.\n\n     Instant now = Instant.now();\n\n     Timestamp timestamp =\n         Timestamp.newBuilder().setSeconds(now.getEpochSecond())\n             .setNanos(now.getNano()).build();\n\n Example 6: Compute Timestamp from current time in Python.\n\n     timestamp = Timestamp()\n     timestamp.GetCurrentTime()\n\n # JSON Mapping\n\n In JSON format, the Timestamp type is encoded as a string in the\n [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the\n format is \"{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z\"\n where {year} is always expressed using four digits while {month}, {day},\n {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional\n seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),\n are optional. The \"Z\" suffix indicates the timezone (\"UTC\"); the timezone\n is required. A proto3 JSON serializer should always use UTC (as indicated by\n \"Z\") when printing the Timestamp type and a proto3 JSON parser should be\n able to accept both UTC and other timezones (as indicated by an offset).\n\n For example, \"2017-01-15T01:30:15.01Z\" encodes 15.01 seconds past\n 01:30 UTC on January 15, 2017.\n\n In JavaScript, one can convert a Date object to this format using the\n standard\n [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)\n method. In Python, a standard `datetime.datetime` object can be converted\n to this format using\n [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with\n the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use\n the Joda Time's [`ISODateTimeFormat.dateTime()`](\n http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()\n ) to obtain a formatter capable of generating timestamps in this format."
       },
-      "images.v1.CompleteImageUploadRequest": {
-        "type": "object",
-        "properties": {
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "org_id": {
-            "type": "string",
-            "examples": [
-              "OR98234j23"
-            ],
-            "title": "org_id"
-          },
-          "image_id": {
-            "type": "string",
-            "examples": [
-              "LmNoPqR678"
-            ],
-            "title": "image_id"
-          },
-          "attached_to_video": {
-            "type": "boolean",
-            "examples": [
-              "true"
-            ],
-            "title": "attached_to_video"
-          }
-        },
-        "title": "CompleteImageUploadRequest",
-        "additionalProperties": false
-      },
       "images.v1.CreateImageUploadRequest": {
         "type": "object",
         "properties": {
@@ -16155,7 +15696,7 @@
         "title": "ImageSummary",
         "additionalProperties": false
       },
-      "images.v1.ImageUploadInit": {
+      "images.v1.ImageUpload": {
         "type": "object",
         "properties": {
           "image_id": {
@@ -16180,7 +15721,7 @@
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
         },
-        "title": "ImageUploadInit",
+        "title": "ImageUpload",
         "additionalProperties": false
       },
       "images.v1.ListImagesRequest": {
@@ -16469,41 +16010,6 @@
         "title": "TokenResponse",
         "additionalProperties": false
       },
-      "posts.v1.CompletePostUploadRequest": {
-        "type": "object",
-        "properties": {
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "org_id": {
-            "type": "string",
-            "examples": [
-              "OR98234j23"
-            ],
-            "title": "org_id"
-          },
-          "feed_id": {
-            "type": "string",
-            "examples": [
-              "F4edRI23XL"
-            ],
-            "title": "feed_id"
-          },
-          "post_id": {
-            "type": "string",
-            "examples": [
-              "Mn0bVc9xZ8"
-            ],
-            "title": "post_id"
-          }
-        },
-        "title": "CompletePostUploadRequest",
-        "additionalProperties": false
-      },
       "posts.v1.CreatePostRequest": {
         "type": "object",
         "allOf": [
@@ -16594,65 +16100,7 @@
         "title": "CreatePostRequest",
         "additionalProperties": false
       },
-      "posts.v1.DeletePostRequest": {
-        "type": "object",
-        "properties": {
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "post_id": {
-            "type": "string",
-            "examples": [
-              "Mn0bVc9xZ8"
-            ],
-            "title": "post_id"
-          },
-          "feed_id": {
-            "type": "string",
-            "examples": [
-              "F4edRI23XL"
-            ],
-            "title": "feed_id",
-            "description": "feed_id is accepted from the feed-scoped delete path but not used by the\n backend (deletion is keyed by post_id)."
-          }
-        },
-        "title": "DeletePostRequest",
-        "additionalProperties": false
-      },
-      "posts.v1.GetPostRequest": {
-        "type": "object",
-        "properties": {
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "post_id": {
-            "type": "string",
-            "examples": [
-              "Mn0bVc9xZ8"
-            ],
-            "title": "post_id"
-          },
-          "feed_id": {
-            "type": "string",
-            "examples": [
-              "F4edRI23XL"
-            ],
-            "title": "feed_id",
-            "description": "Populated from feed-scoped routes; the handler resolves by post_id, so this\n is used only for path binding / optional validation."
-          }
-        },
-        "title": "GetPostRequest",
-        "additionalProperties": false
-      },
-      "posts.v1.InitPostUploadRequest": {
+      "posts.v1.CreatePostUploadRequest": {
         "type": "object",
         "properties": {
           "project_id": {
@@ -16727,7 +16175,65 @@
             "$ref": "#/components/schemas/common.v1.ImageFormat"
           }
         },
-        "title": "InitPostUploadRequest",
+        "title": "CreatePostUploadRequest",
+        "additionalProperties": false
+      },
+      "posts.v1.DeletePostRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "examples": [
+              "Bq4y3QB38S"
+            ],
+            "title": "project_id"
+          },
+          "post_id": {
+            "type": "string",
+            "examples": [
+              "Mn0bVc9xZ8"
+            ],
+            "title": "post_id"
+          },
+          "feed_id": {
+            "type": "string",
+            "examples": [
+              "F4edRI23XL"
+            ],
+            "title": "feed_id",
+            "description": "feed_id is accepted from the feed-scoped delete path but not used by the\n backend (deletion is keyed by post_id)."
+          }
+        },
+        "title": "DeletePostRequest",
+        "additionalProperties": false
+      },
+      "posts.v1.GetPostRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "examples": [
+              "Bq4y3QB38S"
+            ],
+            "title": "project_id"
+          },
+          "post_id": {
+            "type": "string",
+            "examples": [
+              "Mn0bVc9xZ8"
+            ],
+            "title": "post_id"
+          },
+          "feed_id": {
+            "type": "string",
+            "examples": [
+              "F4edRI23XL"
+            ],
+            "title": "feed_id",
+            "description": "Populated from feed-scoped routes; the handler resolves by post_id, so this\n is used only for path binding / optional validation."
+          }
+        },
+        "title": "GetPostRequest",
         "additionalProperties": false
       },
       "posts.v1.ListPostsRequest": {
@@ -16971,7 +16477,7 @@
         "title": "PostImage",
         "additionalProperties": false
       },
-      "posts.v1.PostUploadInit": {
+      "posts.v1.PostUpload": {
         "type": "object",
         "properties": {
           "post_id": {
@@ -17017,7 +16523,7 @@
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
         },
-        "title": "PostUploadInit",
+        "title": "PostUpload",
         "additionalProperties": false
       },
       "posts.v1.PostVideo": {
@@ -17397,6 +16903,44 @@
         ],
         "additionalProperties": false
       },
+      "upload.v1.ReceiveStorageEventRequest": {
+        "type": "object",
+        "properties": {
+          "bucket": {
+            "type": "string",
+            "title": "bucket",
+            "minLength": 1
+          },
+          "object_key": {
+            "type": "string",
+            "title": "object_key",
+            "minLength": 1
+          },
+          "object_size": {
+            "type": [
+              "integer",
+              "string",
+              "null"
+            ],
+            "title": "object_size",
+            "minimum": 0,
+            "format": "int64"
+          }
+        },
+        "title": "ReceiveStorageEventRequest",
+        "additionalProperties": false
+      },
+      "upload.v1.ReceiveStorageEventResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "status"
+          }
+        },
+        "title": "ReceiveStorageEventResponse",
+        "additionalProperties": false
+      },
       "videos.v1.AudioTrack": {
         "type": "object",
         "properties": {
@@ -17459,91 +17003,6 @@
         "title": "Chapter",
         "additionalProperties": false
       },
-      "videos.v1.CompleteTrackUploadItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "Tg6Rf4e2W1"
-            ],
-            "title": "id"
-          },
-          "object_key": {
-            "type": "string",
-            "title": "object_key"
-          },
-          "size": {
-            "type": [
-              "integer",
-              "string"
-            ],
-            "examples": [
-              "104857600"
-            ],
-            "title": "size",
-            "format": "int64"
-          }
-        },
-        "title": "CompleteTrackUploadItem",
-        "additionalProperties": false
-      },
-      "videos.v1.CompleteTrackUploadRequest": {
-        "type": "object",
-        "properties": {
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "video_id": {
-            "type": "string",
-            "examples": [
-              "FpzVPNx1cG"
-            ],
-            "title": "video_id"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/videos.v1.CompleteTrackUploadItem"
-            },
-            "title": "items"
-          }
-        },
-        "title": "CompleteTrackUploadRequest",
-        "additionalProperties": false
-      },
-      "videos.v1.CompleteVideoUploadRequest": {
-        "type": "object",
-        "properties": {
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "org_id": {
-            "type": "string",
-            "examples": [
-              "OR98234j23"
-            ],
-            "title": "org_id"
-          },
-          "video_id": {
-            "type": "string",
-            "examples": [
-              "FpzVPNx1cG"
-            ],
-            "title": "video_id"
-          }
-        },
-        "title": "CompleteVideoUploadRequest",
-        "additionalProperties": false
-      },
       "videos.v1.ConversionGetVideoRequest": {
         "type": "object",
         "properties": {
@@ -17568,6 +17027,42 @@
           }
         },
         "title": "CreateRenditionsRequest",
+        "additionalProperties": false
+      },
+      "videos.v1.CreateTrackUploadRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "examples": [
+              "Bq4y3QB38S"
+            ],
+            "title": "project_id"
+          },
+          "org_id": {
+            "type": "string",
+            "examples": [
+              "OR98234j23"
+            ],
+            "title": "org_id"
+          },
+          "video_id": {
+            "type": "string",
+            "examples": [
+              "FpzVPNx1cG"
+            ],
+            "title": "video_id"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/videos.v1.TrackUploadItem"
+            },
+            "title": "items",
+            "minItems": 1
+          }
+        },
+        "title": "CreateTrackUploadRequest",
         "additionalProperties": false
       },
       "videos.v1.CreateVideoUploadRequest": {
@@ -17904,42 +17399,6 @@
           }
         },
         "title": "GetVideoResponse",
-        "additionalProperties": false
-      },
-      "videos.v1.InitTrackUploadRequest": {
-        "type": "object",
-        "properties": {
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "org_id": {
-            "type": "string",
-            "examples": [
-              "OR98234j23"
-            ],
-            "title": "org_id"
-          },
-          "video_id": {
-            "type": "string",
-            "examples": [
-              "FpzVPNx1cG"
-            ],
-            "title": "video_id"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/videos.v1.TrackUploadItem"
-            },
-            "title": "items",
-            "minItems": 1
-          }
-        },
-        "title": "InitTrackUploadRequest",
         "additionalProperties": false
       },
       "videos.v1.Language": {
@@ -18362,7 +17821,7 @@
         "title": "SubtitleRowList",
         "additionalProperties": false
       },
-      "videos.v1.TrackUploadInit": {
+      "videos.v1.TrackUpload": {
         "type": "object",
         "properties": {
           "targets": {
@@ -18380,7 +17839,7 @@
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
         },
-        "title": "TrackUploadInit",
+        "title": "TrackUpload",
         "additionalProperties": false
       },
       "videos.v1.TrackUploadItem": {
@@ -18902,7 +18361,7 @@
         "title": "VideoSummary",
         "additionalProperties": false
       },
-      "videos.v1.VideoUploadInit": {
+      "videos.v1.VideoUpload": {
         "type": "object",
         "properties": {
           "video_id": {
@@ -18941,7 +18400,7 @@
             "$ref": "#/components/schemas/google.protobuf.Timestamp"
           }
         },
-        "title": "VideoUploadInit",
+        "title": "VideoUpload",
         "additionalProperties": false
       },
       "videos.v1.VideoView": {
@@ -19117,6 +18576,10 @@
       "description": "Projects that group content and settings."
     },
     {
+      "name": "Storage Webhooks",
+      "description": "Internal storage-event callbacks used to finalize uploads."
+    },
+    {
       "name": "API Keys",
       "description": "Create and manage API keys."
     },
@@ -19193,6 +18656,7 @@
     {
       "name": "Platform",
       "tags": [
+        "Storage Webhooks",
         "API Keys",
         "Platform Auth",
         "Client Credentials"
