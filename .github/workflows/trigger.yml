@@ -25,6 +25,7 @@ jobs:
           - rixl-python
           - rixl-ruby
           - rixl-rust
+          - terraform-provider-rixl
     steps:
       - name: Dispatch regenerate-sdk
         uses: rixlhq/openapi/.github/actions/dispatch-repository-event@main
