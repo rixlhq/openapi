@@ -5644,13 +5644,6 @@
                     ],
                     "title": "name",
                     "maxLength": 64
-                  },
-                  "format": {
-                    "examples": [
-                      "IMAGE_FORMAT_JPG"
-                    ],
-                    "title": "format",
-                    "$ref": "#/components/schemas/common.v1.ImageFormat"
                   }
                 },
                 "title": "CreateImageUploadRequest",
@@ -5795,7 +5788,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/images.v1.GetImageResponse"
+                  "$ref": "#/components/schemas/images.v1.UpdateImageVisibilityResponse"
                 }
               }
             }
@@ -6091,7 +6084,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/posts.v1.Post"
+                  "$ref": "#/components/schemas/posts.v1.GetPostResponse"
                 }
               }
             }
@@ -6321,7 +6314,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/posts.v1.Post"
+                  "$ref": "#/components/schemas/posts.v1.CreatePostResponse"
                 }
               }
             }
@@ -6507,26 +6500,12 @@
                     ],
                     "title": "file_name"
                   },
-                  "format": {
-                    "type": "string",
-                    "examples": [
-                      "mp4"
-                    ],
-                    "title": "format"
-                  },
                   "video_quality": {
                     "examples": [
                       "VIDEO_QUALITY_PRO"
                     ],
                     "title": "video_quality",
                     "$ref": "#/components/schemas/common.v1.VideoQuality"
-                  },
-                  "image_format": {
-                    "examples": [
-                      "IMAGE_FORMAT_JPG"
-                    ],
-                    "title": "image_format",
-                    "$ref": "#/components/schemas/common.v1.ImageFormat"
                   }
                 },
                 "title": "CreatePostUploadRequest",
@@ -6602,7 +6581,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/posts.v1.Post"
+                  "$ref": "#/components/schemas/posts.v1.GetPostResponse"
                 }
               }
             }
@@ -6719,7 +6698,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/posts.v1.Post"
+                  "$ref": "#/components/schemas/posts.v1.GetPostResponse"
                 }
               }
             }
@@ -8348,13 +8327,6 @@
                     "title": "name",
                     "maxLength": 64
                   },
-                  "image_format": {
-                    "examples": [
-                      "IMAGE_FORMAT_JPG"
-                    ],
-                    "title": "image_format",
-                    "$ref": "#/components/schemas/common.v1.ImageFormat"
-                  },
                   "video_quality": {
                     "examples": [
                       "VIDEO_QUALITY_PRO"
@@ -8505,7 +8477,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/videos.v1.GetVideoResponse"
+                  "$ref": "#/components/schemas/videos.v1.UpdateVideoVisibilityResponse"
                 }
               }
             }
@@ -15005,6 +14977,83 @@
         "title": "RevokeClientCredentialRequest",
         "additionalProperties": false
       },
+      "common.v1.File": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "FpvLwyDMqu"
+            ],
+            "title": "id"
+          },
+          "project_id": {
+            "type": "string",
+            "examples": [
+              "Bq4y3QB38S"
+            ],
+            "title": "project_id"
+          },
+          "format": {
+            "type": "string",
+            "examples": [
+              "avif"
+            ],
+            "title": "format",
+            "description": "format describes the artifact currently served at url, not the uploaded source,\n and is only meaningful once status is FILE_STATUS_READY. Video flips from \"mp4\"\n to \"hls\" when packaging completes; that is the only signal for choosing a\n progressive player over an HLS one. Known values: jpg, png, webp, avif, gif,\n mp4, hls, srt, vtt."
+          },
+          "url": {
+            "type": "string",
+            "examples": [
+              "https://images.rixl.com/Bq4y3QB38S/FpvLwyDMqu"
+            ],
+            "title": "url"
+          },
+          "name": {
+            "type": "string",
+            "examples": [
+              "original.jpeg"
+            ],
+            "title": "name",
+            "maxLength": 64
+          },
+          "size": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "examples": [
+              "1048576"
+            ],
+            "title": "size",
+            "format": "int64",
+            "description": "size is the uploaded source's byte size for usage accounting; it is not updated\n when packaging replaces the artifact, so it does not describe the object at url."
+          },
+          "status": {
+            "examples": [
+              "FILE_STATUS_READY"
+            ],
+            "title": "status",
+            "$ref": "#/components/schemas/common.v1.FileStatus"
+          },
+          "created_at": {
+            "examples": [
+              "2026-01-15T10:30:00Z"
+            ],
+            "title": "created_at",
+            "$ref": "#/components/schemas/google.protobuf.Timestamp"
+          },
+          "updated_at": {
+            "examples": [
+              "2026-01-15T10:30:00Z"
+            ],
+            "title": "updated_at",
+            "$ref": "#/components/schemas/google.protobuf.Timestamp"
+          }
+        },
+        "title": "File",
+        "additionalProperties": false
+      },
       "common.v1.FileStatus": {
         "type": "string",
         "title": "FileStatus",
@@ -15016,17 +15065,6 @@
           "FILE_STATUS_PREPARING",
           "FILE_STATUS_READY",
           "FILE_STATUS_ERROR"
-        ]
-      },
-      "common.v1.ImageFormat": {
-        "type": "string",
-        "title": "ImageFormat",
-        "enum": [
-          "IMAGE_FORMAT_UNSPECIFIED",
-          "IMAGE_FORMAT_JPG",
-          "IMAGE_FORMAT_PNG",
-          "IMAGE_FORMAT_WEBP",
-          "IMAGE_FORMAT_GIF"
         ]
       },
       "common.v1.MediaType": {
@@ -15449,13 +15487,6 @@
             ],
             "title": "name",
             "maxLength": 64
-          },
-          "format": {
-            "examples": [
-              "IMAGE_FORMAT_JPG"
-            ],
-            "title": "format",
-            "$ref": "#/components/schemas/common.v1.ImageFormat"
           }
         },
         "title": "CreateImageUploadRequest",
@@ -15499,6 +15530,17 @@
       "images.v1.GetImageResponse": {
         "type": "object",
         "properties": {
+          "image": {
+            "title": "image",
+            "$ref": "#/components/schemas/images.v1.Image"
+          }
+        },
+        "title": "GetImageResponse",
+        "additionalProperties": false
+      },
+      "images.v1.Image": {
+        "type": "object",
+        "properties": {
           "id": {
             "type": "string",
             "examples": [
@@ -15538,7 +15580,7 @@
           },
           "file": {
             "title": "file",
-            "$ref": "#/components/schemas/images.v1.ImageFile"
+            "$ref": "#/components/schemas/common.v1.File"
           },
           "visibility": {
             "examples": [
@@ -15548,152 +15590,7 @@
             "$ref": "#/components/schemas/common.v1.Visibility"
           }
         },
-        "title": "GetImageResponse",
-        "additionalProperties": false
-      },
-      "images.v1.ImageFile": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "LmNoPqR678"
-            ],
-            "title": "id"
-          },
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "format": {
-            "examples": [
-              "IMAGE_FORMAT_JPG"
-            ],
-            "title": "format",
-            "$ref": "#/components/schemas/common.v1.ImageFormat"
-          },
-          "url": {
-            "type": "string",
-            "examples": [
-              "https://cdn.example.com/image.jpg"
-            ],
-            "title": "url"
-          },
-          "name": {
-            "type": "string",
-            "examples": [
-              "My Image"
-            ],
-            "title": "name",
-            "maxLength": 64
-          },
-          "size": {
-            "type": [
-              "integer",
-              "string"
-            ],
-            "examples": [
-              "204800"
-            ],
-            "title": "size",
-            "format": "int64"
-          },
-          "status": {
-            "examples": [
-              "FILE_STATUS_READY"
-            ],
-            "title": "status",
-            "$ref": "#/components/schemas/common.v1.FileStatus"
-          }
-        },
-        "title": "ImageFile",
-        "additionalProperties": false
-      },
-      "images.v1.ImageSummary": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "LmNoPqR678"
-            ],
-            "title": "id"
-          },
-          "name": {
-            "type": "string",
-            "examples": [
-              "My Image"
-            ],
-            "title": "name",
-            "maxLength": 64
-          },
-          "width": {
-            "type": "integer",
-            "examples": [
-              "1080"
-            ],
-            "title": "width",
-            "format": "int32"
-          },
-          "height": {
-            "type": "integer",
-            "examples": [
-              "1080"
-            ],
-            "title": "height",
-            "format": "int32"
-          },
-          "thumbhash": {
-            "type": "string",
-            "examples": [
-              "1QcSHQRnh493V4dIh4eXh1h4kJUI"
-            ],
-            "title": "thumbhash"
-          },
-          "format": {
-            "examples": [
-              "IMAGE_FORMAT_JPG"
-            ],
-            "title": "format",
-            "$ref": "#/components/schemas/common.v1.ImageFormat"
-          },
-          "size": {
-            "type": [
-              "integer",
-              "string"
-            ],
-            "examples": [
-              "204800"
-            ],
-            "title": "size",
-            "format": "int64"
-          },
-          "created_at": {
-            "examples": [
-              "2026-01-15T10:30:00Z"
-            ],
-            "title": "created_at",
-            "$ref": "#/components/schemas/google.protobuf.Timestamp"
-          },
-          "url": {
-            "type": "string",
-            "examples": [
-              "https://cdn.example.com/image.jpg"
-            ],
-            "title": "url"
-          },
-          "visibility": {
-            "examples": [
-              "VISIBILITY_PUBLIC"
-            ],
-            "title": "visibility",
-            "$ref": "#/components/schemas/common.v1.Visibility"
-          }
-        },
-        "title": "ImageSummary",
+        "title": "Image",
         "additionalProperties": false
       },
       "images.v1.ImageUpload": {
@@ -15756,9 +15653,52 @@
           "images": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/images.v1.ImageSummary"
+              "$ref": "#/components/schemas/images.v1.Image"
             },
             "title": "images"
+          },
+          "total": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "examples": [
+              "5"
+            ],
+            "title": "total",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "examples": [
+              "0"
+            ],
+            "title": "offset",
+            "format": "int32",
+            "description": "Number of items skipped before this page."
+          },
+          "limit": {
+            "type": "integer",
+            "examples": [
+              "25"
+            ],
+            "title": "limit",
+            "format": "int32",
+            "description": "Maximum number of items returned."
+          },
+          "sort_field": {
+            "type": "string",
+            "examples": [
+              "created_at"
+            ],
+            "title": "sort_field"
+          },
+          "sort_direction": {
+            "type": "string",
+            "examples": [
+              "desc"
+            ],
+            "title": "sort_direction"
           }
         },
         "title": "ListImagesResponse",
@@ -15824,7 +15764,7 @@
           "format": {
             "type": "string",
             "examples": [
-              "IMAGE_FORMAT_JPG"
+              "jpg"
             ],
             "title": "format"
           },
@@ -15888,6 +15828,17 @@
           }
         },
         "title": "UpdateImageVisibilityRequest",
+        "additionalProperties": false
+      },
+      "images.v1.UpdateImageVisibilityResponse": {
+        "type": "object",
+        "properties": {
+          "image": {
+            "title": "image",
+            "$ref": "#/components/schemas/images.v1.Image"
+          }
+        },
+        "title": "UpdateImageVisibilityResponse",
         "additionalProperties": false
       },
       "images.v1.UpdateProcessedImageDataRequest": {
@@ -16100,6 +16051,17 @@
         "title": "CreatePostRequest",
         "additionalProperties": false
       },
+      "posts.v1.CreatePostResponse": {
+        "type": "object",
+        "properties": {
+          "post": {
+            "title": "post",
+            "$ref": "#/components/schemas/posts.v1.Post"
+          }
+        },
+        "title": "CreatePostResponse",
+        "additionalProperties": false
+      },
       "posts.v1.CreatePostUploadRequest": {
         "type": "object",
         "properties": {
@@ -16153,26 +16115,12 @@
             ],
             "title": "file_name"
           },
-          "format": {
-            "type": "string",
-            "examples": [
-              "mp4"
-            ],
-            "title": "format"
-          },
           "video_quality": {
             "examples": [
               "VIDEO_QUALITY_PRO"
             ],
             "title": "video_quality",
             "$ref": "#/components/schemas/common.v1.VideoQuality"
-          },
-          "image_format": {
-            "examples": [
-              "IMAGE_FORMAT_JPG"
-            ],
-            "title": "image_format",
-            "$ref": "#/components/schemas/common.v1.ImageFormat"
           }
         },
         "title": "CreatePostUploadRequest",
@@ -16236,6 +16184,17 @@
         "title": "GetPostRequest",
         "additionalProperties": false
       },
+      "posts.v1.GetPostResponse": {
+        "type": "object",
+        "properties": {
+          "post": {
+            "title": "post",
+            "$ref": "#/components/schemas/posts.v1.Post"
+          }
+        },
+        "title": "GetPostResponse",
+        "additionalProperties": false
+      },
       "posts.v1.ListPostsRequest": {
         "type": "object",
         "properties": {
@@ -16288,6 +16247,24 @@
             ],
             "title": "total",
             "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "examples": [
+              "0"
+            ],
+            "title": "offset",
+            "format": "int32",
+            "description": "Number of items skipped before this page."
+          },
+          "limit": {
+            "type": "integer",
+            "examples": [
+              "25"
+            ],
+            "title": "limit",
+            "format": "int32",
+            "description": "Maximum number of items returned."
           }
         },
         "title": "ListPostsResponse",
@@ -16350,7 +16327,7 @@
                 "properties": {
                   "image": {
                     "title": "image",
-                    "$ref": "#/components/schemas/posts.v1.PostImage"
+                    "$ref": "#/components/schemas/images.v1.Image"
                   }
                 },
                 "title": "image",
@@ -16363,7 +16340,7 @@
                 "properties": {
                   "video": {
                     "title": "video",
-                    "$ref": "#/components/schemas/posts.v1.PostVideo"
+                    "$ref": "#/components/schemas/videos.v1.Video"
                   }
                 },
                 "title": "video",
@@ -16375,106 +16352,6 @@
           }
         ],
         "title": "Post",
-        "additionalProperties": false
-      },
-      "posts.v1.PostFile": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "title": "id"
-          },
-          "project_id": {
-            "type": "string",
-            "examples": [
-              "Bq4y3QB38S"
-            ],
-            "title": "project_id"
-          },
-          "format": {
-            "type": "string",
-            "examples": [
-              "mp4"
-            ],
-            "title": "format"
-          },
-          "url": {
-            "type": "string",
-            "examples": [
-              "https://cdn.example.com/upload"
-            ],
-            "title": "url"
-          },
-          "name": {
-            "type": "string",
-            "examples": [
-              "My Post"
-            ],
-            "title": "name",
-            "maxLength": 64
-          },
-          "size": {
-            "type": [
-              "integer",
-              "string"
-            ],
-            "examples": [
-              "104857600"
-            ],
-            "title": "size",
-            "format": "int64"
-          },
-          "status": {
-            "examples": [
-              "FILE_STATUS_READY"
-            ],
-            "title": "status",
-            "$ref": "#/components/schemas/common.v1.FileStatus"
-          }
-        },
-        "title": "PostFile",
-        "additionalProperties": false
-      },
-      "posts.v1.PostImage": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "title": "id"
-          },
-          "thumbhash": {
-            "type": "string",
-            "title": "thumbhash"
-          },
-          "width": {
-            "type": "integer",
-            "examples": [
-              "1080"
-            ],
-            "title": "width",
-            "format": "int32"
-          },
-          "height": {
-            "type": "integer",
-            "examples": [
-              "1080"
-            ],
-            "title": "height",
-            "format": "int32"
-          },
-          "attached_to_video": {
-            "type": "boolean",
-            "examples": [
-              "true"
-            ],
-            "title": "attached_to_video"
-          },
-          "file": {
-            "title": "file",
-            "$ref": "#/components/schemas/posts.v1.PostFile"
-          }
-        },
-        "title": "PostImage",
         "additionalProperties": false
       },
       "posts.v1.PostUpload": {
@@ -16524,65 +16401,6 @@
           }
         },
         "title": "PostUpload",
-        "additionalProperties": false
-      },
-      "posts.v1.PostVideo": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "title": "id"
-          },
-          "file": {
-            "title": "file",
-            "$ref": "#/components/schemas/posts.v1.PostFile"
-          },
-          "poster": {
-            "title": "poster",
-            "$ref": "#/components/schemas/posts.v1.PostImage"
-          },
-          "duration": {
-            "title": "duration",
-            "$ref": "#/components/schemas/google.protobuf.Duration"
-          },
-          "width": {
-            "type": "integer",
-            "examples": [
-              "1080"
-            ],
-            "title": "width",
-            "format": "int32"
-          },
-          "height": {
-            "type": "integer",
-            "examples": [
-              "1080"
-            ],
-            "title": "height",
-            "format": "int32"
-          },
-          "codec": {
-            "type": "string",
-            "title": "codec"
-          },
-          "bitrate": {
-            "type": "integer",
-            "title": "bitrate",
-            "format": "int32"
-          },
-          "framerate": {
-            "type": "string",
-            "title": "framerate"
-          },
-          "hdr": {
-            "type": "boolean",
-            "examples": [
-              "true"
-            ],
-            "title": "hdr"
-          }
-        },
-        "title": "PostVideo",
         "additionalProperties": false
       },
       "project.v1.CreateProjectRequest": {
@@ -17090,13 +16908,6 @@
             "title": "name",
             "maxLength": 64
           },
-          "image_format": {
-            "examples": [
-              "IMAGE_FORMAT_JPG"
-            ],
-            "title": "image_format",
-            "$ref": "#/components/schemas/common.v1.ImageFormat"
-          },
           "video_quality": {
             "examples": [
               "VIDEO_QUALITY_PRO"
@@ -17334,68 +17145,9 @@
       "videos.v1.GetVideoResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "FpzVPNx1cG"
-            ],
-            "title": "id"
-          },
-          "duration": {
-            "title": "duration",
-            "$ref": "#/components/schemas/google.protobuf.Duration"
-          },
-          "width": {
-            "type": "integer",
-            "examples": [
-              "1280"
-            ],
-            "title": "width",
-            "format": "int32"
-          },
-          "height": {
-            "type": "integer",
-            "examples": [
-              "720"
-            ],
-            "title": "height",
-            "format": "int32"
-          },
-          "codec": {
-            "type": "string",
-            "examples": [
-              "h264"
-            ],
-            "title": "codec"
-          },
-          "bitrate": {
-            "type": "integer",
-            "examples": [
-              "4500000"
-            ],
-            "title": "bitrate",
-            "format": "int32"
-          },
-          "framerate": {
-            "type": "string",
-            "examples": [
-              "30"
-            ],
-            "title": "framerate"
-          },
-          "hdr": {
-            "type": "boolean",
-            "examples": [
-              "true"
-            ],
-            "title": "hdr"
-          },
-          "visibility": {
-            "examples": [
-              "VISIBILITY_PUBLIC"
-            ],
-            "title": "visibility",
-            "$ref": "#/components/schemas/common.v1.Visibility"
+          "video": {
+            "title": "video",
+            "$ref": "#/components/schemas/videos.v1.Video"
           }
         },
         "title": "GetVideoResponse",
@@ -17530,9 +17282,52 @@
           "videos": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/videos.v1.VideoSummary"
+              "$ref": "#/components/schemas/videos.v1.Video"
             },
             "title": "videos"
+          },
+          "total": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "examples": [
+              "5"
+            ],
+            "title": "total",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "examples": [
+              "0"
+            ],
+            "title": "offset",
+            "format": "int32",
+            "description": "Number of items skipped before this page."
+          },
+          "limit": {
+            "type": "integer",
+            "examples": [
+              "25"
+            ],
+            "title": "limit",
+            "format": "int32",
+            "description": "Maximum number of items returned."
+          },
+          "sort_field": {
+            "type": "string",
+            "examples": [
+              "created_at"
+            ],
+            "title": "sort_field"
+          },
+          "sort_direction": {
+            "type": "string",
+            "examples": [
+              "desc"
+            ],
+            "title": "sort_direction"
           }
         },
         "title": "ListVideosResponse",
@@ -18114,6 +17909,17 @@
         "title": "UpdateVideoVisibilityRequest",
         "additionalProperties": false
       },
+      "videos.v1.UpdateVideoVisibilityResponse": {
+        "type": "object",
+        "properties": {
+          "video": {
+            "title": "video",
+            "$ref": "#/components/schemas/videos.v1.Video"
+          }
+        },
+        "title": "UpdateVideoVisibilityResponse",
+        "additionalProperties": false
+      },
       "videos.v1.UploadVideoThumbnailRequest": {
         "type": "object",
         "properties": {
@@ -18169,51 +17975,74 @@
         "properties": {
           "id": {
             "type": "string",
+            "examples": [
+              "FpzVPNx1cG"
+            ],
             "title": "id"
           },
-          "poster_id": {
-            "type": "string",
-            "title": "poster_id"
-          },
           "duration": {
-            "type": "number",
             "title": "duration",
-            "format": "double"
+            "$ref": "#/components/schemas/google.protobuf.Duration"
           },
           "width": {
             "type": "integer",
+            "examples": [
+              "1280"
+            ],
             "title": "width",
             "format": "int32"
           },
           "height": {
             "type": "integer",
+            "examples": [
+              "720"
+            ],
             "title": "height",
             "format": "int32"
           },
           "codec": {
             "type": "string",
+            "examples": [
+              "h264"
+            ],
             "title": "codec"
           },
           "bitrate": {
             "type": "integer",
+            "examples": [
+              "4500000"
+            ],
             "title": "bitrate",
             "format": "int32"
           },
           "framerate": {
             "type": "string",
+            "examples": [
+              "30"
+            ],
             "title": "framerate"
           },
           "hdr": {
             "type": "boolean",
+            "examples": [
+              "true"
+            ],
             "title": "hdr"
           },
-          "video_quality": {
-            "type": "string",
-            "title": "video_quality"
+          "visibility": {
+            "examples": [
+              "VISIBILITY_PUBLIC"
+            ],
+            "title": "visibility",
+            "$ref": "#/components/schemas/common.v1.Visibility"
           },
-          "in_feed": {
-            "type": "boolean",
-            "title": "in_feed"
+          "file": {
+            "title": "file",
+            "$ref": "#/components/schemas/common.v1.File"
+          },
+          "poster": {
+            "title": "poster",
+            "$ref": "#/components/schemas/images.v1.Image"
           }
         },
         "title": "Video",
@@ -18266,6 +18095,61 @@
         "title": "VideoIdRequest",
         "additionalProperties": false
       },
+      "videos.v1.VideoRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "id"
+          },
+          "poster_id": {
+            "type": "string",
+            "title": "poster_id"
+          },
+          "duration": {
+            "type": "number",
+            "title": "duration",
+            "format": "double"
+          },
+          "width": {
+            "type": "integer",
+            "title": "width",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "title": "height",
+            "format": "int32"
+          },
+          "codec": {
+            "type": "string",
+            "title": "codec"
+          },
+          "bitrate": {
+            "type": "integer",
+            "title": "bitrate",
+            "format": "int32"
+          },
+          "framerate": {
+            "type": "string",
+            "title": "framerate"
+          },
+          "hdr": {
+            "type": "boolean",
+            "title": "hdr"
+          },
+          "video_quality": {
+            "type": "string",
+            "title": "video_quality"
+          },
+          "in_feed": {
+            "type": "boolean",
+            "title": "in_feed"
+          }
+        },
+        "title": "VideoRecord",
+        "additionalProperties": false
+      },
       "videos.v1.VideoScopeRequest": {
         "type": "object",
         "properties": {
@@ -18285,80 +18169,6 @@
           }
         },
         "title": "VideoScopeRequest",
-        "additionalProperties": false
-      },
-      "videos.v1.VideoSummary": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "FpzVPNx1cG"
-            ],
-            "title": "id"
-          },
-          "name": {
-            "type": "string",
-            "examples": [
-              "My Video"
-            ],
-            "title": "name",
-            "maxLength": 64
-          },
-          "duration": {
-            "title": "duration",
-            "$ref": "#/components/schemas/google.protobuf.Duration"
-          },
-          "width": {
-            "type": "integer",
-            "examples": [
-              "1280"
-            ],
-            "title": "width",
-            "format": "int32"
-          },
-          "height": {
-            "type": "integer",
-            "examples": [
-              "720"
-            ],
-            "title": "height",
-            "format": "int32"
-          },
-          "codec": {
-            "type": "string",
-            "examples": [
-              "h264"
-            ],
-            "title": "codec"
-          },
-          "size": {
-            "type": [
-              "integer",
-              "string"
-            ],
-            "examples": [
-              "104857600"
-            ],
-            "title": "size",
-            "format": "int64"
-          },
-          "created_at": {
-            "examples": [
-              "2026-01-15T10:30:00Z"
-            ],
-            "title": "created_at",
-            "$ref": "#/components/schemas/google.protobuf.Timestamp"
-          },
-          "visibility": {
-            "examples": [
-              "VISIBILITY_PUBLIC"
-            ],
-            "title": "visibility",
-            "$ref": "#/components/schemas/common.v1.Visibility"
-          }
-        },
-        "title": "VideoSummary",
         "additionalProperties": false
       },
       "videos.v1.VideoUpload": {
@@ -18408,7 +18218,7 @@
         "properties": {
           "video": {
             "title": "video",
-            "$ref": "#/components/schemas/videos.v1.Video"
+            "$ref": "#/components/schemas/videos.v1.VideoRecord"
           },
           "file": {
             "title": "file",
