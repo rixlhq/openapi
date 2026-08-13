@@ -48,6 +48,190 @@
               ],
               "title": "interval"
             }
+          },
+          {
+            "name": "filter.countries",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "US",
+                  "CA"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "US",
+                    "CA"
+                  ]
+                ]
+              },
+              "title": "countries"
+            }
+          },
+          {
+            "name": "filter.cities",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "New York",
+                  "London"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "New York",
+                    "London"
+                  ]
+                ]
+              },
+              "title": "cities"
+            }
+          },
+          {
+            "name": "filter.devices",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "mobile",
+                  "desktop"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "mobile",
+                    "desktop"
+                  ]
+                ]
+              },
+              "title": "devices"
+            }
+          },
+          {
+            "name": "filter.os",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "iOS",
+                  "Android"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "iOS",
+                    "Android"
+                  ]
+                ]
+              },
+              "title": "os"
+            }
+          },
+          {
+            "name": "filter.languages",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "en-US",
+                  "fr-FR"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "en-US",
+                    "fr-FR"
+                  ]
+                ]
+              },
+              "title": "languages"
+            }
+          },
+          {
+            "name": "filter.regions",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "California",
+                  "Ontario"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "California",
+                    "Ontario"
+                  ]
+                ]
+              },
+              "title": "regions"
+            }
+          },
+          {
+            "name": "filter.browsers",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "Chrome",
+                  "Safari"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "Chrome",
+                    "Safari"
+                  ]
+                ]
+              },
+              "title": "browsers"
+            }
+          },
+          {
+            "name": "filter.os_versions",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "examples": [
+                [
+                  "17.4",
+                  "14"
+                ]
+              ],
+              "items": {
+                "type": "string",
+                "examples": [
+                  [
+                    "17.4",
+                    "14"
+                  ]
+                ]
+              },
+              "title": "os_versions"
+            }
           }
         ],
         "responses": {
@@ -57,6 +241,89 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/analytics.v1.DashboardStatsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analytics/v1/dashboard/chart-query": {
+      "post": {
+        "tags": [
+          "Dashboards"
+        ],
+        "summary": "QueryChart",
+        "operationId": "analytics.v1.DashboardService.QueryChart",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/analytics.v1.ChartQueryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/analytics.v1.ChartQueryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analytics/v1/dashboard/datasets": {
+      "get": {
+        "tags": [
+          "Dashboards"
+        ],
+        "summary": "ListDatasets",
+        "operationId": "analytics.v1.DashboardService.ListDatasets",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/analytics.v1.ListDatasetsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analytics/v1/dashboard/filter-options": {
+      "post": {
+        "tags": [
+          "Dashboards"
+        ],
+        "summary": "GetFilterOptions",
+        "operationId": "analytics.v1.DashboardService.GetFilterOptions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/analytics.v1.GetFilterOptionsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/analytics.v1.GetFilterOptionsResponse"
                 }
               }
             }
@@ -8610,6 +8877,186 @@
         "title": "AnalyticsEvent",
         "additionalProperties": false
       },
+      "analytics.v1.ChartFilter": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "examples": [
+              "country"
+            ],
+            "title": "field"
+          },
+          "operator": {
+            "type": "string",
+            "examples": [
+              "eq"
+            ],
+            "title": "operator",
+            "enum": [
+              "eq",
+              "neq",
+              "gt",
+              "gte",
+              "lt",
+              "lte",
+              "in",
+              "contains"
+            ]
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "values"
+          }
+        },
+        "title": "ChartFilter",
+        "required": [
+          "field"
+        ],
+        "additionalProperties": false
+      },
+      "analytics.v1.ChartQueryRequest": {
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "examples": [
+              "content_views"
+            ],
+            "title": "dataset"
+          },
+          "metric": {
+            "type": "string",
+            "examples": [
+              "unique_users"
+            ],
+            "title": "metric"
+          },
+          "group_by": {
+            "type": "array",
+            "examples": [
+              [
+                "country"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "country"
+                ]
+              ]
+            },
+            "title": "group_by"
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/analytics.v1.ChartFilter"
+            },
+            "title": "filters"
+          },
+          "time_start": {
+            "type": "string",
+            "examples": [
+              "2026-01-15T10:30:00Z"
+            ],
+            "title": "time_start"
+          },
+          "time_end": {
+            "type": "string",
+            "examples": [
+              "2026-01-15T10:30:00Z"
+            ],
+            "title": "time_end"
+          },
+          "interval": {
+            "type": "string",
+            "examples": [
+              "1h"
+            ],
+            "title": "interval"
+          },
+          "limit": {
+            "type": "integer",
+            "examples": [
+              "100"
+            ],
+            "title": "limit",
+            "format": "int32"
+          }
+        },
+        "title": "ChartQueryRequest",
+        "required": [
+          "dataset",
+          "metric",
+          "time_start",
+          "time_end"
+        ],
+        "additionalProperties": false
+      },
+      "analytics.v1.ChartQueryResponse": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/analytics.v1.ChartRow"
+            },
+            "title": "rows"
+          }
+        },
+        "title": "ChartQueryResponse",
+        "additionalProperties": false
+      },
+      "analytics.v1.ChartRow": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "examples": [
+              "2026-01-15T10:30:00Z"
+            ],
+            "title": "timestamp"
+          },
+          "dimensions": {
+            "type": "object",
+            "title": "dimensions",
+            "additionalProperties": {
+              "type": "string",
+              "title": "value"
+            }
+          },
+          "value": {
+            "type": "number",
+            "examples": [
+              "1250"
+            ],
+            "title": "value",
+            "format": "double"
+          }
+        },
+        "title": "ChartRow",
+        "additionalProperties": false
+      },
+      "analytics.v1.ChartRow.DimensionsEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "type": "string",
+            "title": "value"
+          }
+        },
+        "title": "DimensionsEntry",
+        "additionalProperties": false
+      },
       "analytics.v1.ContentViewEvent": {
         "type": "object",
         "properties": {
@@ -8786,6 +9233,10 @@
               "day"
             ],
             "title": "interval"
+          },
+          "filter": {
+            "title": "filter",
+            "$ref": "#/components/schemas/analytics.v1.Filter"
           }
         },
         "title": "DashboardStatsRequest",
@@ -8807,6 +9258,104 @@
           }
         },
         "title": "DashboardStatsResponse",
+        "additionalProperties": false
+      },
+      "analytics.v1.Dataset": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "content_views"
+            ],
+            "title": "id"
+          },
+          "label": {
+            "type": "string",
+            "examples": [
+              "Content views"
+            ],
+            "title": "label"
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/analytics.v1.DatasetMetric"
+            },
+            "title": "metrics"
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/analytics.v1.DatasetField"
+            },
+            "title": "dimensions"
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/analytics.v1.DatasetField"
+            },
+            "title": "filters"
+          }
+        },
+        "title": "Dataset",
+        "additionalProperties": false
+      },
+      "analytics.v1.DatasetField": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "examples": [
+              "country"
+            ],
+            "title": "name"
+          },
+          "label": {
+            "type": "string",
+            "examples": [
+              "Country"
+            ],
+            "title": "label"
+          },
+          "type": {
+            "type": "string",
+            "examples": [
+              "string"
+            ],
+            "title": "type"
+          }
+        },
+        "title": "DatasetField",
+        "additionalProperties": false
+      },
+      "analytics.v1.DatasetMetric": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "examples": [
+              "unique_users"
+            ],
+            "title": "name"
+          },
+          "label": {
+            "type": "string",
+            "examples": [
+              "Unique users"
+            ],
+            "title": "label"
+          },
+          "aggregation": {
+            "type": "string",
+            "examples": [
+              "count_distinct"
+            ],
+            "title": "aggregation"
+          }
+        },
+        "title": "DatasetMetric",
         "additionalProperties": false
       },
       "analytics.v1.DateRange": {
@@ -9062,6 +9611,190 @@
         "title": "FeedStats",
         "additionalProperties": false
       },
+      "analytics.v1.Filter": {
+        "type": "object",
+        "properties": {
+          "countries": {
+            "type": "array",
+            "examples": [
+              [
+                "US",
+                "CA"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "US",
+                  "CA"
+                ]
+              ]
+            },
+            "title": "countries"
+          },
+          "cities": {
+            "type": "array",
+            "examples": [
+              [
+                "New York",
+                "London"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "New York",
+                  "London"
+                ]
+              ]
+            },
+            "title": "cities"
+          },
+          "devices": {
+            "type": "array",
+            "examples": [
+              [
+                "mobile",
+                "desktop"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "mobile",
+                  "desktop"
+                ]
+              ]
+            },
+            "title": "devices"
+          },
+          "os": {
+            "type": "array",
+            "examples": [
+              [
+                "iOS",
+                "Android"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "iOS",
+                  "Android"
+                ]
+              ]
+            },
+            "title": "os"
+          },
+          "languages": {
+            "type": "array",
+            "examples": [
+              [
+                "en-US",
+                "fr-FR"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "en-US",
+                  "fr-FR"
+                ]
+              ]
+            },
+            "title": "languages"
+          },
+          "regions": {
+            "type": "array",
+            "examples": [
+              [
+                "California",
+                "Ontario"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "California",
+                  "Ontario"
+                ]
+              ]
+            },
+            "title": "regions"
+          },
+          "browsers": {
+            "type": "array",
+            "examples": [
+              [
+                "Chrome",
+                "Safari"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "Chrome",
+                  "Safari"
+                ]
+              ]
+            },
+            "title": "browsers"
+          },
+          "os_versions": {
+            "type": "array",
+            "examples": [
+              [
+                "17.4",
+                "14"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "17.4",
+                  "14"
+                ]
+              ]
+            },
+            "title": "os_versions"
+          }
+        },
+        "title": "Filter",
+        "additionalProperties": false
+      },
+      "analytics.v1.FilterOption": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "examples": [
+              "US"
+            ],
+            "title": "value"
+          },
+          "count": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "examples": [
+              "1250"
+            ],
+            "title": "count",
+            "format": "int64"
+          }
+        },
+        "title": "FilterOption",
+        "additionalProperties": false
+      },
       "analytics.v1.FunnelAnalytics": {
         "type": "object",
         "properties": {
@@ -9231,6 +9964,67 @@
         "required": [
           "feed_id"
         ],
+        "additionalProperties": false
+      },
+      "analytics.v1.GetFilterOptionsRequest": {
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "type": "string",
+            "examples": [
+              "content_views"
+            ],
+            "title": "dataset"
+          },
+          "field": {
+            "type": "string",
+            "examples": [
+              "country"
+            ],
+            "title": "field"
+          },
+          "time_start": {
+            "type": "string",
+            "examples": [
+              "2026-01-15T10:30:00Z"
+            ],
+            "title": "time_start"
+          },
+          "time_end": {
+            "type": "string",
+            "examples": [
+              "2026-01-15T10:30:00Z"
+            ],
+            "title": "time_end"
+          },
+          "limit": {
+            "type": "integer",
+            "examples": [
+              "50"
+            ],
+            "title": "limit",
+            "format": "int32"
+          }
+        },
+        "title": "GetFilterOptionsRequest",
+        "required": [
+          "dataset",
+          "field"
+        ],
+        "additionalProperties": false
+      },
+      "analytics.v1.GetFilterOptionsResponse": {
+        "type": "object",
+        "properties": {
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/analytics.v1.FilterOption"
+            },
+            "title": "options"
+          }
+        },
+        "title": "GetFilterOptionsResponse",
         "additionalProperties": false
       },
       "analytics.v1.GetHotSegmentsRequest": {
@@ -9589,6 +10383,25 @@
           }
         },
         "title": "InteractionEvent",
+        "additionalProperties": false
+      },
+      "analytics.v1.ListDatasetsRequest": {
+        "type": "object",
+        "title": "ListDatasetsRequest",
+        "additionalProperties": false
+      },
+      "analytics.v1.ListDatasetsResponse": {
+        "type": "object",
+        "properties": {
+          "datasets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/analytics.v1.Dataset"
+            },
+            "title": "datasets"
+          }
+        },
+        "title": "ListDatasetsResponse",
         "additionalProperties": false
       },
       "analytics.v1.PostStats": {
@@ -10053,6 +10866,55 @@
               "$ref": "#/components/schemas/analytics.v1.AnalyticsEvent"
             },
             "title": "events"
+          },
+          "city": {
+            "type": "string",
+            "examples": [
+              "New York"
+            ],
+            "title": "city"
+          },
+          "region": {
+            "type": "string",
+            "examples": [
+              "NY"
+            ],
+            "title": "region"
+          },
+          "device": {
+            "type": "string",
+            "examples": [
+              "mobile"
+            ],
+            "title": "device"
+          },
+          "os": {
+            "type": "string",
+            "examples": [
+              "iOS"
+            ],
+            "title": "os"
+          },
+          "os_version": {
+            "type": "string",
+            "examples": [
+              "16.4.1"
+            ],
+            "title": "os_version"
+          },
+          "language": {
+            "type": "string",
+            "examples": [
+              "en-US"
+            ],
+            "title": "language"
+          },
+          "browser": {
+            "type": "string",
+            "examples": [
+              "Safari"
+            ],
+            "title": "browser"
           }
         },
         "title": "TrackEventsRequest",
