@@ -347,6 +347,57 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/analytics.v1.Widget'
+  /analytics/v1/dashboards/{dashboard_id}/export:
+    post:
+      tags:
+        - Dashboards
+      summary: ExportDashboard
+      operationId: analytics.v1.DashboardService.ExportDashboard
+      parameters:
+        - name: dashboard_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: dashboard_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dashboard_id:
+                  type: string
+                  title: dashboard_id
+                time_start:
+                  type: string
+                  examples:
+                    - "2026-01-15T10:30:00Z"
+                  title: time_start
+                time_end:
+                  type: string
+                  examples:
+                    - "2026-01-15T10:30:00Z"
+                  title: time_end
+                format:
+                  examples:
+                    - EXPORT_FORMAT_CSV
+                  title: format
+                  $ref: '#/components/schemas/analytics.v1.ExportFormat'
+              title: ExportDashboardRequest
+              required:
+                - dashboard_id
+                - time_start
+                - time_end
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.ExportDashboardResponse'
   /analytics/v1/dashboards/{dashboard_id}/layout:
     post:
       tags:
@@ -6796,6 +6847,69 @@ components:
           format: int64
       title: EventCount
       additionalProperties: false
+    analytics.v1.ExportDashboardRequest:
+      type: object
+      properties:
+        dashboard_id:
+          type: string
+          title: dashboard_id
+        time_start:
+          type: string
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: time_start
+        time_end:
+          type: string
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: time_end
+        format:
+          examples:
+            - EXPORT_FORMAT_CSV
+          title: format
+          $ref: '#/components/schemas/analytics.v1.ExportFormat'
+      title: ExportDashboardRequest
+      required:
+        - dashboard_id
+        - time_start
+        - time_end
+      additionalProperties: false
+    analytics.v1.ExportDashboardResponse:
+      type: object
+      properties:
+        content:
+          type: string
+          title: content
+          format: byte
+        content_type:
+          type: string
+          examples:
+            - text/csv
+          title: content_type
+        filename:
+          type: string
+          examples:
+            - traffic-overview-20260115.csv
+          title: filename
+        widget_count:
+          type: integer
+          title: widget_count
+          format: int32
+        row_count:
+          type: integer
+          title: row_count
+          format: int32
+      title: ExportDashboardResponse
+      additionalProperties: false
+    analytics.v1.ExportFormat:
+      type: string
+      title: ExportFormat
+      enum:
+        - EXPORT_FORMAT_UNSPECIFIED
+        - EXPORT_FORMAT_CSV
+        - EXPORT_FORMAT_XLSX
+        - EXPORT_FORMAT_PDF
+        - EXPORT_FORMAT_JSON
     analytics.v1.FeedStats:
       type: object
       properties:
