@@ -164,6 +164,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/analytics.v1.ChartQueryResponse'
+  /analytics/v1/dashboard/chart-query/batch:
+    post:
+      tags:
+        - Dashboards
+      summary: BatchQueryChart
+      operationId: analytics.v1.DashboardService.BatchQueryChart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/analytics.v1.BatchChartQueryRequest'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.BatchChartQueryResponse'
   /analytics/v1/dashboard/datasets:
     get:
       tags:
@@ -196,6 +215,328 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/analytics.v1.GetFilterOptionsResponse'
+  /analytics/v1/dashboard/scope-tree:
+    post:
+      tags:
+        - Dashboards
+      summary: GetScopeTree
+      operationId: analytics.v1.DashboardService.GetScopeTree
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/analytics.v1.GetScopeTreeRequest'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.GetScopeTreeResponse'
+  /analytics/v1/dashboards:
+    get:
+      tags:
+        - Dashboards
+      summary: ListDashboards
+      operationId: analytics.v1.DashboardService.ListDashboards
+      parameters:
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            examples:
+              - "50"
+            title: page_size
+            format: int32
+        - name: page
+          in: query
+          schema:
+            type: integer
+            examples:
+              - "1"
+            title: page
+            format: int32
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.ListDashboardsResponse'
+    post:
+      tags:
+        - Dashboards
+      summary: CreateDashboard
+      operationId: analytics.v1.DashboardService.CreateDashboard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/analytics.v1.CreateDashboardRequest'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.Dashboard'
+  /analytics/v1/dashboards/widgets/{id}:
+    delete:
+      tags:
+        - Dashboards
+      summary: DeleteWidget
+      operationId: analytics.v1.DashboardService.DeleteWidget
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: id
+        - name: expected_revision
+          in: query
+          required: true
+          schema:
+            type: integer
+            title: expected_revision
+            format: int32
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.DeleteWidgetResponse'
+    patch:
+      tags:
+        - Dashboards
+      summary: UpdateWidget
+      operationId: analytics.v1.DashboardService.UpdateWidget
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expected_revision:
+                  type: integer
+                  title: expected_revision
+                  format: int32
+                patch:
+                  title: patch
+                  $ref: '#/components/schemas/analytics.v1.WidgetPatch'
+              title: UpdateWidgetRequest
+              required:
+                - expected_revision
+                - patch
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.Widget'
+  /analytics/v1/dashboards/{dashboard_id}/layout:
+    post:
+      tags:
+        - Dashboards
+      summary: UpdateDashboardLayout
+      operationId: analytics.v1.DashboardService.UpdateDashboardLayout
+      parameters:
+        - name: dashboard_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: dashboard_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dashboard_id:
+                  type: string
+                  title: dashboard_id
+                expected_revision:
+                  type: integer
+                  title: expected_revision
+                  format: int32
+                positions:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/analytics.v1.WidgetPosition'
+                  title: positions
+                  maxItems: 200
+                  minItems: 1
+              title: UpdateDashboardLayoutRequest
+              required:
+                - dashboard_id
+                - expected_revision
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.Dashboard'
+  /analytics/v1/dashboards/{dashboard_id}/widgets:
+    post:
+      tags:
+        - Dashboards
+      summary: CreateWidget
+      operationId: analytics.v1.DashboardService.CreateWidget
+      parameters:
+        - name: dashboard_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: dashboard_id
+        - name: expected_revision
+          in: query
+          required: true
+          schema:
+            type: integer
+            title: expected_revision
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: widget
+              $ref: '#/components/schemas/analytics.v1.WidgetInput'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.Widget'
+  /analytics/v1/dashboards/{id}:
+    get:
+      tags:
+        - Dashboards
+      summary: GetDashboard
+      operationId: analytics.v1.DashboardService.GetDashboard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.Dashboard'
+    delete:
+      tags:
+        - Dashboards
+      summary: DeleteDashboard
+      operationId: analytics.v1.DashboardService.DeleteDashboard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: id
+        - name: expected_revision
+          in: query
+          required: true
+          schema:
+            type: integer
+            title: expected_revision
+            format: int32
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.protobuf.Empty'
+    patch:
+      tags:
+        - Dashboards
+      summary: UpdateDashboard
+      operationId: analytics.v1.DashboardService.UpdateDashboard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  title: name
+                visibility:
+                  type: string
+                  title: visibility
+                  enum:
+                    - ""
+                    - private
+                    - org
+                expected_revision:
+                  type: integer
+                  title: expected_revision
+                  format: int32
+              title: UpdateDashboardRequest
+              required:
+                - name
+                - expected_revision
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.Dashboard'
+  /analytics/v1/dashboards/{id}/default:
+    post:
+      tags:
+        - Dashboards
+      summary: SetDefaultDashboard
+      operationId: analytics.v1.DashboardService.SetDefaultDashboard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.Dashboard'
   /analytics/v1/events:
     post:
       tags:
@@ -408,6 +749,79 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/analytics.v1.HotSegmentsResponse'
+  /analytics/v1/images/{image_id}/stats:
+    get:
+      tags:
+        - Image Analytics
+      summary: GetImageStats
+      operationId: analytics.v1.ImagesService.GetImageStats
+      parameters:
+        - name: image_id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples:
+              - FpzVPNx1cG
+            title: image_id
+            minLength: 1
+        - name: range.start
+          in: query
+          schema:
+            type: string
+            examples:
+              - "2026-01-15T10:30:00Z"
+            title: start
+        - name: range.end
+          in: query
+          schema:
+            type: string
+            examples:
+              - "2026-01-15T10:30:00Z"
+            title: end
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.ImageStats'
+  /analytics/v1/top/images:
+    get:
+      tags:
+        - Image Analytics
+      summary: GetTopImages
+      operationId: analytics.v1.ImagesService.GetTopImages
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            examples:
+              - "25"
+            title: limit
+            format: int32
+        - name: range.start
+          in: query
+          schema:
+            type: string
+            examples:
+              - "2026-01-15T10:30:00Z"
+            title: start
+        - name: range.end
+          in: query
+          schema:
+            type: string
+            examples:
+              - "2026-01-15T10:30:00Z"
+            title: end
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/analytics.v1.TopImagesResponse'
   /analytics/v1/posts/{post_id}/stats:
     get:
       tags:
@@ -1584,6 +1998,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.UpdateOrgUsernameResponse'
+  /auth/v1/users/current/totp/backup-codes/regenerate:
+    post:
+      tags:
+        - One-Time Passcodes
+      summary: RegenerateBackupCodes
+      operationId: auth.v1.OTPService.RegenerateBackupCodes
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: string
+            title: user_id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.BackupCodesResponse'
   /auth/v1/users/current/totp/delete:
     delete:
       tags:
@@ -1982,6 +2415,50 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+  /auth/v1/memberships/{user.org_id}/policies/permissions:
+    get:
+      tags:
+        - Access Policies
+      summary: ListPermissionRegistry
+      operationId: auth.v1.PolicyService.ListPermissionRegistry
+      parameters:
+        - name: user.org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: user.user_id
+          in: query
+          schema:
+            type: string
+            title: user_id
+        - name: types
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            title: types
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            title: limit
+            format: int32
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            title: offset
+            format: int32
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.PermissionRegistryResponse'
   /auth/v1/memberships/{user.org_id}/policies/{policy_id}:
     get:
       tags:
@@ -2171,19 +2648,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.PolicyAttachment'
-  /auth/v1/policies/permissions:
-    get:
-      tags:
-        - Access Policies
-      summary: ListPermissionRegistry
-      operationId: auth.v1.PolicyService.ListPermissionRegistry
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.PermissionRegistryResponse'
   /auth/v1/providers:
     get:
       tags:
@@ -5681,6 +6145,41 @@ components:
                 - session_start
       title: AnalyticsEvent
       additionalProperties: false
+    analytics.v1.BatchChartQueryRequest:
+      type: object
+      properties:
+        queries:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ChartQueryRequest'
+          title: queries
+          maxItems: 50
+          minItems: 1
+      title: BatchChartQueryRequest
+      additionalProperties: false
+    analytics.v1.BatchChartQueryResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.BatchChartQueryResult'
+          title: results
+      title: BatchChartQueryResponse
+      additionalProperties: false
+    analytics.v1.BatchChartQueryResult:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ChartRow'
+          title: rows
+        error:
+          type: string
+          title: error
+      title: BatchChartQueryResult
+      additionalProperties: false
     analytics.v1.ChartFilter:
       type: object
       properties:
@@ -5702,7 +6201,14 @@ components:
             - lt
             - lte
             - in
+            - not_in
             - contains
+            - not_contains
+            - starts_with
+            - ends_with
+            - between
+            - is_empty
+            - is_not_empty
         values:
           type: array
           items:
@@ -5875,6 +6381,19 @@ components:
           examples:
             - US
           title: country
+        subtitle_language:
+          type: string
+          examples:
+            - en
+          title: subtitle_language
+        audio_language:
+          type: string
+          examples:
+            - en
+          title: audio_language
+        quality:
+          title: quality
+          $ref: '#/components/schemas/analyticscommon.v1.VideoQuality'
       title: ContentViewEvent
       additionalProperties: false
     analytics.v1.CountryCount:
@@ -5894,6 +6413,81 @@ components:
           title: count
           format: int64
       title: CountryCount
+      additionalProperties: false
+    analytics.v1.CreateDashboardRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          title: name
+        is_default:
+          type: boolean
+          title: is_default
+      title: CreateDashboardRequest
+      required:
+        - name
+      additionalProperties: false
+    analytics.v1.CreateWidgetRequest:
+      type: object
+      properties:
+        dashboard_id:
+          type: string
+          title: dashboard_id
+        widget:
+          title: widget
+          $ref: '#/components/schemas/analytics.v1.WidgetInput'
+        expected_revision:
+          type: integer
+          title: expected_revision
+          format: int32
+      title: CreateWidgetRequest
+      required:
+        - dashboard_id
+        - widget
+        - expected_revision
+      additionalProperties: false
+    analytics.v1.Dashboard:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        org_id:
+          type: string
+          title: org_id
+        owner_user_id:
+          type: string
+          title: owner_user_id
+        visibility:
+          type: string
+          title: visibility
+        revision:
+          type: integer
+          title: revision
+          format: int32
+        updated_by:
+          type: string
+          title: updated_by
+        name:
+          type: string
+          examples:
+            - Traffic overview
+          title: name
+        is_default:
+          type: boolean
+          title: is_default
+        widgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.Widget'
+          title: widgets
+        created_at:
+          type: string
+          title: created_at
+        updated_at:
+          type: string
+          title: updated_at
+      title: Dashboard
       additionalProperties: false
     analytics.v1.DashboardPoint:
       type: object
@@ -6041,6 +6635,45 @@ components:
             - "2026-01-15T10:30:00Z"
           title: end
       title: DateRange
+      additionalProperties: false
+    analytics.v1.DeleteDashboardRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        expected_revision:
+          type: integer
+          title: expected_revision
+          format: int32
+      title: DeleteDashboardRequest
+      required:
+        - id
+        - expected_revision
+      additionalProperties: false
+    analytics.v1.DeleteWidgetRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        expected_revision:
+          type: integer
+          title: expected_revision
+          format: int32
+      title: DeleteWidgetRequest
+      required:
+        - id
+        - expected_revision
+      additionalProperties: false
+    analytics.v1.DeleteWidgetResponse:
+      type: object
+      properties:
+        dashboard_revision:
+          type: integer
+          title: dashboard_revision
+          format: int32
+      title: DeleteWidgetResponse
       additionalProperties: false
     analytics.v1.EngagementEvent:
       type: object
@@ -6320,6 +6953,16 @@ components:
           format: int64
       title: FilterOption
       additionalProperties: false
+    analytics.v1.Filters:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ChartFilter'
+          title: values
+      title: Filters
+      additionalProperties: false
     analytics.v1.FunnelAnalytics:
       type: object
       properties:
@@ -6430,6 +7073,16 @@ components:
           format: double
       title: FunnelStepResult
       additionalProperties: false
+    analytics.v1.GetDashboardRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+      title: GetDashboardRequest
+      required:
+        - id
+      additionalProperties: false
     analytics.v1.GetFeedStatsRequest:
       type: object
       properties:
@@ -6475,6 +7128,12 @@ components:
             - "50"
           title: limit
           format: int32
+        search:
+          type: string
+          examples:
+            - united
+          title: search
+          maxLength: 100
       title: GetFilterOptionsRequest
       required:
         - dataset
@@ -6505,6 +7164,22 @@ components:
       title: GetHotSegmentsRequest
       required:
         - video_id
+      additionalProperties: false
+    analytics.v1.GetImageStatsRequest:
+      type: object
+      properties:
+        image_id:
+          type: string
+          examples:
+            - FpzVPNx1cG
+          title: image_id
+          minLength: 1
+        range:
+          title: range
+          $ref: '#/components/schemas/analytics.v1.DateRange'
+      title: GetImageStatsRequest
+      required:
+        - image_id
       additionalProperties: false
     analytics.v1.GetPostStatsRequest:
       type: object
@@ -6565,6 +7240,63 @@ components:
           $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetRetentionRequest
       additionalProperties: false
+    analytics.v1.GetScopeTreeRequest:
+      type: object
+      properties:
+        level:
+          type: string
+          title: level
+          enum:
+            - ""
+            - projects
+            - resource_types
+            - resources
+          description: Which level to expand. Empty returns the projects at the root.
+        project_id:
+          type: string
+          examples:
+            - prj_fugit
+          title: project_id
+        resource_type:
+          type: string
+          title: resource_type
+          enum:
+            - ""
+            - video
+            - image
+            - post
+            - feed
+        time_start:
+          type: string
+          title: time_start
+        time_end:
+          type: string
+          title: time_end
+        limit:
+          type: integer
+          examples:
+            - "50"
+          title: limit
+          format: int32
+        search:
+          type: string
+          title: search
+          maxLength: 100
+      title: GetScopeTreeRequest
+      additionalProperties: false
+    analytics.v1.GetScopeTreeResponse:
+      type: object
+      properties:
+        nodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ScopeNode'
+          title: nodes
+        level:
+          type: string
+          title: level
+      title: GetScopeTreeResponse
+      additionalProperties: false
     analytics.v1.GetTopFeedsRequest:
       type: object
       properties:
@@ -6578,6 +7310,20 @@ components:
           title: range
           $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetTopFeedsRequest
+      additionalProperties: false
+    analytics.v1.GetTopImagesRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          examples:
+            - "25"
+          title: limit
+          format: int32
+        range:
+          title: range
+          $ref: '#/components/schemas/analytics.v1.DateRange'
+      title: GetTopImagesRequest
       additionalProperties: false
     analytics.v1.GetTopPostsRequest:
       type: object
@@ -6650,6 +7396,16 @@ components:
       required:
         - video_id
       additionalProperties: false
+    analytics.v1.GroupBy:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: string
+          title: values
+      title: GroupBy
+      additionalProperties: false
     analytics.v1.HotSegment:
       type: object
       properties:
@@ -6682,6 +7438,61 @@ components:
             $ref: '#/components/schemas/analytics.v1.HotSegment'
           title: segments
       title: HotSegmentsResponse
+      additionalProperties: false
+    analytics.v1.ImageStats:
+      type: object
+      properties:
+        image_id:
+          type: string
+          examples:
+            - FpzVPNx1cG
+          title: image_id
+        total_views:
+          type:
+            - integer
+            - string
+          examples:
+            - "1250"
+          title: total_views
+          format: int64
+        unique_viewers:
+          type:
+            - integer
+            - string
+          examples:
+            - "1250"
+          title: unique_viewers
+          format: int64
+        avg_view_duration_ms:
+          type: number
+          examples:
+            - "0.85"
+          title: avg_view_duration_ms
+          format: double
+          description: Dwell time; images have no playback.
+        total_view_duration_ms:
+          type: number
+          examples:
+            - "0.85"
+          title: total_view_duration_ms
+          format: double
+        feed_views:
+          type:
+            - integer
+            - string
+          examples:
+            - "1250"
+          title: feed_views
+          format: int64
+        standalone_views:
+          type:
+            - integer
+            - string
+          examples:
+            - "1250"
+          title: standalone_views
+          format: int64
+      title: ImageStats
       additionalProperties: false
     analytics.v1.InteractionEvent:
       type: object
@@ -6750,6 +7561,47 @@ components:
             - Chrome
           title: browser
       title: InteractionEvent
+      additionalProperties: false
+    analytics.v1.ListDashboardsRequest:
+      type: object
+      properties:
+        page_size:
+          type: integer
+          examples:
+            - "50"
+          title: page_size
+          format: int32
+        page:
+          type: integer
+          examples:
+            - "1"
+          title: page
+          format: int32
+      title: ListDashboardsRequest
+      additionalProperties: false
+    analytics.v1.ListDashboardsResponse:
+      type: object
+      properties:
+        dashboards:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.Dashboard'
+          title: dashboards
+        total:
+          type:
+            - integer
+            - string
+          title: total
+          format: int64
+        page:
+          type: integer
+          title: page
+          format: int32
+        page_size:
+          type: integer
+          title: page_size
+          format: int32
+      title: ListDashboardsResponse
       additionalProperties: false
     analytics.v1.ListDatasetsRequest:
       type: object
@@ -6959,6 +7811,36 @@ components:
           title: retention_data
       title: RetentionCohort
       additionalProperties: false
+    analytics.v1.ScopeNode:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        label:
+          type: string
+          title: label
+        kind:
+          type: string
+          title: kind
+        views:
+          type:
+            - integer
+            - string
+          examples:
+            - "1250"
+          title: views
+          format: int64
+        has_children:
+          type: boolean
+          title: has_children
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ChartFilter'
+          title: filters
+      title: ScopeNode
+      additionalProperties: false
     analytics.v1.Segment:
       type: object
       properties:
@@ -6974,6 +7856,25 @@ components:
             - "0.85"
           title: speed
           format: double
+        subtitle_language:
+          type: string
+          examples:
+            - en
+          title: subtitle_language
+          description: Unset fields inherit the value the view was opened with.
+        audio_language:
+          type: string
+          examples:
+            - fr
+          title: audio_language
+        quality:
+          title: quality
+          $ref: '#/components/schemas/analyticscommon.v1.VideoQuality'
+        chapter_title:
+          type: string
+          examples:
+            - Introduction
+          title: chapter_title
       title: Segment
       additionalProperties: false
     analytics.v1.SessionStartEvent:
@@ -7053,6 +7954,16 @@ components:
           title: user_id
       title: SessionStartEvent
       additionalProperties: false
+    analytics.v1.SetDefaultDashboardRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+      title: SetDefaultDashboardRequest
+      required:
+        - id
+      additionalProperties: false
     analytics.v1.TopFeedsResponse:
       type: object
       properties:
@@ -7062,6 +7973,16 @@ components:
             $ref: '#/components/schemas/analytics.v1.FeedStats'
           title: feeds
       title: TopFeedsResponse
+      additionalProperties: false
+    analytics.v1.TopImagesResponse:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ImageStats'
+          title: images
+      title: TopImagesResponse
       additionalProperties: false
     analytics.v1.TopPostsResponse:
       type: object
@@ -7136,7 +8057,85 @@ components:
           examples:
             - Safari
           title: browser
+        project_id:
+          type: string
+          examples:
+            - Pr0j3ctId01
+          title: project_id
+          description: |-
+            Project the events belong to (Organization > Project > Videos/Images/Posts/Feeds).
+             Sent alongside the other envelope-level context because a client session is scoped
+             to one project. org_id is still derived server-side from the credential and is
+             never taken from the body, so a wrong project_id can only mis-attribute within the
+             caller's own organization.
       title: TrackEventsRequest
+      additionalProperties: false
+    analytics.v1.UpdateDashboardLayoutRequest:
+      type: object
+      properties:
+        dashboard_id:
+          type: string
+          title: dashboard_id
+        expected_revision:
+          type: integer
+          title: expected_revision
+          format: int32
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.WidgetPosition'
+          title: positions
+          maxItems: 200
+          minItems: 1
+      title: UpdateDashboardLayoutRequest
+      required:
+        - dashboard_id
+        - expected_revision
+      additionalProperties: false
+    analytics.v1.UpdateDashboardRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        name:
+          type: string
+          title: name
+        visibility:
+          type: string
+          title: visibility
+          enum:
+            - ""
+            - private
+            - org
+        expected_revision:
+          type: integer
+          title: expected_revision
+          format: int32
+      title: UpdateDashboardRequest
+      required:
+        - id
+        - name
+        - expected_revision
+      additionalProperties: false
+    analytics.v1.UpdateWidgetRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        expected_revision:
+          type: integer
+          title: expected_revision
+          format: int32
+        patch:
+          title: patch
+          $ref: '#/components/schemas/analytics.v1.WidgetPatch'
+      title: UpdateWidgetRequest
+      required:
+        - id
+        - expected_revision
+        - patch
       additionalProperties: false
     analytics.v1.VideoHeatmap:
       type: object
@@ -7234,6 +8233,230 @@ components:
           format: double
       title: VideoStats
       additionalProperties: false
+    analytics.v1.Widget:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+        dashboard_id:
+          type: string
+          title: dashboard_id
+        title:
+          type: string
+          examples:
+            - Requests over time
+          title: title
+        chart_type:
+          type: string
+          examples:
+            - timeseries
+          title: chart_type
+        dataset:
+          type: string
+          examples:
+            - content_views
+          title: dataset
+        metric:
+          type: string
+          examples:
+            - views
+          title: metric
+        group_by:
+          type: array
+          items:
+            type: string
+          title: group_by
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ChartFilter'
+          title: filters
+        interval:
+          type: string
+          examples:
+            - 1h
+          title: interval
+        limit:
+          type: integer
+          title: limit
+          format: int32
+        pos_x:
+          type: integer
+          title: pos_x
+          format: int32
+        pos_y:
+          type: integer
+          title: pos_y
+          format: int32
+        width:
+          type: integer
+          examples:
+            - "4"
+          title: width
+          format: int32
+        height:
+          type: integer
+          examples:
+            - "3"
+          title: height
+          format: int32
+        sort_order:
+          type: integer
+          title: sort_order
+          format: int32
+        created_at:
+          type: string
+          title: created_at
+        updated_at:
+          type: string
+          title: updated_at
+        spec_version:
+          type: integer
+          title: spec_version
+          format: int32
+        dashboard_revision:
+          type: integer
+          title: dashboard_revision
+          format: int32
+      title: Widget
+      additionalProperties: false
+    analytics.v1.WidgetInput:
+      type: object
+      properties:
+        title:
+          type: string
+          title: title
+        chart_type:
+          type: string
+          title: chart_type
+        dataset:
+          type: string
+          title: dataset
+        metric:
+          type: string
+          title: metric
+        group_by:
+          type: array
+          items:
+            type: string
+          title: group_by
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/analytics.v1.ChartFilter'
+          title: filters
+        interval:
+          type: string
+          title: interval
+        limit:
+          type: integer
+          title: limit
+          format: int32
+        pos_x:
+          type: integer
+          title: pos_x
+          format: int32
+        pos_y:
+          type: integer
+          title: pos_y
+          format: int32
+        width:
+          type: integer
+          title: width
+          format: int32
+        height:
+          type: integer
+          title: height
+          format: int32
+        sort_order:
+          type: integer
+          title: sort_order
+          format: int32
+      title: WidgetInput
+      required:
+        - title
+        - chart_type
+        - dataset
+        - metric
+      additionalProperties: false
+    analytics.v1.WidgetPatch:
+      type: object
+      properties:
+        title:
+          type:
+            - string
+            - "null"
+          title: title
+        chart_type:
+          type:
+            - string
+            - "null"
+          title: chart_type
+        dataset:
+          type:
+            - string
+            - "null"
+          title: dataset
+        metric:
+          type:
+            - string
+            - "null"
+          title: metric
+        group_by:
+          oneOf:
+            - $ref: '#/components/schemas/analytics.v1.GroupBy'
+            - type: "null"
+          title: group_by
+        filters:
+          oneOf:
+            - $ref: '#/components/schemas/analytics.v1.Filters'
+            - type: "null"
+          title: filters
+        interval:
+          type:
+            - string
+            - "null"
+          title: interval
+        limit:
+          type:
+            - integer
+            - "null"
+          title: limit
+          format: int32
+      title: WidgetPatch
+      additionalProperties: false
+    analytics.v1.WidgetPosition:
+      type: object
+      properties:
+        widget_id:
+          type: string
+          title: widget_id
+        pos_x:
+          type: integer
+          title: pos_x
+          format: int32
+        pos_y:
+          type: integer
+          title: pos_y
+          format: int32
+        width:
+          type: integer
+          title: width
+          format: int32
+        height:
+          type: integer
+          title: height
+          format: int32
+        sort_order:
+          type: integer
+          title: sort_order
+          format: int32
+      title: WidgetPosition
+      required:
+        - widget_id
+      additionalProperties: false
+      description: WidgetPosition is expressed in grid units, never pixels.
     analyticscommon.v1.MediaType:
       type: string
       title: MediaType
@@ -7241,6 +8464,14 @@ components:
         - MEDIA_TYPE_UNSPECIFIED
         - MEDIA_TYPE_IMAGE
         - MEDIA_TYPE_VIDEO
+    analyticscommon.v1.VideoQuality:
+      type: string
+      title: VideoQuality
+      enum:
+        - VIDEO_QUALITY_UNSPECIFIED
+        - VIDEO_QUALITY_BASIC
+        - VIDEO_QUALITY_SHORTS
+        - VIDEO_QUALITY_PRO
     apikeys.v1.ApiKey:
       type: object
       properties:
@@ -7536,6 +8767,16 @@ components:
           type: boolean
           title: enabled
       title: AutoJoinSetting
+      additionalProperties: false
+    auth.v1.BackupCodesResponse:
+      type: object
+      properties:
+        backup_codes:
+          type: array
+          items:
+            type: string
+          title: backup_codes
+      title: BackupCodesResponse
       additionalProperties: false
     auth.v1.BlogSubscriptionResponse:
       type: object
@@ -7928,6 +9169,23 @@ components:
       additionalProperties: false
     auth.v1.ListPermissionRegistryRequest:
       type: object
+      properties:
+        user:
+          title: user
+          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        types:
+          type: array
+          items:
+            type: string
+          title: types
+        limit:
+          type: integer
+          title: limit
+          format: int32
+        offset:
+          type: integer
+          title: offset
+          format: int32
       title: ListPermissionRegistryRequest
       additionalProperties: false
     auth.v1.ListPoliciesResponse:
@@ -8172,6 +9430,10 @@ components:
         created_at:
           title: created_at
           $ref: '#/components/schemas/google.protobuf.Timestamp'
+        backup_codes_remaining:
+          type: integer
+          title: backup_codes_remaining
+          format: int32
       title: OTPStatusResponse
       additionalProperties: false
     auth.v1.OrgMember:
@@ -8339,6 +9601,10 @@ components:
           items:
             $ref: '#/components/schemas/auth.v1.PermissionOffset'
           title: permissions
+        total:
+          type: integer
+          title: total
+          format: int32
       title: PermissionRegistryResponse
       additionalProperties: false
     auth.v1.Policy:
@@ -8644,6 +9910,11 @@ components:
         qr_code_url:
           type: string
           title: qr_code_url
+        backup_codes:
+          type: array
+          items:
+            type: string
+          title: backup_codes
       title: SetupOTPResponse
       additionalProperties: false
     auth.v1.SuspendMemberRequest:
@@ -13325,6 +14596,8 @@ tags:
     description: Engagement and performance metrics for posts.
   - name: Video Analytics
     description: Playback and engagement metrics for videos.
+  - name: Image Analytics
+    description: Views and engagement metrics for images.
   - name: Feed Analytics
     description: Reach and engagement metrics for feeds.
   - name: Funnels
@@ -13388,6 +14661,7 @@ x-tagGroups:
       - Events
       - Post Analytics
       - Video Analytics
+      - Image Analytics
       - Feed Analytics
       - Funnels
       - Heatmaps
