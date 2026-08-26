@@ -5387,6 +5387,380 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/project.v1.Project'
+  /support/v1/chat/messages:
+    get:
+      tags:
+        - Support Chat
+      summary: ListChatMessages
+      operationId: support.v1.SupportChatService.ListChatMessages
+      parameters:
+        - name: after
+          in: query
+          description: |-
+            A Timestamp represents a point in time independent of any time zone or local
+             calendar, encoded as a count of seconds and fractions of seconds at
+             nanosecond resolution. The count is relative to an epoch at UTC midnight on
+             January 1, 1970, in the proleptic Gregorian calendar which extends the
+             Gregorian calendar backwards to year one.
+
+             All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
+             second table is needed for interpretation, using a [24-hour linear
+             smear](https://developers.google.com/time/smear).
+
+             The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
+             restricting to that range, we ensure that we can convert to and from [RFC
+             3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
+
+             # Examples
+
+             Example 1: Compute Timestamp from POSIX `time()`.
+
+                 Timestamp timestamp;
+                 timestamp.set_seconds(time(NULL));
+                 timestamp.set_nanos(0);
+
+             Example 2: Compute Timestamp from POSIX `gettimeofday()`.
+
+                 struct timeval tv;
+                 gettimeofday(&tv, NULL);
+
+                 Timestamp timestamp;
+                 timestamp.set_seconds(tv.tv_sec);
+                 timestamp.set_nanos(tv.tv_usec * 1000);
+
+             Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
+
+                 FILETIME ft;
+                 GetSystemTimeAsFileTime(&ft);
+                 UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
+
+                 // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z
+                 // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.
+                 Timestamp timestamp;
+                 timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
+                 timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
+
+             Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
+
+                 long millis = System.currentTimeMillis();
+
+                 Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000)
+                     .setNanos((int) ((millis % 1000) * 1000000)).build();
+
+             Example 5: Compute Timestamp from Java `Instant.now()`.
+
+                 Instant now = Instant.now();
+
+                 Timestamp timestamp =
+                     Timestamp.newBuilder().setSeconds(now.getEpochSecond())
+                         .setNanos(now.getNano()).build();
+
+             Example 6: Compute Timestamp from current time in Python.
+
+                 timestamp = Timestamp()
+                 timestamp.GetCurrentTime()
+
+             # JSON Mapping
+
+             In JSON format, the Timestamp type is encoded as a string in the
+             [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the
+             format is "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z"
+             where {year} is always expressed using four digits while {month}, {day},
+             {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional
+             seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
+             are optional. The "Z" suffix indicates the timezone ("UTC"); the timezone
+             is required. A proto3 JSON serializer should always use UTC (as indicated by
+             "Z") when printing the Timestamp type and a proto3 JSON parser should be
+             able to accept both UTC and other timezones (as indicated by an offset).
+
+             For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past
+             01:30 UTC on January 15, 2017.
+
+             In JavaScript, one can convert a Date object to this format using the
+             standard
+             [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
+             method. In Python, a standard `datetime.datetime` object can be converted
+             to this format using
+             [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with
+             the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use
+             the Joda Time's [`ISODateTimeFormat.dateTime()`](
+             http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
+             ) to obtain a formatter capable of generating timestamps in this format.
+          schema:
+            type: string
+            examples:
+              - "2023-01-15T01:30:15.01Z"
+              - "2024-12-25T12:00:00Z"
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            examples:
+              - "50"
+            title: limit
+            maximum: 200
+            minimum: 0
+            format: int32
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.ListChatMessagesResponse'
+    post:
+      tags:
+        - Support Chat
+      summary: SendChatMessage
+      operationId: support.v1.SupportChatService.SendChatMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/support.v1.SendChatMessageRequest'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.SendChatMessageResponse'
+  /support/v1/categories:
+    get:
+      tags:
+        - Support Tickets
+      summary: ListCategories
+      operationId: support.v1.SupportTicketService.ListCategories
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.ListCategoriesResponse'
+  /support/v1/categories/{category_id}/topics:
+    get:
+      tags:
+        - Support Tickets
+      summary: ListTopics
+      operationId: support.v1.SupportTicketService.ListTopics2
+      parameters:
+        - name: category_id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples:
+              - Mn0bVc9xZ8
+            title: category_id
+        - name: query
+          in: query
+          schema:
+            type: string
+            examples:
+              - invoice
+            title: query
+            maxLength: 120
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.ListTopicsResponse'
+  /support/v1/tickets:
+    get:
+      tags:
+        - Support Tickets
+      summary: ListTickets
+      operationId: support.v1.SupportTicketService.ListTickets
+      parameters:
+        - name: pagination.limit
+          in: query
+          description: Maximum number of items to return.
+          schema:
+            type: integer
+            examples:
+              - "25"
+            title: limit
+            maximum: 100
+            minimum: 1
+            format: int32
+            default: "25"
+        - name: pagination.offset
+          in: query
+          description: Number of items to skip before collecting the result set.
+          schema:
+            type: integer
+            examples:
+              - "0"
+            title: offset
+            format: int32
+            default: "0"
+        - name: status
+          in: query
+          schema:
+            examples:
+              - TICKET_STATUS_OPEN
+            title: status
+            $ref: '#/components/schemas/support.v1.TicketStatus'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.ListTicketsResponse'
+    post:
+      tags:
+        - Support Tickets
+      summary: CreateTicket
+      operationId: support.v1.SupportTicketService.CreateTicket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/support.v1.CreateTicketRequest'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.CreateTicketResponse'
+  /support/v1/tickets/{ticket_id}:
+    get:
+      tags:
+        - Support Tickets
+      summary: GetTicket
+      operationId: support.v1.SupportTicketService.GetTicket
+      parameters:
+        - name: ticket_id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples:
+              - Kp3Lm8Qr2Z
+            title: ticket_id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.GetTicketResponse'
+  /support/v1/tickets/{ticket_id}/close:
+    post:
+      tags:
+        - Support Tickets
+      summary: CloseTicket
+      operationId: support.v1.SupportTicketService.CloseTicket
+      parameters:
+        - name: ticket_id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples:
+              - Kp3Lm8Qr2Z
+            title: ticket_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ticket_id:
+                  type: string
+                  examples:
+                    - Kp3Lm8Qr2Z
+                  title: ticket_id
+              title: CloseTicketRequest
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.CloseTicketResponse'
+  /support/v1/tickets/{ticket_id}/messages:
+    post:
+      tags:
+        - Support Tickets
+      summary: AddTicketMessage
+      operationId: support.v1.SupportTicketService.AddTicketMessage
+      parameters:
+        - name: ticket_id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples:
+              - Kp3Lm8Qr2Z
+            title: ticket_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ticket_id:
+                  type: string
+                  examples:
+                    - Kp3Lm8Qr2Z
+                  title: ticket_id
+                body:
+                  type: string
+                  examples:
+                    - Any update on this?
+                  title: body
+                  maxLength: 5000
+                  minLength: 1
+              title: AddTicketMessageRequest
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.AddTicketMessageResponse'
+  /support/v1/topics:
+    get:
+      tags:
+        - Support Tickets
+      summary: ListTopics
+      operationId: support.v1.SupportTicketService.ListTopics
+      parameters:
+        - name: category_id
+          in: query
+          schema:
+            type: string
+            examples:
+              - Mn0bVc9xZ8
+            title: category_id
+        - name: query
+          in: query
+          schema:
+            type: string
+            examples:
+              - invoice
+            title: query
+            maxLength: 120
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/support.v1.ListTopicsResponse'
   /media/v1/projects/{project_id}/videos/{video_id}/audio-tracks:
     delete:
       tags:
@@ -10958,6 +11332,42 @@ components:
         interval:
           type: string
           title: interval
+        plan_type:
+          examples:
+            - PLAN_TYPE_PRO
+          title: plan_type
+          $ref: '#/components/schemas/billing.v1.PlanType'
+        interval_count:
+          type: integer
+          examples:
+            - "5"
+          title: interval_count
+          format: int32
+        sort_order:
+          type: integer
+          examples:
+            - "5"
+          title: sort_order
+          format: int32
+        features:
+          title: features
+          $ref: '#/components/schemas/google.protobuf.Struct'
+        stripe_price_id:
+          type: string
+          examples:
+            - price_1QabcXYZ
+          title: stripe_price_id
+        stripe_product_id:
+          type: string
+          examples:
+            - prod_QabcXYZ
+          title: stripe_product_id
+        active:
+          type: boolean
+          title: active
+        is_public:
+          type: boolean
+          title: is_public
       title: GetPlanResponse
       additionalProperties: false
     billing.v1.GetStorageUsageHistoryRequest:
@@ -11323,6 +11733,25 @@ components:
             - "5"
           title: sort_order
           format: int32
+        features:
+          title: features
+          $ref: '#/components/schemas/google.protobuf.Struct'
+        stripe_price_id:
+          type: string
+          examples:
+            - price_1QabcXYZ
+          title: stripe_price_id
+        stripe_product_id:
+          type: string
+          examples:
+            - prod_QabcXYZ
+          title: stripe_product_id
+        active:
+          type: boolean
+          title: active
+        is_public:
+          type: boolean
+          title: is_public
       title: Plan
       additionalProperties: false
     billing.v1.PlanTaxCalculationResponse:
@@ -12556,6 +12985,55 @@ components:
              service Foo {
                rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
              }
+    google.protobuf.ListValue:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/google.protobuf.Value'
+          title: values
+          description: Repeated field of dynamically typed values.
+      title: ListValue
+      additionalProperties: false
+      description: |-
+        `ListValue` is a wrapper around a repeated field of values.
+
+         The JSON representation for `ListValue` is JSON array.
+    google.protobuf.NullValue:
+      type: string
+      title: NullValue
+      enum:
+        - NULL_VALUE
+      description: |-
+        `NullValue` is a singleton enumeration to represent the null value for the
+         `Value` type union.
+
+         The JSON representation for `NullValue` is JSON `null`.
+    google.protobuf.Struct:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/google.protobuf.Value'
+      description: |-
+        `Struct` represents a structured data value, consisting of fields
+         which map to dynamically typed values. In some languages, `Struct`
+         might be supported by a native representation. For example, in
+         scripting languages like JS a struct is represented as an
+         object. The details of that representation are described together
+         with the proto support for the language.
+
+         The JSON representation for `Struct` is JSON object.
+    google.protobuf.Struct.FieldsEntry:
+      type: object
+      properties:
+        key:
+          type: string
+          title: key
+        value:
+          title: value
+          $ref: '#/components/schemas/google.protobuf.Value'
+      title: FieldsEntry
+      additionalProperties: false
     google.protobuf.Timestamp:
       type: string
       examples:
@@ -12652,6 +13130,22 @@ components:
          the Joda Time's [`ISODateTimeFormat.dateTime()`](
          http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
          ) to obtain a formatter capable of generating timestamps in this format.
+    google.protobuf.Value:
+      oneOf:
+        - type: "null"
+        - type: number
+        - type: string
+        - type: boolean
+        - type: array
+        - type: object
+          additionalProperties: true
+      description: |-
+        `Value` represents a dynamically typed value which can be either
+         null, a number, a string, a boolean, a recursive struct value, or a
+         list of values. A producer of value is expected to set one of these
+         variants. Absence of any variant indicates an error.
+
+         The JSON representation for `Value` is JSON value.
     images.v1.CreateImageUploadRequest:
       type: object
       properties:
@@ -13549,6 +14043,500 @@ components:
       title: UpdateVideoQualityRequest
       required:
         - video_quality
+      additionalProperties: false
+    support.v1.AddTicketMessageRequest:
+      type: object
+      properties:
+        ticket_id:
+          type: string
+          examples:
+            - Kp3Lm8Qr2Z
+          title: ticket_id
+        body:
+          type: string
+          examples:
+            - Any update on this?
+          title: body
+          maxLength: 5000
+          minLength: 1
+      title: AddTicketMessageRequest
+      additionalProperties: false
+    support.v1.AddTicketMessageResponse:
+      type: object
+      properties:
+        message:
+          title: message
+          $ref: '#/components/schemas/support.v1.TicketMessage'
+      title: AddTicketMessageResponse
+      additionalProperties: false
+    support.v1.Category:
+      type: object
+      properties:
+        id:
+          type: string
+          examples:
+            - Mn0bVc9xZ8
+          title: id
+        slug:
+          type: string
+          examples:
+            - billing
+          title: slug
+        name:
+          type: string
+          examples:
+            - Billing & Plans
+          title: name
+        description:
+          type: string
+          examples:
+            - Invoices, usage, upgrades, and payments
+          title: description
+        icon:
+          type: string
+          examples:
+            - credit-card
+          title: icon
+        sort_order:
+          type: integer
+          examples:
+            - "2"
+          title: sort_order
+          format: int32
+      title: Category
+      additionalProperties: false
+    support.v1.ChatMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          examples:
+            - Cm4Nw8Tq1X
+          title: id
+        thread_id:
+          type: string
+          examples:
+            - Th7Yb2Ke9P
+          title: thread_id
+        author_id:
+          type: string
+          examples:
+            - Us1234abcd
+          title: author_id
+        author_type:
+          examples:
+            - MESSAGE_AUTHOR_CUSTOMER
+          title: author_type
+          $ref: '#/components/schemas/support.v1.MessageAuthor'
+        body:
+          type: string
+          examples:
+            - Our uploads are failing in eu-west.
+          title: body
+        created_at:
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: created_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+      title: ChatMessage
+      additionalProperties: false
+    support.v1.CloseTicketRequest:
+      type: object
+      properties:
+        ticket_id:
+          type: string
+          examples:
+            - Kp3Lm8Qr2Z
+          title: ticket_id
+      title: CloseTicketRequest
+      additionalProperties: false
+    support.v1.CloseTicketResponse:
+      type: object
+      properties:
+        ticket:
+          title: ticket
+          $ref: '#/components/schemas/support.v1.Ticket'
+      title: CloseTicketResponse
+      additionalProperties: false
+    support.v1.CreateTicketRequest:
+      type: object
+      properties:
+        project_id:
+          type: string
+          examples:
+            - Bq4y3QB38S
+          title: project_id
+        category_id:
+          type: string
+          examples:
+            - Mn0bVc9xZ8
+          title: category_id
+          minLength: 1
+        topic_id:
+          type: string
+          examples:
+            - Tg6Rf4e2W1
+          title: topic_id
+          minLength: 1
+        subject:
+          type: string
+          examples:
+            - Invoice download is failing
+          title: subject
+          maxLength: 200
+          minLength: 3
+        message:
+          type: string
+          examples:
+            - My invoice download returns a 404.
+          title: message
+          maxLength: 5000
+          minLength: 1
+        priority:
+          examples:
+            - TICKET_PRIORITY_NORMAL
+          title: priority
+          $ref: '#/components/schemas/support.v1.TicketPriority'
+      title: CreateTicketRequest
+      additionalProperties: false
+    support.v1.CreateTicketResponse:
+      type: object
+      properties:
+        ticket:
+          title: ticket
+          $ref: '#/components/schemas/support.v1.Ticket'
+      title: CreateTicketResponse
+      additionalProperties: false
+    support.v1.GetTicketRequest:
+      type: object
+      properties:
+        ticket_id:
+          type: string
+          examples:
+            - Kp3Lm8Qr2Z
+          title: ticket_id
+      title: GetTicketRequest
+      additionalProperties: false
+    support.v1.GetTicketResponse:
+      type: object
+      properties:
+        ticket:
+          title: ticket
+          $ref: '#/components/schemas/support.v1.Ticket'
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/support.v1.TicketMessage'
+          title: messages
+      title: GetTicketResponse
+      additionalProperties: false
+    support.v1.ListCategoriesRequest:
+      type: object
+      title: ListCategoriesRequest
+      additionalProperties: false
+    support.v1.ListCategoriesResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/support.v1.Category'
+          title: categories
+      title: ListCategoriesResponse
+      additionalProperties: false
+    support.v1.ListChatMessagesRequest:
+      type: object
+      properties:
+        after:
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: after
+          description: Return only messages created after this time. Used to poll for new replies.
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        limit:
+          type: integer
+          examples:
+            - "50"
+          title: limit
+          maximum: 200
+          minimum: 0
+          format: int32
+      title: ListChatMessagesRequest
+      additionalProperties: false
+    support.v1.ListChatMessagesResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/support.v1.ChatMessage'
+          title: messages
+      title: ListChatMessagesResponse
+      additionalProperties: false
+    support.v1.ListTicketsRequest:
+      type: object
+      properties:
+        pagination:
+          title: pagination
+          $ref: '#/components/schemas/common.v1.Pagination'
+        status:
+          examples:
+            - TICKET_STATUS_OPEN
+          title: status
+          $ref: '#/components/schemas/support.v1.TicketStatus'
+      title: ListTicketsRequest
+      additionalProperties: false
+    support.v1.ListTicketsResponse:
+      type: object
+      properties:
+        tickets:
+          type: array
+          items:
+            $ref: '#/components/schemas/support.v1.Ticket'
+          title: tickets
+        total:
+          type:
+            - integer
+            - string
+          examples:
+            - "3"
+          title: total
+          format: int64
+        offset:
+          type: integer
+          examples:
+            - "0"
+          title: offset
+          format: int32
+          description: Number of items skipped before this page.
+        limit:
+          type: integer
+          examples:
+            - "25"
+          title: limit
+          format: int32
+          description: Maximum number of items returned.
+      title: ListTicketsResponse
+      additionalProperties: false
+    support.v1.ListTopicsRequest:
+      type: object
+      properties:
+        category_id:
+          type: string
+          examples:
+            - Mn0bVc9xZ8
+          title: category_id
+        query:
+          type: string
+          examples:
+            - invoice
+          title: query
+          maxLength: 120
+      title: ListTopicsRequest
+      additionalProperties: false
+    support.v1.ListTopicsResponse:
+      type: object
+      properties:
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/support.v1.Topic'
+          title: topics
+      title: ListTopicsResponse
+      additionalProperties: false
+    support.v1.MessageAuthor:
+      type: string
+      title: MessageAuthor
+      enum:
+        - MESSAGE_AUTHOR_UNSPECIFIED
+        - MESSAGE_AUTHOR_CUSTOMER
+        - MESSAGE_AUTHOR_AGENT
+        - MESSAGE_AUTHOR_SYSTEM
+    support.v1.ProcessClickUpWebhookRequest:
+      type: object
+      properties:
+        payload:
+          type: string
+          title: payload
+          format: byte
+        signature:
+          type: string
+          title: signature
+      title: ProcessClickUpWebhookRequest
+      additionalProperties: false
+    support.v1.SendChatMessageRequest:
+      type: object
+      properties:
+        body:
+          type: string
+          examples:
+            - Our uploads are failing in eu-west.
+          title: body
+          maxLength: 5000
+          minLength: 1
+      title: SendChatMessageRequest
+      additionalProperties: false
+    support.v1.SendChatMessageResponse:
+      type: object
+      properties:
+        message:
+          title: message
+          $ref: '#/components/schemas/support.v1.ChatMessage'
+      title: SendChatMessageResponse
+      additionalProperties: false
+    support.v1.Ticket:
+      type: object
+      properties:
+        id:
+          type: string
+          examples:
+            - Kp3Lm8Qr2Z
+          title: id
+        org_id:
+          type: string
+          examples:
+            - OR98234j23
+          title: org_id
+        user_id:
+          type: string
+          examples:
+            - Us1234abcd
+          title: user_id
+        project_id:
+          type: string
+          examples:
+            - Bq4y3QB38S
+          title: project_id
+        category_id:
+          type: string
+          examples:
+            - Mn0bVc9xZ8
+          title: category_id
+        topic_id:
+          type: string
+          examples:
+            - Tg6Rf4e2W1
+          title: topic_id
+        subject:
+          type: string
+          examples:
+            - Invoice download is failing
+          title: subject
+        status:
+          examples:
+            - TICKET_STATUS_OPEN
+          title: status
+          $ref: '#/components/schemas/support.v1.TicketStatus'
+        priority:
+          examples:
+            - TICKET_PRIORITY_NORMAL
+          title: priority
+          $ref: '#/components/schemas/support.v1.TicketPriority'
+        created_at:
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: created_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        updated_at:
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: updated_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+      title: Ticket
+      additionalProperties: false
+    support.v1.TicketMessage:
+      type: object
+      properties:
+        id:
+          type: string
+          examples:
+            - Ms9Zx1Cv7B
+          title: id
+        ticket_id:
+          type: string
+          examples:
+            - Kp3Lm8Qr2Z
+          title: ticket_id
+        author_id:
+          type: string
+          examples:
+            - Us1234abcd
+          title: author_id
+        author_type:
+          examples:
+            - MESSAGE_AUTHOR_CUSTOMER
+          title: author_type
+          $ref: '#/components/schemas/support.v1.MessageAuthor'
+        body:
+          type: string
+          examples:
+            - My invoice download returns a 404.
+          title: body
+        created_at:
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: created_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+      title: TicketMessage
+      additionalProperties: false
+    support.v1.TicketPriority:
+      type: string
+      title: TicketPriority
+      enum:
+        - TICKET_PRIORITY_UNSPECIFIED
+        - TICKET_PRIORITY_LOW
+        - TICKET_PRIORITY_NORMAL
+        - TICKET_PRIORITY_HIGH
+        - TICKET_PRIORITY_URGENT
+    support.v1.TicketStatus:
+      type: string
+      title: TicketStatus
+      enum:
+        - TICKET_STATUS_UNSPECIFIED
+        - TICKET_STATUS_OPEN
+        - TICKET_STATUS_PENDING
+        - TICKET_STATUS_RESOLVED
+        - TICKET_STATUS_CLOSED
+    support.v1.Topic:
+      type: object
+      properties:
+        id:
+          type: string
+          examples:
+            - Tg6Rf4e2W1
+          title: id
+        category_id:
+          type: string
+          examples:
+            - Mn0bVc9xZ8
+          title: category_id
+        slug:
+          type: string
+          examples:
+            - view-invoices
+          title: slug
+        name:
+          type: string
+          examples:
+            - View or download invoices
+          title: name
+        description:
+          type: string
+          examples:
+            - Find past invoices and receipts
+          title: description
+        resolution_url:
+          type: string
+          examples:
+            - https://docs.rixl.com/billing/invoices
+          title: resolution_url
+        sort_order:
+          type: integer
+          examples:
+            - "1"
+          title: sort_order
+          format: int32
+      title: Topic
       additionalProperties: false
     upload.v1.ReceiveStorageEventRequest:
       type: object
@@ -14738,6 +15726,10 @@ tags:
     description: Organize content into feeds.
   - name: Projects
     description: Projects that group content and settings.
+  - name: Support Tickets
+    description: Raise, track, and close customer support tickets.
+  - name: Support Chat
+    description: Messages exchanged on a support ticket.
   - name: Storage Webhooks
     description: Internal storage-event callbacks used to finalize uploads.
   - name: API Keys
@@ -14793,6 +15785,10 @@ x-tagGroups:
       - Posts
       - Feeds
       - Projects
+  - name: Support
+    tags:
+      - Support Tickets
+      - Support Chat
   - name: Platform
     tags:
       - Storage Webhooks
