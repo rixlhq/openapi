@@ -4760,6 +4760,37 @@
         }
       }
     },
+    "/auth/v1/users/current/avatar": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "UpdateUserAvatar",
+        "operationId": "auth.v1.UserService.UpdateUserAvatar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/auth.v1.UpdateUserAvatarRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/auth.v1.UpdateUserAvatarResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/v1/users/current/name": {
       "patch": {
         "tags": [
@@ -15599,6 +15630,32 @@
         "title": "UpdatePolicyRequest",
         "additionalProperties": false
       },
+      "auth.v1.UpdateUserAvatarRequest": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "title": "user_id"
+          },
+          "image_id": {
+            "type": "string",
+            "title": "image_id"
+          }
+        },
+        "title": "UpdateUserAvatarRequest",
+        "additionalProperties": false
+      },
+      "auth.v1.UpdateUserAvatarResponse": {
+        "type": "object",
+        "properties": {
+          "image_id": {
+            "type": "string",
+            "title": "image_id"
+          }
+        },
+        "title": "UpdateUserAvatarResponse",
+        "additionalProperties": false
+      },
       "auth.v1.UpdateUsernameRequest": {
         "type": "object",
         "properties": {
@@ -15655,6 +15712,10 @@
           "image_url": {
             "type": "string",
             "title": "image_url"
+          },
+          "image_id": {
+            "type": "string",
+            "title": "image_id"
           },
           "language_code": {
             "type": "string",
