@@ -13917,6 +13917,10 @@
           "is_member": {
             "type": "boolean",
             "title": "is_member"
+          },
+          "is_internal_org": {
+            "type": "boolean",
+            "title": "is_internal_org"
           }
         },
         "title": "CheckMembershipResponse",
@@ -14217,6 +14221,34 @@
         "title": "GetUserResponse",
         "additionalProperties": false
       },
+      "auth.v1.IdentityPolicies": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/auth.v1.Policy"
+            },
+            "title": "policies"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/auth.v1.PolicyAttachment"
+            },
+            "title": "attachments"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "permissions"
+          }
+        },
+        "title": "IdentityPolicies",
+        "additionalProperties": false
+      },
       "auth.v1.InitiateEmailChangeRequest": {
         "type": "object",
         "properties": {
@@ -14263,6 +14295,46 @@
           }
         },
         "title": "ListAttachmentsResponse",
+        "additionalProperties": false
+      },
+      "auth.v1.ListIdentityPoliciesRequest": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "title": "user",
+            "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
+          },
+          "identity_type": {
+            "title": "identity_type",
+            "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
+          },
+          "identity_id": {
+            "type": "string",
+            "title": "identity_id"
+          }
+        },
+        "title": "ListIdentityPoliciesRequest",
+        "additionalProperties": false
+      },
+      "auth.v1.ListIdentityPoliciesResponse": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/auth.v1.Policy"
+            },
+            "title": "policies"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/auth.v1.PolicyAttachment"
+            },
+            "title": "attachments"
+          }
+        },
+        "title": "ListIdentityPoliciesResponse",
         "additionalProperties": false
       },
       "auth.v1.ListMembershipApplicationsRequest": {
@@ -14429,6 +14501,58 @@
           }
         },
         "title": "ListPermissionRegistryRequest",
+        "additionalProperties": false
+      },
+      "auth.v1.ListPoliciesForIdentitiesRequest": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "title": "user",
+            "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
+          },
+          "identity_type": {
+            "title": "identity_type",
+            "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
+          },
+          "identity_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "identity_ids"
+          }
+        },
+        "title": "ListPoliciesForIdentitiesRequest",
+        "additionalProperties": false
+      },
+      "auth.v1.ListPoliciesForIdentitiesResponse": {
+        "type": "object",
+        "properties": {
+          "by_identity": {
+            "type": "object",
+            "title": "by_identity",
+            "additionalProperties": {
+              "title": "value",
+              "$ref": "#/components/schemas/auth.v1.IdentityPolicies"
+            }
+          }
+        },
+        "title": "ListPoliciesForIdentitiesResponse",
+        "additionalProperties": false
+      },
+      "auth.v1.ListPoliciesForIdentitiesResponse.ByIdentityEntry": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "key"
+          },
+          "value": {
+            "title": "value",
+            "$ref": "#/components/schemas/auth.v1.IdentityPolicies"
+          }
+        },
+        "title": "ByIdentityEntry",
         "additionalProperties": false
       },
       "auth.v1.ListPoliciesResponse": {
@@ -15077,6 +15201,25 @@
         "title": "PolicyRequest",
         "additionalProperties": false
       },
+      "auth.v1.PurgeIdentityPoliciesRequest": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "title": "user",
+            "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
+          },
+          "identity_type": {
+            "title": "identity_type",
+            "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
+          },
+          "identity_id": {
+            "type": "string",
+            "title": "identity_id"
+          }
+        },
+        "title": "PurgeIdentityPoliciesRequest",
+        "additionalProperties": false
+      },
       "auth.v1.ReactivateMemberRequest": {
         "type": "object",
         "properties": {
@@ -15207,6 +15350,53 @@
           }
         },
         "title": "RenamePasskeyRequest",
+        "additionalProperties": false
+      },
+      "auth.v1.ReplaceIdentityPoliciesRequest": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "title": "user",
+            "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
+          },
+          "identity_type": {
+            "title": "identity_type",
+            "$ref": "#/components/schemas/auth.v1.PolicyIdentityType"
+          },
+          "identity_id": {
+            "type": "string",
+            "title": "identity_id"
+          },
+          "policy_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "policy_ids"
+          }
+        },
+        "title": "ReplaceIdentityPoliciesRequest",
+        "additionalProperties": false
+      },
+      "auth.v1.ReplaceIdentityPoliciesResponse": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/auth.v1.Policy"
+            },
+            "title": "policies"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "permissions"
+          }
+        },
+        "title": "ReplaceIdentityPoliciesResponse",
         "additionalProperties": false
       },
       "auth.v1.ResendInvitationRequest": {
