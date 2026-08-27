@@ -10802,6 +10802,16 @@ components:
         active_org_id:
           type: string
           title: active_org_id
+        policies:
+          type: array
+          items:
+            $ref: '#/components/schemas/auth.v1.Policy'
+          title: policies
+        permissions:
+          type: array
+          items:
+            type: string
+          title: permissions
       title: UserInfo
       additionalProperties: false
     auth.v1.UserOrgRequest:
