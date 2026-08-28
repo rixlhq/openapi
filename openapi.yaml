@@ -3116,6 +3116,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.UpdateUserAvatarResponse'
+  /auth/v1/users/current/avatar/upload:
+    post:
+      tags:
+        - Users
+      summary: CreateAvatarUpload
+      operationId: auth.v1.UserService.CreateAvatarUpload
+      parameters:
+        - name: user_id
+          in: query
+          schema:
+            type: string
+            title: user_id
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.CreateAvatarUploadResponse'
   /auth/v1/users/current/name:
     patch:
       tags:
@@ -9539,6 +9558,20 @@ components:
           type: string
           title: image_url
       title: ConnectedProvider
+      additionalProperties: false
+    auth.v1.CreateAvatarUploadResponse:
+      type: object
+      properties:
+        image_id:
+          type: string
+          title: image_id
+        upload_url:
+          type: string
+          title: upload_url
+        expires_at:
+          title: expires_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+      title: CreateAvatarUploadResponse
       additionalProperties: false
     auth.v1.CreateDomainRequest:
       type: object
