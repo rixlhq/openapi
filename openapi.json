@@ -2362,10 +2362,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
-                  },
                   "domain": {
                     "type": "string",
                     "title": "domain"
@@ -2416,10 +2412,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
-                  },
                   "enabled": {
                     "type": "boolean",
                     "title": "enabled"
@@ -2799,10 +2791,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
-                  },
                   "username": {
                     "type": "string",
                     "title": "username"
@@ -2857,10 +2845,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
-                  },
                   "user_id": {
                     "type": "string",
                     "title": "user_id"
@@ -2912,14 +2896,6 @@
               "type": "string",
               "title": "user_id"
             }
-          },
-          {
-            "name": "user.actor_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "actor_id"
-            }
           }
         ],
         "responses": {
@@ -2951,14 +2927,6 @@
             "schema": {
               "type": "string",
               "title": "org_id"
-            }
-          },
-          {
-            "name": "user.user_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "user_id"
             }
           },
           {
@@ -3019,14 +2987,6 @@
               "type": "string",
               "title": "user_id"
             }
-          },
-          {
-            "name": "user.actor_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "actor_id"
-            }
           }
         ],
         "responses": {
@@ -3067,14 +3027,6 @@
             "schema": {
               "type": "string",
               "title": "user_id"
-            }
-          },
-          {
-            "name": "user.actor_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "actor_id"
             }
           }
         ],
@@ -3125,10 +3077,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
-                  },
                   "user_id": {
                     "type": "string",
                     "title": "user_id"
@@ -3184,14 +3132,6 @@
               "type": "string",
               "title": "user_id"
             }
-          },
-          {
-            "name": "user.actor_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "actor_id"
-            }
           }
         ],
         "responses": {
@@ -3232,10 +3172,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
-                  },
                   "full_name": {
                     "type": "string",
                     "title": "full_name"
@@ -3286,10 +3222,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
-                  },
                   "state": {
                     "title": "state",
                     "$ref": "#/components/schemas/auth.v1.MembershipApplicationState"
@@ -3340,10 +3272,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.ActorOrgRequest"
-                  },
                   "username": {
                     "type": "string",
                     "title": "username"
@@ -3899,14 +3827,6 @@
               "type": "string",
               "title": "member_id"
             }
-          },
-          {
-            "name": "user.user_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "user_id"
-            }
           }
         ],
         "responses": {
@@ -3947,10 +3867,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
-                  },
                   "name": {
                     "type": "string",
                     "title": "name"
@@ -4013,14 +3929,6 @@
               "type": "string",
               "title": "attachment_id"
             }
-          },
-          {
-            "name": "user.user_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "user_id"
-            }
           }
         ],
         "responses": {
@@ -4052,14 +3960,6 @@
             "schema": {
               "type": "string",
               "title": "org_id"
-            }
-          },
-          {
-            "name": "user.user_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "user_id"
             }
           },
           {
@@ -4131,14 +4031,6 @@
               "type": "string",
               "title": "policy_id"
             }
-          },
-          {
-            "name": "user.user_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "user_id"
-            }
           }
         ],
         "responses": {
@@ -4186,10 +4078,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
-                  },
                   "policy_id": {
                     "type": "string",
                     "title": "policy_id"
@@ -4254,14 +4142,6 @@
               "type": "string",
               "title": "policy_id"
             }
-          },
-          {
-            "name": "user.user_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "user_id"
-            }
           }
         ],
         "responses": {
@@ -4302,14 +4182,6 @@
             "schema": {
               "type": "string",
               "title": "policy_id"
-            }
-          },
-          {
-            "name": "user.user_id",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "title": "user_id"
             }
           }
         ],
@@ -4358,10 +4230,6 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "user": {
-                    "title": "user",
-                    "$ref": "#/components/schemas/auth.v1.UserOrgRequest"
-                  },
                   "policy_id": {
                     "type": "string",
                     "title": "policy_id"
