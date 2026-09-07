@@ -13,6 +13,9 @@ permissions:
 jobs:
   dispatch:
     runs-on: ubuntu-latest
+    # Applies per matrix job; each is a single curl to the dispatches
+    # endpoint, observed 0.28 min max across 36 runs.
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix:
