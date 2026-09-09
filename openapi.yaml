@@ -366,9 +366,6 @@ paths:
             schema:
               type: object
               properties:
-                dashboard_id:
-                  type: string
-                  title: dashboard_id
                 time_start:
                   type: string
                   examples:
@@ -386,7 +383,6 @@ paths:
                   $ref: '#/components/schemas/analytics.v1.ExportFormat'
               title: ExportDashboardRequest
               required:
-                - dashboard_id
                 - time_start
                 - time_end
               additionalProperties: false
@@ -417,9 +413,6 @@ paths:
             schema:
               type: object
               properties:
-                dashboard_id:
-                  type: string
-                  title: dashboard_id
                 expected_revision:
                   type: integer
                   title: expected_revision
@@ -433,7 +426,6 @@ paths:
                   minItems: 1
               title: UpdateDashboardLayoutRequest
               required:
-                - dashboard_id
                 - expected_revision
               additionalProperties: false
         required: true
@@ -1103,11 +1095,6 @@ paths:
             schema:
               type: object
               properties:
-                org_id:
-                  type: string
-                  examples:
-                    - OR98234j23
-                  title: org_id
                 name:
                   type: string
                   examples:
@@ -1203,17 +1190,6 @@ paths:
             schema:
               type: object
               properties:
-                org_id:
-                  type: string
-                  examples:
-                    - OR98234j23
-                  title: org_id
-                key_id:
-                  type: string
-                  examples:
-                    - XyZ9aB8cD1
-                  title: key_id
-                  pattern: ^[0-9A-Za-z]+$
                 name:
                   type:
                     - string
@@ -1242,8 +1218,6 @@ paths:
                   type: boolean
                   title: replace_policies
               title: UpdateApiKeyRequest
-              required:
-                - key_id
               additionalProperties: false
         required: true
       responses:
@@ -1497,9 +1471,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.UserOrgRequest'
                 domain:
                   type: string
                   title: domain
@@ -1532,9 +1503,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.UserOrgRequest'
                 enabled:
                   type: boolean
                   title: enabled
@@ -1773,9 +1741,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
                 username:
                   type: string
                   title: username
@@ -1811,9 +1776,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
                 user_id:
                   type: string
                   title: user_id
@@ -1846,11 +1808,6 @@ paths:
           schema:
             type: string
             title: user_id
-        - name: user.actor_id
-          in: query
-          schema:
-            type: string
-            title: actor_id
       responses:
         "200":
           description: Success
@@ -1871,11 +1828,6 @@ paths:
           schema:
             type: string
             title: org_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
         - name: limit
           in: query
           schema:
@@ -1914,11 +1866,6 @@ paths:
           schema:
             type: string
             title: user_id
-        - name: user.actor_id
-          in: query
-          schema:
-            type: string
-            title: actor_id
       responses:
         "200":
           description: Success
@@ -1945,11 +1892,6 @@ paths:
           schema:
             type: string
             title: user_id
-        - name: user.actor_id
-          in: query
-          schema:
-            type: string
-            title: actor_id
       responses:
         "200":
           description: Success
@@ -1982,12 +1924,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
-                user_id:
-                  type: string
-                  title: user_id
                 role:
                   title: role
                   $ref: '#/components/schemas/auth.v1.MembershipRole'
@@ -2020,11 +1956,6 @@ paths:
           schema:
             type: string
             title: user_id
-        - name: user.actor_id
-          in: query
-          schema:
-            type: string
-            title: actor_id
       responses:
         "200":
           description: Success
@@ -2051,9 +1982,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
                 full_name:
                   type: string
                   title: full_name
@@ -2086,9 +2014,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.UserOrgRequest'
                 state:
                   title: state
                   $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
@@ -2121,9 +2046,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
                 username:
                   type: string
                   title: username
@@ -2468,11 +2390,6 @@ paths:
           schema:
             type: string
             title: member_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         "200":
           description: Success
@@ -2499,9 +2416,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.UserOrgRequest'
                 name:
                   type: string
                   title: name
@@ -2542,11 +2456,6 @@ paths:
           schema:
             type: string
             title: attachment_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         "200":
           description: Success
@@ -2567,11 +2476,6 @@ paths:
           schema:
             type: string
             title: org_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
         - name: types
           in: query
           schema:
@@ -2617,11 +2521,6 @@ paths:
           schema:
             type: string
             title: policy_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         "200":
           description: Success
@@ -2653,12 +2552,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.UserOrgRequest'
-                policy_id:
-                  type: string
-                  title: policy_id
                 name:
                   type: string
                   title: name
@@ -2698,11 +2591,6 @@ paths:
           schema:
             type: string
             title: policy_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         "200":
           description: Success
@@ -2729,11 +2617,6 @@ paths:
           schema:
             type: string
             title: policy_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         "200":
           description: Success
@@ -2765,12 +2648,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  title: user
-                  $ref: '#/components/schemas/auth.v1.UserOrgRequest'
-                policy_id:
-                  type: string
-                  title: policy_id
                 identity_type:
                   title: identity_type
                   $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
@@ -3238,20 +3115,12 @@ paths:
             schema:
               type: object
               properties:
-                invoice_id:
-                  type: string
-                  examples:
-                    - Z9Y8X7W6V5
-                  title: invoice_id
-                  pattern: ^[0-9A-Za-z]+$
                 status:
                   examples:
                     - INVOICE_STATUS_PAID
                   title: status
                   $ref: '#/components/schemas/billing.v1.InvoiceStatus'
               title: UpdateInvoiceStatusRequest
-              required:
-                - invoice_id
               additionalProperties: false
         required: true
       responses:
@@ -4026,11 +3895,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
                 name:
                   type: string
                   examples:
@@ -4140,16 +4004,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
-                feed_id:
-                  type: string
-                  examples:
-                    - F4edRI23XL
-                  title: feed_id
                 name:
                   type: string
                   examples:
@@ -4372,11 +4226,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
                 org_id:
                   type: string
                   examples:
@@ -4457,16 +4306,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
-                image_id:
-                  type: string
-                  examples:
-                    - LmNoPqR678
-                  title: image_id
                 visibility:
                   examples:
                     - VISIBILITY_PUBLIC
@@ -4765,21 +4604,11 @@ paths:
               type: object
               allOf:
                 - properties:
-                    project_id:
-                      type: string
-                      examples:
-                        - Bq4y3QB38S
-                      title: project_id
                     org_id:
                       type: string
                       examples:
                         - OR98234j23
                       title: org_id
-                    feed_id:
-                      type: string
-                      examples:
-                        - F4edRI23XL
-                      title: feed_id
                     creator_id:
                       type: string
                       examples:
@@ -4817,8 +4646,14 @@ paths:
                       title: video_id
                       required:
                         - video_id
+                    - not:
+                        anyOf:
+                          - required:
+                              - image_id
+                          - required:
+                              - video_id
+              unevaluatedProperties: false
               title: CreatePostRequest
-              additionalProperties: false
         required: true
       responses:
         "200":
@@ -4916,21 +4751,11 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
                 org_id:
                   type: string
                   examples:
                     - OR98234j23
                   title: org_id
-                feed_id:
-                  type: string
-                  examples:
-                    - F4edRI23XL
-                  title: feed_id
                 creator_id:
                   type: string
                   examples:
@@ -5169,11 +4994,6 @@ paths:
             schema:
               type: object
               properties:
-                org_id:
-                  type: string
-                  examples:
-                    - OR98234j23
-                  title: org_id
                 name:
                   type: string
                   examples:
@@ -5294,16 +5114,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
-                org_id:
-                  type: string
-                  examples:
-                    - OR98234j23
-                  title: org_id
                 custom_domain:
                   type: string
                   examples:
@@ -5377,16 +5187,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
-                org_id:
-                  type: string
-                  examples:
-                    - OR98234j23
-                  title: org_id
                 target_organization_id:
                   type: string
                   examples:
@@ -5431,16 +5231,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
-                org_id:
-                  type: string
-                  examples:
-                    - OR98234j23
-                  title: org_id
                 name:
                   type: string
                   examples:
@@ -5486,16 +5276,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
-                org_id:
-                  type: string
-                  examples:
-                    - OR98234j23
-                  title: org_id
                 video_quality:
                   examples:
                     - shorts
@@ -5794,20 +5574,6 @@ paths:
             examples:
               - Kp3Lm8Qr2Z
             title: ticket_id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                ticket_id:
-                  type: string
-                  examples:
-                    - Kp3Lm8Qr2Z
-                  title: ticket_id
-              title: CloseTicketRequest
-              additionalProperties: false
-        required: true
       responses:
         "200":
           description: Success
@@ -5836,11 +5602,6 @@ paths:
             schema:
               type: object
               properties:
-                ticket_id:
-                  type: string
-                  examples:
-                    - Kp3Lm8Qr2Z
-                  title: ticket_id
                 body:
                   type: string
                   examples:
@@ -5984,21 +5745,11 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
                 org_id:
                   type: string
                   examples:
                     - OR98234j23
                   title: org_id
-                video_id:
-                  type: string
-                  examples:
-                    - FpzVPNx1cG
-                  title: video_id
                 items:
                   type: array
                   items:
@@ -6105,11 +5856,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/videos.v1.VideoChapters'
-    delete:
+    put:
       tags:
         - Chapters
       summary: UpdateVideoChapters
       operationId: videos.v1.ChapterService.UpdateVideoChapters
+      parameters:
+        - name: project_id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples:
+              - Bq4y3QB38S
+            title: project_id
+        - name: video_id
+          in: path
+          required: true
+          schema:
+            type: string
+            examples:
+              - FpzVPNx1cG
+            title: video_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chapters:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/videos.v1.Chapter'
+                  title: chapters
+              title: UpdateVideoChaptersRequest
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/videos.v1.VideoChapters'
+    delete:
+      tags:
+        - Chapters
+      summary: UpdateVideoChapters
+      operationId: videos.v1.ChapterService.UpdateVideoChapters2
       parameters:
         - name: project_id
           in: path
@@ -6339,21 +6133,11 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
                 org_id:
                   type: string
                   examples:
                     - OR98234j23
                   title: org_id
-                video_id:
-                  type: string
-                  examples:
-                    - FpzVPNx1cG
-                  title: video_id
                 items:
                   type: array
                   items:
@@ -6505,11 +6289,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
                 org_id:
                   type: string
                   examples:
@@ -6595,16 +6374,6 @@ paths:
             schema:
               type: object
               properties:
-                project_id:
-                  type: string
-                  examples:
-                    - Bq4y3QB38S
-                  title: project_id
-                video_id:
-                  type: string
-                  examples:
-                    - FpzVPNx1cG
-                  title: video_id
                 visibility:
                   examples:
                     - VISIBILITY_PUBLIC
@@ -6694,8 +6463,20 @@ components:
               title: session_start
               required:
                 - session_start
+            - not:
+                anyOf:
+                  - required:
+                      - content_view
+                  - required:
+                      - engagement
+                  - required:
+                      - error
+                  - required:
+                      - interaction
+                  - required:
+                      - session_start
+      unevaluatedProperties: false
       title: AnalyticsEvent
-      additionalProperties: false
     analytics.v1.BatchChartQueryRequest:
       type: object
       properties:
@@ -9685,8 +9466,14 @@ components:
               title: verified
               required:
                 - verified
+            - not:
+                anyOf:
+                  - required:
+                      - pending
+                  - required:
+                      - verified
+      unevaluatedProperties: false
       title: DomainStatus
-      additionalProperties: false
     auth.v1.EmailStatusResponse:
       type: object
       properties:
@@ -13958,8 +13745,14 @@ components:
               title: video_id
               required:
                 - video_id
+            - not:
+                anyOf:
+                  - required:
+                      - image_id
+                  - required:
+                      - video_id
+      unevaluatedProperties: false
       title: CreatePostRequest
-      additionalProperties: false
     posts.v1.CreatePostResponse:
       type: object
       properties:
@@ -14175,8 +13968,14 @@ components:
               title: video
               required:
                 - video
+            - not:
+                anyOf:
+                  - required:
+                      - image
+                  - required:
+                      - video
+      unevaluatedProperties: false
       title: Post
-      additionalProperties: false
     posts.v1.PostUpload:
       type: object
       properties:
