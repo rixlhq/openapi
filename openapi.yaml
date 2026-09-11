@@ -13,6 +13,7 @@ paths:
       parameters:
         - name: time_start
           in: query
+          description: The time_start query parameter.
           required: true
           schema:
             type: string
@@ -21,6 +22,7 @@ paths:
             title: time_start
         - name: time_end
           in: query
+          description: The time_end query parameter.
           required: true
           schema:
             type: string
@@ -29,6 +31,7 @@ paths:
             title: time_end
         - name: interval
           in: query
+          description: The interval query parameter.
           schema:
             type: string
             examples:
@@ -36,6 +39,7 @@ paths:
             title: interval
         - name: filter.countries
           in: query
+          description: The filter.countries query parameter.
           schema:
             type: array
             examples:
@@ -49,6 +53,7 @@ paths:
             title: countries
         - name: filter.cities
           in: query
+          description: The filter.cities query parameter.
           schema:
             type: array
             examples:
@@ -62,6 +67,7 @@ paths:
             title: cities
         - name: filter.devices
           in: query
+          description: The filter.devices query parameter.
           schema:
             type: array
             examples:
@@ -75,6 +81,7 @@ paths:
             title: devices
         - name: filter.os
           in: query
+          description: The filter.os query parameter.
           schema:
             type: array
             examples:
@@ -88,6 +95,7 @@ paths:
             title: os
         - name: filter.languages
           in: query
+          description: The filter.languages query parameter.
           schema:
             type: array
             examples:
@@ -101,6 +109,7 @@ paths:
             title: languages
         - name: filter.regions
           in: query
+          description: The filter.regions query parameter.
           schema:
             type: array
             examples:
@@ -114,6 +123,7 @@ paths:
             title: regions
         - name: filter.browsers
           in: query
+          description: The filter.browsers query parameter.
           schema:
             type: array
             examples:
@@ -127,6 +137,7 @@ paths:
             title: browsers
         - name: filter.os_versions
           in: query
+          description: The filter.os_versions query parameter.
           schema:
             type: array
             examples:
@@ -243,6 +254,7 @@ paths:
       parameters:
         - name: page_size
           in: query
+          description: The page_size query parameter.
           schema:
             type: integer
             examples:
@@ -251,6 +263,7 @@ paths:
             format: int32
         - name: page
           in: query
+          description: The page query parameter.
           schema:
             type: integer
             examples:
@@ -291,12 +304,14 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
             title: id
         - name: expected_revision
           in: query
+          description: The expected_revision query parameter.
           required: true
           schema:
             type: integer
@@ -317,6 +332,7 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
@@ -332,8 +348,9 @@ paths:
                   title: expected_revision
                   format: int32
                 patch:
+                  allOf:
+                    - $ref: '#/components/schemas/analytics.v1.WidgetPatch'
                   title: patch
-                  $ref: '#/components/schemas/analytics.v1.WidgetPatch'
               title: UpdateWidgetRequest
               required:
                 - expected_revision
@@ -356,6 +373,7 @@ paths:
       parameters:
         - name: dashboard_id
           in: path
+          description: The dashboard_id path parameter.
           required: true
           schema:
             type: string
@@ -377,10 +395,11 @@ paths:
                     - "2026-01-15T10:30:00Z"
                   title: time_end
                 format:
+                  allOf:
+                    - $ref: '#/components/schemas/analytics.v1.ExportFormat'
                   examples:
                     - EXPORT_FORMAT_CSV
                   title: format
-                  $ref: '#/components/schemas/analytics.v1.ExportFormat'
               title: ExportDashboardRequest
               required:
                 - time_start
@@ -403,6 +422,7 @@ paths:
       parameters:
         - name: dashboard_id
           in: path
+          description: The dashboard_id path parameter.
           required: true
           schema:
             type: string
@@ -445,12 +465,14 @@ paths:
       parameters:
         - name: dashboard_id
           in: path
+          description: The dashboard_id path parameter.
           required: true
           schema:
             type: string
             title: dashboard_id
         - name: expected_revision
           in: query
+          description: The expected_revision query parameter.
           required: true
           schema:
             type: integer
@@ -460,8 +482,9 @@ paths:
         content:
           application/json:
             schema:
+              allOf:
+                - $ref: '#/components/schemas/analytics.v1.WidgetInput'
               title: widget
-              $ref: '#/components/schemas/analytics.v1.WidgetInput'
       responses:
         "200":
           description: Success
@@ -478,6 +501,7 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
@@ -497,12 +521,14 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
             title: id
         - name: expected_revision
           in: query
+          description: The expected_revision query parameter.
           required: true
           schema:
             type: integer
@@ -523,6 +549,7 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
@@ -569,6 +596,7 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
@@ -608,6 +636,7 @@ paths:
       parameters:
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -617,6 +646,7 @@ paths:
             minLength: 1
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -624,6 +654,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -645,6 +676,7 @@ paths:
       parameters:
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             examples:
@@ -653,6 +685,7 @@ paths:
             format: int32
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -660,6 +693,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -719,6 +753,7 @@ paths:
       parameters:
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -728,6 +763,7 @@ paths:
             minLength: 1
         - name: buckets
           in: query
+          description: The buckets query parameter.
           schema:
             type: integer
             examples:
@@ -736,6 +772,7 @@ paths:
             format: int32
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -743,6 +780,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -764,6 +802,7 @@ paths:
       parameters:
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -773,6 +812,7 @@ paths:
             minLength: 1
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -780,6 +820,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -801,6 +842,7 @@ paths:
       parameters:
         - name: image_id
           in: path
+          description: The image_id path parameter.
           required: true
           schema:
             type: string
@@ -810,6 +852,7 @@ paths:
             minLength: 1
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -817,6 +860,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -838,6 +882,7 @@ paths:
       parameters:
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             examples:
@@ -846,6 +891,7 @@ paths:
             format: int32
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -853,6 +899,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -874,6 +921,7 @@ paths:
       parameters:
         - name: post_id
           in: path
+          description: The post_id path parameter.
           required: true
           schema:
             type: string
@@ -883,6 +931,7 @@ paths:
             minLength: 1
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -890,6 +939,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -911,6 +961,7 @@ paths:
       parameters:
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             examples:
@@ -919,6 +970,7 @@ paths:
             format: int32
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -926,6 +978,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -933,6 +986,7 @@ paths:
             title: end
         - name: feed_id
           in: query
+          description: The feed_id query parameter.
           schema:
             type: string
             examples:
@@ -967,6 +1021,7 @@ paths:
       parameters:
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             examples:
@@ -975,6 +1030,7 @@ paths:
             format: int32
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -982,6 +1038,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -1003,6 +1060,7 @@ paths:
       parameters:
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -1012,6 +1070,7 @@ paths:
             minLength: 1
         - name: range.start
           in: query
+          description: The range.start query parameter.
           schema:
             type: string
             examples:
@@ -1019,6 +1078,7 @@ paths:
             title: start
         - name: range.end
           in: query
+          description: The range.end query parameter.
           schema:
             type: string
             examples:
@@ -1040,6 +1100,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -1083,6 +1144,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -1107,10 +1169,11 @@ paths:
                     - Bq4y3QB38S
                   title: project_id
                 expiring_at:
+                  allOf:
+                    - $ref: '#/components/schemas/google.protobuf.Timestamp'
                   examples:
                     - "2026-01-15T10:30:00Z"
                   title: expiring_at
-                  $ref: '#/components/schemas/google.protobuf.Timestamp'
                 policy_ids:
                   type: array
                   examples:
@@ -1139,6 +1202,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -1147,6 +1211,7 @@ paths:
             title: org_id
         - name: key_id
           in: path
+          description: The key_id path parameter.
           required: true
           schema:
             type: string
@@ -1169,6 +1234,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -1177,6 +1243,7 @@ paths:
             title: org_id
         - name: key_id
           in: path
+          description: The key_id path parameter.
           required: true
           schema:
             type: string
@@ -1236,6 +1303,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -1244,6 +1312,7 @@ paths:
             title: org_id
         - name: key_id
           in: path
+          description: The key_id path parameter.
           required: true
           schema:
             type: string
@@ -1286,6 +1355,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1305,6 +1375,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1324,6 +1395,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1362,12 +1434,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1386,12 +1460,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1411,12 +1487,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1436,12 +1514,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1461,6 +1541,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -1493,6 +1574,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -1525,6 +1607,7 @@ paths:
       parameters:
         - name: token
           in: path
+          description: The token path parameter.
           required: true
           schema:
             type: string
@@ -1545,6 +1628,7 @@ paths:
       parameters:
         - name: token
           in: path
+          description: The token path parameter.
           required: true
           schema:
             type: string
@@ -1565,26 +1649,31 @@ paths:
       parameters:
         - name: user.user_id
           in: query
+          description: The user.user_id query parameter.
           schema:
             type: string
             title: user_id
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             title: limit
             format: int32
         - name: offset
           in: query
+          description: The offset query parameter.
           schema:
             type: integer
             title: offset
             format: int32
         - name: state
           in: query
+          description: The state query parameter.
           schema:
+            allOf:
+              - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
             title: state
-            $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
       responses:
         "200":
           description: Success
@@ -1601,26 +1690,31 @@ paths:
       parameters:
         - name: user.user_id
           in: query
+          description: The user.user_id query parameter.
           schema:
             type: string
             title: user_id
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             title: limit
             format: int32
         - name: offset
           in: query
+          description: The offset query parameter.
           schema:
             type: integer
             title: offset
             format: int32
         - name: state
           in: query
+          description: The state query parameter.
           schema:
+            allOf:
+              - $ref: '#/components/schemas/auth.v1.MembershipState'
             title: state
-            $ref: '#/components/schemas/auth.v1.MembershipState'
       responses:
         "200":
           description: Success
@@ -1656,12 +1750,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1681,12 +1777,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1706,12 +1804,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -1731,6 +1831,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -1745,8 +1846,9 @@ paths:
                   type: string
                   title: username
                 role:
+                  allOf:
+                    - $ref: '#/components/schemas/auth.v1.MembershipRole'
                   title: role
-                  $ref: '#/components/schemas/auth.v1.MembershipRole'
               title: InviteMemberRequest
               additionalProperties: false
         required: true
@@ -1766,6 +1868,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -1798,12 +1901,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: path
+          description: The user_id path parameter.
           required: true
           schema:
             type: string
@@ -1824,18 +1929,21 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             title: limit
             format: int32
         - name: offset
           in: query
+          description: The offset query parameter.
           schema:
             type: integer
             title: offset
@@ -1856,12 +1964,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: path
+          description: The user_id path parameter.
           required: true
           schema:
             type: string
@@ -1882,12 +1992,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: path
+          description: The user_id path parameter.
           required: true
           schema:
             type: string
@@ -1908,12 +2020,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: path
+          description: The user_id path parameter.
           required: true
           schema:
             type: string
@@ -1925,8 +2039,9 @@ paths:
               type: object
               properties:
                 role:
+                  allOf:
+                    - $ref: '#/components/schemas/auth.v1.MembershipRole'
                   title: role
-                  $ref: '#/components/schemas/auth.v1.MembershipRole'
               title: UpdateMemberRoleRequest
               additionalProperties: false
         required: true
@@ -1946,12 +2061,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: path
+          description: The user_id path parameter.
           required: true
           schema:
             type: string
@@ -1972,6 +2089,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -2004,6 +2122,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -2015,8 +2134,9 @@ paths:
               type: object
               properties:
                 state:
+                  allOf:
+                    - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
                   title: state
-                  $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
               title: UpdateMembershipStateRequest
               additionalProperties: false
         required: true
@@ -2036,6 +2156,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -2068,6 +2189,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2087,6 +2209,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2106,6 +2229,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2125,6 +2249,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2220,6 +2345,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2277,12 +2403,14 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
             title: id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2301,6 +2429,7 @@ paths:
       parameters:
         - name: id
           in: path
+          description: The id path parameter.
           required: true
           schema:
             type: string
@@ -2355,12 +2484,14 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2380,12 +2511,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: member_id
           in: path
+          description: The member_id path parameter.
           required: true
           schema:
             type: string
@@ -2406,6 +2539,7 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
@@ -2446,12 +2580,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: attachment_id
           in: path
+          description: The attachment_id path parameter.
           required: true
           schema:
             type: string
@@ -2472,12 +2608,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: types
           in: query
+          description: The types query parameter.
           schema:
             type: array
             items:
@@ -2485,12 +2623,14 @@ paths:
             title: types
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             title: limit
             format: int32
         - name: offset
           in: query
+          description: The offset query parameter.
           schema:
             type: integer
             title: offset
@@ -2511,12 +2651,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: policy_id
           in: path
+          description: The policy_id path parameter.
           required: true
           schema:
             type: string
@@ -2536,12 +2678,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: policy_id
           in: path
+          description: The policy_id path parameter.
           required: true
           schema:
             type: string
@@ -2581,12 +2725,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: policy_id
           in: path
+          description: The policy_id path parameter.
           required: true
           schema:
             type: string
@@ -2607,12 +2753,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: policy_id
           in: path
+          description: The policy_id path parameter.
           required: true
           schema:
             type: string
@@ -2632,12 +2780,14 @@ paths:
       parameters:
         - name: user.org_id
           in: path
+          description: The user.org_id path parameter.
           required: true
           schema:
             type: string
             title: org_id
         - name: policy_id
           in: path
+          description: The policy_id path parameter.
           required: true
           schema:
             type: string
@@ -2649,8 +2799,9 @@ paths:
               type: object
               properties:
                 identity_type:
+                  allOf:
+                    - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
                   title: identity_type
-                  $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
                 identity_id:
                   type: string
                   title: identity_id
@@ -2673,6 +2824,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2711,12 +2863,15 @@ paths:
       parameters:
         - name: provider
           in: path
+          description: The provider path parameter.
           required: true
           schema:
+            allOf:
+              - $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
             title: provider
-            $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
         - name: user.user_id
           in: query
+          description: The user.user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2926,6 +3081,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2945,6 +3101,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -2964,6 +3121,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -3002,6 +3160,7 @@ paths:
       parameters:
         - name: user_id
           in: query
+          description: The user_id query parameter.
           schema:
             type: string
             title: user_id
@@ -3059,6 +3218,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3102,6 +3262,7 @@ paths:
       parameters:
         - name: invoice_id
           in: path
+          description: The invoice_id path parameter.
           required: true
           schema:
             type: string
@@ -3116,10 +3277,11 @@ paths:
               type: object
               properties:
                 status:
+                  allOf:
+                    - $ref: '#/components/schemas/billing.v1.InvoiceStatus'
                   examples:
                     - INVOICE_STATUS_PAID
                   title: status
-                  $ref: '#/components/schemas/billing.v1.InvoiceStatus'
               title: UpdateInvoiceStatusRequest
               additionalProperties: false
         required: true
@@ -3139,6 +3301,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3197,6 +3360,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3204,6 +3368,7 @@ paths:
             title: org_id
         - name: refresh
           in: query
+          description: The refresh query parameter.
           schema:
             type: boolean
             title: refresh
@@ -3241,6 +3406,7 @@ paths:
       parameters:
         - name: payment_intent_id
           in: query
+          description: The payment_intent_id query parameter.
           schema:
             type: string
             examples:
@@ -3262,6 +3428,7 @@ paths:
       parameters:
         - name: setup_intent_id
           in: query
+          description: The setup_intent_id query parameter.
           schema:
             type: string
             examples:
@@ -3283,6 +3450,7 @@ paths:
       parameters:
         - name: payment_method_id
           in: path
+          description: The payment_method_id path parameter.
           required: true
           schema:
             type: string
@@ -3291,6 +3459,7 @@ paths:
             title: payment_method_id
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3388,6 +3557,7 @@ paths:
       parameters:
         - name: currency
           in: query
+          description: The currency query parameter.
           schema:
             type: string
             examples:
@@ -3395,11 +3565,13 @@ paths:
             title: currency
         - name: interval
           in: query
+          description: The interval query parameter.
           schema:
             type: string
             title: interval
         - name: free
           in: query
+          description: The free query parameter.
           schema:
             type: string
             title: free
@@ -3463,6 +3635,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3502,6 +3675,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3523,6 +3697,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3566,6 +3741,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3587,6 +3763,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3608,6 +3785,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3615,6 +3793,7 @@ paths:
             title: org_id
         - name: days
           in: query
+          description: The days query parameter.
           schema:
             type: integer
             examples:
@@ -3637,6 +3816,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3658,6 +3838,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3679,6 +3860,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3686,6 +3868,7 @@ paths:
             title: org_id
         - name: days
           in: query
+          description: The days query parameter.
           schema:
             type: integer
             examples:
@@ -3710,6 +3893,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3731,6 +3915,7 @@ paths:
       parameters:
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3792,6 +3977,7 @@ paths:
       parameters:
         - name: credential_id
           in: path
+          description: The credential_id path parameter.
           required: true
           schema:
             type: string
@@ -3800,6 +3986,7 @@ paths:
             title: credential_id
         - name: org_id
           in: query
+          description: The org_id query parameter.
           schema:
             type: string
             examples:
@@ -3840,6 +4027,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -3883,6 +4071,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -3955,6 +4144,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -3963,6 +4153,7 @@ paths:
             title: project_id
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -3984,6 +4175,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -3992,6 +4184,7 @@ paths:
             title: project_id
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4057,6 +4250,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4065,6 +4259,7 @@ paths:
             title: project_id
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4138,6 +4333,7 @@ paths:
       parameters:
         - name: image_id
           in: path
+          description: The image_id path parameter.
           required: true
           schema:
             type: string
@@ -4160,6 +4356,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4190,11 +4387,13 @@ paths:
             default: "0"
         - name: sort_field
           in: query
+          description: The sort_field query parameter.
           schema:
             type: string
             title: sort_field
         - name: sort_direction
           in: query
+          description: The sort_direction query parameter.
           schema:
             type: string
             title: sort_direction
@@ -4214,6 +4413,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4256,6 +4456,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4264,6 +4465,7 @@ paths:
             title: project_id
         - name: image_id
           in: path
+          description: The image_id path parameter.
           required: true
           schema:
             type: string
@@ -4286,6 +4488,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4294,6 +4497,7 @@ paths:
             title: project_id
         - name: image_id
           in: path
+          description: The image_id path parameter.
           required: true
           schema:
             type: string
@@ -4307,10 +4511,11 @@ paths:
               type: object
               properties:
                 visibility:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.Visibility'
                   examples:
                     - VISIBILITY_PUBLIC
                   title: visibility
-                  $ref: '#/components/schemas/common.v1.Visibility'
               title: UpdateImageVisibilityRequest
               additionalProperties: false
         required: true
@@ -4368,6 +4573,7 @@ paths:
       parameters:
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4376,6 +4582,7 @@ paths:
             title: feed_id
         - name: project_id
           in: query
+          description: The project_id query parameter.
           schema:
             type: string
             examples:
@@ -4405,6 +4612,7 @@ paths:
             default: "0"
         - name: creator_id
           in: query
+          description: The creator_id query parameter.
           schema:
             type: string
             examples:
@@ -4426,6 +4634,7 @@ paths:
       parameters:
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4434,6 +4643,7 @@ paths:
             title: feed_id
         - name: creator_id
           in: path
+          description: The creator_id path parameter.
           required: true
           schema:
             type: string
@@ -4442,6 +4652,7 @@ paths:
             title: creator_id
         - name: project_id
           in: query
+          description: The project_id query parameter.
           schema:
             type: string
             examples:
@@ -4496,6 +4707,7 @@ paths:
             title: feed_id
         - name: post_id
           in: path
+          description: The post_id path parameter.
           required: true
           schema:
             type: string
@@ -4504,6 +4716,7 @@ paths:
             title: post_id
         - name: project_id
           in: query
+          description: The project_id query parameter.
           schema:
             type: string
             examples:
@@ -4525,6 +4738,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4533,6 +4747,7 @@ paths:
             title: project_id
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4563,6 +4778,7 @@ paths:
             default: "0"
         - name: creator_id
           in: query
+          description: The creator_id query parameter.
           schema:
             type: string
             examples:
@@ -4583,6 +4799,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4591,6 +4808,7 @@ paths:
             title: project_id
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4602,57 +4820,60 @@ paths:
           application/json:
             schema:
               type: object
-              allOf:
-                - properties:
-                    org_id:
+              anyOf:
+                - type: object
+                  properties:
+                    image_id:
                       type: string
                       examples:
-                        - OR98234j23
-                      title: org_id
-                    creator_id:
-                      type: string
-                      examples:
-                        - Tg6Rf4e2W1
-                      title: creator_id
-                    type:
-                      examples:
-                        - MEDIA_TYPE_VIDEO
-                      title: type
-                      $ref: '#/components/schemas/common.v1.MediaType'
-                    description:
-                      type: string
-                      examples:
-                        - A short description.
-                      title: description
-                      maxLength: 280
-                - oneOf:
-                    - type: object
-                      properties:
-                        image_id:
-                          type: string
-                          examples:
-                            - LmNoPqR678
-                          title: image_id
+                        - LmNoPqR678
                       title: image_id
-                      required:
-                        - image_id
-                    - type: object
-                      properties:
-                        video_id:
-                          type: string
-                          examples:
-                            - FpzVPNx1cG
-                          title: video_id
+                  title: image_id
+                - type: object
+                  properties:
+                    video_id:
+                      type: string
+                      examples:
+                        - FpzVPNx1cG
                       title: video_id
-                      required:
-                        - video_id
-                    - not:
-                        anyOf:
-                          - required:
-                              - image_id
-                          - required:
-                              - video_id
+                  title: video_id
               unevaluatedProperties: false
+              not:
+                allOf:
+                  - anyOf:
+                      - required:
+                          - image_id
+                      - required:
+                          - video_id
+                  - not:
+                      oneOf:
+                        - required:
+                            - image_id
+                        - required:
+                            - video_id
+              properties:
+                org_id:
+                  type: string
+                  examples:
+                    - OR98234j23
+                  title: org_id
+                creator_id:
+                  type: string
+                  examples:
+                    - Tg6Rf4e2W1
+                  title: creator_id
+                type:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.MediaType'
+                  examples:
+                    - MEDIA_TYPE_VIDEO
+                  title: type
+                description:
+                  type: string
+                  examples:
+                    - A short description.
+                  title: description
+                  maxLength: 280
               title: CreatePostRequest
         required: true
       responses:
@@ -4671,6 +4892,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4679,6 +4901,7 @@ paths:
             title: project_id
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4687,6 +4910,7 @@ paths:
             title: feed_id
         - name: creator_id
           in: path
+          description: The creator_id path parameter.
           required: true
           schema:
             type: string
@@ -4731,6 +4955,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4739,6 +4964,7 @@ paths:
             title: project_id
         - name: feed_id
           in: path
+          description: The feed_id path parameter.
           required: true
           schema:
             type: string
@@ -4768,20 +4994,22 @@ paths:
                   title: description
                   maxLength: 280
                 content_type:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.MediaType'
                   examples:
                     - MEDIA_TYPE_VIDEO
                   title: content_type
-                  $ref: '#/components/schemas/common.v1.MediaType'
                 file_name:
                   type: string
                   examples:
                     - clip.mp4
                   title: file_name
                 video_quality:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.VideoQuality'
                   examples:
                     - VIDEO_QUALITY_PRO
                   title: video_quality
-                  $ref: '#/components/schemas/common.v1.VideoQuality'
               title: CreatePostUploadRequest
               additionalProperties: false
         required: true
@@ -4801,6 +5029,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4820,6 +5049,7 @@ paths:
             title: feed_id
         - name: post_id
           in: path
+          description: The post_id path parameter.
           required: true
           schema:
             type: string
@@ -4841,6 +5071,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4860,6 +5091,7 @@ paths:
             title: feed_id
         - name: post_id
           in: path
+          description: The post_id path parameter.
           required: true
           schema:
             type: string
@@ -4882,6 +5114,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4890,6 +5123,7 @@ paths:
             title: project_id
         - name: post_id
           in: path
+          description: The post_id path parameter.
           required: true
           schema:
             type: string
@@ -4921,6 +5155,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -4929,6 +5164,7 @@ paths:
             title: project_id
         - name: post_id
           in: path
+          description: The post_id path parameter.
           required: true
           schema:
             type: string
@@ -4961,6 +5197,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -4982,6 +5219,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5012,10 +5250,11 @@ paths:
                         - eu
                   title: regions
                 video_quality:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.VideoQuality'
                   examples:
                     - basic
                   title: video_quality
-                  $ref: '#/components/schemas/common.v1.VideoQuality'
               title: CreateProjectRequest
               additionalProperties: false
         required: true
@@ -5035,6 +5274,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5043,6 +5283,7 @@ paths:
             title: org_id
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5064,6 +5305,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5072,6 +5314,7 @@ paths:
             title: org_id
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5094,6 +5337,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5102,6 +5346,7 @@ paths:
             title: org_id
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5137,6 +5382,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5145,6 +5391,7 @@ paths:
             title: org_id
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5167,6 +5414,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5175,6 +5423,7 @@ paths:
             title: org_id
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5211,6 +5460,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5219,6 +5469,7 @@ paths:
             title: org_id
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5256,6 +5507,7 @@ paths:
       parameters:
         - name: org_id
           in: path
+          description: The org_id path parameter.
           required: true
           schema:
             type: string
@@ -5264,6 +5516,7 @@ paths:
             title: org_id
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5277,10 +5530,11 @@ paths:
               type: object
               properties:
                 video_quality:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.VideoQuality'
                   examples:
                     - shorts
                   title: video_quality
-                  $ref: '#/components/schemas/common.v1.VideoQuality'
               title: UpdateVideoQualityRequest
               required:
                 - video_quality
@@ -5302,96 +5556,7 @@ paths:
       parameters:
         - name: after
           in: query
-          description: |-
-            A Timestamp represents a point in time independent of any time zone or local
-             calendar, encoded as a count of seconds and fractions of seconds at
-             nanosecond resolution. The count is relative to an epoch at UTC midnight on
-             January 1, 1970, in the proleptic Gregorian calendar which extends the
-             Gregorian calendar backwards to year one.
-
-             All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-             second table is needed for interpretation, using a [24-hour linear
-             smear](https://developers.google.com/time/smear).
-
-             The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-             restricting to that range, we ensure that we can convert to and from [RFC
-             3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
-
-             # Examples
-
-             Example 1: Compute Timestamp from POSIX `time()`.
-
-                 Timestamp timestamp;
-                 timestamp.set_seconds(time(NULL));
-                 timestamp.set_nanos(0);
-
-             Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-
-                 struct timeval tv;
-                 gettimeofday(&tv, NULL);
-
-                 Timestamp timestamp;
-                 timestamp.set_seconds(tv.tv_sec);
-                 timestamp.set_nanos(tv.tv_usec * 1000);
-
-             Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-
-                 FILETIME ft;
-                 GetSystemTimeAsFileTime(&ft);
-                 UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
-
-                 // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z
-                 // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.
-                 Timestamp timestamp;
-                 timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-                 timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-
-             Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-
-                 long millis = System.currentTimeMillis();
-
-                 Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000)
-                     .setNanos((int) ((millis % 1000) * 1000000)).build();
-
-             Example 5: Compute Timestamp from Java `Instant.now()`.
-
-                 Instant now = Instant.now();
-
-                 Timestamp timestamp =
-                     Timestamp.newBuilder().setSeconds(now.getEpochSecond())
-                         .setNanos(now.getNano()).build();
-
-             Example 6: Compute Timestamp from current time in Python.
-
-                 timestamp = Timestamp()
-                 timestamp.GetCurrentTime()
-
-             # JSON Mapping
-
-             In JSON format, the Timestamp type is encoded as a string in the
-             [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the
-             format is "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z"
-             where {year} is always expressed using four digits while {month}, {day},
-             {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional
-             seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
-             are optional. The "Z" suffix indicates the timezone ("UTC"); the timezone
-             is required. A proto3 JSON serializer should always use UTC (as indicated by
-             "Z") when printing the Timestamp type and a proto3 JSON parser should be
-             able to accept both UTC and other timezones (as indicated by an offset).
-
-             For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past
-             01:30 UTC on January 15, 2017.
-
-             In JavaScript, one can convert a Date object to this format using the
-             standard
-             [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
-             method. In Python, a standard `datetime.datetime` object can be converted
-             to this format using
-             [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with
-             the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use
-             the Joda Time's [`ISODateTimeFormat.dateTime()`](
-             http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
-             ) to obtain a formatter capable of generating timestamps in this format.
+          description: A point in time in RFC 3339 format, with up to nanosecond precision. Output uses UTC (`Z`); input may use an offset from UTC.
           schema:
             type: string
             examples:
@@ -5400,6 +5565,7 @@ paths:
             format: date-time
         - name: limit
           in: query
+          description: The limit query parameter.
           schema:
             type: integer
             examples:
@@ -5455,6 +5621,7 @@ paths:
       parameters:
         - name: category_id
           in: path
+          description: The category_id path parameter.
           required: true
           schema:
             type: string
@@ -5463,6 +5630,7 @@ paths:
             title: category_id
         - name: query
           in: query
+          description: The query query parameter.
           schema:
             type: string
             examples:
@@ -5507,11 +5675,13 @@ paths:
             default: "0"
         - name: status
           in: query
+          description: The status query parameter.
           schema:
+            allOf:
+              - $ref: '#/components/schemas/support.v1.TicketStatus'
             examples:
               - TICKET_STATUS_OPEN
             title: status
-            $ref: '#/components/schemas/support.v1.TicketStatus'
       responses:
         "200":
           description: Success
@@ -5546,6 +5716,7 @@ paths:
       parameters:
         - name: ticket_id
           in: path
+          description: The ticket_id path parameter.
           required: true
           schema:
             type: string
@@ -5568,6 +5739,7 @@ paths:
       parameters:
         - name: ticket_id
           in: path
+          description: The ticket_id path parameter.
           required: true
           schema:
             type: string
@@ -5590,6 +5762,7 @@ paths:
       parameters:
         - name: ticket_id
           in: path
+          description: The ticket_id path parameter.
           required: true
           schema:
             type: string
@@ -5628,6 +5801,7 @@ paths:
       parameters:
         - name: category_id
           in: query
+          description: The category_id query parameter.
           schema:
             type: string
             examples:
@@ -5635,6 +5809,7 @@ paths:
             title: category_id
         - name: query
           in: query
+          description: The query query parameter.
           schema:
             type: string
             examples:
@@ -5657,6 +5832,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5665,6 +5841,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5687,6 +5864,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5695,6 +5873,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5703,6 +5882,7 @@ paths:
             title: video_id
         - name: language_code
           in: path
+          description: The language_code path parameter.
           required: true
           schema:
             type: string
@@ -5725,6 +5905,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5733,6 +5914,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5775,6 +5957,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5783,6 +5966,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5791,6 +5975,7 @@ paths:
             title: video_id
         - name: track_id
           in: path
+          description: The track_id path parameter.
           required: true
           schema:
             type: string
@@ -5813,6 +5998,7 @@ paths:
       parameters:
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5835,6 +6021,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5843,6 +6030,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5864,6 +6052,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5872,6 +6061,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5907,6 +6097,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5915,6 +6106,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5923,6 +6115,7 @@ paths:
             title: video_id
         - name: chapters.title
           in: query
+          description: The chapters.title query parameter.
           schema:
             type: string
             examples:
@@ -5931,6 +6124,7 @@ paths:
             maxLength: 64
         - name: chapters.start_time_sec
           in: query
+          description: The chapters.start_time_sec query parameter.
           schema:
             type: number
             examples:
@@ -5953,6 +6147,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -5961,6 +6156,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -5969,11 +6165,10 @@ paths:
             title: video_id
         - name: start_time_sec
           in: path
+          description: The start_time_sec path parameter.
           required: true
           schema:
-            type:
-              - integer
-              - string
+            type: string
             examples:
               - "12"
             title: start_time_sec
@@ -6045,6 +6240,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6053,6 +6249,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6075,6 +6272,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6083,6 +6281,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6091,6 +6290,7 @@ paths:
             title: video_id
         - name: language_code
           in: path
+          description: The language_code path parameter.
           required: true
           schema:
             type: string
@@ -6113,6 +6313,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6121,6 +6322,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6163,6 +6365,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6171,6 +6374,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6179,6 +6383,7 @@ paths:
             title: video_id
         - name: subtitle_id
           in: path
+          description: The subtitle_id path parameter.
           required: true
           schema:
             type: string
@@ -6201,6 +6406,7 @@ paths:
       parameters:
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6223,6 +6429,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6253,11 +6460,13 @@ paths:
             default: "0"
         - name: sort_field
           in: query
+          description: The sort_field query parameter.
           schema:
             type: string
             title: sort_field
         - name: sort_direction
           in: query
+          description: The sort_direction query parameter.
           schema:
             type: string
             title: sort_direction
@@ -6277,6 +6486,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6301,10 +6511,11 @@ paths:
                   title: name
                   maxLength: 64
                 video_quality:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.VideoQuality'
                   examples:
                     - VIDEO_QUALITY_PRO
                   title: video_quality
-                  $ref: '#/components/schemas/common.v1.VideoQuality'
               title: CreateVideoUploadRequest
               additionalProperties: false
         required: true
@@ -6324,6 +6535,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6332,6 +6544,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6354,6 +6567,7 @@ paths:
       parameters:
         - name: project_id
           in: path
+          description: The project_id path parameter.
           required: true
           schema:
             type: string
@@ -6362,6 +6576,7 @@ paths:
             title: project_id
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6375,10 +6590,11 @@ paths:
               type: object
               properties:
                 visibility:
+                  allOf:
+                    - $ref: '#/components/schemas/common.v1.Visibility'
                   examples:
                     - VISIBILITY_PUBLIC
                   title: visibility
-                  $ref: '#/components/schemas/common.v1.Visibility'
               title: UpdateVideoVisibilityRequest
               additionalProperties: false
         required: true
@@ -6398,6 +6614,7 @@ paths:
       parameters:
         - name: video_id
           in: path
+          description: The video_id path parameter.
           required: true
           schema:
             type: string
@@ -6415,67 +6632,75 @@ components:
   schemas:
     analytics.v1.AnalyticsEvent:
       type: object
-      allOf:
-        - properties:
-            timestamp:
-              examples:
-                - "2026-01-15T10:30:00Z"
-              title: timestamp
-              $ref: '#/components/schemas/google.protobuf.Timestamp'
-        - oneOf:
-            - type: object
-              properties:
-                content_view:
-                  title: content_view
-                  $ref: '#/components/schemas/analytics.v1.ContentViewEvent'
+      anyOf:
+        - type: object
+          properties:
+            content_view:
+              allOf:
+                - $ref: '#/components/schemas/analytics.v1.ContentViewEvent'
               title: content_view
-              required:
-                - content_view
-            - type: object
-              properties:
-                engagement:
-                  title: engagement
-                  $ref: '#/components/schemas/analytics.v1.EngagementEvent'
+          title: content_view
+        - type: object
+          properties:
+            engagement:
+              allOf:
+                - $ref: '#/components/schemas/analytics.v1.EngagementEvent'
               title: engagement
-              required:
-                - engagement
-            - type: object
-              properties:
-                error:
-                  title: error
-                  $ref: '#/components/schemas/analytics.v1.ErrorEvent'
+          title: engagement
+        - type: object
+          properties:
+            error:
+              allOf:
+                - $ref: '#/components/schemas/analytics.v1.ErrorEvent'
               title: error
-              required:
-                - error
-            - type: object
-              properties:
-                interaction:
-                  title: interaction
-                  $ref: '#/components/schemas/analytics.v1.InteractionEvent'
+          title: error
+        - type: object
+          properties:
+            interaction:
+              allOf:
+                - $ref: '#/components/schemas/analytics.v1.InteractionEvent'
               title: interaction
-              required:
-                - interaction
-            - type: object
-              properties:
-                session_start:
-                  title: session_start
-                  $ref: '#/components/schemas/analytics.v1.SessionStartEvent'
+          title: interaction
+        - type: object
+          properties:
+            session_start:
+              allOf:
+                - $ref: '#/components/schemas/analytics.v1.SessionStartEvent'
               title: session_start
-              required:
-                - session_start
-            - not:
-                anyOf:
-                  - required:
-                      - content_view
-                  - required:
-                      - engagement
-                  - required:
-                      - error
-                  - required:
-                      - interaction
-                  - required:
-                      - session_start
+          title: session_start
       unevaluatedProperties: false
+      not:
+        allOf:
+          - anyOf:
+              - required:
+                  - content_view
+              - required:
+                  - engagement
+              - required:
+                  - error
+              - required:
+                  - interaction
+              - required:
+                  - session_start
+          - not:
+              oneOf:
+                - required:
+                    - content_view
+                - required:
+                    - engagement
+                - required:
+                    - error
+                - required:
+                    - interaction
+                - required:
+                    - session_start
+      properties:
+        timestamp:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: timestamp
       title: AnalyticsEvent
     analytics.v1.BatchChartQueryRequest:
       type: object
@@ -6637,17 +6862,6 @@ components:
           format: double
       title: ChartRow
       additionalProperties: false
-    analytics.v1.ChartRow.DimensionsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: DimensionsEntry
-      additionalProperties: false
     analytics.v1.ContentViewEvent:
       type: object
       properties:
@@ -6657,10 +6871,11 @@ components:
             - FpzVPNx1cG
           title: content_id
         content_type:
+          allOf:
+            - $ref: '#/components/schemas/analyticscommon.v1.MediaType'
           examples:
             - MEDIA_TYPE_VIDEO
           title: content_type
-          $ref: '#/components/schemas/analyticscommon.v1.MediaType'
         feed_id:
           type: string
           examples:
@@ -6681,8 +6896,9 @@ components:
             - watch
             - end
         watch_duration_ms:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Duration'
           title: watch_duration_ms
-          $ref: '#/components/schemas/google.protobuf.Duration'
         page:
           type: string
           examples:
@@ -6693,11 +6909,13 @@ components:
             - feed
             - standalone
         video_position_ms:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Duration'
           title: video_position_ms
-          $ref: '#/components/schemas/google.protobuf.Duration'
         video_total_duration_ms:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Duration'
           title: video_total_duration_ms
-          $ref: '#/components/schemas/google.protobuf.Duration'
         segments:
           type: array
           items:
@@ -6724,8 +6942,9 @@ components:
             - en
           title: audio_language
         quality:
+          allOf:
+            - $ref: '#/components/schemas/analyticscommon.v1.VideoQuality'
           title: quality
-          $ref: '#/components/schemas/analyticscommon.v1.VideoQuality'
       title: ContentViewEvent
       additionalProperties: false
     analytics.v1.CountryCount:
@@ -6737,9 +6956,7 @@ components:
             - US
           title: country
         count:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: count
@@ -6766,8 +6983,9 @@ components:
           type: string
           title: dashboard_id
         widget:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.WidgetInput'
           title: widget
-          $ref: '#/components/schemas/analytics.v1.WidgetInput'
         expected_revision:
           type: integer
           title: expected_revision
@@ -6830,17 +7048,13 @@ components:
             - "2026-01-15T10:30:00Z"
           title: timestamp
         views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: views
           format: int64
         unique_users:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: unique_users
@@ -6866,8 +7080,9 @@ components:
             - day
           title: interval
         filter:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.Filter'
           title: filter
-          $ref: '#/components/schemas/analytics.v1.Filter'
       title: DashboardStatsRequest
       required:
         - time_start
@@ -7119,9 +7334,7 @@ components:
           type: string
           title: event_type
         count:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: count
@@ -7145,10 +7358,11 @@ components:
             - "2026-01-15T10:30:00Z"
           title: time_end
         format:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.ExportFormat'
           examples:
             - EXPORT_FORMAT_CSV
           title: format
-          $ref: '#/components/schemas/analytics.v1.ExportFormat'
       title: ExportDashboardRequest
       required:
         - dashboard_id
@@ -7200,25 +7414,19 @@ components:
             - F4edRI23XL
           title: feed_id
         total_views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_views
           format: int64
         unique_viewers:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: unique_viewers
           format: int64
         total_posts:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_posts
@@ -7339,9 +7547,7 @@ components:
             - US
           title: value
         count:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: count
@@ -7407,8 +7613,9 @@ components:
           title: time_window
           format: int32
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: FunnelRequest
       additionalProperties: false
     analytics.v1.FunnelStep:
@@ -7430,17 +7637,6 @@ components:
             type: string
             title: value
       title: FunnelStep
-      additionalProperties: false
-    analytics.v1.FunnelStep.FiltersEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: FiltersEntry
       additionalProperties: false
     analytics.v1.FunnelStepResult:
       type: object
@@ -7488,8 +7684,9 @@ components:
           title: feed_id
           minLength: 1
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetFeedStatsRequest
       required:
         - feed_id
@@ -7554,8 +7751,9 @@ components:
           title: video_id
           minLength: 1
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetHotSegmentsRequest
       required:
         - video_id
@@ -7570,8 +7768,9 @@ components:
           title: image_id
           minLength: 1
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetImageStatsRequest
       required:
         - image_id
@@ -7586,8 +7785,9 @@ components:
           title: post_id
           minLength: 1
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetPostStatsRequest
       required:
         - post_id
@@ -7601,17 +7801,13 @@ components:
             - Mn0bVc9xZ8
           title: post_id
         total_views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_views
           format: int64
         unique_viewers:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: unique_viewers
@@ -7631,8 +7827,9 @@ components:
             - 30d
           title: period
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetRetentionRequest
       additionalProperties: false
     analytics.v1.GetScopeTreeRequest:
@@ -7702,8 +7899,9 @@ components:
           title: limit
           format: int32
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetTopFeedsRequest
       additionalProperties: false
     analytics.v1.GetTopImagesRequest:
@@ -7716,8 +7914,9 @@ components:
           title: limit
           format: int32
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetTopImagesRequest
       additionalProperties: false
     analytics.v1.GetTopPostsRequest:
@@ -7730,8 +7929,9 @@ components:
           title: limit
           format: int32
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
         feed_id:
           type: string
           examples:
@@ -7749,8 +7949,9 @@ components:
           title: limit
           format: int32
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetTopVideosRequest
       additionalProperties: false
     analytics.v1.GetVideoHeatmapRequest:
@@ -7769,8 +7970,9 @@ components:
           title: buckets
           format: int32
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetVideoHeatmapRequest
       required:
         - video_id
@@ -7785,8 +7987,9 @@ components:
           title: video_id
           minLength: 1
         range:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.DateRange'
           title: range
-          $ref: '#/components/schemas/analytics.v1.DateRange'
       title: GetVideoStatsRequest
       required:
         - video_id
@@ -7843,17 +8046,13 @@ components:
             - FpzVPNx1cG
           title: image_id
         total_views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_views
           format: int64
         unique_viewers:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: unique_viewers
@@ -7872,17 +8071,13 @@ components:
           title: total_view_duration_ms
           format: double
         feed_views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: feed_views
           format: int64
         standalone_views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: standalone_views
@@ -7983,9 +8178,7 @@ components:
             $ref: '#/components/schemas/analytics.v1.Dashboard'
           title: dashboards
         total:
-          type:
-            - integer
-            - string
+          type: string
           title: total
           format: int64
         page:
@@ -8026,20 +8219,17 @@ components:
             - F4edRI23XL
           title: feed_id
         content_type:
+          allOf:
+            - $ref: '#/components/schemas/analyticscommon.v1.MediaType'
           title: content_type
-          $ref: '#/components/schemas/analyticscommon.v1.MediaType'
         total_views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_views
           format: int64
         unique_viewers:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: unique_viewers
@@ -8051,25 +8241,19 @@ components:
           title: avg_watch_time_ms
           format: double
         total_watch_time_ms:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_watch_time_ms
           format: int64
         starts:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: starts
           format: int64
         completions:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: completions
@@ -8084,26 +8268,10 @@ components:
           type: object
           title: views_by_page
           additionalProperties:
-            type:
-              - integer
-              - string
+            type: string
             title: value
             format: int64
       title: PostStats
-      additionalProperties: false
-    analytics.v1.PostStats.ViewsByPageEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type:
-            - integer
-            - string
-          title: value
-          format: int64
-      title: ViewsByPageEntry
       additionalProperties: false
     analytics.v1.RealtimeStats:
       type: object
@@ -8114,17 +8282,13 @@ components:
             - "2026-01-15T10:30:00Z"
           title: timestamp
         active_users:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: active_users
           format: int64
         events_per_minute:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: events_per_minute
@@ -8219,9 +8383,7 @@ components:
           type: string
           title: kind
         views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: views
@@ -8240,11 +8402,13 @@ components:
       type: object
       properties:
         start_ms:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Duration'
           title: start_ms
-          $ref: '#/components/schemas/google.protobuf.Duration'
         end_ms:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Duration'
           title: end_ms
-          $ref: '#/components/schemas/google.protobuf.Duration'
         speed:
           type: number
           examples:
@@ -8263,8 +8427,9 @@ components:
             - fr
           title: audio_language
         quality:
+          allOf:
+            - $ref: '#/components/schemas/analyticscommon.v1.VideoQuality'
           title: quality
-          $ref: '#/components/schemas/analyticscommon.v1.VideoQuality'
         chapter_title:
           type: string
           examples:
@@ -8524,8 +8689,9 @@ components:
           title: expected_revision
           format: int32
         patch:
+          allOf:
+            - $ref: '#/components/schemas/analytics.v1.WidgetPatch'
           title: patch
-          $ref: '#/components/schemas/analytics.v1.WidgetPatch'
       title: UpdateWidgetRequest
       required:
         - id
@@ -8541,9 +8707,7 @@ components:
             - FpzVPNx1cG
           title: video_id
         total_duration_ms:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_duration_ms
@@ -8569,17 +8733,13 @@ components:
             - FpzVPNx1cG
           title: video_id
         total_views:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: total_views
           format: int64
         unique_viewers:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: unique_viewers
@@ -8597,25 +8757,19 @@ components:
           title: total_watch_time_ms
           format: double
         starts:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: starts
           format: int64
         watches:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: watches
           format: int64
         completions:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1250"
           title: completions
@@ -8895,20 +9049,23 @@ components:
           type: string
           title: project_name
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         expiring_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: expiring_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         last_used:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: last_used
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         secret:
           type: string
           examples:
@@ -8954,10 +9111,11 @@ components:
             - Bq4y3QB38S
           title: project_id
         expiring_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: expiring_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         policy_ids:
           type: array
           examples:
@@ -8973,8 +9131,9 @@ components:
       type: object
       properties:
         api_key:
+          allOf:
+            - $ref: '#/components/schemas/apikeys.v1.ApiKey'
           title: api_key
-          $ref: '#/components/schemas/apikeys.v1.ApiKey'
       title: CreateApiKeyResponse
       additionalProperties: false
     apikeys.v1.DeleteApiKeyRequest:
@@ -9004,8 +9163,9 @@ components:
             - OR98234j23
           title: org_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
       title: ListApiKeysRequest
       additionalProperties: false
     apikeys.v1.ListApiKeysResponse:
@@ -9017,9 +9177,7 @@ components:
             $ref: '#/components/schemas/apikeys.v1.ApiKey'
           title: api_keys
         total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: total
@@ -9061,8 +9219,9 @@ components:
       type: object
       properties:
         api_key:
+          allOf:
+            - $ref: '#/components/schemas/apikeys.v1.ApiKey'
           title: api_key
-          $ref: '#/components/schemas/apikeys.v1.ApiKey'
       title: RotateApiKeyResponse
       additionalProperties: false
     apikeys.v1.UpdateApiKeyRequest:
@@ -9114,8 +9273,9 @@ components:
       type: object
       properties:
         api_key:
+          allOf:
+            - $ref: '#/components/schemas/apikeys.v1.ApiKey'
           title: api_key
-          $ref: '#/components/schemas/apikeys.v1.ApiKey'
       title: UpdateApiKeyResponse
       additionalProperties: false
     apikeys.v1.ValidateApiKeyRequest:
@@ -9182,8 +9342,9 @@ components:
           type: string
           title: org_name
         role:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipRole'
           title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
       title: AcceptInvitationResponse
       additionalProperties: false
     auth.v1.ActorOrgRequest:
@@ -9212,14 +9373,16 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         policy_id:
           type: string
           title: policy_id
         identity_type:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
           title: identity_type
-          $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
         identity_id:
           type: string
           title: identity_id
@@ -9260,16 +9423,18 @@ components:
           type: boolean
           title: subscribed
         subscribed_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: subscribed_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: BlogSubscriptionResponse
       additionalProperties: false
     auth.v1.CancelInvitationRequest:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         user_id:
           type: string
           title: user_id
@@ -9301,11 +9466,13 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserRequest'
         provider:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
           title: provider
-          $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
         token:
           type: string
           title: token
@@ -9321,8 +9488,9 @@ components:
       type: object
       properties:
         provider:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
           title: provider
-          $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
         username:
           type: string
           title: username
@@ -9350,16 +9518,18 @@ components:
           type: string
           title: upload_url
         expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: CreateAvatarUploadResponse
       additionalProperties: false
     auth.v1.CreateDomainRequest:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         domain:
           type: string
           title: domain
@@ -9369,8 +9539,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         name:
           type: string
           title: name
@@ -9407,8 +9578,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         attachment_id:
           type: string
           title: attachment_id
@@ -9418,11 +9590,13 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserRequest'
         provider:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
           title: provider
-          $ref: '#/components/schemas/auth.v1.ExternalAccountProvider'
       title: DisconnectProviderRequest
       additionalProperties: false
     auth.v1.DomainResponse:
@@ -9438,41 +9612,46 @@ components:
           type: string
           title: domain
         status:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.DomainStatus'
           title: status
-          $ref: '#/components/schemas/auth.v1.DomainStatus'
       title: DomainResponse
       additionalProperties: false
     auth.v1.DomainStatus:
       type: object
-      allOf:
-        - properties:
-            auto_join:
-              type: boolean
-              title: auto_join
-        - oneOf:
-            - type: object
-              properties:
-                pending:
-                  title: pending
-                  $ref: '#/components/schemas/auth.v1.PendingDomain'
+      anyOf:
+        - type: object
+          properties:
+            pending:
+              allOf:
+                - $ref: '#/components/schemas/auth.v1.PendingDomain'
               title: pending
-              required:
-                - pending
-            - type: object
-              properties:
-                verified:
-                  title: verified
-                  $ref: '#/components/schemas/auth.v1.VerifiedDomain'
+          title: pending
+        - type: object
+          properties:
+            verified:
+              allOf:
+                - $ref: '#/components/schemas/auth.v1.VerifiedDomain'
               title: verified
-              required:
-                - verified
-            - not:
-                anyOf:
-                  - required:
-                      - pending
-                  - required:
-                      - verified
+          title: verified
       unevaluatedProperties: false
+      not:
+        allOf:
+          - anyOf:
+              - required:
+                  - pending
+              - required:
+                  - verified
+          - not:
+              oneOf:
+                - required:
+                    - pending
+                - required:
+                    - verified
+      properties:
+        auto_join:
+          type: boolean
+          title: auto_join
       title: DomainStatus
     auth.v1.EmailStatusResponse:
       type: object
@@ -9563,14 +9742,16 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         username:
           type: string
           title: username
         role:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipRole'
           title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
       title: InviteMemberRequest
       additionalProperties: false
     auth.v1.ListAttachmentsResponse:
@@ -9587,11 +9768,13 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         identity_type:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
           title: identity_type
-          $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
         identity_id:
           type: string
           title: identity_id
@@ -9616,8 +9799,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserRequest'
         limit:
           type: integer
           title: limit
@@ -9627,8 +9811,9 @@ components:
           title: offset
           format: int32
         state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
       title: ListMembershipApplicationsRequest
       additionalProperties: false
     auth.v1.ListMembershipApplicationsResponse:
@@ -9645,8 +9830,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserRequest'
         limit:
           type: integer
           title: limit
@@ -9656,8 +9842,9 @@ components:
           title: offset
           format: int32
         state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipState'
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipState'
       title: ListMembershipsRequest
       additionalProperties: false
     auth.v1.ListMembershipsResponse:
@@ -9674,8 +9861,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         limit:
           type: integer
           title: limit
@@ -9718,8 +9906,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         types:
           type: array
           items:
@@ -9739,11 +9928,13 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         identity_type:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
           title: identity_type
-          $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
         identity_ids:
           type: array
           items:
@@ -9758,20 +9949,10 @@ components:
           type: object
           title: by_identity
           additionalProperties:
+            allOf:
+              - $ref: '#/components/schemas/auth.v1.IdentityPolicies'
             title: value
-            $ref: '#/components/schemas/auth.v1.IdentityPolicies'
       title: ListPoliciesForIdentitiesResponse
-      additionalProperties: false
-    auth.v1.ListPoliciesForIdentitiesResponse.ByIdentityEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          title: value
-          $ref: '#/components/schemas/auth.v1.IdentityPolicies'
-      title: ByIdentityEntry
       additionalProperties: false
     auth.v1.ListPoliciesResponse:
       type: object
@@ -9797,8 +9978,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         member_id:
           type: string
           title: member_id
@@ -9835,9 +10017,7 @@ components:
           type: string
           title: refresh_token
         expires_in:
-          type:
-            - integer
-            - string
+          type: string
           title: expires_in
           format: int64
         token_type:
@@ -9900,11 +10080,13 @@ components:
           type: string
           title: org_id
         role:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipRole'
           title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
         state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipState'
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipState'
         organization_username:
           type: string
           title: organization_username
@@ -9915,8 +10097,9 @@ components:
           type: string
           title: organization_last_name
         joined_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: joined_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: Membership
       additionalProperties: false
     auth.v1.MembershipApplication:
@@ -9932,11 +10115,13 @@ components:
           type: string
           title: org_id
         role:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipRole'
           title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
         state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
         organization_username:
           type: string
           title: organization_username
@@ -9947,14 +10132,17 @@ components:
           type: string
           title: organization_last_name
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         decided_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: decided_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         invitation_expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: invitation_expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: MembershipApplication
       additionalProperties: false
     auth.v1.MembershipApplicationState:
@@ -9976,17 +10164,20 @@ components:
           type: string
           title: org_id
         role:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipRole'
           title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
         state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipState'
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipState'
         org_name:
           type: string
           title: org_name
         joined_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: joined_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: MembershipMutation
       additionalProperties: false
     auth.v1.MembershipRole:
@@ -10013,8 +10204,9 @@ components:
           type: boolean
           title: is_setup
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         backup_codes_remaining:
           type: integer
           title: backup_codes_remaining
@@ -10034,11 +10226,13 @@ components:
           type: string
           title: org_id
         role:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipRole'
           title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
         state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipState'
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipState'
         username:
           type: string
           title: username
@@ -10049,11 +10243,13 @@ components:
           type: string
           title: last_name
         invitation_expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: invitation_expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         joined_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: joined_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: OrgMember
       additionalProperties: false
     auth.v1.Passkey:
@@ -10162,8 +10358,9 @@ components:
           type: string
           title: verification_token
         expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: PendingDomain
       additionalProperties: false
     auth.v1.PermissionOffset:
@@ -10216,11 +10413,13 @@ components:
           type: string
           title: created_by
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         updated_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: updated_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: Policy
       additionalProperties: false
     auth.v1.PolicyAttachment:
@@ -10233,14 +10432,16 @@ components:
           type: string
           title: policy_id
         identity_type:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
           title: identity_type
-          $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
         identity_id:
           type: string
           title: identity_id
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: PolicyAttachment
       additionalProperties: false
     auth.v1.PolicyIdentityType:
@@ -10255,8 +10456,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         policy_id:
           type: string
           title: policy_id
@@ -10266,11 +10468,13 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         identity_type:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
           title: identity_type
-          $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
         identity_id:
           type: string
           title: identity_id
@@ -10280,8 +10484,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         user_id:
           type: string
           title: user_id
@@ -10352,8 +10557,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         user_id:
           type: string
           title: user_id
@@ -10377,11 +10583,13 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         identity_type:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
           title: identity_type
-          $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
         identity_id:
           type: string
           title: identity_id
@@ -10411,8 +10619,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         user_id:
           type: string
           title: user_id
@@ -10455,8 +10664,9 @@ components:
       type: object
       properties:
         identity_type:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
           title: identity_type
-          $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
         identity_id:
           type: string
           title: identity_id
@@ -10494,8 +10704,9 @@ components:
           type: string
           title: url
         published_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: published_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         commit_sha:
           type: string
           title: commit_sha
@@ -10508,11 +10719,13 @@ components:
           type: string
           title: broadcast_id
         scheduled_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: scheduled_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         sent_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: sent_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: SendBlogBroadcastResponse
       additionalProperties: false
     auth.v1.SendPasswordResetRequest:
@@ -10527,8 +10740,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         enabled:
           type: boolean
           title: enabled
@@ -10554,8 +10768,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         user_id:
           type: string
           title: user_id
@@ -10571,9 +10786,7 @@ components:
           type: string
           title: refresh_token
         expires_in:
-          type:
-            - integer
-            - string
+          type: string
           title: expires_in
           format: int64
         token_type:
@@ -10588,8 +10801,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserRequest'
         email:
           type: string
           title: email
@@ -10599,8 +10813,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         membership_id:
           type: string
           title: membership_id
@@ -10613,25 +10828,29 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         user_id:
           type: string
           title: user_id
         role:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipRole'
           title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
       title: UpdateMemberRoleRequest
       additionalProperties: false
     auth.v1.UpdateMembershipStateRequest:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
           title: state
-          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
       title: UpdateMembershipStateRequest
       additionalProperties: false
     auth.v1.UpdateNameRequest:
@@ -10660,8 +10879,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         full_name:
           type: string
           title: full_name
@@ -10682,8 +10902,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
         username:
           type: string
           title: username
@@ -10701,8 +10922,9 @@ components:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserOrgRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
         policy_id:
           type: string
           title: policy_id
@@ -10845,8 +11067,9 @@ components:
       type: object
       properties:
         verified_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           title: verified_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: VerifiedDomain
       additionalProperties: false
     auth.v1.VerifyEmailRequest:
@@ -10873,16 +11096,18 @@ components:
           type: boolean
           title: verified
         tokens:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.TokenResponse'
           title: tokens
-          $ref: '#/components/schemas/auth.v1.TokenResponse'
       title: VerifyEmailResponse
       additionalProperties: false
     auth.v1.VerifyOTPRequest:
       type: object
       properties:
         user:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.UserRequest'
           title: user
-          $ref: '#/components/schemas/auth.v1.UserRequest'
         code:
           type: string
           title: code
@@ -10920,46 +11145,37 @@ components:
             - OR98234j23
           title: org_id
         snapshot_date:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: snapshot_date
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         total_bandwidth_bytes:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1073741824"
           title: total_bandwidth_bytes
           format: int64
         video_bandwidth_bytes:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1073741824"
           title: video_bandwidth_bytes
           format: int64
         image_bandwidth_bytes:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1073741824"
           title: image_bandwidth_bytes
           format: int64
         total_requests:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: total_requests
           format: int64
         unique_visitors:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: unique_visitors
@@ -10968,17 +11184,13 @@ components:
           type: string
           title: snapshot_type
         video_requests:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: video_requests
           format: int64
         image_requests:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: image_requests
@@ -10987,10 +11199,11 @@ components:
           type: string
           title: data_source
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: BandwidthUsage
       additionalProperties: false
     billing.v1.BillingAddress:
@@ -11074,9 +11287,7 @@ components:
           title: org_id
         amount:
           exclusiveMinimum: 0
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: amount
@@ -11088,8 +11299,9 @@ components:
           title: currency
           minLength: 1
         billing_address:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.BillingAddress'
           title: billing_address
-          $ref: '#/components/schemas/billing.v1.BillingAddress'
         line_items:
           type: array
           items:
@@ -11134,21 +11346,21 @@ components:
           title: currency
           minLength: 1
         billing_cycle:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.BillingCycle'
           examples:
             - BILLING_CYCLE_MONTHLY
           title: billing_cycle
-          $ref: '#/components/schemas/billing.v1.BillingCycle'
         interval_count:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: interval_count
           format: int64
         billing_address:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.BillingAddress'
           title: billing_address
-          $ref: '#/components/schemas/billing.v1.BillingAddress'
         line_items:
           type: array
           items:
@@ -11165,17 +11377,6 @@ components:
         - plan_id
         - plan_name
         - currency
-      additionalProperties: false
-    billing.v1.CalculateTaxRequest.MetadataEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          type: string
-          title: value
-      title: MetadataEntry
       additionalProperties: false
     billing.v1.CancelSubscriptionRequest:
       type: object
@@ -11209,10 +11410,11 @@ components:
           type: boolean
           title: has_enterprise_plan
         plan_type:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.PlanType'
           examples:
             - PLAN_TYPE_PRO
           title: plan_type
-          $ref: '#/components/schemas/billing.v1.PlanType'
         plan_name:
           type: string
           examples:
@@ -11333,8 +11535,9 @@ components:
             - XyZ9aB8cD1
           title: payment_method_id
         billing_address:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.BillingAddress'
           title: billing_address
-          $ref: '#/components/schemas/billing.v1.BillingAddress'
       title: CreateSubscriptionRequest
       required:
         - stripe_price_id
@@ -11358,15 +11561,17 @@ components:
             - Mn0bVc9xZ8
           title: plan_id
         status:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.SubscriptionStatus'
           examples:
             - SUBSCRIPTION_STATUS_ACTIVE
           title: status
-          $ref: '#/components/schemas/billing.v1.SubscriptionStatus'
         current_period_end:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: current_period_end
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         cancel_at_period_end:
           type: boolean
           title: cancel_at_period_end
@@ -11513,10 +11718,11 @@ components:
           type: string
           title: interval
         plan_type:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.PlanType'
           examples:
             - PLAN_TYPE_PRO
           title: plan_type
-          $ref: '#/components/schemas/billing.v1.PlanType'
         interval_count:
           type: integer
           examples:
@@ -11530,8 +11736,9 @@ components:
           title: sort_order
           format: int32
         features:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Struct'
           title: features
-          $ref: '#/components/schemas/google.protobuf.Struct'
         stripe_price_id:
           type: string
           examples:
@@ -11605,8 +11812,9 @@ components:
             - OR98234j23
           title: org_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
       title: GetSubscriptionHistoryRequest
       additionalProperties: false
     billing.v1.GetSubscriptionHistoryResponse:
@@ -11684,25 +11892,29 @@ components:
             - usd
           title: currency
         status:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.InvoiceStatus'
           examples:
             - INVOICE_STATUS_PAID
           title: status
-          $ref: '#/components/schemas/billing.v1.InvoiceStatus'
         due_date:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: due_date
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         paid_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: paid_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         description:
           type: string
           title: description
@@ -11727,8 +11939,9 @@ components:
             - OR98234j23
           title: org_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
       title: ListInvoicesRequest
       additionalProperties: false
     billing.v1.ListInvoicesResponse:
@@ -11816,10 +12029,11 @@ components:
           type: boolean
           title: is_default
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: PaymentMethod
       additionalProperties: false
     billing.v1.PaymentMethodDetails:
@@ -11840,15 +12054,11 @@ components:
           type: string
           title: last4
         exp_month:
-          type:
-            - integer
-            - string
+          type: string
           title: exp_month
           format: int64
         exp_year:
-          type:
-            - integer
-            - string
+          type: string
           title: exp_year
           format: int64
         is_default:
@@ -11897,10 +12107,11 @@ components:
           type: string
           title: interval
         plan_type:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.PlanType'
           examples:
             - PLAN_TYPE_PRO
           title: plan_type
-          $ref: '#/components/schemas/billing.v1.PlanType'
         interval_count:
           type: integer
           examples:
@@ -11914,8 +12125,9 @@ components:
           title: sort_order
           format: int32
         features:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Struct'
           title: features
-          $ref: '#/components/schemas/google.protobuf.Struct'
         stripe_price_id:
           type: string
           examples:
@@ -11952,38 +12164,31 @@ components:
           title: plan_name
           maxLength: 64
         billing_cycle:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.BillingCycle'
           examples:
             - BILLING_CYCLE_MONTHLY
           title: billing_cycle
-          $ref: '#/components/schemas/billing.v1.BillingCycle'
         base_amount:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: base_amount
           format: int64
         amount_total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: amount_total
           format: int64
         tax_amount_exclusive:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: tax_amount_exclusive
           format: int64
         tax_amount_inclusive:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: tax_amount_inclusive
@@ -11998,13 +12203,15 @@ components:
           title: tax_percentage
           format: double
         billing_address:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.BillingAddress'
           title: billing_address
-          $ref: '#/components/schemas/billing.v1.BillingAddress'
         calculated_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: calculated_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: PlanTaxCalculationResponse
       additionalProperties: false
     billing.v1.PlanType:
@@ -12121,15 +12328,17 @@ components:
           title: message
           maxLength: 500
         status:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.SalesLeadStatus'
           examples:
             - SALES_LEAD_STATUS_NEW
           title: status
-          $ref: '#/components/schemas/billing.v1.SalesLeadStatus'
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: SalesLead
       additionalProperties: false
     billing.v1.SalesLeadStatus:
@@ -12163,30 +12372,25 @@ components:
             - OR98234j23
           title: org_id
         snapshot_date:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: snapshot_date
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         total_storage_bytes:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1073741824"
           title: total_storage_bytes
           format: int64
         video_storage_bytes:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1073741824"
           title: video_storage_bytes
           format: int64
         image_storage_bytes:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1073741824"
           title: image_storage_bytes
@@ -12239,10 +12443,11 @@ components:
           title: max_project_count
           format: int32
         last_updated:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: last_updated
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: StorageUsage
       additionalProperties: false
     billing.v1.Subscription:
@@ -12270,20 +12475,23 @@ components:
           title: plan_name
           maxLength: 64
         plan_type:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.PlanType'
           examples:
             - PLAN_TYPE_PRO
           title: plan_type
-          $ref: '#/components/schemas/billing.v1.PlanType'
         status:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.SubscriptionStatus'
           examples:
             - SUBSCRIPTION_STATUS_ACTIVE
           title: status
-          $ref: '#/components/schemas/billing.v1.SubscriptionStatus'
         current_period_end:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: current_period_end
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         cancel_at_period_end:
           type: boolean
           title: cancel_at_period_end
@@ -12330,10 +12538,11 @@ components:
           title: plan_name
           maxLength: 64
         status:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.SubscriptionStatus'
           examples:
             - SUBSCRIPTION_STATUS_ACTIVE
           title: status
-          $ref: '#/components/schemas/billing.v1.SubscriptionStatus'
         price:
           type: string
           examples:
@@ -12345,28 +12554,32 @@ components:
             - usd
           title: currency
         start_date:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: start_date
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         current_period_end:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: current_period_end
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         end_date:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: end_date
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         cancel_at_period_end:
           type: boolean
           title: cancel_at_period_end
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: SubscriptionHistoryItem
       additionalProperties: false
     billing.v1.SubscriptionStatus:
@@ -12393,25 +12606,19 @@ components:
           type: string
           title: calculation_id
         amount_total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: amount_total
           format: int64
         tax_amount_exclusive:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: tax_amount_exclusive
           format: int64
         tax_amount_inclusive:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: tax_amount_inclusive
@@ -12427,9 +12634,7 @@ components:
       type: object
       properties:
         amount:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "2999"
           title: amount
@@ -12452,10 +12657,11 @@ components:
           title: invoice_id
           pattern: ^[0-9A-Za-z]+$
         status:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.InvoiceStatus'
           examples:
             - INVOICE_STATUS_PAID
           title: status
-          $ref: '#/components/schemas/billing.v1.InvoiceStatus'
       title: UpdateInvoiceStatusRequest
       required:
         - invoice_id
@@ -12493,8 +12699,9 @@ components:
             - OR98234j23
           title: org_id
         address:
+          allOf:
+            - $ref: '#/components/schemas/billing.v1.BillingAddress'
           title: address
-          $ref: '#/components/schemas/billing.v1.BillingAddress'
       title: UpsertBillingAddressRequest
       additionalProperties: false
     billing.v1.UpsertPaymentMethodRequest:
@@ -12543,20 +12750,23 @@ components:
             - RS256
           title: alg
         status:
+          allOf:
+            - $ref: '#/components/schemas/clientauth.v1.ClientCredentialStatus'
           examples:
             - CLIENT_CREDENTIAL_STATUS_ACTIVE
           title: status
-          $ref: '#/components/schemas/clientauth.v1.ClientCredentialStatus'
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         last_used_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: last_used_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: ClientCredential
       additionalProperties: false
     clientauth.v1.ClientCredentialStatus:
@@ -12597,8 +12807,9 @@ components:
       type: object
       properties:
         credential:
+          allOf:
+            - $ref: '#/components/schemas/clientauth.v1.ClientCredential'
           title: credential
-          $ref: '#/components/schemas/clientauth.v1.ClientCredential'
         client_secret:
           type: string
           examples:
@@ -12615,8 +12826,9 @@ components:
             - OR98234j23
           title: org_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
       title: ListClientCredentialsRequest
       additionalProperties: false
     clientauth.v1.ListClientCredentialsResponse:
@@ -12628,9 +12840,7 @@ components:
             $ref: '#/components/schemas/clientauth.v1.ClientCredential'
           title: credentials
         total:
-          type:
-            - integer
-            - string
+          type: string
           title: total
           format: int64
       title: ListClientCredentialsResponse
@@ -12715,18 +12925,17 @@ components:
             - Bearer
           title: token_type
         expires_in:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "3600"
           title: expires_in
           format: int64
         expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: MintClientTokenResponse
       additionalProperties: false
     clientauth.v1.RevokeClientCredentialRequest:
@@ -12780,9 +12989,7 @@ components:
           title: name
           maxLength: 64
         size:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "1048576"
           title: size
@@ -12791,20 +12998,23 @@ components:
             size is the uploaded source's byte size for usage accounting; it is not updated
              when packaging replaces the artifact, so it does not describe the object at url.
         status:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.FileStatus'
           examples:
             - FILE_STATUS_READY
           title: status
-          $ref: '#/components/schemas/common.v1.FileStatus'
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         updated_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: updated_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: File
       additionalProperties: false
     common.v1.FileStatus:
@@ -12986,15 +13196,17 @@ components:
             - "true"
           title: has_comments
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         updated_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: updated_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: Feed
       additionalProperties: false
     feeds.v1.GetFeedRequest:
@@ -13021,8 +13233,9 @@ components:
             - Bq4y3QB38S
           title: project_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
       title: ListFeedsRequest
       additionalProperties: false
     feeds.v1.ListFeedsResponse:
@@ -13034,9 +13247,7 @@ components:
             $ref: '#/components/schemas/feeds.v1.Feed'
           title: feeds
         total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "42"
           title: total
@@ -13096,90 +13307,15 @@ components:
     google.protobuf.Duration:
       type: string
       format: duration
-      description: |-
-        A Duration represents a signed, fixed-length span of time represented
-         as a count of seconds and fractions of seconds at nanosecond
-         resolution. It is independent of any calendar and concepts like "day"
-         or "month". It is related to Timestamp in that the difference between
-         two Timestamp values is a Duration and it can be added or subtracted
-         from a Timestamp. Range is approximately +-10,000 years.
-
-         # Examples
-
-         Example 1: Compute Duration from two Timestamps in pseudo code.
-
-             Timestamp start = ...;
-             Timestamp end = ...;
-             Duration duration = ...;
-
-             duration.seconds = end.seconds - start.seconds;
-             duration.nanos = end.nanos - start.nanos;
-
-             if (duration.seconds < 0 && duration.nanos > 0) {
-               duration.seconds += 1;
-               duration.nanos -= 1000000000;
-             } else if (duration.seconds > 0 && duration.nanos < 0) {
-               duration.seconds -= 1;
-               duration.nanos += 1000000000;
-             }
-
-         Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-
-             Timestamp start = ...;
-             Duration duration = ...;
-             Timestamp end = ...;
-
-             end.seconds = start.seconds + duration.seconds;
-             end.nanos = start.nanos + duration.nanos;
-
-             if (end.nanos < 0) {
-               end.seconds -= 1;
-               end.nanos += 1000000000;
-             } else if (end.nanos >= 1000000000) {
-               end.seconds += 1;
-               end.nanos -= 1000000000;
-             }
-
-         Example 3: Compute Duration from datetime.timedelta in Python.
-
-             td = datetime.timedelta(days=3, minutes=10)
-             duration = Duration()
-             duration.FromTimedelta(td)
-
-         # JSON Mapping
-
-         In JSON format, the Duration type is encoded as a string rather than an
-         object, where the string ends in the suffix "s" (indicating seconds) and
-         is preceded by the number of seconds, with nanoseconds expressed as
-         fractional seconds. For example, 3 seconds with 0 nanoseconds should be
-         encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should
-         be expressed in JSON format as "3.000000001s", and 3 seconds and 1
-         microsecond should be expressed in JSON format as "3.000001s".
+      description: A signed duration in seconds, with up to nine fractional digits and an `s` suffix (for example, `3s` or `-0.001s`).
     google.protobuf.Empty:
       type: object
-      description: |-
-        A generic empty message that you can re-use to avoid defining duplicated
-         empty messages in your APIs. A typical example is to use it as the request
-         or the response type of an API method. For instance:
-
-             service Foo {
-               rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
-             }
+      description: An empty JSON object.
     google.protobuf.ListValue:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/google.protobuf.Value'
-          title: values
-          description: Repeated field of dynamically typed values.
-      title: ListValue
-      additionalProperties: false
-      description: |-
-        `ListValue` is a wrapper around a repeated field of values.
-
-         The JSON representation for `ListValue` is JSON array.
+      type: array
+      items:
+        $ref: '#/components/schemas/google.protobuf.Value'
+      description: A JSON array whose elements may be any JSON value.
     google.protobuf.NullValue:
       type: string
       title: NullValue
@@ -13194,122 +13330,14 @@ components:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/google.protobuf.Value'
-      description: |-
-        `Struct` represents a structured data value, consisting of fields
-         which map to dynamically typed values. In some languages, `Struct`
-         might be supported by a native representation. For example, in
-         scripting languages like JS a struct is represented as an
-         object. The details of that representation are described together
-         with the proto support for the language.
-
-         The JSON representation for `Struct` is JSON object.
-    google.protobuf.Struct.FieldsEntry:
-      type: object
-      properties:
-        key:
-          type: string
-          title: key
-        value:
-          title: value
-          $ref: '#/components/schemas/google.protobuf.Value'
-      title: FieldsEntry
-      additionalProperties: false
+      description: A JSON object whose property values may be any JSON value.
     google.protobuf.Timestamp:
       type: string
       examples:
         - "2023-01-15T01:30:15.01Z"
         - "2024-12-25T12:00:00Z"
       format: date-time
-      description: |-
-        A Timestamp represents a point in time independent of any time zone or local
-         calendar, encoded as a count of seconds and fractions of seconds at
-         nanosecond resolution. The count is relative to an epoch at UTC midnight on
-         January 1, 1970, in the proleptic Gregorian calendar which extends the
-         Gregorian calendar backwards to year one.
-
-         All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-         second table is needed for interpretation, using a [24-hour linear
-         smear](https://developers.google.com/time/smear).
-
-         The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-         restricting to that range, we ensure that we can convert to and from [RFC
-         3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
-
-         # Examples
-
-         Example 1: Compute Timestamp from POSIX `time()`.
-
-             Timestamp timestamp;
-             timestamp.set_seconds(time(NULL));
-             timestamp.set_nanos(0);
-
-         Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-
-             struct timeval tv;
-             gettimeofday(&tv, NULL);
-
-             Timestamp timestamp;
-             timestamp.set_seconds(tv.tv_sec);
-             timestamp.set_nanos(tv.tv_usec * 1000);
-
-         Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-
-             FILETIME ft;
-             GetSystemTimeAsFileTime(&ft);
-             UINT64 ticks = (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
-
-             // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z
-             // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.
-             Timestamp timestamp;
-             timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-             timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-
-         Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-
-             long millis = System.currentTimeMillis();
-
-             Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000)
-                 .setNanos((int) ((millis % 1000) * 1000000)).build();
-
-         Example 5: Compute Timestamp from Java `Instant.now()`.
-
-             Instant now = Instant.now();
-
-             Timestamp timestamp =
-                 Timestamp.newBuilder().setSeconds(now.getEpochSecond())
-                     .setNanos(now.getNano()).build();
-
-         Example 6: Compute Timestamp from current time in Python.
-
-             timestamp = Timestamp()
-             timestamp.GetCurrentTime()
-
-         # JSON Mapping
-
-         In JSON format, the Timestamp type is encoded as a string in the
-         [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the
-         format is "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z"
-         where {year} is always expressed using four digits while {month}, {day},
-         {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional
-         seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
-         are optional. The "Z" suffix indicates the timezone ("UTC"); the timezone
-         is required. A proto3 JSON serializer should always use UTC (as indicated by
-         "Z") when printing the Timestamp type and a proto3 JSON parser should be
-         able to accept both UTC and other timezones (as indicated by an offset).
-
-         For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past
-         01:30 UTC on January 15, 2017.
-
-         In JavaScript, one can convert a Date object to this format using the
-         standard
-         [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
-         method. In Python, a standard `datetime.datetime` object can be converted
-         to this format using
-         [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with
-         the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use
-         the Joda Time's [`ISODateTimeFormat.dateTime()`](
-         http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime()
-         ) to obtain a formatter capable of generating timestamps in this format.
+      description: A point in time in RFC 3339 format, with up to nanosecond precision. Output uses UTC (`Z`); input may use an offset from UTC.
     google.protobuf.Value:
       oneOf:
         - type: "null"
@@ -13319,13 +13347,7 @@ components:
         - type: array
         - type: object
           additionalProperties: true
-      description: |-
-        `Value` represents a dynamically typed value which can be either
-         null, a number, a string, a boolean, a recursive struct value, or a
-         list of values. A producer of value is expected to set one of these
-         variants. Absence of any variant indicates an error.
-
-         The JSON representation for `Value` is JSON value.
+      description: 'Any JSON value: `null`, number, string, boolean, array, or object.'
     images.v1.CreateImageUploadRequest:
       type: object
       properties:
@@ -13376,8 +13398,9 @@ components:
       type: object
       properties:
         image:
+          allOf:
+            - $ref: '#/components/schemas/images.v1.Image'
           title: image
-          $ref: '#/components/schemas/images.v1.Image'
       title: GetImageResponse
       additionalProperties: false
     images.v1.Image:
@@ -13411,13 +13434,15 @@ components:
             - "true"
           title: attached_to_video
         file:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.File'
           title: file
-          $ref: '#/components/schemas/common.v1.File'
         visibility:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Visibility'
           examples:
             - VISIBILITY_PUBLIC
           title: visibility
-          $ref: '#/components/schemas/common.v1.Visibility'
       title: Image
       additionalProperties: false
     images.v1.ImageUpload:
@@ -13434,10 +13459,11 @@ components:
             - https://cdn.example.com/image.jpg
           title: upload_url
         expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: ImageUpload
       additionalProperties: false
     images.v1.ListImagesRequest:
@@ -13449,8 +13475,9 @@ components:
             - Bq4y3QB38S
           title: project_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
         sort_field:
           type: string
           title: sort_field
@@ -13468,9 +13495,7 @@ components:
             $ref: '#/components/schemas/images.v1.Image'
           title: images
         total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: total
@@ -13518,9 +13543,7 @@ components:
           title: file_id
           minLength: 1
         size:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "204800"
           title: size
@@ -13559,18 +13582,17 @@ components:
           title: name
           maxLength: 64
         size:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "204800"
           title: size
           format: int64
         status:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.FileStatus'
           examples:
             - FILE_STATUS_READY
           title: status
-          $ref: '#/components/schemas/common.v1.FileStatus'
       title: UnprocessedImage
       additionalProperties: false
     images.v1.UpdateImageVisibilityRequest:
@@ -13587,18 +13609,20 @@ components:
             - LmNoPqR678
           title: image_id
         visibility:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Visibility'
           examples:
             - VISIBILITY_PUBLIC
           title: visibility
-          $ref: '#/components/schemas/common.v1.Visibility'
       title: UpdateImageVisibilityRequest
       additionalProperties: false
     images.v1.UpdateImageVisibilityResponse:
       type: object
       properties:
         image:
+          allOf:
+            - $ref: '#/components/schemas/images.v1.Image'
           title: image
-          $ref: '#/components/schemas/images.v1.Image'
       title: UpdateImageVisibilityResponse
       additionalProperties: false
     images.v1.UpdateProcessedImageDataRequest:
@@ -13620,9 +13644,7 @@ components:
           title: height
           format: int32
         size:
-          type:
-            - integer
-            - string
+          type: string
           title: size
           format: int64
         format:
@@ -13675,90 +13697,93 @@ components:
             - Bearer
           title: token_type
         expires_in:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "3600"
           title: expires_in
           format: int64
         expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: TokenResponse
       additionalProperties: false
     posts.v1.CreatePostRequest:
       type: object
-      allOf:
-        - properties:
-            project_id:
+      anyOf:
+        - type: object
+          properties:
+            image_id:
               type: string
               examples:
-                - Bq4y3QB38S
-              title: project_id
-            org_id:
-              type: string
-              examples:
-                - OR98234j23
-              title: org_id
-            feed_id:
-              type: string
-              examples:
-                - F4edRI23XL
-              title: feed_id
-            creator_id:
-              type: string
-              examples:
-                - Tg6Rf4e2W1
-              title: creator_id
-            type:
-              examples:
-                - MEDIA_TYPE_VIDEO
-              title: type
-              $ref: '#/components/schemas/common.v1.MediaType'
-            description:
-              type: string
-              examples:
-                - A short description.
-              title: description
-              maxLength: 280
-        - oneOf:
-            - type: object
-              properties:
-                image_id:
-                  type: string
-                  examples:
-                    - LmNoPqR678
-                  title: image_id
+                - LmNoPqR678
               title: image_id
-              required:
-                - image_id
-            - type: object
-              properties:
-                video_id:
-                  type: string
-                  examples:
-                    - FpzVPNx1cG
-                  title: video_id
+          title: image_id
+        - type: object
+          properties:
+            video_id:
+              type: string
+              examples:
+                - FpzVPNx1cG
               title: video_id
-              required:
-                - video_id
-            - not:
-                anyOf:
-                  - required:
-                      - image_id
-                  - required:
-                      - video_id
+          title: video_id
       unevaluatedProperties: false
+      not:
+        allOf:
+          - anyOf:
+              - required:
+                  - image_id
+              - required:
+                  - video_id
+          - not:
+              oneOf:
+                - required:
+                    - image_id
+                - required:
+                    - video_id
+      properties:
+        project_id:
+          type: string
+          examples:
+            - Bq4y3QB38S
+          title: project_id
+        org_id:
+          type: string
+          examples:
+            - OR98234j23
+          title: org_id
+        feed_id:
+          type: string
+          examples:
+            - F4edRI23XL
+          title: feed_id
+        creator_id:
+          type: string
+          examples:
+            - Tg6Rf4e2W1
+          title: creator_id
+        type:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.MediaType'
+          examples:
+            - MEDIA_TYPE_VIDEO
+          title: type
+        description:
+          type: string
+          examples:
+            - A short description.
+          title: description
+          maxLength: 280
       title: CreatePostRequest
     posts.v1.CreatePostResponse:
       type: object
       properties:
         post:
+          allOf:
+            - $ref: '#/components/schemas/posts.v1.Post'
           title: post
-          $ref: '#/components/schemas/posts.v1.Post'
       title: CreatePostResponse
       additionalProperties: false
     posts.v1.CreatePostUploadRequest:
@@ -13791,20 +13816,22 @@ components:
           title: description
           maxLength: 280
         content_type:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.MediaType'
           examples:
             - MEDIA_TYPE_VIDEO
           title: content_type
-          $ref: '#/components/schemas/common.v1.MediaType'
         file_name:
           type: string
           examples:
             - clip.mp4
           title: file_name
         video_quality:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.VideoQuality'
           examples:
             - VIDEO_QUALITY_PRO
           title: video_quality
-          $ref: '#/components/schemas/common.v1.VideoQuality'
       title: CreatePostUploadRequest
       additionalProperties: false
     posts.v1.DeletePostRequest:
@@ -13857,8 +13884,9 @@ components:
       type: object
       properties:
         post:
+          allOf:
+            - $ref: '#/components/schemas/posts.v1.Post'
           title: post
-          $ref: '#/components/schemas/posts.v1.Post'
       title: GetPostResponse
       additionalProperties: false
     posts.v1.ListPostsRequest:
@@ -13875,8 +13903,9 @@ components:
             - F4edRI23XL
           title: feed_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
         creator_id:
           type: string
           examples:
@@ -13893,9 +13922,7 @@ components:
             $ref: '#/components/schemas/posts.v1.Post'
           title: posts
         total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: total
@@ -13918,63 +13945,69 @@ components:
       additionalProperties: false
     posts.v1.Post:
       type: object
-      allOf:
-        - properties:
-            id:
-              type: string
-              examples:
-                - Mn0bVc9xZ8
-              title: id
-            feed_id:
-              type: string
-              examples:
-                - F4edRI23XL
-              title: feed_id
-            creator_id:
-              type: string
-              examples:
-                - Tg6Rf4e2W1
-              title: creator_id
-            type:
-              examples:
-                - MEDIA_TYPE_VIDEO
-              title: type
-              $ref: '#/components/schemas/common.v1.MediaType'
-            description:
-              type: string
-              examples:
-                - A short description.
-              title: description
-              maxLength: 280
-            created_at:
-              examples:
-                - "2026-01-15T10:30:00Z"
-              title: created_at
-              $ref: '#/components/schemas/google.protobuf.Timestamp'
-        - oneOf:
-            - type: object
-              properties:
-                image:
-                  title: image
-                  $ref: '#/components/schemas/images.v1.Image'
+      anyOf:
+        - type: object
+          properties:
+            image:
+              allOf:
+                - $ref: '#/components/schemas/images.v1.Image'
               title: image
-              required:
-                - image
-            - type: object
-              properties:
-                video:
-                  title: video
-                  $ref: '#/components/schemas/videos.v1.Video'
+          title: image
+        - type: object
+          properties:
+            video:
+              allOf:
+                - $ref: '#/components/schemas/videos.v1.Video'
               title: video
-              required:
-                - video
-            - not:
-                anyOf:
-                  - required:
-                      - image
-                  - required:
-                      - video
+          title: video
       unevaluatedProperties: false
+      not:
+        allOf:
+          - anyOf:
+              - required:
+                  - image
+              - required:
+                  - video
+          - not:
+              oneOf:
+                - required:
+                    - image
+                - required:
+                    - video
+      properties:
+        id:
+          type: string
+          examples:
+            - Mn0bVc9xZ8
+          title: id
+        feed_id:
+          type: string
+          examples:
+            - F4edRI23XL
+          title: feed_id
+        creator_id:
+          type: string
+          examples:
+            - Tg6Rf4e2W1
+          title: creator_id
+        type:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.MediaType'
+          examples:
+            - MEDIA_TYPE_VIDEO
+          title: type
+        description:
+          type: string
+          examples:
+            - A short description.
+          title: description
+          maxLength: 280
+        created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
+          examples:
+            - "2026-01-15T10:30:00Z"
+          title: created_at
       title: Post
     posts.v1.PostUpload:
       type: object
@@ -14005,10 +14038,11 @@ components:
             - https://cdn.example.com/upload
           title: poster_upload_url
         upload_expires:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: upload_expires
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: PostUpload
       additionalProperties: false
     project.v1.CreateProjectRequest:
@@ -14037,10 +14071,11 @@ components:
                 - eu
           title: regions
         video_quality:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.VideoQuality'
           examples:
             - basic
           title: video_quality
-          $ref: '#/components/schemas/common.v1.VideoQuality'
       title: CreateProjectRequest
       additionalProperties: false
     project.v1.DeleteProjectRequest:
@@ -14137,25 +14172,28 @@ components:
             type: string
           title: regions
         video_quality:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.VideoQuality'
           examples:
             - basic
           title: video_quality
-          $ref: '#/components/schemas/common.v1.VideoQuality'
         custom_domain:
           type: string
           examples:
             - docs.example.com
           title: custom_domain
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         updated_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: updated_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: Project
       additionalProperties: false
     project.v1.RemoveCustomDomainRequest:
@@ -14228,10 +14266,11 @@ components:
             - OR98234j23
           title: org_id
         video_quality:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.VideoQuality'
           examples:
             - shorts
           title: video_quality
-          $ref: '#/components/schemas/common.v1.VideoQuality'
       title: UpdateVideoQualityRequest
       required:
         - video_quality
@@ -14257,8 +14296,9 @@ components:
       type: object
       properties:
         message:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.TicketMessage'
           title: message
-          $ref: '#/components/schemas/support.v1.TicketMessage'
       title: AddTicketMessageResponse
       additionalProperties: false
     support.v1.Category:
@@ -14316,20 +14356,22 @@ components:
             - Us1234abcd
           title: author_id
         author_type:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.MessageAuthor'
           examples:
             - MESSAGE_AUTHOR_CUSTOMER
           title: author_type
-          $ref: '#/components/schemas/support.v1.MessageAuthor'
         body:
           type: string
           examples:
             - Our uploads are failing in eu-west.
           title: body
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: ChatMessage
       additionalProperties: false
     support.v1.CloseTicketRequest:
@@ -14346,8 +14388,9 @@ components:
       type: object
       properties:
         ticket:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.Ticket'
           title: ticket
-          $ref: '#/components/schemas/support.v1.Ticket'
       title: CloseTicketResponse
       additionalProperties: false
     support.v1.CreateTicketRequest:
@@ -14385,18 +14428,20 @@ components:
           maxLength: 5000
           minLength: 1
         priority:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.TicketPriority'
           examples:
             - TICKET_PRIORITY_NORMAL
           title: priority
-          $ref: '#/components/schemas/support.v1.TicketPriority'
       title: CreateTicketRequest
       additionalProperties: false
     support.v1.CreateTicketResponse:
       type: object
       properties:
         ticket:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.Ticket'
           title: ticket
-          $ref: '#/components/schemas/support.v1.Ticket'
       title: CreateTicketResponse
       additionalProperties: false
     support.v1.GetTicketRequest:
@@ -14413,8 +14458,9 @@ components:
       type: object
       properties:
         ticket:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.Ticket'
           title: ticket
-          $ref: '#/components/schemas/support.v1.Ticket'
         messages:
           type: array
           items:
@@ -14440,11 +14486,12 @@ components:
       type: object
       properties:
         after:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: after
           description: Return only messages created after this time. Used to poll for new replies.
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         limit:
           type: integer
           examples:
@@ -14469,13 +14516,15 @@ components:
       type: object
       properties:
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
         status:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.TicketStatus'
           examples:
             - TICKET_STATUS_OPEN
           title: status
-          $ref: '#/components/schemas/support.v1.TicketStatus'
       title: ListTicketsRequest
       additionalProperties: false
     support.v1.ListTicketsResponse:
@@ -14487,9 +14536,7 @@ components:
             $ref: '#/components/schemas/support.v1.Ticket'
           title: tickets
         total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "3"
           title: total
@@ -14572,8 +14619,9 @@ components:
       type: object
       properties:
         message:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.ChatMessage'
           title: message
-          $ref: '#/components/schemas/support.v1.ChatMessage'
       title: SendChatMessageResponse
       additionalProperties: false
     support.v1.Ticket:
@@ -14615,25 +14663,29 @@ components:
             - Invoice download is failing
           title: subject
         status:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.TicketStatus'
           examples:
             - TICKET_STATUS_OPEN
           title: status
-          $ref: '#/components/schemas/support.v1.TicketStatus'
         priority:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.TicketPriority'
           examples:
             - TICKET_PRIORITY_NORMAL
           title: priority
-          $ref: '#/components/schemas/support.v1.TicketPriority'
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         updated_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: updated_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: Ticket
       additionalProperties: false
     support.v1.TicketMessage:
@@ -14655,20 +14707,22 @@ components:
             - Us1234abcd
           title: author_id
         author_type:
+          allOf:
+            - $ref: '#/components/schemas/support.v1.MessageAuthor'
           examples:
             - MESSAGE_AUTHOR_CUSTOMER
           title: author_type
-          $ref: '#/components/schemas/support.v1.MessageAuthor'
         body:
           type: string
           examples:
             - My invoice download returns a 404.
           title: body
         created_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: TicketMessage
       additionalProperties: false
     support.v1.TicketPriority:
@@ -14743,7 +14797,6 @@ components:
           minLength: 1
         object_size:
           type:
-            - integer
             - string
             - "null"
           title: object_size
@@ -14869,10 +14922,11 @@ components:
           title: name
           maxLength: 64
         video_quality:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.VideoQuality'
           examples:
             - VIDEO_QUALITY_PRO
           title: video_quality
-          $ref: '#/components/schemas/common.v1.VideoQuality'
       title: CreateVideoUploadRequest
       additionalProperties: false
     videos.v1.DeleteAudioTrackRequest:
@@ -14949,9 +15003,7 @@ components:
             - FpzVPNx1cG
           title: video_id
         start_time_sec:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "12"
           title: start_time_sec
@@ -14992,9 +15044,7 @@ components:
           type: string
           title: name
         size:
-          type:
-            - integer
-            - string
+          type: string
           title: size
           format: int64
         status:
@@ -15040,8 +15090,9 @@ components:
       type: object
       properties:
         video:
+          allOf:
+            - $ref: '#/components/schemas/videos.v1.Video'
           title: video
-          $ref: '#/components/schemas/videos.v1.Video'
       title: GetVideoResponse
       additionalProperties: false
     videos.v1.Language:
@@ -15123,8 +15174,9 @@ components:
             - Bq4y3QB38S
           title: project_id
         pagination:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Pagination'
           title: pagination
-          $ref: '#/components/schemas/common.v1.Pagination'
         sort_field:
           type: string
           title: sort_field
@@ -15142,9 +15194,7 @@ components:
             $ref: '#/components/schemas/videos.v1.Video'
           title: videos
         total:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "5"
           title: total
@@ -15192,9 +15242,7 @@ components:
           title: file_id
           minLength: 1
         size:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "104857600"
           title: size
@@ -15335,10 +15383,11 @@ components:
             - en
           title: language_code
         format:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.SubtitleFormat'
           examples:
             - SUBTITLE_FORMAT_VTT
           title: format
-          $ref: '#/components/schemas/common.v1.SubtitleFormat'
         label:
           type: string
           title: label
@@ -15392,10 +15441,11 @@ components:
             $ref: '#/components/schemas/videos.v1.TrackUploadTarget'
           title: targets
         expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: TrackUpload
       additionalProperties: false
     videos.v1.TrackUploadItem:
@@ -15416,9 +15466,7 @@ components:
           type: string
           title: format
         size:
-          type:
-            - integer
-            - string
+          type: string
           examples:
             - "104857600"
           title: size
@@ -15593,18 +15641,20 @@ components:
             - FpzVPNx1cG
           title: video_id
         visibility:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Visibility'
           examples:
             - VISIBILITY_PUBLIC
           title: visibility
-          $ref: '#/components/schemas/common.v1.Visibility'
       title: UpdateVideoVisibilityRequest
       additionalProperties: false
     videos.v1.UpdateVideoVisibilityResponse:
       type: object
       properties:
         video:
+          allOf:
+            - $ref: '#/components/schemas/videos.v1.Video'
           title: video
-          $ref: '#/components/schemas/videos.v1.Video'
       title: UpdateVideoVisibilityResponse
       additionalProperties: false
     videos.v1.UploadVideoThumbnailRequest:
@@ -15654,8 +15704,9 @@ components:
             - FpzVPNx1cG
           title: id
         duration:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Duration'
           title: duration
-          $ref: '#/components/schemas/google.protobuf.Duration'
         width:
           type: integer
           examples:
@@ -15690,16 +15741,19 @@ components:
             - "true"
           title: hdr
         visibility:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.Visibility'
           examples:
             - VISIBILITY_PUBLIC
           title: visibility
-          $ref: '#/components/schemas/common.v1.Visibility'
         file:
+          allOf:
+            - $ref: '#/components/schemas/common.v1.File'
           title: file
-          $ref: '#/components/schemas/common.v1.File'
         poster:
+          allOf:
+            - $ref: '#/components/schemas/images.v1.Image'
           title: poster
-          $ref: '#/components/schemas/images.v1.Image'
       title: Video
       additionalProperties: false
     videos.v1.VideoChapters:
@@ -15817,21 +15871,24 @@ components:
             - https://cdn.example.com/poster.jpg
           title: poster_upload_url
         expires_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
           examples:
             - "2026-01-15T10:30:00Z"
           title: expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: VideoUpload
       additionalProperties: false
     videos.v1.VideoView:
       type: object
       properties:
         video:
+          allOf:
+            - $ref: '#/components/schemas/videos.v1.VideoRecord'
           title: video
-          $ref: '#/components/schemas/videos.v1.VideoRecord'
         file:
+          allOf:
+            - $ref: '#/components/schemas/videos.v1.File'
           title: file
-          $ref: '#/components/schemas/videos.v1.File'
       title: VideoView
       additionalProperties: false
   securitySchemes:
