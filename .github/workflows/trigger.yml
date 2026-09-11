@@ -28,11 +28,12 @@ jobs:
           - rixl-python
           - rixl-ruby
           - rixl-rust
+          - docs
     steps:
-      - name: Dispatch regenerate-sdk
+      - name: Dispatch regenerate
         uses: rixlhq/openapi/.github/actions/dispatch-repository-event@main
         with:
           token: ${{ secrets.BUILD_GITHUB_TOKEN }}
           owner: ${{ github.repository_owner }}
           repo: ${{ matrix.repo }}
-          event_type: regenerate-sdk
+          event_type: ${{ matrix.repo == 'docs' && 'regenerate-docs' || 'regenerate-sdk' }}
