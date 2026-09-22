@@ -3333,6 +3333,10 @@
                       }
                     ],
                     "title": "state"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "title": "user_id"
                   }
                 },
                 "title": "UpdateMembershipStateRequest",
@@ -16427,6 +16431,10 @@
               }
             ],
             "title": "state"
+          },
+          "user_id": {
+            "type": "string",
+            "title": "user_id"
           }
         },
         "title": "UpdateMembershipStateRequest",

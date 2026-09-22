@@ -2137,6 +2137,9 @@ paths:
                   allOf:
                     - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
                   title: state
+                user_id:
+                  type: string
+                  title: user_id
               title: UpdateMembershipStateRequest
               additionalProperties: false
         required: true
@@ -10851,6 +10854,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
           title: state
+        user_id:
+          type: string
+          title: user_id
       title: UpdateMembershipStateRequest
       additionalProperties: false
     auth.v1.UpdateNameRequest:
