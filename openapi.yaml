@@ -1681,6 +1681,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.ListMembershipApplicationsResponse'
+  /auth/v1/membership-applications/{org_id}/state:
+    patch:
+      tags:
+        - Memberships
+      summary: RespondToMembershipApplication
+      operationId: auth.v1.MembershipService.RespondToMembershipApplication
+      parameters:
+        - name: org_id
+          in: path
+          description: The org_id path parameter.
+          required: true
+          schema:
+            type: string
+            title: org_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  allOf:
+                    - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
+                  title: state
+              title: RespondToMembershipApplicationRequest
+              additionalProperties: false
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.MembershipMutation'
   /auth/v1/memberships:
     get:
       tags:
@@ -10706,6 +10740,18 @@ components:
             type: string
           title: permissions
       title: ResolveIdentityPermissionsResponse
+      additionalProperties: false
+    auth.v1.RespondToMembershipApplicationRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+        state:
+          allOf:
+            - $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
+          title: state
+      title: RespondToMembershipApplicationRequest
       additionalProperties: false
     auth.v1.SendBlogBroadcastRequest:
       type: object
