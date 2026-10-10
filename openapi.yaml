@@ -3390,6 +3390,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/billing.v1.HostedCheckoutSessionResponse'
+  /billing/v1/config:
+    get:
+      tags:
+        - Payments
+      summary: GetBillingConfig
+      operationId: billing.v1.PaymentService.GetBillingConfig
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/billing.v1.BillingConfig'
   /billing/v1/payment-methods:
     get:
       tags:
@@ -11341,6 +11354,19 @@ components:
         - postal_code
         - country
       additionalProperties: false
+    billing.v1.BillingConfig:
+      type: object
+      properties:
+        publishable_key:
+          type: string
+          title: publishable_key
+          description: Stripe publishable key of the account the caller's organization is billed in.
+        sandbox:
+          type: boolean
+          title: sandbox
+          description: 'True when the organization is billed in the Stripe sandbox: no money moves.'
+      title: BillingConfig
+      additionalProperties: false
     billing.v1.BillingCycle:
       type: string
       title: BillingCycle
@@ -11724,6 +11750,10 @@ components:
             - OR98234j23
           title: org_id
       title: GetBillingAddressRequest
+      additionalProperties: false
+    billing.v1.GetBillingConfigRequest:
+      type: object
+      title: GetBillingConfigRequest
       additionalProperties: false
     billing.v1.GetPaymentMethodFromPaymentIntentRequest:
       type: object
@@ -12306,6 +12336,12 @@ components:
         signature:
           type: string
           title: signature
+        sandbox:
+          type: boolean
+          title: sandbox
+          description: |-
+            Set by the gateway's sandbox webhook route: verify against the sandbox
+             signing secret and process in the sandbox Stripe account.
       title: ProcessStripeWebhookRequest
       additionalProperties: false
     billing.v1.ReactivateSubscriptionRequest:
