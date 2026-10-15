@@ -9551,6 +9551,12 @@ components:
         origin:
           type: string
           title: origin
+        code_verifier:
+          type: string
+          title: code_verifier
+        redirect_uri:
+          type: string
+          title: redirect_uri
       title: ConnectProviderRequest
       additionalProperties: false
     auth.v1.ConnectedProvider:
@@ -10576,6 +10582,12 @@ components:
         origin:
           type: string
           title: origin
+        code_verifier:
+          type: string
+          title: code_verifier
+        redirect_uri:
+          type: string
+          title: redirect_uri
       title: RefreshTokenRequest
       additionalProperties: false
     auth.v1.RegisterPermissionsRequest:

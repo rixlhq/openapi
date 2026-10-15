@@ -14481,6 +14481,14 @@
           "origin": {
             "type": "string",
             "title": "origin"
+          },
+          "code_verifier": {
+            "type": "string",
+            "title": "code_verifier"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "title": "redirect_uri"
           }
         },
         "title": "ConnectProviderRequest",
@@ -16005,6 +16013,14 @@
           "origin": {
             "type": "string",
             "title": "origin"
+          },
+          "code_verifier": {
+            "type": "string",
+            "title": "code_verifier"
+          },
+          "redirect_uri": {
+            "type": "string",
+            "title": "redirect_uri"
           }
         },
         "title": "RefreshTokenRequest",
