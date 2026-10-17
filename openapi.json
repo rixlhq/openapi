@@ -15337,6 +15337,10 @@
           "token": {
             "type": "string",
             "title": "token"
+          },
+          "refresh_token": {
+            "type": "string",
+            "title": "refresh_token"
           }
         },
         "title": "LogoutRequest",

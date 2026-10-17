@@ -10125,6 +10125,9 @@ components:
         token:
           type: string
           title: token
+        refresh_token:
+          type: string
+          title: refresh_token
       title: LogoutRequest
       additionalProperties: false
     auth.v1.MemberPoliciesResponse:
