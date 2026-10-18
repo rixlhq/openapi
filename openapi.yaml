@@ -14995,6 +14995,22 @@ components:
           format: double
       title: Chapter
       additionalProperties: false
+    videos.v1.ClearVideoRepackageRequest:
+      type: object
+      properties:
+        video_id:
+          type: string
+          title: video_id
+          minLength: 1
+        requested_at:
+          allOf:
+            - $ref: '#/components/schemas/google.protobuf.Timestamp'
+          title: requested_at
+      title: ClearVideoRepackageRequest
+      additionalProperties: false
+      description: |-
+        Field 1 matches VideoIdRequest. Without requested_at the flag is cleared
+         unconditionally; with it, only if no newer repackage request arrived.
     videos.v1.ConversionGetVideoRequest:
       type: object
       properties:
@@ -15502,6 +15518,25 @@ components:
           title: renditions
       title: RenditionList
       additionalProperties: false
+    videos.v1.RepackageRequestList:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+          title: ids
+        requested_at:
+          type: object
+          title: requested_at
+          additionalProperties:
+            allOf:
+              - $ref: '#/components/schemas/google.protobuf.Timestamp'
+            title: value
+          description: repackage_requested_at observed per video id; pass it back to ClearVideoRepackage.
+      title: RepackageRequestList
+      additionalProperties: false
+      description: Field 1 matches VideoIdList so older processors keep decoding ids.
     videos.v1.Subtitle:
       type: object
       properties:
