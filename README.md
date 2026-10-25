@@ -2,64 +2,49 @@
 
 ![CI](https://github.com/rixlhq/openapi/actions/workflows/trigger.yml/badge.svg)
 
-The canonical OpenAPI 3.x specification for the [Rixl](https://rixl.com) platform API (`api.rixl.com`).
+The published OpenAPI 3.1 specification for the [Rixl](https://rixl.com) platform API (`https://api.rixl.com`). Every Rixl SDK and the [API reference](https://docs.rixl.com/en/api) are generated from `openapi.yaml`.
 
-This repository holds the `openapi.yaml` contract that serves as the single source of truth for all Rixl SDKs. When this file changes on `main`, a GitHub Actions workflow automatically dispatches a regeneration event to every supported SDK repository, keeping them in sync with the latest API surface.
+## Generated, don't edit
 
-## Supported SDKs
+`openapi.yaml` and `openapi.json` are generated in [rixlhq/gateway](https://github.com/rixlhq/gateway) and copied here whenever the generated spec changes on gateway `main`. Edits made in this repository are overwritten.
 
-The following SDKs are auto-generated from this specification:
+1. The service protos in `api`, `auth-api` and `analytics` define the operations.
+2. `gateway/scripts/generate-openapi.sh` merges them with `gateway/docs/base.yaml` (servers, security, shared error response) and `gateway/docs/remap.jq` into `gateway/docs/swagger.yaml`.
+3. A gateway workflow copies it here as `openapi.yaml` and `openapi.json`.
+4. A change to `openapi.yaml` on `main` runs `.github/workflows/trigger.yml`, which asks each SDK repository and `docs` to regenerate.
 
-| SDK | Repository |
-|-----|------------|
-| JavaScript / TypeScript | [rixlhq/rixl-js](https://github.com/rixlhq/rixl-js) |
-| Go | [rixlhq/rixl-go](https://github.com/rixlhq/rixl-go) |
-| Java | [rixlhq/rixl-java](https://github.com/rixlhq/rixl-java) |
-| C# | [rixlhq/rixl-csharp](https://github.com/rixlhq/rixl-csharp) |
-| PHP | [rixlhq/rixl-php](https://github.com/rixlhq/rixl-php) |
-| Python | [rixlhq/rixl-python](https://github.com/rixlhq/rixl-python) |
-| Ruby | [rixlhq/rixl-ruby](https://github.com/rixlhq/rixl-ruby) |
-| Rust | [rixlhq/rixl-rust](https://github.com/rixlhq/rixl-rust) |
+To change the spec, change the protos or `gateway/docs/` and open a PR there.
 
-## How it works
+## SDK support
 
-1. A change to `openapi.yaml` is pushed to the `main` branch.
-2. The **SDK Trigger** workflow (`.github/workflows/trigger.yml`) detects the change.
-3. For each SDK listed in the matrix, the workflow sends a `repository_dispatch` event with type `regenerate-sdk`.
-4. Each SDK repository listens for that event and runs its own code-generation pipeline.
+| SDK | Repository | Status |
+|-----|------------|--------|
+| JavaScript / TypeScript (`@rixl/sdk`) | [rixlhq/rixl-js](https://github.com/rixlhq/rixl-js) | **Supported** |
+| Go | [rixlhq/rixl-go](https://github.com/rixlhq/rixl-go) | Preview |
+| Python | [rixlhq/rixl-python](https://github.com/rixlhq/rixl-python) | Preview |
+| PHP | [rixlhq/rixl-php](https://github.com/rixlhq/rixl-php) | Preview |
+| Java | [rixlhq/rixl-java](https://github.com/rixlhq/rixl-java) | Preview |
+| C# | [rixlhq/rixl-csharp](https://github.com/rixlhq/rixl-csharp) | Preview |
+| Ruby | [rixlhq/rixl-ruby](https://github.com/rixlhq/rixl-ruby) | Unmaintained |
+| Rust | [rixlhq/rixl-rust](https://github.com/rixlhq/rixl-rust) | Unmaintained |
 
-## API overview
+- **Supported**: covered by the [versioning policy](https://docs.rixl.com/en/home/platform/api-documentation/versioning).
+- **Preview**: generated on every spec change, with no stability guarantees between releases.
+- **Unmaintained**: generation is stale and the code does not match the current API paths. Don't use these in new integrations.
 
-The Rixl API (`api.rixl.com`) covers video and audio content management, including:
+## API contract
 
-- **Videos** — upload initialization, upload completion, and metadata management
-- **Audio tracks** — creation, listing, and deletion of audio files in various formats (MP3, Opus, FLAC, WAV, AC3, M4A, AAC)
-- **Subtitles** — upload, management, and deletion of subtitle files (SRT, VTT)
-- **Images** — thumbnail upload and management
-- **Chapters** — chapter marker management for video content
-- **Posts** — post creation and management with typed content
+Versioning, errors, retries, idempotency and pagination are documented once, in the Rixl docs:
 
-## Making changes
+- [Versioning and deprecation](https://docs.rixl.com/en/home/platform/api-documentation/versioning)
+- [Errors, retries and idempotency](https://docs.rixl.com/en/home/platform/api-documentation/error-handling)
+- [Pagination](https://docs.rixl.com/en/home/platform/api-documentation/pagination)
 
-### Edit `openapi.yaml`
-
-This is the only file that matters. Edit it following OpenAPI 3.x conventions. After merging to `main`, SDK regeneration is triggered automatically.
-
-### Local validation
-
-You can validate the spec locally before pushing:
+## Local validation
 
 ```bash
-# Using Spectral (recommended)
 npx @stoplight/spectral-cli lint openapi.yaml
-
-# Or simply check YAML syntax
-python3 -c "import yaml; yaml.safe_load(open('openapi.yaml'))"
 ```
-
-## Contributing
-
-All changes go through the `openapi.yaml` file. Open a PR against `main`, and the SDK regeneration pipeline handles the rest.
 
 ## License
 
