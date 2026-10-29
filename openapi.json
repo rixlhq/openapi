@@ -10368,6 +10368,599 @@
           }
         }
       }
+    },
+    "/webhooks/v1/projects/{project_id}/endpoints": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "ListEndpoints",
+        "operationId": "webhooks.v1.WebhookService.ListEndpoints",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "Maximum number of items to return.",
+            "schema": {
+              "type": "integer",
+              "examples": [
+                "25"
+              ],
+              "title": "limit",
+              "maximum": 100,
+              "minimum": 1,
+              "format": "int32",
+              "default": "25"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "Number of items to skip before collecting the result set.",
+            "schema": {
+              "type": "integer",
+              "examples": [
+                "0"
+              ],
+              "title": "offset",
+              "format": "int32",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.ListEndpointsResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "CreateEndpoint",
+        "description": "CreateEndpoint registers a new HTTPS endpoint and returns its signing\n secret exactly once. Store it; only a rotation returns a secret again.",
+        "operationId": "webhooks.v1.WebhookService.CreateEndpoint",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "title": "url",
+                    "maxLength": 2048,
+                    "minLength": 1
+                  },
+                  "event_types": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "image.ready",
+                        "image.failed"
+                      ]
+                    },
+                    "title": "event_types",
+                    "maxItems": 8,
+                    "minItems": 1,
+                    "uniqueItems": true
+                  }
+                },
+                "title": "CreateEndpointRequest",
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.CreateEndpointResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/v1/projects/{project_id}/endpoints/{endpoint_id}": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "GetEndpoint",
+        "operationId": "webhooks.v1.WebhookService.GetEndpoint",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "endpoint_id",
+            "in": "path",
+            "description": "The endpoint_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "endpoint_id",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.GetEndpointResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "DeleteEndpoint",
+        "operationId": "webhooks.v1.WebhookService.DeleteEndpoint",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "endpoint_id",
+            "in": "path",
+            "description": "The endpoint_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "endpoint_id",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.protobuf.Empty"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "UpdateEndpoint",
+        "operationId": "webhooks.v1.WebhookService.UpdateEndpoint",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "endpoint_id",
+            "in": "path",
+            "description": "The endpoint_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "endpoint_id",
+              "minLength": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "title": "url",
+                    "maxLength": 2048
+                  },
+                  "event_types": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "image.ready",
+                        "image.failed"
+                      ]
+                    },
+                    "title": "event_types",
+                    "maxItems": 8,
+                    "uniqueItems": true
+                  },
+                  "enabled": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ],
+                    "title": "enabled"
+                  }
+                },
+                "title": "UpdateEndpointRequest",
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.UpdateEndpointResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/v1/projects/{project_id}/endpoints/{endpoint_id}/attempts": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "ListEndpointAttempts",
+        "description": "ListEndpointAttempts returns the delivery history for one endpoint,\n newest first.",
+        "operationId": "webhooks.v1.WebhookService.ListEndpointAttempts",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "endpoint_id",
+            "in": "path",
+            "description": "The endpoint_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "endpoint_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "Maximum number of items to return.",
+            "schema": {
+              "type": "integer",
+              "examples": [
+                "25"
+              ],
+              "title": "limit",
+              "maximum": 100,
+              "minimum": 1,
+              "format": "int32",
+              "default": "25"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "Number of items to skip before collecting the result set.",
+            "schema": {
+              "type": "integer",
+              "examples": [
+                "0"
+              ],
+              "title": "offset",
+              "format": "int32",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.ListEndpointAttemptsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/v1/projects/{project_id}/endpoints/{endpoint_id}/events/{event_id}/replay": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "ReplayEvent",
+        "description": "ReplayEvent re-delivers one event to one endpoint with the same\n webhook-id so consumers dedupe it against the original delivery.",
+        "operationId": "webhooks.v1.WebhookService.ReplayEvent",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "endpoint_id",
+            "in": "path",
+            "description": "The endpoint_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "endpoint_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "event_id",
+            "in": "path",
+            "description": "The event_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "event_id",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/google.protobuf.Empty"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/v1/projects/{project_id}/endpoints/{endpoint_id}/rotate-secret": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "RotateEndpointSecret",
+        "description": "RotateEndpointSecret installs a fresh signing secret. For 24h deliveries\n are signed with both the old and the new secret so consumers can migrate.",
+        "operationId": "webhooks.v1.WebhookService.RotateEndpointSecret",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "endpoint_id",
+            "in": "path",
+            "description": "The endpoint_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "endpoint_id",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.RotateEndpointSecretResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/v1/projects/{project_id}/endpoints/{endpoint_id}/test": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "SendTestEvent",
+        "description": "SendTestEvent delivers one synthetic webhook.test event to the endpoint.",
+        "operationId": "webhooks.v1.WebhookService.SendTestEvent",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "endpoint_id",
+            "in": "path",
+            "description": "The endpoint_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "endpoint_id",
+              "minLength": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.SendTestEventResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhooks/v1/projects/{project_id}/events": {
+      "get": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "ListEvents",
+        "operationId": "webhooks.v1.WebhookService.ListEvents",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "The project_id path parameter.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "project_id",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "description": "Maximum number of items to return.",
+            "schema": {
+              "type": "integer",
+              "examples": [
+                "25"
+              ],
+              "title": "limit",
+              "maximum": 100,
+              "minimum": 1,
+              "format": "int32",
+              "default": "25"
+            }
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "description": "Number of items to skip before collecting the result set.",
+            "schema": {
+              "type": "integer",
+              "examples": [
+                "0"
+              ],
+              "title": "offset",
+              "format": "int32",
+              "default": "0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/webhooks.v1.ListEventsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -23861,6 +24454,630 @@
         },
         "title": "VideoView",
         "additionalProperties": false
+      },
+      "webhooks.v1.CreateEndpointRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "title": "url",
+            "maxLength": 2048,
+            "minLength": 1
+          },
+          "event_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "image.ready",
+                "image.failed"
+              ]
+            },
+            "title": "event_types",
+            "maxItems": 8,
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "title": "CreateEndpointRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.CreateEndpointResponse": {
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/webhooks.v1.WebhookEndpoint"
+              }
+            ],
+            "title": "endpoint"
+          },
+          "secret": {
+            "type": "string",
+            "examples": [
+              "whsec_6PJkX9sR3uVbNwYqTzLeHdCgAfMjKoQx"
+            ],
+            "title": "secret",
+            "description": "Signing secret in whsec_<base64> form. Returned only here."
+          }
+        },
+        "title": "CreateEndpointResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.DeleteEndpointRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "endpoint_id": {
+            "type": "string",
+            "title": "endpoint_id",
+            "minLength": 1
+          }
+        },
+        "title": "DeleteEndpointRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.GetEndpointRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "endpoint_id": {
+            "type": "string",
+            "title": "endpoint_id",
+            "minLength": 1
+          }
+        },
+        "title": "GetEndpointRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.GetEndpointResponse": {
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/webhooks.v1.WebhookEndpoint"
+              }
+            ],
+            "title": "endpoint"
+          }
+        },
+        "title": "GetEndpointResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.ListEndpointAttemptsRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "endpoint_id": {
+            "type": "string",
+            "title": "endpoint_id",
+            "minLength": 1
+          },
+          "pagination": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/common.v1.Pagination"
+              }
+            ],
+            "title": "pagination"
+          }
+        },
+        "title": "ListEndpointAttemptsRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.ListEndpointAttemptsResponse": {
+        "type": "object",
+        "properties": {
+          "attempts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/webhooks.v1.WebhookAttempt"
+            },
+            "title": "attempts"
+          },
+          "total": {
+            "type": "string",
+            "examples": [
+              "16"
+            ],
+            "title": "total",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "offset",
+            "format": "int32"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "limit",
+            "format": "int32"
+          }
+        },
+        "title": "ListEndpointAttemptsResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.ListEndpointsRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "pagination": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/common.v1.Pagination"
+              }
+            ],
+            "title": "pagination"
+          }
+        },
+        "title": "ListEndpointsRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.ListEndpointsResponse": {
+        "type": "object",
+        "properties": {
+          "endpoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/webhooks.v1.WebhookEndpoint"
+            },
+            "title": "endpoints"
+          },
+          "total": {
+            "type": "string",
+            "examples": [
+              "3"
+            ],
+            "title": "total",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "offset",
+            "format": "int32"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "limit",
+            "format": "int32"
+          }
+        },
+        "title": "ListEndpointsResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.ListEventsRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "pagination": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/common.v1.Pagination"
+              }
+            ],
+            "title": "pagination"
+          }
+        },
+        "title": "ListEventsRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.ListEventsResponse": {
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/webhooks.v1.WebhookEvent"
+            },
+            "title": "events"
+          },
+          "total": {
+            "type": "string",
+            "examples": [
+              "42"
+            ],
+            "title": "total",
+            "format": "int64"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "offset",
+            "format": "int32"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "limit",
+            "format": "int32"
+          }
+        },
+        "title": "ListEventsResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.ReplayEventRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "endpoint_id": {
+            "type": "string",
+            "title": "endpoint_id",
+            "minLength": 1
+          },
+          "event_id": {
+            "type": "string",
+            "title": "event_id",
+            "minLength": 1
+          }
+        },
+        "title": "ReplayEventRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.RotateEndpointSecretRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "endpoint_id": {
+            "type": "string",
+            "title": "endpoint_id",
+            "minLength": 1
+          }
+        },
+        "title": "RotateEndpointSecretRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.RotateEndpointSecretResponse": {
+        "type": "object",
+        "properties": {
+          "secret": {
+            "type": "string",
+            "examples": [
+              "whsec_6PJkX9sR3uVbNwYqTzLeHdCgAfMjKoQx"
+            ],
+            "title": "secret"
+          }
+        },
+        "title": "RotateEndpointSecretResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.SendTestEventRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "endpoint_id": {
+            "type": "string",
+            "title": "endpoint_id",
+            "minLength": 1
+          }
+        },
+        "title": "SendTestEventRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.SendTestEventResponse": {
+        "type": "object",
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "examples": [
+              "evt9aB8cD1x"
+            ],
+            "title": "event_id"
+          }
+        },
+        "title": "SendTestEventResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.UpdateEndpointRequest": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "project_id",
+            "minLength": 1
+          },
+          "endpoint_id": {
+            "type": "string",
+            "title": "endpoint_id",
+            "minLength": 1
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "title": "url",
+            "maxLength": 2048
+          },
+          "event_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "image.ready",
+                "image.failed"
+              ]
+            },
+            "title": "event_types",
+            "maxItems": 8,
+            "uniqueItems": true
+          },
+          "enabled": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "title": "enabled"
+          }
+        },
+        "title": "UpdateEndpointRequest",
+        "additionalProperties": false
+      },
+      "webhooks.v1.UpdateEndpointResponse": {
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/webhooks.v1.WebhookEndpoint"
+              }
+            ],
+            "title": "endpoint"
+          }
+        },
+        "title": "UpdateEndpointResponse",
+        "additionalProperties": false
+      },
+      "webhooks.v1.WebhookAttempt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "att9aB8cD1x"
+            ],
+            "title": "id"
+          },
+          "event_id": {
+            "type": "string",
+            "examples": [
+              "evt9aB8cD1x"
+            ],
+            "title": "event_id"
+          },
+          "attempt": {
+            "type": "integer",
+            "examples": [
+              "1"
+            ],
+            "title": "attempt",
+            "format": "int32"
+          },
+          "replay": {
+            "type": "boolean",
+            "examples": [
+              "false"
+            ],
+            "title": "replay",
+            "description": "True when this delivery was triggered by ReplayEvent or SendTestEvent\n rather than the original subscription fan-out."
+          },
+          "status_code": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "examples": [
+              "200"
+            ],
+            "title": "status_code",
+            "format": "int32"
+          },
+          "error": {
+            "type": "string",
+            "examples": [
+              "connection failed"
+            ],
+            "title": "error"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "examples": [
+              "132"
+            ],
+            "title": "duration_ms",
+            "format": "int32"
+          },
+          "created_at": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/google.protobuf.Timestamp"
+              }
+            ],
+            "examples": [
+              "2026-10-19T12:00:00Z"
+            ],
+            "title": "created_at"
+          },
+          "response_snippet": {
+            "type": "string",
+            "examples": [
+              "ok"
+            ],
+            "title": "response_snippet",
+            "description": "First 1 KiB of the endpoint's response body."
+          }
+        },
+        "title": "WebhookAttempt",
+        "additionalProperties": false,
+        "description": "WebhookAttempt is one recorded delivery attempt for an event/endpoint pair."
+      },
+      "webhooks.v1.WebhookEndpoint": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "whe9aB8cD1x"
+            ],
+            "title": "id"
+          },
+          "project_id": {
+            "type": "string",
+            "examples": [
+              "Bq4y3QB38S"
+            ],
+            "title": "project_id"
+          },
+          "url": {
+            "type": "string",
+            "examples": [
+              "https://example.com/hooks/rixl"
+            ],
+            "title": "url"
+          },
+          "event_types": {
+            "type": "array",
+            "examples": [
+              [
+                "image.ready",
+                "image.failed"
+              ]
+            ],
+            "items": {
+              "type": "string",
+              "examples": [
+                [
+                  "image.ready",
+                  "image.failed"
+                ]
+              ]
+            },
+            "title": "event_types"
+          },
+          "enabled": {
+            "type": "boolean",
+            "examples": [
+              "true"
+            ],
+            "title": "enabled"
+          },
+          "disabled_reason": {
+            "type": "string",
+            "examples": [
+              "gone"
+            ],
+            "title": "disabled_reason"
+          },
+          "created_at": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/google.protobuf.Timestamp"
+              }
+            ],
+            "examples": [
+              "2026-10-19T12:00:00Z"
+            ],
+            "title": "created_at"
+          },
+          "updated_at": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/google.protobuf.Timestamp"
+              }
+            ],
+            "examples": [
+              "2026-10-19T12:00:00Z"
+            ],
+            "title": "updated_at"
+          }
+        },
+        "title": "WebhookEndpoint",
+        "additionalProperties": false,
+        "description": "WebhookEndpoint is a delivery target. Secrets are never returned; they are\n only shown once on create and rotate."
+      },
+      "webhooks.v1.WebhookEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "evt9aB8cD1x"
+            ],
+            "title": "id"
+          },
+          "type": {
+            "type": "string",
+            "examples": [
+              "image.ready"
+            ],
+            "title": "type"
+          },
+          "resource_id": {
+            "type": "string",
+            "examples": [
+              "LmNoPqR678"
+            ],
+            "title": "resource_id"
+          },
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/google.protobuf.Struct"
+              }
+            ],
+            "title": "data"
+          },
+          "created_at": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/google.protobuf.Timestamp"
+              }
+            ],
+            "examples": [
+              "2026-10-19T12:00:00Z"
+            ],
+            "title": "created_at"
+          }
+        },
+        "title": "WebhookEvent",
+        "additionalProperties": false,
+        "description": "WebhookEvent is a recorded outbound notification. `data` is the exact\n object embedded in the delivered payload envelope."
       }
     },
     "securitySchemes": {
@@ -23950,6 +25167,10 @@
     {
       "name": "Image Conversion",
       "description": "Resize and convert images into delivery formats."
+    },
+    {
+      "name": "Webhooks",
+      "description": "Outbound webhook endpoints and signed delivery notifications."
     },
     {
       "name": "Dashboards",
@@ -24074,7 +25295,8 @@
         "Subtitles",
         "Languages",
         "Images",
-        "Image Conversion"
+        "Image Conversion",
+        "Webhooks"
       ]
     },
     {
