@@ -3,7 +3,7 @@
   "info": {
     "title": "Rixl Cloud API",
     "version": "1.0.0",
-    "description": "Customer-facing API for the Rixl platform, served by the edge gateway. The gateway is a grpc-gateway based HTTP/JSON layer that proxies requests to Rixl's backend gRPC services (api and auth-api), exposing a single unified REST surface generated directly from the service protos. It validates credentials at the edge — bearer tokens (Authorization) and API keys (X-API-Key) — forwards them to the backend services, and returns consistent JSON error responses."
+    "description": "Customer-facing REST API for the Rixl platform. Provides video and image upload, processing, delivery, and analytics with edge validation of API keys (X-API-Key) and bearer tokens (Authorization)."
   },
   "paths": {
     "/analytics/v1/dashboard": {
