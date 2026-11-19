@@ -5163,75 +5163,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
-  /internal/images/mark-failed:
-    post:
-      tags:
-        - Image Conversion
-      summary: MarkImageFailed
-      operationId: images.v1.ImageConversionService.MarkImageFailed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/images.v1.MarkImageFailedRequest'
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.protobuf.Empty'
-  /internal/images/mark-processed:
-    post:
-      tags:
-        - Image Conversion
-      summary: MarkImageProcessed
-      operationId: images.v1.ImageConversionService.MarkImageProcessed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/images.v1.MarkImageProcessedRequest'
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.protobuf.Empty'
-  /internal/images/take:
-    post:
-      tags:
-        - Image Conversion
-      summary: TakeUnprocessedImage
-      operationId: images.v1.ImageConversionService.TakeUnprocessedImage
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/images.v1.UnprocessedImage'
   /media/v1/images/{image_id}:
     get:
       tags:
@@ -7260,56 +7191,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/videos.v1.VideoChapters'
-  /internal/videos/mark-failed:
-    post:
-      tags:
-        - Video Conversion
-      summary: MarkVideoFailed
-      operationId: videos.v1.VideoConversionService.MarkVideoFailed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/videos.v1.MarkVideoFailedRequest'
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.protobuf.Empty'
-  /internal/videos/mark-processed:
-    post:
-      tags:
-        - Video Conversion
-      summary: MarkVideoProcessed
-      operationId: videos.v1.VideoConversionService.MarkVideoProcessed
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/videos.v1.MarkVideoProcessedRequest'
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.protobuf.Empty'
   /media/v1/languages:
     get:
       tags:
