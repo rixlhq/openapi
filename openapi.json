@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Rixl Cloud API",
-    "version": "1.0.0",
-    "description": "Customer-facing REST API for the Rixl platform. Provides video and image upload, processing, delivery, and analytics with edge validation of API keys (X-API-Key) and bearer tokens (Authorization)."
+    "version": "1",
+    "description": "Customer-facing REST API for the Rixl platform. Provides video and image upload, processing, delivery, and analytics with edge validation of API keys (X-API-Key) and bearer tokens (Authorization).\nThe contract for this API lives in the docs: [versioning and deprecation](https://docs.rixl.com/en/home/developer/versioning), [errors, retries and idempotency](https://docs.rixl.com/en/home/developer/error-handling) and [pagination](https://docs.rixl.com/en/home/developer/pagination)."
   },
   "paths": {
     "/analytics/v1/dashboard": {
@@ -2388,7 +2388,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/blog/subscribe": {
@@ -2552,7 +2553,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/memberships/{org_id}/domain": {
@@ -2934,7 +2936,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/invitations/{token}/decline": {
@@ -2976,7 +2979,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/membership-applications": {
@@ -4354,7 +4358,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/passkey/login/begin": {
@@ -4395,7 +4400,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/passkey/login/finish": {
@@ -4436,7 +4442,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/users/current/passkeys": {
@@ -4712,7 +4719,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/memberships/{org_id}/policies": {
@@ -5560,7 +5568,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/email/verify/resend": {
@@ -5601,7 +5610,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/login": {
@@ -5642,7 +5652,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/logout": {
@@ -5683,7 +5694,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/password/reset": {
@@ -5724,7 +5736,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/password/reset/confirm": {
@@ -5765,7 +5778,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/register": {
@@ -5806,7 +5820,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/token": {
@@ -5847,7 +5862,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/auth/v1/users/current/emails": {
@@ -7804,7 +7820,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/feeds/v1/projects/{project_id}/feeds": {
@@ -8269,7 +8286,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/media/v1/projects/{project_id}/images": {
@@ -8610,7 +8628,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/platform/auth/v1/token": {
@@ -8651,7 +8670,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/posts/v1/feeds/{feed_id}": {
@@ -8748,7 +8768,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/posts/v1/feeds/{feed_id}/creators/{creator_id}": {
@@ -8846,7 +8867,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/posts/v1/feeds/{feed_id}/{post_id}": {
@@ -8915,7 +8937,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/posts/v1/projects/{project_id}/feeds/{feed_id}/posts": {
@@ -11078,7 +11101,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/media/v1/projects/{project_id}/videos/{video_id}/chapters": {
@@ -11391,7 +11415,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/media/v1/projects/{project_id}/videos/{video_id}/subtitles": {
@@ -11717,7 +11742,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/media/v1/projects/{project_id}/videos": {
@@ -12072,7 +12098,8 @@
               }
             }
           }
-        }
+        },
+        "security": []
       }
     },
     "/webhooks/v1/projects/{project_id}/endpoints": {
@@ -25846,6 +25873,18 @@
         "title": "WebhookEvent",
         "additionalProperties": false,
         "description": "WebhookEvent is a recorded outbound notification. `data` is the exact\n object embedded in the delivered payload envelope."
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Human-readable message. Not stable; branch on the HTTP status."
+          }
+        }
       }
     },
     "parameters": {
@@ -25858,6 +25897,32 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 255
+        }
+      }
+    },
+    "responses": {
+      "Error": {
+        "description": "Error. The body is always `{\"error\": \"<message>\"}`; the HTTP status carries the meaning.",
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds to wait before retrying. Sent on 503 and 504, and on 409 or 429 when the backend says when a retry can succeed. Absent means do not retry 409 or 429.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "X-Request-Id": {
+            "description": "The caller's X-Request-Id, or one generated by the gateway. Quote it to support.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
         }
       }
     },
@@ -26048,6 +26113,20 @@
     {
       "name": "Client Credentials",
       "description": "Server-to-server client credentials."
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.rixl.com",
+      "description": "Production"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    },
+    {
+      "Bearer": []
     }
   ],
   "x-tagGroups": [

@@ -1,8 +1,10 @@
 openapi: 3.1.0
 info:
   title: Rixl Cloud API
-  version: 1.0.0
-  description: Customer-facing REST API for the Rixl platform. Provides video and image upload, processing, delivery, and analytics with edge validation of API keys (X-API-Key) and bearer tokens (Authorization).
+  version: "1"
+  description: |-
+    Customer-facing REST API for the Rixl platform. Provides video and image upload, processing, delivery, and analytics with edge validation of API keys (X-API-Key) and bearer tokens (Authorization).
+    The contract for this API lives in the docs: [versioning and deprecation](https://docs.rixl.com/en/home/developer/versioning), [errors, retries and idempotency](https://docs.rixl.com/en/home/developer/error-handling) and [pagination](https://docs.rixl.com/en/home/developer/pagination).
 paths:
   /analytics/v1/dashboard:
     get:
@@ -1499,6 +1501,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.SendBlogBroadcastResponse'
+      security: []
   /auth/v1/blog/subscribe:
     post:
       tags:
@@ -1599,6 +1602,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+      security: []
   /auth/v1/memberships/{org_id}/domain:
     get:
       tags:
@@ -1840,6 +1844,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.AcceptInvitationResponse'
+      security: []
   /auth/v1/invitations/{token}/decline:
     post:
       tags:
@@ -1866,6 +1871,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+      security: []
   /auth/v1/membership-applications:
     get:
       tags:
@@ -2735,6 +2741,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.TokenResponse'
+      security: []
   /auth/v1/passkey/login/begin:
     post:
       tags:
@@ -2760,6 +2767,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.PasskeyBeginResponse'
+      security: []
   /auth/v1/passkey/login/finish:
     post:
       tags:
@@ -2785,6 +2793,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.TokenResponse'
+      security: []
   /auth/v1/users/current/passkeys:
     get:
       tags:
@@ -2956,6 +2965,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.TokenResponse'
+      security: []
   /auth/v1/memberships/{org_id}/policies:
     get:
       tags:
@@ -3494,6 +3504,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.VerifyEmailResponse'
+      security: []
   /auth/v1/email/verify/resend:
     post:
       tags:
@@ -3519,6 +3530,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.ResendVerificationResponse'
+      security: []
   /auth/v1/login:
     post:
       tags:
@@ -3544,6 +3556,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.LoginResponse'
+      security: []
   /auth/v1/logout:
     post:
       tags:
@@ -3569,6 +3582,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+      security: []
   /auth/v1/password/reset:
     post:
       tags:
@@ -3594,6 +3608,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+      security: []
   /auth/v1/password/reset/confirm:
     post:
       tags:
@@ -3619,6 +3634,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
+      security: []
   /auth/v1/register:
     post:
       tags:
@@ -3644,6 +3660,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.RegisterResponse'
+      security: []
   /auth/v1/token:
     post:
       tags:
@@ -3669,6 +3686,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.TokenResponse'
+      security: []
   /auth/v1/users/current/emails:
     post:
       tags:
@@ -4886,6 +4904,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/clientauth.v1.MintClientTokenResponse'
+      security: []
   /feeds/v1/projects/{project_id}/feeds:
     get:
       tags:
@@ -5191,6 +5210,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/images.v1.GetImageResponse'
+      security: []
   /media/v1/projects/{project_id}/images:
     get:
       tags:
@@ -5410,6 +5430,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/platformauth.v1.TokenResponse'
+      security: []
   /platform/auth/v1/token:
     post:
       tags:
@@ -5435,6 +5456,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/platformauth.v1.TokenResponse'
+      security: []
   /posts/v1/feeds/{feed_id}:
     get:
       tags:
@@ -5499,6 +5521,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/posts.v1.ListPostsResponse'
+      security: []
   /posts/v1/feeds/{feed_id}/creators/{creator_id}:
     get:
       tags:
@@ -5564,6 +5587,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/posts.v1.ListPostsResponse'
+      security: []
   /posts/v1/feeds/{feed_id}/{post_id}:
     get:
       tags:
@@ -5610,6 +5634,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/posts.v1.GetPostResponse'
+      security: []
   /posts/v1/projects/{project_id}/feeds/{feed_id}/posts:
     get:
       tags:
@@ -7010,6 +7035,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/videos.v1.ListAudioTracksResponse'
+      security: []
   /media/v1/projects/{project_id}/videos/{video_id}/chapters:
     get:
       tags:
@@ -7210,6 +7236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/videos.v1.ListLanguagesResponse'
+      security: []
   /media/v1/projects/{project_id}/videos/{video_id}/subtitles:
     delete:
       tags:
@@ -7418,6 +7445,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/videos.v1.ListSubtitlesResponse'
+      security: []
   /media/v1/projects/{project_id}/videos:
     get:
       tags:
@@ -7646,6 +7674,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/videos.v1.GetVideoResponse'
+      security: []
   /webhooks/v1/projects/{project_id}/endpoints:
     get:
       tags:
@@ -17656,6 +17685,14 @@ components:
       description: |-
         WebhookEvent is a recorded outbound notification. `data` is the exact
          object embedded in the delivered payload envelope.
+    Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: Human-readable message. Not stable; branch on the HTTP status.
   parameters:
     IdempotencyKey:
       name: Idempotency-Key
@@ -17666,6 +17703,22 @@ components:
         type: string
         minLength: 1
         maxLength: 255
+  responses:
+    Error:
+      description: 'Error. The body is always `{"error": "<message>"}`; the HTTP status carries the meaning.'
+      headers:
+        Retry-After:
+          description: Seconds to wait before retrying. Sent on 503 and 504, and on 409 or 429 when the backend says when a retry can succeed. Absent means do not retry 409 or 429.
+          schema:
+            type: integer
+        X-Request-Id:
+          description: The caller's X-Request-Id, or one generated by the gateway. Quote it to support.
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     Bearer:
       type: http
@@ -17764,6 +17817,12 @@ tags:
     description: Platform-level authentication.
   - name: Client Credentials
     description: Server-to-server client credentials.
+servers:
+  - url: https://api.rixl.com
+    description: Production
+security:
+  - ApiKeyAuth: []
+  - Bearer: []
 x-tagGroups:
   - name: Authentication
     tags:
