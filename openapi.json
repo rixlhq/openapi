@@ -741,7 +741,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/analytics.v1.ExportDashboardResponse"
+                  "$ref": "#/components/schemas/google.api.HttpBody"
                 }
               }
             }
@@ -13786,42 +13786,6 @@
         ],
         "additionalProperties": false
       },
-      "analytics.v1.ExportDashboardResponse": {
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "string",
-            "title": "content",
-            "format": "byte"
-          },
-          "content_type": {
-            "type": "string",
-            "examples": [
-              "text/csv"
-            ],
-            "title": "content_type"
-          },
-          "filename": {
-            "type": "string",
-            "examples": [
-              "traffic-overview-20260115.csv"
-            ],
-            "title": "filename"
-          },
-          "widget_count": {
-            "type": "integer",
-            "title": "widget_count",
-            "format": "int32"
-          },
-          "row_count": {
-            "type": "integer",
-            "title": "row_count",
-            "format": "int32"
-          }
-        },
-        "title": "ExportDashboardResponse",
-        "additionalProperties": false
-      },
       "analytics.v1.ExportFormat": {
         "type": "string",
         "title": "ExportFormat",
@@ -21745,6 +21709,33 @@
         },
         "title": "UpdateFeedRequest",
         "additionalProperties": false
+      },
+      "google.api.HttpBody": {
+        "type": "object",
+        "properties": {
+          "content_type": {
+            "type": "string",
+            "title": "content_type",
+            "description": "The HTTP Content-Type header value specifying the content type of the body."
+          },
+          "data": {
+            "type": "string",
+            "title": "data",
+            "format": "byte",
+            "description": "The HTTP request/response body as raw binary."
+          },
+          "extensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/google.protobuf.Any"
+            },
+            "title": "extensions",
+            "description": "Application specific response metadata. Must be set in the first response\n for streaming APIs."
+          }
+        },
+        "title": "HttpBody",
+        "additionalProperties": false,
+        "description": "Message that represents an arbitrary HTTP body. It should only be used for\n payload formats that can't be represented as JSON, such as raw binary or\n an HTML page.\n\n\n This message can be used both in streaming and non-streaming API methods in\n the request as well as the response.\n\n It can be used as a top-level request field, which is convenient if one\n wants to extract parameters from either the URL or HTTP template into the\n request fields and also want access to the raw HTTP body.\n\n Example:\n\n     message GetResourceRequest {\n       // A unique request id.\n       string request_id = 1;\n\n       // The raw HTTP body is bound to this field.\n       google.api.HttpBody http_body = 2;\n\n     }\n\n     service ResourceService {\n       rpc GetResource(GetResourceRequest)\n         returns (google.api.HttpBody);\n       rpc UpdateResource(google.api.HttpBody)\n         returns (google.protobuf.Empty);\n\n     }\n\n Example with streaming methods:\n\n     service CaldavService {\n       rpc GetCalendar(stream google.api.HttpBody)\n         returns (stream google.api.HttpBody);\n       rpc UpdateCalendar(stream google.api.HttpBody)\n         returns (stream google.api.HttpBody);\n\n     }\n\n Use of this type only changes how the request and response bodies are\n handled, all other features will continue to work unchanged."
       },
       "google.protobuf.Any": {
         "type": "object",
