@@ -461,7 +461,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/google.api.HttpBody'
+                $ref: '#/components/schemas/analytics.v1.ExportDashboardResponse'
   /analytics/v1/dashboards/{dashboard_id}/layout:
     post:
       tags:
@@ -8844,6 +8844,33 @@ components:
         - time_start
         - time_end
       additionalProperties: false
+    analytics.v1.ExportDashboardResponse:
+      type: object
+      properties:
+        content:
+          type: string
+          title: content
+          format: byte
+        content_type:
+          type: string
+          examples:
+            - text/csv
+          title: content_type
+        filename:
+          type: string
+          examples:
+            - traffic-overview-20260115.csv
+          title: filename
+        widget_count:
+          type: integer
+          title: widget_count
+          format: int32
+        row_count:
+          type: integer
+          title: row_count
+          format: int32
+      title: ExportDashboardResponse
+      additionalProperties: false
     analytics.v1.ExportFormat:
       type: string
       title: ExportFormat
@@ -14645,72 +14672,6 @@ components:
           title: has_comments
       title: UpdateFeedRequest
       additionalProperties: false
-    google.api.HttpBody:
-      type: object
-      properties:
-        content_type:
-          type: string
-          title: content_type
-          description: The HTTP Content-Type header value specifying the content type of the body.
-        data:
-          type: string
-          title: data
-          format: byte
-          description: The HTTP request/response body as raw binary.
-        extensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/google.protobuf.Any'
-          title: extensions
-          description: |-
-            Application specific response metadata. Must be set in the first response
-             for streaming APIs.
-      title: HttpBody
-      additionalProperties: false
-      description: |-
-        Message that represents an arbitrary HTTP body. It should only be used for
-         payload formats that can't be represented as JSON, such as raw binary or
-         an HTML page.
-
-
-         This message can be used both in streaming and non-streaming API methods in
-         the request as well as the response.
-
-         It can be used as a top-level request field, which is convenient if one
-         wants to extract parameters from either the URL or HTTP template into the
-         request fields and also want access to the raw HTTP body.
-
-         Example:
-
-             message GetResourceRequest {
-               // A unique request id.
-               string request_id = 1;
-
-               // The raw HTTP body is bound to this field.
-               google.api.HttpBody http_body = 2;
-
-             }
-
-             service ResourceService {
-               rpc GetResource(GetResourceRequest)
-                 returns (google.api.HttpBody);
-               rpc UpdateResource(google.api.HttpBody)
-                 returns (google.protobuf.Empty);
-
-             }
-
-         Example with streaming methods:
-
-             service CaldavService {
-               rpc GetCalendar(stream google.api.HttpBody)
-                 returns (stream google.api.HttpBody);
-               rpc UpdateCalendar(stream google.api.HttpBody)
-                 returns (stream google.api.HttpBody);
-
-             }
-
-         Use of this type only changes how the request and response bodies are
-         handled, all other features will continue to work unchanged.
     google.protobuf.Any:
       type: object
       properties:
