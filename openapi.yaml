@@ -1634,6 +1634,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.DomainResponse'
+    post:
+      tags:
+        - Custom Domains
+      summary: CreateDomainVerification
+      operationId: auth.v1.DomainService.CreateDomainVerification
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                domain:
+                  type: string
+                  title: domain
+              title: CreateDomainRequest
+              additionalProperties: false
+        required: true
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.DomainResponse'
     delete:
       tags:
         - Custom Domains
@@ -1695,6 +1732,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.SuggestJoinSetting'
+    put:
+      tags:
+        - Custom Domains
+      summary: SetDomainSuggestJoin
+      operationId: auth.v1.DomainService.SetDomainSuggestJoin
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  title: enabled
+              title: SetSuggestJoinRequest
+              additionalProperties: false
+        required: true
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.SuggestJoinSetting'
   /auth/v1/organizations/{org_id}/domain/verify:
     post:
       tags:
@@ -1726,98 +1800,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.DomainResponse'
-  /auth/v1/organizations/{user.org_id}/domain:
-    post:
-      tags:
-        - Custom Domains
-      summary: CreateDomainVerification
-      operationId: auth.v1.DomainService.CreateDomainVerification
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                user:
-                  type: object
-                  properties:
-                    user_id:
-                      type: string
-                      title: user_id
-                  title: UserOrgRequest
-                  additionalProperties: false
-                domain:
-                  type: string
-                  title: domain
-              title: CreateDomainRequest
-              additionalProperties: false
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.DomainResponse'
-  /auth/v1/organizations/{user.org_id}/domain/suggest-join:
-    put:
-      tags:
-        - Custom Domains
-      summary: SetDomainSuggestJoin
-      operationId: auth.v1.DomainService.SetDomainSuggestJoin
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                user:
-                  type: object
-                  properties:
-                    user_id:
-                      type: string
-                      title: user_id
-                  title: UserOrgRequest
-                  additionalProperties: false
-                enabled:
-                  type: boolean
-                  title: enabled
-              title: SetSuggestJoinRequest
-              additionalProperties: false
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.SuggestJoinSetting'
   /auth/v1/users/current/domain-join-suggestions:
     get:
       tags:
@@ -2132,6 +2114,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.ListMyInvitationsResponse'
+  /auth/v1/organizations/{org_id}/members:
+    get:
+      tags:
+        - Memberships
+      summary: ListOrganizationMembers
+      operationId: auth.v1.MembershipService.ListOrganizationMembers
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            title: limit
+            format: int32
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            title: offset
+            format: int32
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.ListOrgMembersResponse'
   /auth/v1/organizations/{org_id}/members/current:
     delete:
       tags:
@@ -2270,49 +2290,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.MembershipMutation'
-  /auth/v1/organizations/{user.org_id}/members:
-    get:
-      tags:
-        - Memberships
-      summary: ListOrganizationMembers
-      operationId: auth.v1.MembershipService.ListOrganizationMembers
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
-        - name: limit
-          in: query
-          schema:
-            type: integer
-            title: limit
-            format: int32
-        - name: offset
-          in: query
-          schema:
-            type: integer
-            title: offset
-            format: int32
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.ListOrgMembersResponse'
   /auth/v1/users/current/memberships:
     get:
       tags:
@@ -2381,14 +2358,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.NotificationPreferences'
-  /auth/v1/notifications/{user.org_id}/preferences:
     patch:
       tags:
         - Notification Preferences
       summary: UpdateNotificationPreference
       operationId: auth.v1.NotificationPreferenceService.UpdateNotificationPreference
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -2400,14 +2376,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  type: object
-                  properties:
-                    user_id:
-                      type: string
-                      title: user_id
-                  title: UserOrgRequest
-                  additionalProperties: false
                 category:
                   title: category
                   $ref: '#/components/schemas/auth.v1.NotificationCategory'
@@ -3064,6 +3032,38 @@ paths:
               schema:
                 $ref: '#/components/schemas/auth.v1.TokenResponse'
       security: []
+  /auth/v1/organizations/{org_id}/members/{member_id}/policies:
+    get:
+      tags:
+        - Access Policies
+      summary: ListUserPolicies
+      operationId: auth.v1.PolicyService.ListUserPolicies
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: member_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: member_id
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.MemberPoliciesResponse'
   /auth/v1/organizations/{org_id}/policies:
     get:
       tags:
@@ -3095,51 +3095,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.ListPoliciesResponse'
-  /auth/v1/organizations/{user.org_id}/members/{member_id}/policies:
-    get:
-      tags:
-        - Access Policies
-      summary: ListUserPolicies
-      operationId: auth.v1.PolicyService.ListUserPolicies
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-        - name: member_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: member_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.MemberPoliciesResponse'
-  /auth/v1/organizations/{user.org_id}/policies:
     post:
       tags:
         - Access Policies
       summary: CreatePolicy
       operationId: auth.v1.PolicyService.CreatePolicy
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -3151,14 +3113,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  type: object
-                  properties:
-                    user_id:
-                      type: string
-                      title: user_id
-                  title: UserOrgRequest
-                  additionalProperties: false
                 name:
                   type: string
                   title: name
@@ -3186,14 +3140,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.Policy'
-  /auth/v1/organizations/{user.org_id}/policies/attachments/{attachment_id}:
+  /auth/v1/organizations/{org_id}/policies/attachments/{attachment_id}:
     delete:
       tags:
         - Access Policies
       summary: DetachPolicy
       operationId: auth.v1.PolicyService.DetachPolicy
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -3205,11 +3159,6 @@ paths:
           schema:
             type: string
             title: attachment_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -3223,24 +3172,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
-  /auth/v1/organizations/{user.org_id}/policies/permissions:
+  /auth/v1/organizations/{org_id}/policies/permissions:
     get:
       tags:
         - Access Policies
       summary: ListPermissionRegistry
       operationId: auth.v1.PolicyService.ListPermissionRegistry
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
             type: string
             title: org_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
         - name: types
           in: query
           schema:
@@ -3273,14 +3217,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.PermissionRegistryResponse'
-  /auth/v1/organizations/{user.org_id}/policies/{policy_id}:
+  /auth/v1/organizations/{org_id}/policies/{policy_id}:
     get:
       tags:
         - Access Policies
       summary: GetPolicy
       operationId: auth.v1.PolicyService.GetPolicy
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -3292,11 +3236,6 @@ paths:
           schema:
             type: string
             title: policy_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -3316,7 +3255,7 @@ paths:
       summary: UpdatePolicy
       operationId: auth.v1.PolicyService.UpdatePolicy
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -3334,14 +3273,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  type: object
-                  properties:
-                    user_id:
-                      type: string
-                      title: user_id
-                  title: UserOrgRequest
-                  additionalProperties: false
                 name:
                   type: string
                   title: name
@@ -3375,7 +3306,7 @@ paths:
       summary: DeletePolicy
       operationId: auth.v1.PolicyService.DeletePolicy
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -3387,11 +3318,6 @@ paths:
           schema:
             type: string
             title: policy_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -3405,14 +3331,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
-  /auth/v1/organizations/{user.org_id}/policies/{policy_id}/attachments:
+  /auth/v1/organizations/{org_id}/policies/{policy_id}/attachments:
     get:
       tags:
         - Access Policies
       summary: ListPolicyAttachments
       operationId: auth.v1.PolicyService.ListPolicyAttachments
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -3424,11 +3350,6 @@ paths:
           schema:
             type: string
             title: policy_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -3448,7 +3369,7 @@ paths:
       summary: AttachPolicy
       operationId: auth.v1.PolicyService.AttachPolicy
       parameters:
-        - name: user.org_id
+        - name: org_id
           in: path
           required: true
           schema:
@@ -3466,14 +3387,6 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  type: object
-                  properties:
-                    user_id:
-                      type: string
-                      title: user_id
-                  title: UserOrgRequest
-                  additionalProperties: false
                 identity_type:
                   title: identity_type
                   $ref: '#/components/schemas/auth.v1.PolicyIdentityType'
@@ -11093,9 +11006,9 @@ components:
     auth.v1.AttachPolicyRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         policy_id:
           type: string
           title: policy_id
@@ -11231,9 +11144,9 @@ components:
     auth.v1.CreateDomainRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         domain:
           type: string
           title: domain
@@ -11272,9 +11185,9 @@ components:
     auth.v1.CreatePolicyRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         name:
           type: string
           title: name
@@ -11318,9 +11231,9 @@ components:
     auth.v1.DetachPolicyRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         attachment_id:
           type: string
           title: attachment_id
@@ -11688,9 +11601,9 @@ components:
     auth.v1.ListOrgMembersRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         limit:
           type: integer
           title: limit
@@ -11821,9 +11734,9 @@ components:
     auth.v1.ListPermissionRegistryRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         types:
           type: array
           items:
@@ -11903,9 +11816,9 @@ components:
     auth.v1.ListUserPoliciesRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         member_id:
           type: string
           title: member_id
@@ -12468,9 +12381,9 @@ components:
     auth.v1.PolicyRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         policy_id:
           type: string
           title: policy_id
@@ -12874,9 +12787,9 @@ components:
     auth.v1.SetSuggestJoinRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         enabled:
           type: boolean
           title: enabled
@@ -13063,9 +12976,9 @@ components:
     auth.v1.UpdateNotificationPreferenceRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         category:
           title: category
           $ref: '#/components/schemas/auth.v1.NotificationCategory'
@@ -13092,9 +13005,9 @@ components:
     auth.v1.UpdatePolicyRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
+        org_id:
+          type: string
+          title: org_id
         policy_id:
           type: string
           title: policy_id
