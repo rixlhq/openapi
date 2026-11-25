@@ -3649,12 +3649,6 @@ paths:
       summary: LogoutAll
       description: Revokes all of the caller's sign-ins and invalidates their tokens.
       operationId: auth.v1.TokenService.LogoutAll
-      parameters:
-        - name: user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -3753,12 +3747,6 @@ paths:
       summary: ListSignIns
       description: Lists the caller's sign-ins, most recently used first.
       operationId: auth.v1.TokenService.ListSignIns
-      parameters:
-        - name: user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -3779,12 +3767,6 @@ paths:
       summary: RevokeOtherSignIns
       description: Revokes all of the caller's sign-ins except the current one.
       operationId: auth.v1.TokenService.RevokeOtherSignIns
-      parameters:
-        - name: user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -3812,11 +3794,6 @@ paths:
           schema:
             type: string
             title: sign_in_id
-        - name: user.user_id
-          in: query
-          schema:
-            type: string
-            title: user_id
       responses:
         default:
           description: An unexpected error response.
@@ -11617,6 +11594,10 @@ components:
           title: providers
       title: ListProvidersResponse
       additionalProperties: false
+    auth.v1.ListSignInsRequest:
+      type: object
+      title: ListSignInsRequest
+      additionalProperties: false
     auth.v1.ListSignInsResponse:
       type: object
       properties:
@@ -11704,6 +11685,10 @@ components:
           type: string
           title: last_active_org_id
       title: LoginResponse
+      additionalProperties: false
+    auth.v1.LogoutAllRequest:
+      type: object
+      title: LogoutAllRequest
       additionalProperties: false
     auth.v1.LogoutRequest:
       type: object
@@ -12495,12 +12480,13 @@ components:
       title: RetentionPoint
       additionalProperties: false
       description: Share of a registration cohort that logged in at least `days` after signup.
+    auth.v1.RevokeOtherSignInsRequest:
+      type: object
+      title: RevokeOtherSignInsRequest
+      additionalProperties: false
     auth.v1.RevokeSignInRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserRequest'
         sign_in_id:
           type: string
           title: sign_in_id
