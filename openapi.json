@@ -18276,29 +18276,13 @@
         "title": "PendingDomain",
         "additionalProperties": false
       },
-      "auth.v1.PermissionOffset": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "name"
-          },
-          "offset": {
-            "type": "integer",
-            "title": "offset",
-            "format": "int32"
-          }
-        },
-        "title": "PermissionOffset",
-        "additionalProperties": false
-      },
       "auth.v1.PermissionRegistryResponse": {
         "type": "object",
         "properties": {
           "permissions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/auth.v1.PermissionOffset"
+              "$ref": "#/components/schemas/auth.v1.RegisteredPermission"
             },
             "title": "permissions"
           },
@@ -18564,6 +18548,17 @@
           }
         },
         "title": "RegisterResponse",
+        "additionalProperties": false
+      },
+      "auth.v1.RegisteredPermission": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          }
+        },
+        "title": "RegisteredPermission",
         "additionalProperties": false
       },
       "auth.v1.RemoveMemberRequest": {
@@ -18900,12 +18895,6 @@
           "idempotency_key": {
             "type": "string",
             "title": "idempotency_key"
-          },
-          "owners_mandatory": {
-            "type": "boolean",
-            "title": "owners_mandatory",
-            "description": "owners_mandatory is ignored: auth-api decides which notices owners always receive.",
-            "deprecated": true
           }
         },
         "title": "SendOrganizationNoticeRequest",
