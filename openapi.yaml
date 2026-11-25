@@ -1874,19 +1874,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
-  /auth/v1/invitations/{token}/accept:
+  /auth/v1/invitations/accept:
     post:
       tags:
-        - Memberships
+        - Invitations
       summary: AcceptInvitation
-      operationId: auth.v1.MembershipService.AcceptInvitation
-      parameters:
-        - name: token
-          in: path
-          required: true
-          schema:
-            type: string
-            title: token
+      operationId: auth.v1.InvitationService.AcceptInvitation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/auth.v1.AcceptInvitationRequest'
+        required: true
       responses:
         default:
           description: An unexpected error response.
@@ -1899,20 +1898,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/auth.v1.AcceptInvitationResponse'
-  /auth/v1/invitations/{token}/decline:
+                $ref: '#/components/schemas/auth.v1.Membership'
+  /auth/v1/invitations/decline:
     post:
       tags:
-        - Memberships
+        - Invitations
       summary: DeclineInvitation
-      operationId: auth.v1.MembershipService.DeclineInvitation
-      parameters:
-        - name: token
-          in: path
-          required: true
-          schema:
-            type: string
-            title: token
+      operationId: auth.v1.InvitationService.DeclineInvitation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/auth.v1.DeclineInvitationRequest'
+        required: true
       responses:
         default:
           description: An unexpected error response.
@@ -1926,30 +1924,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/google.protobuf.Empty'
-  /auth/v1/membership-applications:
-    get:
+  /auth/v1/invitations/lookup:
+    post:
       tags:
-        - Memberships
-      summary: ListMembershipApplications
-      operationId: auth.v1.MembershipService.ListMembershipApplications
-      parameters:
-        - name: limit
-          in: query
-          schema:
-            type: integer
-            title: limit
-            format: int32
-        - name: offset
-          in: query
-          schema:
-            type: integer
-            title: offset
-            format: int32
-        - name: state
-          in: query
-          schema:
-            title: state
-            $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
+        - Invitations
+      summary: LookupInvitation
+      operationId: auth.v1.InvitationService.LookupInvitation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/auth.v1.LookupInvitationRequest'
+        required: true
       responses:
         default:
           description: An unexpected error response.
@@ -1962,13 +1948,56 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/auth.v1.ListMembershipApplicationsResponse'
-  /auth/v1/membership-applications/{org_id}/state:
-    patch:
+                $ref: '#/components/schemas/auth.v1.LookupInvitationResponse'
+      security: []
+  /auth/v1/organizations/{org_id}/invitations:
+    get:
       tags:
-        - Memberships
-      summary: RespondToMembershipApplication
-      operationId: auth.v1.MembershipService.RespondToMembershipApplication
+        - Invitations
+      summary: ListOrganizationInvitations
+      operationId: auth.v1.InvitationService.ListOrganizationInvitations
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: state
+          in: query
+          description: Defaults to pending.
+          schema:
+            title: state
+            $ref: '#/components/schemas/auth.v1.InvitationState'
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            title: page_size
+            format: int32
+        - name: page_token
+          in: query
+          schema:
+            type: string
+            title: page_token
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.ListOrganizationInvitationsResponse'
+    post:
+      tags:
+        - Invitations
+      summary: CreateInvitation
+      operationId: auth.v1.InvitationService.CreateInvitation
       parameters:
         - name: org_id
           in: path
@@ -1982,10 +2011,17 @@ paths:
             schema:
               type: object
               properties:
-                state:
-                  title: state
-                  $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
-              title: RespondToMembershipApplicationRequest
+                email:
+                  type: string
+                  title: email
+                role:
+                  title: role
+                  $ref: '#/components/schemas/auth.v1.MembershipRole'
+                request_id:
+                  type: string
+                  title: request_id
+                  description: Optional UUID that makes retries of the same create safe.
+              title: CreateInvitationRequest
               additionalProperties: false
         required: true
       responses:
@@ -2000,7 +2036,102 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/auth.v1.MembershipMutation'
+                $ref: '#/components/schemas/auth.v1.Invitation'
+  /auth/v1/organizations/{org_id}/invitations/{invitation_id}:
+    delete:
+      tags:
+        - Invitations
+      summary: RevokeInvitation
+      operationId: auth.v1.InvitationService.RevokeInvitation
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: invitation_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: invitation_id
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.protobuf.Empty'
+  /auth/v1/organizations/{org_id}/invitations/{invitation_id}/resend:
+    post:
+      tags:
+        - Invitations
+      summary: ResendInvitation
+      operationId: auth.v1.InvitationService.ResendInvitation
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+        - name: invitation_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: invitation_id
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.Invitation'
+  /auth/v1/users/current/invitations:
+    get:
+      tags:
+        - Invitations
+      summary: ListMyInvitations
+      operationId: auth.v1.InvitationService.ListMyInvitations
+      parameters:
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            title: page_size
+            format: int32
+        - name: page_token
+          in: query
+          schema:
+            type: string
+            title: page_token
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.ListMyInvitationsResponse'
   /auth/v1/organizations/{org_id}/members/current:
     delete:
       tags:
@@ -2139,138 +2270,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.MembershipMutation'
-  /auth/v1/organizations/{user.org_id}/invite:
-    post:
-      tags:
-        - Memberships
-      summary: InviteMember
-      operationId: auth.v1.MembershipService.InviteMember
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                user:
-                  type: object
-                  properties:
-                    actor_id:
-                      type: string
-                      title: actor_id
-                  title: ActorOrgRequest
-                  additionalProperties: false
-                username:
-                  type: string
-                  title: username
-                role:
-                  title: role
-                  $ref: '#/components/schemas/auth.v1.MembershipRole'
-              title: InviteMemberRequest
-              additionalProperties: false
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.MembershipApplication'
-  /auth/v1/organizations/{user.org_id}/invite/resend:
-    post:
-      tags:
-        - Memberships
-      summary: ResendInvitation
-      operationId: auth.v1.MembershipService.ResendInvitation
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                user:
-                  type: object
-                  properties:
-                    actor_id:
-                      type: string
-                      title: actor_id
-                  title: ActorOrgRequest
-                  additionalProperties: false
-                user_id:
-                  type: string
-                  title: user_id
-              title: ResendInvitationRequest
-              additionalProperties: false
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.protobuf.Empty'
-  /auth/v1/organizations/{user.org_id}/invite/{user_id}:
-    delete:
-      tags:
-        - Memberships
-      summary: CancelInvitation
-      operationId: auth.v1.MembershipService.CancelInvitation
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: user_id
-        - name: user.actor_id
-          in: query
-          schema:
-            type: string
-            title: actor_id
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.protobuf.Empty'
   /auth/v1/organizations/{user.org_id}/members:
     get:
       tags:
@@ -2314,58 +2313,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.ListOrgMembersResponse'
-  /auth/v1/organizations/{user.org_id}/membership-applications/{user_id}:
-    patch:
-      tags:
-        - Memberships
-      summary: UpdateMembershipState
-      operationId: auth.v1.MembershipService.UpdateMembershipState
-      parameters:
-        - name: user.org_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: org_id
-        - name: user_id
-          in: path
-          required: true
-          schema:
-            type: string
-            title: user_id
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                user:
-                  type: object
-                  properties:
-                    user_id:
-                      type: string
-                      title: user_id
-                  title: UserOrgRequest
-                  additionalProperties: false
-                state:
-                  title: state
-                  $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
-              title: UpdateMembershipStateRequest
-              additionalProperties: false
-        required: true
-      responses:
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.MembershipMutation'
   /auth/v1/users/current/memberships:
     get:
       tags:
@@ -2503,7 +2450,7 @@ paths:
             title: page_token
         - name: show_deleted
           in: query
-          description: Includes deleted organizations visible to their owners once lifecycle adds deletion.
+          description: Includes deleted organizations visible to their retained active owners.
           schema:
             type: boolean
             title: show_deleted
@@ -2520,6 +2467,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.ListOrganizationsResponse'
+    post:
+      tags:
+        - Organizations
+      summary: CreateOrganization
+      operationId: auth.v1.OrganizationService.CreateOrganization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/auth.v1.CreateOrganizationRequest'
+        required: true
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.Organization'
   /auth/v1/organizations/{org_id}:
     get:
       tags:
@@ -2650,6 +2621,74 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.CreateAvatarUploadResponse'
+  /auth/v1/organizations/{org_id}/convert-to-team:
+    post:
+      tags:
+        - Organizations
+      summary: ConvertToTeamOrganization
+      operationId: auth.v1.OrganizationService.ConvertToTeamOrganization
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.ConvertToTeamOrganizationResponse'
+  /auth/v1/organizations/{org_id}/transfer-ownership:
+    post:
+      tags:
+        - Organizations
+      summary: TransferOwnership
+      operationId: auth.v1.OrganizationService.TransferOwnership
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+            title: org_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  title: user_id
+                demote_to:
+                  title: demote_to
+                  description: Omit to keep the current owner as a co-owner.
+                  $ref: '#/components/schemas/auth.v1.MembershipRole'
+              title: TransferOwnershipRequest
+              additionalProperties: false
+        required: true
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.Organization'
   /auth/v1/users/current/totp/backup-codes/regenerate:
     post:
       tags:
@@ -3838,6 +3877,9 @@ paths:
       tags:
         - Email
       summary: AddEmail
+      description: |-
+        Requests adding an email. Nothing is stored on the account until the
+         address is verified with VerifyEmailChange.
       operationId: auth.v1.EmailService.AddEmail
       requestBody:
         content:
@@ -3863,6 +3905,9 @@ paths:
       tags:
         - Email
       summary: InitiateEmailChange
+      description: |-
+        Requests changing the email. The account keeps its address until the new
+         one is verified with VerifyEmailChange.
       operationId: auth.v1.EmailService.InitiateEmailChange
       requestBody:
         content:
@@ -3908,6 +3953,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.EmailStatusResponse'
+  /auth/v1/users/current/emails/verify:
+    post:
+      tags:
+        - Email
+      summary: VerifyEmailChange
+      description: |-
+        Verifies the caller's own pending email and moves it onto the account. The
+         tokens are reissued within the caller's sign-in.
+      operationId: auth.v1.EmailService.VerifyEmailChange
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/auth.v1.VerifyEmailChangeRequest'
+        required: true
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.VerifyEmailResponse'
   /auth/v1/userinfo:
     get:
       tags:
@@ -4008,6 +4081,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.CreateAvatarUploadResponse'
+  /auth/v1/users/current/deletion-preview:
+    get:
+      tags:
+        - Users
+      summary: GetUserDeletionPreview
+      operationId: auth.v1.UserService.GetUserDeletionPreview
+      parameters:
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            title: page_size
+            format: int32
+        - name: page_token
+          in: query
+          schema:
+            type: string
+            title: page_token
+      responses:
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.rpc.Status'
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.v1.GetUserDeletionPreviewResponse'
   /auth/v1/users/current/name:
     patch:
       tags:
@@ -10922,37 +11026,20 @@ components:
       additionalProperties: false
     auth.v1.AcceptInvitationRequest:
       type: object
+      not:
+        required:
+          - token
+          - invitation_id
       properties:
         token:
           type: string
           title: token
+        invitation_id:
+          type: string
+          title: invitation_id
       title: AcceptInvitationRequest
       additionalProperties: false
-    auth.v1.AcceptInvitationResponse:
-      type: object
-      properties:
-        org_id:
-          type: string
-          title: org_id
-        role:
-          title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
-        organization:
-          title: organization
-          $ref: '#/components/schemas/auth.v1.Organization'
-      title: AcceptInvitationResponse
-      additionalProperties: false
-    auth.v1.ActorOrgRequest:
-      type: object
-      properties:
-        actor_id:
-          type: string
-          title: actor_id
-        org_id:
-          type: string
-          title: org_id
-      title: ActorOrgRequest
-      additionalProperties: false
+      description: At most one of `token`, `invitation_id` may be set.
     auth.v1.AddEmailRequest:
       type: object
       properties:
@@ -10964,6 +11051,45 @@ components:
           title: email
       title: AddEmailRequest
       additionalProperties: false
+    auth.v1.ApplyOrgLifecycleRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+        state:
+          title: state
+          $ref: '#/components/schemas/auth.v1.OrganizationState'
+        lifecycle_version:
+          type: string
+          title: lifecycle_version
+          format: int64
+        purge_after:
+          title: purge_after
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        reservation_id:
+          type: string
+          title: reservation_id
+          description: Set for api when the transition was prepared by billing.
+      title: ApplyOrgLifecycleRequest
+      additionalProperties: false
+    auth.v1.ApplyOrgLifecycleResponse:
+      type: object
+      properties:
+        status:
+          title: status
+          $ref: '#/components/schemas/auth.v1.ApplyOrgLifecycleResponse.Status'
+      title: ApplyOrgLifecycleResponse
+      additionalProperties: false
+    auth.v1.ApplyOrgLifecycleResponse.Status:
+      type: string
+      title: Status
+      enum:
+        - STATUS_UNSPECIFIED
+        - STATUS_APPLIED
+        - STATUS_IGNORED_STALE
+        - STATUS_IN_PROGRESS
+        - STATUS_DONE
     auth.v1.AttachPolicyRequest:
       type: object
       properties:
@@ -11008,17 +11134,6 @@ components:
           title: subscribed_at
           $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: BlogSubscriptionResponse
-      additionalProperties: false
-    auth.v1.CancelInvitationRequest:
-      type: object
-      properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
-        user_id:
-          type: string
-          title: user_id
-      title: CancelInvitationRequest
       additionalProperties: false
     auth.v1.CheckMembershipResponse:
       type: object
@@ -11080,6 +11195,25 @@ components:
           title: image_url
       title: ConnectedProvider
       additionalProperties: false
+    auth.v1.ConvertToTeamOrganizationRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+      title: ConvertToTeamOrganizationRequest
+      additionalProperties: false
+    auth.v1.ConvertToTeamOrganizationResponse:
+      type: object
+      properties:
+        organization:
+          title: organization
+          $ref: '#/components/schemas/auth.v1.Organization'
+        personal_organization:
+          title: personal_organization
+          $ref: '#/components/schemas/auth.v1.Organization'
+      title: ConvertToTeamOrganizationResponse
+      additionalProperties: false
     auth.v1.CreateAvatarUploadResponse:
       type: object
       properties:
@@ -11105,6 +11239,36 @@ components:
           title: domain
       title: CreateDomainRequest
       additionalProperties: false
+    auth.v1.CreateInvitationRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+        email:
+          type: string
+          title: email
+        role:
+          title: role
+          $ref: '#/components/schemas/auth.v1.MembershipRole'
+        request_id:
+          type: string
+          title: request_id
+          description: Optional UUID that makes retries of the same create safe.
+      title: CreateInvitationRequest
+      additionalProperties: false
+    auth.v1.CreateOrganizationRequest:
+      type: object
+      properties:
+        organization:
+          title: organization
+          $ref: '#/components/schemas/auth.v1.Organization'
+        request_id:
+          type: string
+          title: request_id
+          description: Optional UUID. Retries replay the original response while the org exists.
+      title: CreateOrganizationRequest
+      additionalProperties: false
     auth.v1.CreatePolicyRequest:
       type: object
       properties:
@@ -11126,12 +11290,20 @@ components:
       additionalProperties: false
     auth.v1.DeclineInvitationRequest:
       type: object
+      not:
+        required:
+          - token
+          - invitation_id
       properties:
         token:
           type: string
           title: token
+        invitation_id:
+          type: string
+          title: invitation_id
       title: DeclineInvitationRequest
       additionalProperties: false
+      description: At most one of `token`, `invitation_id` may be set.
     auth.v1.DeletePasskeyRequest:
       type: object
       properties:
@@ -11210,9 +11382,6 @@ components:
         email:
           type: string
           title: email
-        verified:
-          type: boolean
-          title: verified
       title: EmailStatusResponse
       additionalProperties: false
     auth.v1.ExternalAccountProvider:
@@ -11233,6 +11402,51 @@ components:
           type: string
           title: org_id
       title: GetOrganizationRequest
+      additionalProperties: false
+    auth.v1.GetOrganizationStateRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+      title: GetOrganizationStateRequest
+      additionalProperties: false
+    auth.v1.GetOrganizationStateResponse:
+      type: object
+      properties:
+        state:
+          title: state
+          $ref: '#/components/schemas/auth.v1.OrganizationState'
+        lifecycle_version:
+          type: string
+          title: lifecycle_version
+          format: int64
+      title: GetOrganizationStateResponse
+      additionalProperties: false
+    auth.v1.GetUserDeletionPreviewRequest:
+      type: object
+      properties:
+        page_size:
+          type: integer
+          title: page_size
+          format: int32
+        page_token:
+          type: string
+          title: page_token
+      title: GetUserDeletionPreviewRequest
+      additionalProperties: false
+    auth.v1.GetUserDeletionPreviewResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/auth.v1.UserDeletionPlanEntry'
+          title: entries
+        next_page_token:
+          type: string
+          title: next_page_token
+      title: GetUserDeletionPreviewResponse
       additionalProperties: false
     auth.v1.GetUserEmailStatusRequest:
       type: object
@@ -11287,20 +11501,67 @@ components:
           title: new_email
       title: InitiateEmailChangeRequest
       additionalProperties: false
-    auth.v1.InviteMemberRequest:
+    auth.v1.Invitation:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
-        username:
+        id:
           type: string
-          title: username
+          title: id
+        org:
+          title: org
+          $ref: '#/components/schemas/auth.v1.Organization'
+        email:
+          type: string
+          title: email
         role:
           title: role
+          description: Never OWNER.
           $ref: '#/components/schemas/auth.v1.MembershipRole'
-      title: InviteMemberRequest
+        state:
+          title: state
+          description: 'The effective state: a pending invitation past its expiry reads as expired.'
+          $ref: '#/components/schemas/auth.v1.InvitationState'
+        invited_by:
+          title: invited_by
+          description: Unset once the inviter's account is deleted.
+          $ref: '#/components/schemas/auth.v1.InvitationInviter'
+        created_at:
+          title: created_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        last_sent_at:
+          title: last_sent_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        resend_available_at:
+          title: resend_available_at
+          description: Set while a daily sending limit would delay a resend by the caller.
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        expires_at:
+          title: expires_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+      title: Invitation
       additionalProperties: false
+    auth.v1.InvitationInviter:
+      type: object
+      properties:
+        id:
+          type: string
+          title: id
+          description: Empty in the invitee's own list.
+        display_name:
+          type: string
+          title: display_name
+      title: InvitationInviter
+      additionalProperties: false
+    auth.v1.InvitationState:
+      type: string
+      title: InvitationState
+      enum:
+        - INVITATION_STATE_UNSPECIFIED
+        - INVITATION_STATE_PENDING
+        - INVITATION_STATE_ACCEPTED
+        - INVITATION_STATE_DECLINED
+        - INVITATION_STATE_REVOKED
+        - INVITATION_STATE_EXPIRED
     auth.v1.JoinSuggestedOrganizationRequest:
       type: object
       properties:
@@ -11373,32 +11634,6 @@ components:
           title: attachments
       title: ListIdentityPoliciesResponse
       additionalProperties: false
-    auth.v1.ListMembershipApplicationsRequest:
-      type: object
-      properties:
-        limit:
-          type: integer
-          title: limit
-          format: int32
-        offset:
-          type: integer
-          title: offset
-          format: int32
-        state:
-          title: state
-          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
-      title: ListMembershipApplicationsRequest
-      additionalProperties: false
-    auth.v1.ListMembershipApplicationsResponse:
-      type: object
-      properties:
-        applications:
-          type: array
-          items:
-            $ref: '#/components/schemas/auth.v1.MembershipApplication'
-          title: applications
-      title: ListMembershipApplicationsResponse
-      additionalProperties: false
     auth.v1.ListMembershipsRequest:
       type: object
       properties:
@@ -11424,6 +11659,31 @@ components:
             $ref: '#/components/schemas/auth.v1.Membership'
           title: memberships
       title: ListMembershipsResponse
+      additionalProperties: false
+    auth.v1.ListMyInvitationsRequest:
+      type: object
+      properties:
+        page_size:
+          type: integer
+          title: page_size
+          format: int32
+        page_token:
+          type: string
+          title: page_token
+      title: ListMyInvitationsRequest
+      additionalProperties: false
+    auth.v1.ListMyInvitationsResponse:
+      type: object
+      properties:
+        invitations:
+          type: array
+          items:
+            $ref: '#/components/schemas/auth.v1.Invitation'
+          title: invitations
+        next_page_token:
+          type: string
+          title: next_page_token
+      title: ListMyInvitationsResponse
       additionalProperties: false
     auth.v1.ListOrgMembersRequest:
       type: object
@@ -11479,6 +11739,38 @@ components:
           title: next_page_token
       title: ListOrganizationAuditEventsResponse
       additionalProperties: false
+    auth.v1.ListOrganizationInvitationsRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+        state:
+          title: state
+          description: Defaults to pending.
+          $ref: '#/components/schemas/auth.v1.InvitationState'
+        page_size:
+          type: integer
+          title: page_size
+          format: int32
+        page_token:
+          type: string
+          title: page_token
+      title: ListOrganizationInvitationsRequest
+      additionalProperties: false
+    auth.v1.ListOrganizationInvitationsResponse:
+      type: object
+      properties:
+        invitations:
+          type: array
+          items:
+            $ref: '#/components/schemas/auth.v1.Invitation'
+          title: invitations
+        next_page_token:
+          type: string
+          title: next_page_token
+      title: ListOrganizationInvitationsResponse
+      additionalProperties: false
     auth.v1.ListOrganizationsRequest:
       type: object
       properties:
@@ -11492,7 +11784,7 @@ components:
         show_deleted:
           type: boolean
           title: show_deleted
-          description: Includes deleted organizations visible to their owners once lifecycle adds deletion.
+          description: Includes deleted organizations visible to their retained active owners.
       title: ListOrganizationsRequest
       additionalProperties: false
     auth.v1.ListOrganizationsResponse:
@@ -11636,7 +11928,7 @@ components:
         status:
           type: string
           title: status
-          description: '"ok" | "2fa_required" | "email_not_verified"'
+          description: '"ok" | "2fa_required"'
         challenge_id:
           type: string
           title: challenge_id
@@ -11701,6 +11993,41 @@ components:
           title: refresh_token
       title: LogoutRequest
       additionalProperties: false
+    auth.v1.LookupInvitationRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          title: token
+      title: LookupInvitationRequest
+      additionalProperties: false
+    auth.v1.LookupInvitationResponse:
+      type: object
+      properties:
+        state:
+          title: state
+          $ref: '#/components/schemas/auth.v1.InvitationState'
+        org_name:
+          type: string
+          title: org_name
+        org_image_id:
+          type: string
+          title: org_image_id
+        role:
+          title: role
+          $ref: '#/components/schemas/auth.v1.MembershipRole'
+        inviter_display_name:
+          type: string
+          title: inviter_display_name
+        email:
+          type: string
+          title: email
+        expires_at:
+          title: expires_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+      title: LookupInvitationResponse
+      additionalProperties: false
+      description: A closed invitation reports only its state.
     auth.v1.MemberPoliciesResponse:
       type: object
       properties:
@@ -11742,47 +12069,6 @@ components:
           $ref: '#/components/schemas/auth.v1.Organization'
       title: Membership
       additionalProperties: false
-    auth.v1.MembershipApplication:
-      type: object
-      properties:
-        id:
-          type: string
-          title: id
-        user_id:
-          type: string
-          title: user_id
-        org_id:
-          type: string
-          title: org_id
-        role:
-          title: role
-          $ref: '#/components/schemas/auth.v1.MembershipRole'
-        state:
-          title: state
-          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
-        created_at:
-          title: created_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
-        decided_at:
-          title: decided_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
-        invitation_expires_at:
-          title: invitation_expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
-        organization:
-          title: organization
-          $ref: '#/components/schemas/auth.v1.Organization'
-      title: MembershipApplication
-      additionalProperties: false
-    auth.v1.MembershipApplicationState:
-      type: string
-      title: MembershipApplicationState
-      enum:
-        - MEMBERSHIP_APPLICATION_STATE_UNSPECIFIED
-        - MEMBERSHIP_APPLICATION_STATE_PENDING
-        - MEMBERSHIP_APPLICATION_STATE_APPROVED
-        - MEMBERSHIP_APPLICATION_STATE_DECLINED
-        - MEMBERSHIP_APPLICATION_STATE_CANCELLED
     auth.v1.MembershipMutation:
       type: object
       properties:
@@ -11901,9 +12187,6 @@ components:
         last_name:
           type: string
           title: last_name
-        invitation_expires_at:
-          title: invitation_expires_at
-          $ref: '#/components/schemas/google.protobuf.Timestamp'
         joined_at:
           title: joined_at
           $ref: '#/components/schemas/google.protobuf.Timestamp'
@@ -11932,6 +12215,15 @@ components:
           title: internal
         created_at:
           title: created_at
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        state:
+          title: state
+          $ref: '#/components/schemas/auth.v1.OrganizationState'
+        delete_time:
+          title: delete_time
+          $ref: '#/components/schemas/google.protobuf.Timestamp'
+        purge_time:
+          title: purge_time
           $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: Organization
       additionalProperties: false
@@ -11982,6 +12274,14 @@ components:
           $ref: '#/components/schemas/auth.v1.MembershipState'
       title: OrganizationMembership
       additionalProperties: false
+    auth.v1.OrganizationState:
+      type: string
+      title: OrganizationState
+      enum:
+        - ORGANIZATION_STATE_UNSPECIFIED
+        - ORGANIZATION_STATE_ACTIVE
+        - ORGANIZATION_STATE_DELETED
+        - ORGANIZATION_STATE_PURGING
     auth.v1.Passkey:
       type: object
       properties:
@@ -12284,9 +12584,6 @@ components:
         message:
           type: string
           title: message
-        user_id:
-          type: string
-          title: user_id
         email_verification_sent:
           type: boolean
           title: email_verification_sent
@@ -12365,12 +12662,12 @@ components:
     auth.v1.ResendInvitationRequest:
       type: object
       properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.ActorOrgRequest'
-        user_id:
+        org_id:
           type: string
-          title: user_id
+          title: org_id
+        invitation_id:
+          type: string
+          title: invitation_id
       title: ResendInvitationRequest
       additionalProperties: false
     auth.v1.ResendVerificationRequest:
@@ -12379,6 +12676,12 @@ components:
         email:
           type: string
           title: email
+        verification_id:
+          type: string
+          title: verification_id
+          description: |-
+            verification_id names the pending sign-up to resend, as returned by
+             Register. A pending sign-up is never looked up by email alone.
       title: ResendVerificationRequest
       additionalProperties: false
     auth.v1.ResendVerificationResponse:
@@ -12437,17 +12740,6 @@ components:
           title: permissions
       title: ResolveIdentityPermissionsResponse
       additionalProperties: false
-    auth.v1.RespondToMembershipApplicationRequest:
-      type: object
-      properties:
-        org_id:
-          type: string
-          title: org_id
-        state:
-          title: state
-          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
-      title: RespondToMembershipApplicationRequest
-      additionalProperties: false
     auth.v1.RetentionPoint:
       type: object
       properties:
@@ -12476,6 +12768,17 @@ components:
       title: RetentionPoint
       additionalProperties: false
       description: Share of a registration cohort that logged in at least `days` after signup.
+    auth.v1.RevokeInvitationRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+        invitation_id:
+          type: string
+          title: invitation_id
+      title: RevokeInvitationRequest
+      additionalProperties: false
     auth.v1.RevokeOtherSignInsRequest:
       type: object
       title: RevokeOtherSignInsRequest
@@ -12689,6 +12992,21 @@ components:
           title: domain_join_suggestions
       title: TokenResponse
       additionalProperties: false
+    auth.v1.TransferOwnershipRequest:
+      type: object
+      properties:
+        org_id:
+          type: string
+          title: org_id
+        user_id:
+          type: string
+          title: user_id
+        demote_to:
+          title: demote_to
+          description: Omit to keep the current owner as a co-owner.
+          $ref: '#/components/schemas/auth.v1.MembershipRole'
+      title: TransferOwnershipRequest
+      additionalProperties: false
     auth.v1.UnsubscribeBlogByEmailRequest:
       type: object
       properties:
@@ -12719,20 +13037,6 @@ components:
           title: update_mask
           $ref: '#/components/schemas/google.protobuf.FieldMask'
       title: UpdateMemberRequest
-      additionalProperties: false
-    auth.v1.UpdateMembershipStateRequest:
-      type: object
-      properties:
-        user:
-          title: user
-          $ref: '#/components/schemas/auth.v1.UserOrgRequest'
-        state:
-          title: state
-          $ref: '#/components/schemas/auth.v1.MembershipApplicationState'
-        user_id:
-          type: string
-          title: user_id
-      title: UpdateMembershipStateRequest
       additionalProperties: false
     auth.v1.UpdateNameRequest:
       type: object
@@ -12845,6 +13149,37 @@ components:
           title: username
       title: UpdateUsernameResponse
       additionalProperties: false
+    auth.v1.UserDeletionPlanEntry:
+      type: object
+      properties:
+        kind:
+          title: kind
+          $ref: '#/components/schemas/auth.v1.UserDeletionPlanEntry.Kind'
+        org_id:
+          type: string
+          title: org_id
+        org_name:
+          type: string
+          title: org_name
+        affected_user_id:
+          type: string
+          title: affected_user_id
+          description: Set when another member will lose access to the personal org.
+        affected_username:
+          type: string
+          title: affected_username
+      title: UserDeletionPlanEntry
+      additionalProperties: false
+    auth.v1.UserDeletionPlanEntry.Kind:
+      type: string
+      title: Kind
+      enum:
+        - KIND_UNSPECIFIED
+        - KIND_DELETE_ORGANIZATION
+        - KIND_LEAVE_ORGANIZATION
+        - KIND_SOLE_OWNER_BLOCKER
+        - KIND_INTERNAL_ORG_BLOCKER
+        - KIND_PERSONAL_ORG_MEMBER
     auth.v1.UserInfo:
       type: object
       properties:
@@ -12988,6 +13323,17 @@ components:
           title: verified_at
           $ref: '#/components/schemas/google.protobuf.Timestamp'
       title: VerifiedDomain
+      additionalProperties: false
+    auth.v1.VerifyEmailChangeRequest:
+      type: object
+      properties:
+        verification_id:
+          type: string
+          title: verification_id
+        code:
+          type: string
+          title: code
+      title: VerifyEmailChangeRequest
       additionalProperties: false
     auth.v1.VerifyEmailRequest:
       type: object
@@ -18224,6 +18570,9 @@ components:
         error:
           type: string
           description: Human-readable message. Not stable; branch on the HTTP status.
+        reason:
+          type: string
+          description: Machine-readable reason for some 4xx errors, such as `ORG_DELETED`, `MEMBERSHIP_SUSPENDED`, `NOT_A_MEMBER` or `STEP_UP_REQUIRED`. Absent when there is none, and always absent on 5xx.
   parameters:
     IdempotencyKey:
       name: Idempotency-Key
@@ -18236,7 +18585,7 @@ components:
         maxLength: 255
   responses:
     Error:
-      description: 'Error. The body is always `{"error": "<message>"}`; the HTTP status carries the meaning.'
+      description: 'Error. The body is `{"error": "<message>"}`, with `reason` on some 4xx errors. The HTTP status and `reason` carry the meaning.'
       headers:
         Retry-After:
           description: Seconds to wait before retrying. Sent on 503 and 504, and on 409 or 429 when the backend says when a retry can succeed. Absent means do not retry 409 or 429.
@@ -18277,7 +18626,9 @@ tags:
   - name: Notification Preferences
     description: Per-organization email notification preferences.
   - name: Memberships
-    description: Organization membership, roles, and invitations.
+    description: Organization membership and roles.
+  - name: Invitations
+    description: Invite people into organizations by email, and accept or decline invitations.
   - name: Access Policies
     description: Authorization policies and identity assignments.
   - name: Custom Domains
@@ -18369,6 +18720,7 @@ x-tagGroups:
       - Organizations
       - Notification Preferences
       - Memberships
+      - Invitations
       - Access Policies
       - Custom Domains
       - Email
