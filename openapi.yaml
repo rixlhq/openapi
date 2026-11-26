@@ -142,11 +142,7 @@ paths:
             title: os_versions
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -167,11 +163,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -192,11 +184,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -211,11 +199,7 @@ paths:
       operationId: analytics.v1.DashboardService.ListDatasets
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -236,11 +220,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -261,11 +241,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -297,11 +273,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -321,11 +293,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -354,11 +322,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -398,11 +362,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -451,11 +411,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -499,11 +455,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -538,11 +490,7 @@ paths:
               $ref: '#/components/schemas/analytics.v1.WidgetInput'
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -564,11 +512,7 @@ paths:
             title: id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -596,11 +540,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -647,11 +587,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -673,11 +609,7 @@ paths:
             title: id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -698,11 +630,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -741,11 +669,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -783,11 +707,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -808,11 +728,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -833,11 +749,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -884,11 +796,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -927,11 +835,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -970,11 +874,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1012,11 +912,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1055,11 +951,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1104,11 +996,7 @@ paths:
             title: feed_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1123,11 +1011,7 @@ paths:
       operationId: analytics.v1.RealtimeService.GetRealtimeStats
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1165,11 +1049,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1208,11 +1088,7 @@ paths:
             title: end
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1258,11 +1134,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1319,11 +1191,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1356,11 +1224,7 @@ paths:
             pattern: ^[0-9A-Za-z]+$
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1428,11 +1292,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1465,11 +1325,7 @@ paths:
             pattern: ^[0-9A-Za-z]+$
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1490,11 +1346,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1516,11 +1368,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1541,11 +1389,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1566,11 +1410,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1591,11 +1431,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1623,11 +1459,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1660,11 +1492,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1690,11 +1518,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1721,11 +1545,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1758,11 +1578,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1789,11 +1605,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1820,11 +1632,7 @@ paths:
             title: page_token
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1845,11 +1653,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1870,11 +1674,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1895,11 +1695,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1920,11 +1716,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -1964,11 +1756,7 @@ paths:
             title: page_token
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2008,11 +1796,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2040,11 +1824,7 @@ paths:
             title: invitation_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2072,11 +1852,7 @@ paths:
             title: invitation_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2103,11 +1879,7 @@ paths:
             title: page_token
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2141,11 +1913,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2172,11 +1940,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2198,11 +1962,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2230,11 +1990,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2279,11 +2035,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2316,11 +2068,7 @@ paths:
             $ref: '#/components/schemas/auth.v1.MembershipState'
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2347,11 +2095,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2387,11 +2131,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2424,11 +2164,7 @@ paths:
             title: show_deleted
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2448,11 +2184,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2474,11 +2206,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2515,11 +2243,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2552,11 +2276,7 @@ paths:
             title: page_token
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2578,11 +2298,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2604,11 +2320,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2646,11 +2358,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2671,11 +2379,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2696,11 +2400,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2721,11 +2421,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2746,11 +2442,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2771,11 +2463,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2796,11 +2484,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2822,11 +2506,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2848,11 +2528,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2874,11 +2550,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2899,11 +2571,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2924,11 +2592,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2955,11 +2619,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -2995,11 +2655,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3020,11 +2676,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3053,11 +2705,7 @@ paths:
             title: member_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3084,11 +2732,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3129,11 +2773,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3161,11 +2801,7 @@ paths:
             title: attachment_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3206,11 +2842,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3238,11 +2870,7 @@ paths:
             title: policy_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3289,11 +2917,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3320,11 +2944,7 @@ paths:
             title: policy_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3352,11 +2972,7 @@ paths:
             title: policy_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3398,11 +3014,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3423,11 +3035,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3448,11 +3056,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3479,11 +3083,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3504,11 +3104,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3530,11 +3126,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3556,11 +3148,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3582,11 +3170,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3603,11 +3187,7 @@ paths:
       operationId: auth.v1.TokenService.LogoutAll
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3628,11 +3208,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3654,11 +3230,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3680,11 +3252,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3701,11 +3269,7 @@ paths:
       operationId: auth.v1.TokenService.ListSignIns
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3721,11 +3285,7 @@ paths:
       operationId: auth.v1.TokenService.RevokeOtherSignIns
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3748,11 +3308,7 @@ paths:
             title: sign_in_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3773,11 +3329,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3802,11 +3354,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3830,11 +3378,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3855,11 +3399,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3883,11 +3423,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3908,11 +3444,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3933,11 +3465,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3958,11 +3486,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -3983,11 +3507,7 @@ paths:
             title: user_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4014,11 +3534,7 @@ paths:
             title: page_token
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4039,11 +3555,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4064,11 +3576,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4113,11 +3621,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4156,11 +3660,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4183,11 +3683,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4207,11 +3703,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4232,11 +3724,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4251,11 +3739,7 @@ paths:
       operationId: billing.v1.PaymentService.GetBillingConfig
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4283,11 +3767,7 @@ paths:
             title: refresh
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4307,11 +3787,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4334,11 +3810,7 @@ paths:
             title: payment_intent_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4361,11 +3833,7 @@ paths:
             title: setup_intent_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4396,11 +3864,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4421,11 +3885,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4446,11 +3906,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4471,11 +3927,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4496,11 +3948,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4533,11 +3981,7 @@ paths:
             title: free
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4564,11 +4008,7 @@ paths:
             minLength: 1
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4589,11 +4029,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4616,11 +4052,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4640,11 +4072,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4667,11 +4095,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4716,11 +4140,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4743,11 +4163,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4770,11 +4186,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4805,11 +4217,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4832,11 +4240,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4859,11 +4263,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4896,11 +4296,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4923,11 +4319,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4972,11 +4364,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -4996,11 +4384,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5031,11 +4415,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5056,11 +4436,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5107,11 +4483,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5184,11 +4556,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5220,11 +4588,7 @@ paths:
             title: feed_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5299,11 +4663,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5334,11 +4694,7 @@ paths:
             title: feed_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5362,11 +4718,7 @@ paths:
             title: image_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5423,11 +4775,7 @@ paths:
             title: sort_direction
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5471,11 +4819,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5507,11 +4851,7 @@ paths:
             title: image_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5557,11 +4897,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5582,11 +4918,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5608,11 +4940,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5673,11 +5001,7 @@ paths:
             title: creator_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5739,11 +5063,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5786,11 +5106,7 @@ paths:
             title: project_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5852,11 +5168,7 @@ paths:
             title: creator_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5932,11 +5244,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -5998,11 +5306,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6074,11 +5378,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6121,11 +5421,7 @@ paths:
             title: post_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6167,11 +5463,7 @@ paths:
             title: post_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6213,11 +5505,7 @@ paths:
             title: feed_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6258,11 +5546,7 @@ paths:
             title: feed_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6286,11 +5570,7 @@ paths:
             title: org_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6344,11 +5624,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6380,11 +5656,7 @@ paths:
             title: project_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6415,11 +5687,7 @@ paths:
             title: project_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6465,11 +5733,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6500,11 +5764,7 @@ paths:
             title: project_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6550,11 +5810,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6601,11 +5857,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6653,11 +5905,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6692,11 +5940,7 @@ paths:
             format: int32
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6716,11 +5960,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6735,11 +5975,7 @@ paths:
       operationId: support.v1.SupportTicketService.ListCategories
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6771,11 +6007,7 @@ paths:
             maxLength: 120
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6820,11 +6052,7 @@ paths:
             $ref: '#/components/schemas/support.v1.TicketStatus'
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6844,11 +6072,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6872,11 +6096,7 @@ paths:
             title: ticket_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6900,11 +6120,7 @@ paths:
             title: ticket_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6944,11 +6160,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -6979,11 +6191,7 @@ paths:
             maxLength: 120
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7015,11 +6223,7 @@ paths:
             title: video_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7059,11 +6263,7 @@ paths:
             title: language_code
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7115,11 +6315,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7159,11 +6355,7 @@ paths:
             title: track_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7187,11 +6379,7 @@ paths:
             title: video_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7224,11 +6412,7 @@ paths:
             title: video_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7273,11 +6457,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7324,11 +6504,7 @@ paths:
             format: double
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7369,11 +6545,7 @@ paths:
             format: int64
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7388,11 +6560,7 @@ paths:
       operationId: videos.v1.LanguageService.ListLanguages
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7425,11 +6593,7 @@ paths:
             title: video_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7469,11 +6633,7 @@ paths:
             title: language_code
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7525,11 +6685,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7569,11 +6725,7 @@ paths:
             title: subtitle_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7597,11 +6749,7 @@ paths:
             title: video_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7658,11 +6806,7 @@ paths:
             title: sort_direction
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7712,11 +6856,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7748,11 +6888,7 @@ paths:
             title: video_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7798,11 +6934,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7826,11 +6958,7 @@ paths:
             title: video_id
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7876,11 +7004,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7930,11 +7054,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7964,11 +7084,7 @@ paths:
             minLength: 1
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -7997,11 +7113,7 @@ paths:
             minLength: 1
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -8060,11 +7172,7 @@ paths:
         required: true
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -8119,11 +7227,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -8163,11 +7267,7 @@ paths:
             minLength: 1
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -8200,11 +7300,7 @@ paths:
             minLength: 1
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -8235,11 +7331,7 @@ paths:
             minLength: 1
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -8284,11 +7376,7 @@ paths:
             default: 0
       responses:
         default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/google.rpc.Status'
+          $ref: '#/components/responses/Error'
         "200":
           description: Success
           content:
@@ -15508,22 +14596,6 @@ components:
         - type: object
           additionalProperties: true
       description: 'Any JSON value: `null`, number, string, boolean, array, or object.'
-    google.rpc.Status:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The status code, which should be an enum value of google.rpc.Code.
-        message:
-          type: string
-          description: A developer-facing error message.
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/google.protobuf.Any'
-          description: A list of messages that carry the error details.
-      description: The Status type defines a logical error model suitable for gRPC and REST APIs.
     images.v1.CreateImageUploadRequest:
       type: object
       properties:
@@ -18486,6 +17558,11 @@ components:
         reason:
           type: string
           description: Machine-readable reason for some 4xx errors, such as `ORG_DELETED`, `MEMBERSHIP_SUSPENDED`, `NOT_A_MEMBER` or `STEP_UP_REQUIRED`. Absent when there is none, and always absent on 5xx.
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Reason-specific details, such as `invitation_id` on `INVITATION_PENDING` or `max_age_seconds` on `STEP_UP_REQUIRED`. Absent when there is none.
   parameters:
     IdempotencyKey:
       name: Idempotency-Key
