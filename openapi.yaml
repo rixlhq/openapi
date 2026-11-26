@@ -3568,27 +3568,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/auth.v1.UpdateNameResponse'
-  /auth/v1/users/current/username:
-    patch:
-      tags:
-        - Users
-      summary: UpdateUsername
-      operationId: auth.v1.UserService.UpdateUsername
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/auth.v1.UpdateUsernameRequest'
-        required: true
-      responses:
-        default:
-          $ref: '#/components/responses/Error'
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/auth.v1.UpdateUsernameResponse'
   /billing/v1/invoices:
     get:
       tags:
@@ -11203,15 +11182,15 @@ components:
         state:
           title: state
           $ref: '#/components/schemas/auth.v1.MembershipState'
-        username:
-          type: string
-          title: username
         first_name:
           type: string
           title: first_name
         last_name:
           type: string
           title: last_name
+        email:
+          type: string
+          title: email
         joined_at:
           title: joined_at
           $ref: '#/components/schemas/google.protobuf.Timestamp'
@@ -11519,9 +11498,6 @@ components:
         email:
           type: string
           title: email
-        username:
-          type: string
-          title: username
         first_name:
           type: string
           title: first_name
@@ -12173,26 +12149,6 @@ components:
           title: image_id
       title: UpdateUserAvatarResponse
       additionalProperties: false
-    auth.v1.UpdateUsernameRequest:
-      type: object
-      properties:
-        user_id:
-          type: string
-          title: user_id
-        username:
-          type: string
-          title: username
-          description: Trimmed and lowercased before validation. The normalized value may contain at most 24 Unicode characters; an empty value is allowed.
-      title: UpdateUsernameRequest
-      additionalProperties: false
-    auth.v1.UpdateUsernameResponse:
-      type: object
-      properties:
-        username:
-          type: string
-          title: username
-      title: UpdateUsernameResponse
-      additionalProperties: false
     auth.v1.UserDeletionPlanEntry:
       type: object
       properties:
@@ -12209,9 +12165,10 @@ components:
           type: string
           title: affected_user_id
           description: Set when another member will lose access to the personal org.
-        affected_username:
+        affected_name:
           type: string
-          title: affected_username
+          title: affected_name
+          description: The affected member's full name.
       title: UserDeletionPlanEntry
       additionalProperties: false
     auth.v1.UserDeletionPlanEntry.Kind:
@@ -12230,9 +12187,6 @@ components:
         id:
           type: string
           title: id
-        username:
-          type: string
-          title: username
         email:
           type: string
           title: email
