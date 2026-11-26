@@ -1783,7 +1783,10 @@ paths:
               properties:
                 email:
                   type: string
+                  examples:
+                    - new.person@example.com
                   title: email
+                  description: Trimmed and lowercased before validation as a bare email address. The normalized address must be nonempty and at most 254 UTF-8 bytes, with a local part of at most 64 bytes and a domain containing a dot that is neither leading nor trailing.
                 role:
                   title: role
                   $ref: '#/components/schemas/auth.v1.MembershipRole'
@@ -2649,7 +2652,10 @@ paths:
                   title: user_id
                 name:
                   type: string
+                  examples:
+                    - MacBook Touch ID
                   title: name
+                  description: At most 64 UTF-8 bytes. When renaming, whitespace is trimmed before validation and the result must be nonempty.
               title: RenamePasskeyRequest
               additionalProperties: false
         required: true
@@ -10248,7 +10254,10 @@ components:
           title: org_id
         email:
           type: string
+          examples:
+            - new.person@example.com
           title: email
+          description: Trimmed and lowercased before validation as a bare email address. The normalized address must be nonempty and at most 254 UTF-8 bytes, with a local part of at most 64 bytes and a domain containing a dot that is neither leading nor trailing.
         role:
           title: role
           $ref: '#/components/schemas/auth.v1.MembershipRole'
@@ -10921,6 +10930,7 @@ components:
         password:
           type: string
           title: password
+          minLength: 1
       title: LoginRequest
       additionalProperties: false
     auth.v1.LoginResponse:
@@ -11291,7 +11301,10 @@ components:
           title: id
         name:
           type: string
+          examples:
+            - MacBook Touch ID
           title: name
+          description: At most 64 UTF-8 bytes.
         credential_id:
           type: string
           title: credential_id
@@ -11364,7 +11377,10 @@ components:
           title: challenge_id
         name:
           type: string
+          examples:
+            - MacBook Touch ID
           title: name
+          description: At most 64 UTF-8 bytes. When renaming, whitespace is trimmed before validation and the result must be nonempty.
         credential:
           type: string
           title: credential
@@ -11379,7 +11395,10 @@ components:
           title: passkey_id
         name:
           type: string
+          examples:
+            - MacBook Touch ID
           title: name
+          description: At most 64 UTF-8 bytes.
       title: PasskeyRegisterFinishResponse
       additionalProperties: false
     auth.v1.PendingDomain:
@@ -11571,6 +11590,7 @@ components:
         password:
           type: string
           title: password
+          description: Must contain at least 8 UTF-8 bytes (not 8 characters).
         country_code:
           type: string
           title: country_code
@@ -11623,7 +11643,10 @@ components:
           title: id
         name:
           type: string
+          examples:
+            - MacBook Touch ID
           title: name
+          description: At most 64 UTF-8 bytes. When renaming, whitespace is trimmed before validation and the result must be nonempty.
       title: RenamePasskeyRequest
       additionalProperties: false
     auth.v1.ReplaceIdentityPoliciesRequest:
@@ -11708,6 +11731,7 @@ components:
         new_password:
           type: string
           title: new_password
+          description: Must contain at least 8 UTF-8 bytes (not 8 characters).
       title: ResetPasswordRequest
       additionalProperties: false
     auth.v1.ResolveIdentityPermissionsRequest:
@@ -12048,6 +12072,7 @@ components:
         full_name:
           type: string
           title: full_name
+          maxLength: 30
       title: UpdateNameRequest
       additionalProperties: false
     auth.v1.UpdateNameResponse:
@@ -12120,7 +12145,10 @@ components:
           title: user_id
         image_id:
           type: string
+          examples:
+            - XyZ9aB8cD1
           title: image_id
+          description: Trimmed before validation. Empty clears the avatar; otherwise must be a valid base62 image ID.
       title: UpdateUserAvatarRequest
       additionalProperties: false
     auth.v1.UpdateUserAvatarResponse:
@@ -12140,6 +12168,7 @@ components:
         username:
           type: string
           title: username
+          description: Trimmed and lowercased before validation. The normalized value may contain at most 24 Unicode characters; an empty value is allowed.
       title: UpdateUsernameRequest
       additionalProperties: false
     auth.v1.UpdateUsernameResponse:

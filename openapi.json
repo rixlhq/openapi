@@ -2807,7 +2807,11 @@
                 "properties": {
                   "email": {
                     "type": "string",
-                    "title": "email"
+                    "examples": [
+                      "new.person@example.com"
+                    ],
+                    "title": "email",
+                    "description": "Trimmed and lowercased before validation as a bare email address. The normalized address must be nonempty and at most 254 UTF-8 bytes, with a local part of at most 64 bytes and a domain containing a dot that is neither leading nor trailing."
                   },
                   "role": {
                     "title": "role",
@@ -4170,7 +4174,11 @@
                   },
                   "name": {
                     "type": "string",
-                    "title": "name"
+                    "examples": [
+                      "MacBook Touch ID"
+                    ],
+                    "title": "name",
+                    "description": "At most 64 UTF-8 bytes. When renaming, whitespace is trimmed before validation and the result must be nonempty."
                   }
                 },
                 "title": "RenamePasskeyRequest",
@@ -15439,7 +15447,11 @@
           },
           "email": {
             "type": "string",
-            "title": "email"
+            "examples": [
+              "new.person@example.com"
+            ],
+            "title": "email",
+            "description": "Trimmed and lowercased before validation as a bare email address. The normalized address must be nonempty and at most 254 UTF-8 bytes, with a local part of at most 64 bytes and a domain containing a dot that is neither leading nor trailing."
           },
           "role": {
             "title": "role",
@@ -16348,7 +16360,8 @@
           },
           "password": {
             "type": "string",
-            "title": "password"
+            "title": "password",
+            "minLength": 1
           }
         },
         "title": "LoginRequest",
@@ -16837,7 +16850,11 @@
           },
           "name": {
             "type": "string",
-            "title": "name"
+            "examples": [
+              "MacBook Touch ID"
+            ],
+            "title": "name",
+            "description": "At most 64 UTF-8 bytes."
           },
           "credential_id": {
             "type": "string",
@@ -16932,7 +16949,11 @@
           },
           "name": {
             "type": "string",
-            "title": "name"
+            "examples": [
+              "MacBook Touch ID"
+            ],
+            "title": "name",
+            "description": "At most 64 UTF-8 bytes. When renaming, whitespace is trimmed before validation and the result must be nonempty."
           },
           "credential": {
             "type": "string",
@@ -16952,7 +16973,11 @@
           },
           "name": {
             "type": "string",
-            "title": "name"
+            "examples": [
+              "MacBook Touch ID"
+            ],
+            "title": "name",
+            "description": "At most 64 UTF-8 bytes."
           }
         },
         "title": "PasskeyRegisterFinishResponse",
@@ -17210,7 +17235,8 @@
           },
           "password": {
             "type": "string",
-            "title": "password"
+            "title": "password",
+            "description": "Must contain at least 8 UTF-8 bytes (not 8 characters)."
           },
           "country_code": {
             "type": "string",
@@ -17282,7 +17308,11 @@
           },
           "name": {
             "type": "string",
-            "title": "name"
+            "examples": [
+              "MacBook Touch ID"
+            ],
+            "title": "name",
+            "description": "At most 64 UTF-8 bytes. When renaming, whitespace is trimmed before validation and the result must be nonempty."
           }
         },
         "title": "RenamePasskeyRequest",
@@ -17394,7 +17424,8 @@
           },
           "new_password": {
             "type": "string",
-            "title": "new_password"
+            "title": "new_password",
+            "description": "Must contain at least 8 UTF-8 bytes (not 8 characters)."
           }
         },
         "title": "ResetPasswordRequest",
@@ -17852,7 +17883,8 @@
           },
           "full_name": {
             "type": "string",
-            "title": "full_name"
+            "title": "full_name",
+            "maxLength": 30
           }
         },
         "title": "UpdateNameRequest",
@@ -17951,7 +17983,11 @@
           },
           "image_id": {
             "type": "string",
-            "title": "image_id"
+            "examples": [
+              "XyZ9aB8cD1"
+            ],
+            "title": "image_id",
+            "description": "Trimmed before validation. Empty clears the avatar; otherwise must be a valid base62 image ID."
           }
         },
         "title": "UpdateUserAvatarRequest",
@@ -17977,7 +18013,8 @@
           },
           "username": {
             "type": "string",
-            "title": "username"
+            "title": "username",
+            "description": "Trimmed and lowercased before validation. The normalized value may contain at most 24 Unicode characters; an empty value is allowed."
           }
         },
         "title": "UpdateUsernameRequest",
