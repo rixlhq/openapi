@@ -10511,6 +10511,20 @@ components:
           title: new_email
       title: InitiateEmailChangeRequest
       additionalProperties: false
+    auth.v1.InternalOrgIdsRequest:
+      type: object
+      title: InternalOrgIdsRequest
+      additionalProperties: false
+    auth.v1.InternalOrgIdsResponse:
+      type: object
+      properties:
+        org_ids:
+          type: array
+          items:
+            type: string
+          title: org_ids
+      title: InternalOrgIdsResponse
+      additionalProperties: false
     auth.v1.Invitation:
       type: object
       properties:
